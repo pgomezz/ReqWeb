@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BusinessCategoryViewDlg" widgetVar="BusinessCategoryViewDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.ViewBusinessCategoryTitle}" closeOnEscape="true">
+
+            <h:form id="BusinessCategoryViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{businessCategoryController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewBusinessCategoryLabel_idBusinessCategory}"/>
+                        <h:outputText value="#{businessCategoryController.selected.idBusinessCategory}" title="#{myBundle.ViewBusinessCategoryTitle_idBusinessCategory}"/>
+
+                        <h:outputText value="#{myBundle.ViewBusinessCategoryLabel_name}"/>
+                        <h:outputText value="#{businessCategoryController.selected.name}" title="#{myBundle.ViewBusinessCategoryTitle_name}"/>
+
+                        <h:outputText value="#{myBundle.ViewBusinessCategoryLabel_description}"/>
+                        <h:outputText value="#{businessCategoryController.selected.description}" title="#{myBundle.ViewBusinessCategoryTitle_description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="BusinessCategoryViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

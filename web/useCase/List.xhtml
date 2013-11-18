@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="UseCaseListForm">
+
+        <p:panel header="#{myBundle.ListUseCaseTitle}">
+
+            <p:dataTable id="datalist" value="#{useCaseController.items}" var="item"
+                         selectionMode="single" selection="#{useCaseController.selected}"
+                         rowKey="#{item.idUseCase}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.idUseCase}" filterBy="#{item.idUseCase}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListUseCaseTitle_idUseCase}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idUseCase}"/>
+                </p:column>
+                <p:column sortBy="#{item.name}" filterBy="#{item.name}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListUseCaseTitle_name}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.name}"/>
+                </p:column>
+                <p:column sortBy="#{item.description}" filterBy="#{item.description}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListUseCaseTitle_description}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.description}"/>
+                </p:column>
+                <p:column sortBy="#{item.avaliationCriteria}" filterBy="#{item.avaliationCriteria}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListUseCaseTitle_avaliationCriteria}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.avaliationCriteria}"/>
+                </p:column>
+                <p:column sortBy="#{item.preCondition}" filterBy="#{item.preCondition}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListUseCaseTitle_preCondition}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.preCondition}"/>
+                </p:column>
+                <p:column sortBy="#{item.posCondition}" filterBy="#{item.posCondition}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListUseCaseTitle_posCondition}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.posCondition}"/>
+                </p:column>
+                <p:column sortBy="#{item.mainScenario}" filterBy="#{item.mainScenario}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListUseCaseTitle_mainScenario}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.mainScenario}"/>
+                </p:column>
+                <p:column sortBy="#{item.ordernumber}" filterBy="#{item.ordernumber}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListUseCaseTitle_ordernumber}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.ordernumber}"/>
+                </p:column>
+                <p:column sortBy="#{item.idFunctionalRequirement.name}" filterBy="#{item.idFunctionalRequirement.name}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListUseCaseTitle_idFunctionalRequirement}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idFunctionalRequirement.name}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <div class="footer-section">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{useCaseController.prepareCreate}" update=":UseCaseCreateForm" oncomplete="UseCaseCreateDialog.show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":UseCaseViewForm" oncomplete="UseCaseViewDialog.show()" disabled="#{empty useCaseController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":UseCaseEditForm" oncomplete="UseCaseEditDialog.show()" disabled="#{empty useCaseController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{useCaseController.delete}" update=":growl,datalist" disabled="#{empty useCaseController.selected}"/>
+                    </div>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

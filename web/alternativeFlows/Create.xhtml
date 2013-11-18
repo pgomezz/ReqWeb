@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AlternativeFlowsCreateDlg" widgetVar="AlternativeFlowsCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.CreateAlternativeFlowsTitle}" closeOnEscape="true">
+
+            <h:form id="AlternativeFlowsCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+                        <p:outputLabel value="#{myBundle.CreateAlternativeFlowsLabel_idAlternativeFlows}" for="idAlternativeFlows" />
+                        <p:inputText id="idAlternativeFlows" value="#{alternativeFlowsController.selected.idAlternativeFlows}" title="#{myBundle.CreateAlternativeFlowsTitle_idAlternativeFlows}" required="true" requiredMessage="#{myBundle.CreateAlternativeFlowsRequiredMessage_idAlternativeFlows}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateAlternativeFlowsLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{alternativeFlowsController.selected.description}" title="#{myBundle.CreateAlternativeFlowsTitle_description}" required="true" requiredMessage="#{myBundle.CreateAlternativeFlowsRequiredMessage_description}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateAlternativeFlowsLabel_idUseCase}" for="idUseCase" />
+                        <p:selectOneMenu id="idUseCase" value="#{alternativeFlowsController.selected.idUseCase}" required="true" requiredMessage="#{myBundle.EditAlternativeFlowsRequiredMessage_idUseCase}" converter="useCaseConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{useCaseController.items}"
+                                           var="idUseCaseItem"
+                                           itemValue="#{idUseCaseItem}"
+                                           itemLabel="#{idUseCaseItem.name.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{alternativeFlowsController.saveNew}" value="#{myBundle.Save}" update="display,:AlternativeFlowsListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AlternativeFlowsCreateDialog);"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="AlternativeFlowsCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

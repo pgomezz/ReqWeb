@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ScopeDefinitionInteractionViewDlg" widgetVar="ScopeDefinitionInteractionViewDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.ViewScopeDefinitionInteractionTitle}" closeOnEscape="true">
+
+            <h:form id="ScopeDefinitionInteractionViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{scopeDefinitionInteractionController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewScopeDefinitionInteractionLabel_idScopeDefInteraction}"/>
+                        <h:outputText value="#{scopeDefinitionInteractionController.selected.idScopeDefInteraction}" title="#{myBundle.ViewScopeDefinitionInteractionTitle_idScopeDefInteraction}"/>
+
+                        <h:outputText value="#{myBundle.ViewScopeDefinitionInteractionLabel_type}"/>
+                        <h:outputText value="#{scopeDefinitionInteractionController.selected.type}" title="#{myBundle.ViewScopeDefinitionInteractionTitle_type}"/>
+
+                        <h:outputText value="#{myBundle.ViewScopeDefinitionInteractionLabel_title}"/>
+                        <h:outputText value="#{scopeDefinitionInteractionController.selected.title}" title="#{myBundle.ViewScopeDefinitionInteractionTitle_title}"/>
+
+                        <h:outputText value="#{myBundle.ViewScopeDefinitionInteractionLabel_interactionDate}"/>
+                        <h:outputText value="#{scopeDefinitionInteractionController.selected.interactionDate}" title="#{myBundle.ViewScopeDefinitionInteractionTitle_interactionDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewScopeDefinitionInteractionLabel_description}"/>
+                        <h:outputText value="#{scopeDefinitionInteractionController.selected.description}" title="#{myBundle.ViewScopeDefinitionInteractionTitle_description}"/>
+
+                        <h:outputText value="#{myBundle.ViewScopeDefinitionInteractionLabel_idProject}"/>
+                        <h:outputText value="#{scopeDefinitionInteractionController.selected.idProject.name}"/>
+
+                        <h:outputText value="#{myBundle.ViewScopeDefinitionInteractionLabel_idClient}"/>
+                        <h:outputText value="#{scopeDefinitionInteractionController.selected.idClient.name}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="ScopeDefinitionInteractionViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

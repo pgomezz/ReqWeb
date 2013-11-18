@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DocumentCreateDlg" widgetVar="DocumentCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.CreateDocumentTitle}" closeOnEscape="true">
+
+            <h:form id="DocumentCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+                        <p:outputLabel value="#{myBundle.CreateDocumentLabel_idDocument}" for="idDocument" />
+                        <p:inputText id="idDocument" value="#{documentController.selected.idDocument}" title="#{myBundle.CreateDocumentTitle_idDocument}" required="true" requiredMessage="#{myBundle.CreateDocumentRequiredMessage_idDocument}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateDocumentLabel_filepath}" for="filepath" />
+                        <p:inputText id="filepath" value="#{documentController.selected.filepath}" title="#{myBundle.CreateDocumentTitle_filepath}" required="true" requiredMessage="#{myBundle.CreateDocumentRequiredMessage_filepath}" size="300" maxlength="300"/>
+
+                        <p:outputLabel value="#{myBundle.CreateDocumentLabel_title}" for="title" />
+                        <p:inputText id="title" value="#{documentController.selected.title}" title="#{myBundle.CreateDocumentTitle_title}" required="true" requiredMessage="#{myBundle.CreateDocumentRequiredMessage_title}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.CreateDocumentLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{documentController.selected.description}" title="#{myBundle.CreateDocumentTitle_description}" />
+
+                        <p:outputLabel value="#{myBundle.CreateDocumentLabel_idProject}" for="idProject" />
+                        <p:selectOneMenu id="idProject" value="#{documentController.selected.idProject}" required="true" requiredMessage="#{myBundle.EditDocumentRequiredMessage_idProject}" converter="projectConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{projectController.items}"
+                                           var="idProjectItem"
+                                           itemValue="#{idProjectItem}"
+                                           itemLabel="#{idProjectItem.name.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{documentController.saveNew}" value="#{myBundle.Save}" update="display,:DocumentListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,DocumentCreateDialog);"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="DocumentCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

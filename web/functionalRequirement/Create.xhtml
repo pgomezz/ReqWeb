@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FunctionalRequirementCreateDlg" widgetVar="FunctionalRequirementCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.CreateFunctionalRequirementTitle}" closeOnEscape="true">
+
+            <h:form id="FunctionalRequirementCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+                        <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_idFunctionalRequirement}" for="idFunctionalRequirement" />
+                        <p:inputText id="idFunctionalRequirement" value="#{functionalRequirementController.selected.idFunctionalRequirement}" title="#{myBundle.CreateFunctionalRequirementTitle_idFunctionalRequirement}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_idFunctionalRequirement}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{functionalRequirementController.selected.name}" title="#{myBundle.CreateFunctionalRequirementTitle_name}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_name}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{functionalRequirementController.selected.description}" title="#{myBundle.CreateFunctionalRequirementTitle_description}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_description}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_reason}" for="reason" />
+                        <p:inputTextarea rows="4" cols="30" id="reason" value="#{functionalRequirementController.selected.reason}" title="#{myBundle.CreateFunctionalRequirementTitle_reason}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_reason}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_source}" for="source" />
+                        <p:inputText id="source" value="#{functionalRequirementController.selected.source}" title="#{myBundle.CreateFunctionalRequirementTitle_source}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_source}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_avaliationCriteria}" for="avaliationCriteria" />
+                        <p:inputTextarea rows="4" cols="30" id="avaliationCriteria" value="#{functionalRequirementController.selected.avaliationCriteria}" title="#{myBundle.CreateFunctionalRequirementTitle_avaliationCriteria}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_avaliationCriteria}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_clientPriority}" for="clientPriority" />
+                        <p:inputText id="clientPriority" value="#{functionalRequirementController.selected.clientPriority}" title="#{myBundle.CreateFunctionalRequirementTitle_clientPriority}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_clientPriority}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_clientInsatisfaction}" for="clientInsatisfaction" />
+                        <p:inputText id="clientInsatisfaction" value="#{functionalRequirementController.selected.clientInsatisfaction}" title="#{myBundle.CreateFunctionalRequirementTitle_clientInsatisfaction}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_clientInsatisfaction}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_requirementState}" for="requirementState" />
+                        <p:inputText id="requirementState" value="#{functionalRequirementController.selected.requirementState}" title="#{myBundle.CreateFunctionalRequirementTitle_requirementState}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_requirementState}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_version}" for="version" />
+                        <p:inputText id="version" value="#{functionalRequirementController.selected.version}" title="#{myBundle.CreateFunctionalRequirementTitle_version}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_version}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_ordernumber}" for="ordernumber" />
+                        <p:inputText id="ordernumber" value="#{functionalRequirementController.selected.ordernumber}" title="#{myBundle.CreateFunctionalRequirementTitle_ordernumber}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_functionalRequirementCollection}" for="functionalRequirementCollection" />
+                        <p:selectManyMenu id="functionalRequirementCollection" value="#{functionalRequirementController.selected.functionalRequirementCollection}"  converter="functionalRequirementConverter">
+                            <f:selectItems value="#{functionalRequirementController.items}"
+                                           var="functionalRequirementCollectionItem"
+                                           itemValue="#{functionalRequirementCollectionItem}"
+                                           itemLabel="#{functionalRequirementCollectionItem.name.toString()}"
+                                           />
+
+                        </p:selectManyMenu>
+
+                        <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_idProject}" for="idProject" />
+                        <p:selectOneMenu id="idProject" value="#{functionalRequirementController.selected.idProject}" required="true" requiredMessage="#{myBundle.EditFunctionalRequirementRequiredMessage_idProject}" converter="projectConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{projectController.items}"
+                                           var="idProjectItem"
+                                           itemValue="#{idProjectItem}"
+                                           itemLabel="#{idProjectItem.name.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_idBusinessCategory}" for="idBusinessCategory" />
+                        <p:selectOneMenu id="idBusinessCategory" value="#{functionalRequirementController.selected.idBusinessCategory}" required="true" requiredMessage="#{myBundle.EditFunctionalRequirementRequiredMessage_idBusinessCategory}" converter="businessCategoryConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{businessCategoryController.items}"
+                                           var="idBusinessCategoryItem"
+                                           itemValue="#{idBusinessCategoryItem}"
+                                           itemLabel="#{idBusinessCategoryItem.name.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{functionalRequirementController.saveNew}" value="#{myBundle.Save}" update="display,:FunctionalRequirementListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,FunctionalRequirementCreateDialog);"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="FunctionalRequirementCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="DocumentListForm">
+
+        <p:panel header="#{myBundle.ListDocumentTitle}">
+
+            <p:dataTable id="datalist" value="#{documentController.items}" var="item"
+                         selectionMode="single" selection="#{documentController.selected}"
+                         rowKey="#{item.idDocument}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.idDocument}" filterBy="#{item.idDocument}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDocumentTitle_idDocument}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idDocument}"/>
+                </p:column>
+                <p:column sortBy="#{item.filepath}" filterBy="#{item.filepath}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDocumentTitle_filepath}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.filepath}"/>
+                </p:column>
+                <p:column sortBy="#{item.title}" filterBy="#{item.title}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDocumentTitle_title}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.title}"/>
+                </p:column>
+                <p:column sortBy="#{item.description}" filterBy="#{item.description}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDocumentTitle_description}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.description}"/>
+                </p:column>
+                <p:column sortBy="#{item.idProject.name}" filterBy="#{item.idProject.name}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDocumentTitle_idProject}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idProject.name}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <div class="footer-section">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{documentController.prepareCreate}" update=":DocumentCreateForm" oncomplete="DocumentCreateDialog.show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":DocumentViewForm" oncomplete="DocumentViewDialog.show()" disabled="#{empty documentController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":DocumentEditForm" oncomplete="DocumentEditDialog.show()" disabled="#{empty documentController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{documentController.delete}" update=":growl,datalist" disabled="#{empty documentController.selected}"/>
+                    </div>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

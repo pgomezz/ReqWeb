@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="FunctionalRequirementListForm">
+
+        <p:panel header="#{myBundle.ListFunctionalRequirementTitle}">
+
+            <p:dataTable id="datalist" value="#{functionalRequirementController.items}" var="item"
+                         selectionMode="single" selection="#{functionalRequirementController.selected}"
+                         rowKey="#{item.idFunctionalRequirement}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.idFunctionalRequirement}" filterBy="#{item.idFunctionalRequirement}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListFunctionalRequirementTitle_idFunctionalRequirement}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idFunctionalRequirement}"/>
+                </p:column>
+                <p:column sortBy="#{item.name}" filterBy="#{item.name}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListFunctionalRequirementTitle_name}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.name}"/>
+                </p:column>
+                <p:column sortBy="#{item.description}" filterBy="#{item.description}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListFunctionalRequirementTitle_description}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.description}"/>
+                </p:column>
+                <p:column sortBy="#{item.reason}" filterBy="#{item.reason}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListFunctionalRequirementTitle_reason}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.reason}"/>
+                </p:column>
+                <p:column sortBy="#{item.source}" filterBy="#{item.source}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListFunctionalRequirementTitle_source}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.source}"/>
+                </p:column>
+                <p:column sortBy="#{item.avaliationCriteria}" filterBy="#{item.avaliationCriteria}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListFunctionalRequirementTitle_avaliationCriteria}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.avaliationCriteria}"/>
+                </p:column>
+                <p:column sortBy="#{item.clientPriority}" filterBy="#{item.clientPriority}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListFunctionalRequirementTitle_clientPriority}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.clientPriority}"/>
+                </p:column>
+                <p:column sortBy="#{item.clientInsatisfaction}" filterBy="#{item.clientInsatisfaction}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListFunctionalRequirementTitle_clientInsatisfaction}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.clientInsatisfaction}"/>
+                </p:column>
+                <p:column sortBy="#{item.requirementState}" filterBy="#{item.requirementState}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListFunctionalRequirementTitle_requirementState}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.requirementState}"/>
+                </p:column>
+                <p:column sortBy="#{item.version}" filterBy="#{item.version}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListFunctionalRequirementTitle_version}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.version}"/>
+                </p:column>
+                <p:column sortBy="#{item.ordernumber}" filterBy="#{item.ordernumber}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListFunctionalRequirementTitle_ordernumber}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.ordernumber}"/>
+                </p:column>
+                <p:column sortBy="#{item.idProject.name}" filterBy="#{item.idProject.name}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListFunctionalRequirementTitle_idProject}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idProject.name}"/>
+                </p:column>
+                <p:column sortBy="#{item.idBusinessCategory.name}" filterBy="#{item.idBusinessCategory.name}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListFunctionalRequirementTitle_idBusinessCategory}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idBusinessCategory.name}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <div class="footer-section">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{functionalRequirementController.prepareCreate}" update=":FunctionalRequirementCreateForm" oncomplete="FunctionalRequirementCreateDialog.show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":FunctionalRequirementViewForm" oncomplete="FunctionalRequirementViewDialog.show()" disabled="#{empty functionalRequirementController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":FunctionalRequirementEditForm" oncomplete="FunctionalRequirementEditDialog.show()" disabled="#{empty functionalRequirementController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{functionalRequirementController.delete}" update=":growl,datalist" disabled="#{empty functionalRequirementController.selected}"/>
+                    </div>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

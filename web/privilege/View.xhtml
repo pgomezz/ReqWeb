@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PrivilegeViewDlg" widgetVar="PrivilegeViewDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.ViewPrivilegeTitle}" closeOnEscape="true">
+
+            <h:form id="PrivilegeViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{privilegeController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewPrivilegeLabel_idPrivilege}"/>
+                        <h:outputText value="#{privilegeController.selected.idPrivilege}" title="#{myBundle.ViewPrivilegeTitle_idPrivilege}"/>
+
+                        <h:outputText value="#{myBundle.ViewPrivilegeLabel_actionName}"/>
+                        <h:outputText value="#{privilegeController.selected.actionName}" title="#{myBundle.ViewPrivilegeTitle_actionName}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="PrivilegeViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

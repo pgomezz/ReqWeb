@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProjectUserViewDlg" widgetVar="ProjectUserViewDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.ViewProjectUserTitle}" closeOnEscape="true">
+
+            <h:form id="ProjectUserViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{projectUserController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewProjectUserLabel_project}"/>
+                        <h:outputText value="#{projectUserController.selected.project.name}"/>
+
+                        <h:outputText value="#{myBundle.ViewProjectUserLabel_altranreqUser}"/>
+                        <h:outputText value="#{projectUserController.selected.altranreqUser.name}"/>
+
+                        <h:outputText value="#{myBundle.ViewProjectUserLabel_idRole}"/>
+                        <h:outputText value="#{projectUserController.selected.idRole.description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="ProjectUserViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

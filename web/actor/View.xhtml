@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ActorViewDlg" widgetVar="ActorViewDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.ViewActorTitle}" closeOnEscape="true">
+
+            <h:form id="ActorViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{actorController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewActorLabel_idActor}"/>
+                        <h:outputText value="#{actorController.selected.idActor}" title="#{myBundle.ViewActorTitle_idActor}"/>
+
+                        <h:outputText value="#{myBundle.ViewActorLabel_name}"/>
+                        <h:outputText value="#{actorController.selected.name}" title="#{myBundle.ViewActorTitle_name}"/>
+
+                        <h:outputText value="#{myBundle.ViewActorLabel_description}"/>
+                        <h:outputText value="#{actorController.selected.description}" title="#{myBundle.ViewActorTitle_description}"/>
+
+                        <h:outputText value="#{myBundle.ViewActorLabel_useCaseCollection}"/>
+                        <h:selectManyMenu converter="useCaseConverter">
+                            <f:selectItems value="#{actorController.selected.useCaseCollection}"
+                                           var="useCaseCollectionItem"
+                                           itemValue="#{useCaseCollectionItem}"
+                                           itemLabel="#{useCaseCollectionItem.name.toString()}"
+                                           />
+
+                        </h:selectManyMenu>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="ActorViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

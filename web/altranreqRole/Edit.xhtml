@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AltranreqRoleEditDlg" widgetVar="AltranreqRoleEditDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditAltranreqRoleTitle}" closeOnEscape="true">
+
+            <h:form id="AltranreqRoleEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{altranreqRoleController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditAltranreqRoleLabel_idRole}" for="idRole" />
+                        <h:outputText id="idRole" value="#{altranreqRoleController.selected.idRole}" />
+
+                        <p:outputLabel value="#{myBundle.EditAltranreqRoleLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{altranreqRoleController.selected.type}" title="#{myBundle.EditAltranreqRoleTitle_type}" required="true" requiredMessage="#{myBundle.EditAltranreqRoleRequiredMessage_type}" size="20" maxlength="20"/>
+
+                        <p:outputLabel value="#{myBundle.EditAltranreqRoleLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{altranreqRoleController.selected.description}" title="#{myBundle.EditAltranreqRoleTitle_description}" size="250" maxlength="250"/>
+
+                        <p:outputLabel value="#{myBundle.EditAltranreqRoleLabel_privilegeCollection}" for="privilegeCollection" />
+                        <p:selectManyMenu id="privilegeCollection" value="#{altranreqRoleController.selected.privilegeCollection}"  converter="privilegeConverter">
+                            <f:selectItems value="#{privilegeController.items}"
+                                           var="privilegeCollectionItem"
+                                           itemValue="#{privilegeCollectionItem}"
+                                           itemLabel="#{privilegeCollectionItem.idPrivilege.toString()}"
+                                           />
+
+                        </p:selectManyMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{altranreqRoleController.save}" value="#{myBundle.Save}" update="display,:AltranreqRoleListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AltranreqRoleEditDialog);"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="AltranreqRoleEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

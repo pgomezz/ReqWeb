@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AltranreqUserCreateDlg" widgetVar="AltranreqUserCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.CreateAltranreqUserTitle}" closeOnEscape="true">
+
+            <h:form id="AltranreqUserCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+                        <p:outputLabel value="#{myBundle.CreateAltranreqUserLabel_idUser}" for="idUser" />
+                        <p:inputText id="idUser" value="#{altranreqUserController.selected.idUser}" title="#{myBundle.CreateAltranreqUserTitle_idUser}" required="true" requiredMessage="#{myBundle.CreateAltranreqUserRequiredMessage_idUser}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateAltranreqUserLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{altranreqUserController.selected.name}" title="#{myBundle.CreateAltranreqUserTitle_name}" required="true" requiredMessage="#{myBundle.CreateAltranreqUserRequiredMessage_name}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.CreateAltranreqUserLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{altranreqUserController.selected.password}" title="#{myBundle.CreateAltranreqUserTitle_password}" required="true" requiredMessage="#{myBundle.CreateAltranreqUserRequiredMessage_password}" size="88" maxlength="88"/>
+
+                        <p:outputLabel value="#{myBundle.CreateAltranreqUserLabel_username}" for="username" />
+                        <p:inputText id="username" value="#{altranreqUserController.selected.username}" title="#{myBundle.CreateAltranreqUserTitle_username}" required="true" requiredMessage="#{myBundle.CreateAltranreqUserRequiredMessage_username}" size="20" maxlength="20"/>
+
+                        <p:outputLabel value="#{myBundle.CreateAltranreqUserLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{altranreqUserController.selected.email}" title="#{myBundle.CreateAltranreqUserTitle_email}" required="true" requiredMessage="#{myBundle.CreateAltranreqUserRequiredMessage_email}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.CreateAltranreqUserLabel_mobile}" for="mobile" />
+                        <p:inputText id="mobile" value="#{altranreqUserController.selected.mobile}" title="#{myBundle.CreateAltranreqUserTitle_mobile}" required="true" requiredMessage="#{myBundle.CreateAltranreqUserRequiredMessage_mobile}" size="20" maxlength="20"/>
+
+                        <p:outputLabel value="#{myBundle.CreateAltranreqUserLabel_isAdmin}" for="isAdmin" />
+                        <p:inputText id="isAdmin" value="#{altranreqUserController.selected.isAdmin}" title="#{myBundle.CreateAltranreqUserTitle_isAdmin}" required="true" requiredMessage="#{myBundle.CreateAltranreqUserRequiredMessage_isAdmin}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{altranreqUserController.saveNew}" value="#{myBundle.Save}" update="display,:AltranreqUserListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AltranreqUserCreateDialog);"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="AltranreqUserCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

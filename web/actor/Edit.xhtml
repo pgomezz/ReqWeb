@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ActorEditDlg" widgetVar="ActorEditDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditActorTitle}" closeOnEscape="true">
+
+            <h:form id="ActorEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{actorController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditActorLabel_idActor}" for="idActor" />
+                        <h:outputText id="idActor" value="#{actorController.selected.idActor}" />
+
+                        <p:outputLabel value="#{myBundle.EditActorLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{actorController.selected.name}" title="#{myBundle.EditActorTitle_name}" required="true" requiredMessage="#{myBundle.EditActorRequiredMessage_name}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.EditActorLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{actorController.selected.description}" title="#{myBundle.EditActorTitle_description}" required="true" requiredMessage="#{myBundle.EditActorRequiredMessage_description}"/>
+
+                        <p:outputLabel value="#{myBundle.EditActorLabel_useCaseCollection}" for="useCaseCollection" />
+                        <p:selectManyMenu id="useCaseCollection" value="#{actorController.selected.useCaseCollection}"  converter="useCaseConverter">
+                            <f:selectItems value="#{useCaseController.items}"
+                                           var="useCaseCollectionItem"
+                                           itemValue="#{useCaseCollectionItem}"
+                                           itemLabel="#{useCaseCollectionItem.name.toString()}"
+                                           />
+
+                        </p:selectManyMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{actorController.save}" value="#{myBundle.Save}" update="display,:ActorListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ActorEditDialog);"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ActorEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

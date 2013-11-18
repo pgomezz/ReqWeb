@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProjectUserEditDlg" widgetVar="ProjectUserEditDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditProjectUserTitle}" closeOnEscape="true">
+
+            <h:form id="ProjectUserEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{projectUserController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditProjectUserLabel_project}" for="project" />
+                        <h:outputText id="project" value="#{projectUserController.selected.project}" />
+
+                        <h:outputLabel value="#{myBundle.EditProjectUserLabel_altranreqUser}" for="altranreqUser" />
+                        <h:outputText id="altranreqUser" value="#{projectUserController.selected.altranreqUser}" />
+
+                        <p:outputLabel value="#{myBundle.EditProjectUserLabel_idRole}" for="idRole" />
+                        <p:selectOneMenu id="idRole" value="#{projectUserController.selected.idRole}" required="true" requiredMessage="#{myBundle.EditProjectUserRequiredMessage_idRole}" converter="altranreqRoleConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{altranreqRoleController.items}"
+                                           var="idRoleItem"
+                                           itemValue="#{idRoleItem}"
+                                           itemLabel="#{idRoleItem.description.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{projectUserController.save}" value="#{myBundle.Save}" update="display,:ProjectUserListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ProjectUserEditDialog);"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ProjectUserEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PrivilegeCreateDlg" widgetVar="PrivilegeCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.CreatePrivilegeTitle}" closeOnEscape="true">
+
+            <h:form id="PrivilegeCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+                        <p:outputLabel value="#{myBundle.CreatePrivilegeLabel_idPrivilege}" for="idPrivilege" />
+                        <p:inputText id="idPrivilege" value="#{privilegeController.selected.idPrivilege}" title="#{myBundle.CreatePrivilegeTitle_idPrivilege}" required="true" requiredMessage="#{myBundle.CreatePrivilegeRequiredMessage_idPrivilege}"/>
+
+                        <p:outputLabel value="#{myBundle.CreatePrivilegeLabel_actionName}" for="actionName" />
+                        <p:inputText id="actionName" value="#{privilegeController.selected.actionName}" title="#{myBundle.CreatePrivilegeTitle_actionName}" required="true" requiredMessage="#{myBundle.CreatePrivilegeRequiredMessage_actionName}" size="250" maxlength="250"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{privilegeController.saveNew}" value="#{myBundle.Save}" update="display,:PrivilegeListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PrivilegeCreateDialog);"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="PrivilegeCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DocumentEditDlg" widgetVar="DocumentEditDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditDocumentTitle}" closeOnEscape="true">
+
+            <h:form id="DocumentEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{documentController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditDocumentLabel_idDocument}" for="idDocument" />
+                        <h:outputText id="idDocument" value="#{documentController.selected.idDocument}" />
+
+                        <p:outputLabel value="#{myBundle.EditDocumentLabel_filepath}" for="filepath" />
+                        <p:inputText id="filepath" value="#{documentController.selected.filepath}" title="#{myBundle.EditDocumentTitle_filepath}" required="true" requiredMessage="#{myBundle.EditDocumentRequiredMessage_filepath}" size="300" maxlength="300"/>
+
+                        <p:outputLabel value="#{myBundle.EditDocumentLabel_title}" for="title" />
+                        <p:inputText id="title" value="#{documentController.selected.title}" title="#{myBundle.EditDocumentTitle_title}" required="true" requiredMessage="#{myBundle.EditDocumentRequiredMessage_title}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.EditDocumentLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{documentController.selected.description}" title="#{myBundle.EditDocumentTitle_description}" />
+
+                        <p:outputLabel value="#{myBundle.EditDocumentLabel_idProject}" for="idProject" />
+                        <p:selectOneMenu id="idProject" value="#{documentController.selected.idProject}" required="true" requiredMessage="#{myBundle.EditDocumentRequiredMessage_idProject}" converter="projectConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{projectController.items}"
+                                           var="idProjectItem"
+                                           itemValue="#{idProjectItem}"
+                                           itemLabel="#{idProjectItem.name.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{documentController.save}" value="#{myBundle.Save}" update="display,:DocumentListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,DocumentEditDialog);"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="DocumentEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

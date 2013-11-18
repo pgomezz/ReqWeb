@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ClientEditDlg" widgetVar="ClientEditDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditClientTitle}" closeOnEscape="true">
+
+            <h:form id="ClientEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{clientController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditClientLabel_idClient}" for="idClient" />
+                        <h:outputText id="idClient" value="#{clientController.selected.idClient}" />
+
+                        <p:outputLabel value="#{myBundle.EditClientLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{clientController.selected.name}" title="#{myBundle.EditClientTitle_name}" required="true" requiredMessage="#{myBundle.EditClientRequiredMessage_name}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.EditClientLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{clientController.selected.email}" title="#{myBundle.EditClientTitle_email}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.EditClientLabel_mobile}" for="mobile" />
+                        <p:inputText id="mobile" value="#{clientController.selected.mobile}" title="#{myBundle.EditClientTitle_mobile}" size="20" maxlength="20"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{clientController.save}" value="#{myBundle.Save}" update="display,:ClientListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ClientEditDialog);"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ClientEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

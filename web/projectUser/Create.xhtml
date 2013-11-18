@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProjectUserCreateDlg" widgetVar="ProjectUserCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.CreateProjectUserTitle}" closeOnEscape="true">
+
+            <h:form id="ProjectUserCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+                        <p:outputLabel value="#{myBundle.CreateProjectUserLabel_project}" for="project" />
+                        <p:selectOneMenu id="project" value="#{projectUserController.selected.project}" required="true" requiredMessage="#{myBundle.EditProjectUserRequiredMessage_project}" converter="projectConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{projectController.items}"
+                                           var="projectItem"
+                                           itemValue="#{projectItem}"
+                                           itemLabel="#{projectItem.name.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.CreateProjectUserLabel_altranreqUser}" for="altranreqUser" />
+                        <p:selectOneMenu id="altranreqUser" value="#{projectUserController.selected.altranreqUser}" required="true" requiredMessage="#{myBundle.EditProjectUserRequiredMessage_altranreqUser}" converter="altranreqUserConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{altranreqUserController.items}"
+                                           var="altranreqUserItem"
+                                           itemValue="#{altranreqUserItem}"
+                                           itemLabel="#{altranreqUserItem.name.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.CreateProjectUserLabel_idRole}" for="idRole" />
+                        <p:selectOneMenu id="idRole" value="#{projectUserController.selected.idRole}" required="true" requiredMessage="#{myBundle.EditProjectUserRequiredMessage_idRole}" converter="altranreqRoleConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{altranreqRoleController.items}"
+                                           var="idRoleItem"
+                                           itemValue="#{idRoleItem}"
+                                           itemLabel="#{idRoleItem.description.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{projectUserController.saveNew}" value="#{myBundle.Save}" update="display,:ProjectUserListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ProjectUserCreateDialog);"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ProjectUserCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

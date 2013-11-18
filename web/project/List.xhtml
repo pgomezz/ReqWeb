@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="ProjectListForm">
+
+        <p:panel header="#{myBundle.ListProjectTitle}">
+
+            <p:dataTable id="datalist" value="#{projectController.items}" var="item"
+                         selectionMode="single" selection="#{projectController.selected}"
+                         rowKey="#{item.idProject}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.idProject}" filterBy="#{item.idProject}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListProjectTitle_idProject}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idProject}"/>
+                </p:column>
+                <p:column sortBy="#{item.name}" filterBy="#{item.name}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListProjectTitle_name}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.name}"/>
+                </p:column>
+                <p:column sortBy="#{item.description}" filterBy="#{item.description}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListProjectTitle_description}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.description}"/>
+                </p:column>
+                <p:column sortBy="#{item.beginDate}" filterBy="#{item.beginDate}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListProjectTitle_beginDate}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.beginDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.endDate}" filterBy="#{item.endDate}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListProjectTitle_endDate}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.endDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.projectState}" filterBy="#{item.projectState}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListProjectTitle_projectState}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.projectState}"/>
+                </p:column>
+                <p:column sortBy="#{item.idProjectManager}" filterBy="#{item.idProjectManager}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListProjectTitle_idProjectManager}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idProjectManager}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <div class="footer-section">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{projectController.prepareCreate}" update=":ProjectCreateForm" oncomplete="ProjectCreateDialog.show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":ProjectViewForm" oncomplete="ProjectViewDialog.show()" disabled="#{empty projectController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":ProjectEditForm" oncomplete="ProjectEditDialog.show()" disabled="#{empty projectController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{projectController.delete}" update=":growl,datalist" disabled="#{empty projectController.selected}"/>
+                    </div>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>
