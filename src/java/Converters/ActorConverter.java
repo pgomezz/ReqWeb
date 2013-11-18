@@ -14,7 +14,6 @@ import javax.faces.convert.FacesConverter;
 
 
 
-
 @FacesConverter(value = "actorConverter")
 public class ActorConverter implements Converter {
 
