@@ -12,6 +12,11 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
+//teste
+
+
+
+
 @FacesConverter(value = "actorConverter")
 public class ActorConverter implements Converter {
 
