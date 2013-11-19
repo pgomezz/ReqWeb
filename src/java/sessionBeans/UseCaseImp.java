@@ -14,11 +14,16 @@ import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import sessionBeans.AbstractServiceImp;
 import sessionBeans.UseCaseService;
 @Stateful
 public class UseCaseImp extends AbstractServiceImp<UseCase> implements UseCaseService {
 
+        @PersistenceContext(unitName="AltranReqPU")
+    private EntityManager em;
+
+    
     @PostConstruct
     public void init() {
         setEntityClass(UseCase.class);
@@ -26,7 +31,7 @@ public class UseCaseImp extends AbstractServiceImp<UseCase> implements UseCaseSe
 
     @Override
     protected EntityManager getEntityManager() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return em;
     }
 
     public List<UseCase> findProjectsByDependency(UseCase usecase) {
