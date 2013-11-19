@@ -9,9 +9,11 @@ package sessionBeans;
 import entities.Project;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 
-
+@Stateless
 public class ProjectServiceImp extends AbstractServiceImp<Project> implements ProjectService {
 
     @PostConstruct 

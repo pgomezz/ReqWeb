@@ -7,17 +7,20 @@ package sessionBeans;
  */
 
 
+import entities.NonFunctionalRequirement;
 import entities.Project;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 
-
-public class RNFServiceImp extends AbstractServiceImp<Project> implements RNFService {
+@Stateless
+public class RNFServiceImp extends AbstractServiceImp<NonFunctionalRequirement> implements RNFService {
 
     @PostConstruct 
     public void init() {
-     setEntityClass(Project.class);
+     setEntityClass(NonFunctionalRequirement.class);
     }
     
     @Override

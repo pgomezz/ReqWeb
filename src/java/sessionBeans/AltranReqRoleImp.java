@@ -9,8 +9,11 @@ package sessionBeans;
 import entities.AltranreqRole;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 
+@Stateless
 public class AltranReqRoleImp extends AbstractServiceImp<AltranreqRole> implements AltranReqRoleService {
 
     @PostConstruct

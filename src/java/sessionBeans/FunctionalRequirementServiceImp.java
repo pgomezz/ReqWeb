@@ -9,6 +9,7 @@ package sessionBeans;
 
 import entities.FunctionalRequirement;
 import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -18,7 +19,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class FunctionalRequirementServiceImp extends AbstractServiceImp <FunctionalRequirement> {
-    @PersistenceContext(unitName = "TesteServicesPU")
+    @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
 
     @Override

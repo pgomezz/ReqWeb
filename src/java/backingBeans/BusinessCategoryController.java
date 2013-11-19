@@ -7,6 +7,8 @@ import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
 import sessionBeans.AbstractService;
+import sessionBeans.AbstractServiceImp;
+import sessionBeans.BusinessCategoryService;
 import sessionBeans.BusinessCategoryServiceImp;
 
 @Named(value = "businessCategoryController")
@@ -14,7 +16,7 @@ import sessionBeans.BusinessCategoryServiceImp;
 public class BusinessCategoryController extends AbstractController<BusinessCategory> implements Serializable {
 
     @Inject
-    private AbstractService ejbService;
+    private BusinessCategoryService ejbService;
 
     public BusinessCategoryController() {
         super(BusinessCategory.class);

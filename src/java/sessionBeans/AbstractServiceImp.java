@@ -6,6 +6,8 @@
 
 package sessionBeans;
 import java.util.List;
+import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 
 /**
@@ -13,6 +15,7 @@ import javax.persistence.EntityManager;
  * @author User
  * @param <T>
  */
+@Stateless
 public abstract class AbstractServiceImp<T> implements AbstractService<T>{
     private Class<T> entityClass;
     

@@ -1,6 +1,6 @@
 package sessionBeans;
 
-import builder.ProjectState;
+import sessionBeans.builder.ProjectState;
 import entities.ProjectUser;
 
 /*

@@ -10,12 +10,13 @@ import entities.Client;
 import entities.FunctionalRequirement;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class ClientServiceImp extends AbstractServiceImp <Client> {
-    @PersistenceContext(unitName = "TesteServicesPU")
+public class ClientServiceImp extends AbstractServiceImp <Client> implements ClientService{
+    @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
 
     @Override

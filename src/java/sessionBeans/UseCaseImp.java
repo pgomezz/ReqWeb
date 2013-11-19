@@ -10,10 +10,13 @@ import entities.FunctionalRequirement;
 import entities.UseCase;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateful;
+import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import sessionBeans.AbstractServiceImp;
 import sessionBeans.UseCaseService;
-
+@Stateful
 public class UseCaseImp extends AbstractServiceImp<UseCase> implements UseCaseService {
 
     @PostConstruct

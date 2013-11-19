@@ -11,8 +11,10 @@ import entities.FunctionalRequirement;
 import entities.Project;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
-
+@Stateless
 public class DocumentImp extends AbstractServiceImp<Document> implements DocumentService {
 
     @PostConstruct

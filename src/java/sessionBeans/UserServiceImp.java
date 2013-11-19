@@ -10,8 +10,12 @@ import entities.AltranreqUser;
 import entities.Project;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 
+@Named(value = "userServiceImp")
+@Stateless
 public class UserServiceImp extends AbstractServiceImp<AltranreqUser> implements UserService {
 
     @PostConstruct

@@ -11,9 +11,16 @@ import entities.Project;
 import entities.UseCase;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateful;
+import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
-
+import javax.persistence.PersistenceContext;
+@Named
+@Stateful
 public class ActorImp extends AbstractServiceImp<Actor> implements ActorService {
+    @PersistenceContext(unitName="AltranReqPU")
+    private EntityManager em;
 
     @PostConstruct
     public void init() {
@@ -22,7 +29,8 @@ public class ActorImp extends AbstractServiceImp<Actor> implements ActorService 
 
     @Override
     protected EntityManager getEntityManager() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return em;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

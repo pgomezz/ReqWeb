@@ -10,12 +10,13 @@ import entities.BusinessCategory;
 import entities.FunctionalRequirement;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class BusinessCategoryServiceImp extends AbstractServiceImp <BusinessCategory> {
-    @PersistenceContext(unitName = "TesteServicesPU")
+public class BusinessCategoryServiceImp extends AbstractServiceImp <BusinessCategory> implements BusinessCategoryService {
+    @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
 
     @Override
