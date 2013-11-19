@@ -7,7 +7,9 @@ package sessionBeans;
  */
 
 
+import entities.AltranreqRole;
 import entities.FunctionalRequirement;
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -21,6 +23,11 @@ import javax.persistence.PersistenceContext;
 public class FunctionalRequirementServiceImp extends AbstractServiceImp <FunctionalRequirement> implements FunctionalRequirementService{
     @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
+    
+    @PostConstruct
+    public void init() {
+        setEntityClass(FunctionalRequirement.class);
+    }
 
     @Override
     protected EntityManager getEntityManager() {

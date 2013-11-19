@@ -6,18 +6,26 @@ package sessionBeans;
  * and open the template in the editor.
  */
 
+import entities.AltranreqRole;
 import entities.Client;
 import entities.FunctionalRequirement;
 import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-@Stateless
+@Stateful
 public class ClientServiceImp extends AbstractServiceImp <Client> implements ClientService{
     @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
+    
+    @PostConstruct
+    public void init() {
+        setEntityClass(Client.class);
+    }
 
     @Override
     protected EntityManager getEntityManager() {

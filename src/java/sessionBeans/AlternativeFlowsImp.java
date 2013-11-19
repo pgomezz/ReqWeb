@@ -14,7 +14,7 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-@Stateful
+@Stateless
 public class AlternativeFlowsImp extends AbstractServiceImp<AlternativeFlows> implements AlternativeFlowsService {
 
             @PersistenceContext(unitName="AltranReqPU")

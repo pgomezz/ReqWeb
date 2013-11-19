@@ -17,7 +17,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import sessionBeans.AbstractServiceImp;
 import sessionBeans.UseCaseService;
-@Stateful
+@Stateless
 public class UseCaseImp extends AbstractServiceImp<UseCase> implements UseCaseService {
 
         @PersistenceContext(unitName="AltranReqPU")

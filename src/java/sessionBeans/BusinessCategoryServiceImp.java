@@ -6,9 +6,11 @@ package sessionBeans;
  * and open the template in the editor.
  */
 
+import entities.AltranreqRole;
 import entities.BusinessCategory;
 import entities.FunctionalRequirement;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -18,6 +20,11 @@ import javax.persistence.PersistenceContext;
 public class BusinessCategoryServiceImp extends AbstractServiceImp <BusinessCategory> implements BusinessCategoryService {
     @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
+    
+    @PostConstruct
+    public void init() {
+        setEntityClass(BusinessCategory.class);
+    }
 
     @Override
     protected EntityManager getEntityManager() {
