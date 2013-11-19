@@ -12,10 +12,14 @@ import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 @Stateful
 public class AlternativeFlowsImp extends AbstractServiceImp<AlternativeFlows> implements AlternativeFlowsService {
 
+            @PersistenceContext(unitName="AltranReqPU")
+    private EntityManager em;
+    
     @PostConstruct 
     public void init() {
      setEntityClass(AlternativeFlows.class);
@@ -28,7 +32,7 @@ public class AlternativeFlowsImp extends AbstractServiceImp<AlternativeFlows> im
 
     @Override
     protected EntityManager getEntityManager() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return em;
     }
 
     

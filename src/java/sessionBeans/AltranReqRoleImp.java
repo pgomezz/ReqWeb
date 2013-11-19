@@ -12,10 +12,12 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 @Stateless
 public class AltranReqRoleImp extends AbstractServiceImp<AltranreqRole> implements AltranReqRoleService {
-
+        @PersistenceContext(unitName="AltranReqPU")
+    private EntityManager em;
     @PostConstruct
     public void init() {
         setEntityClass(AltranreqRole.class);
@@ -23,7 +25,7 @@ public class AltranReqRoleImp extends AbstractServiceImp<AltranreqRole> implemen
 
     @Override
     protected EntityManager getEntityManager() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return em;
     }
 
     @Override

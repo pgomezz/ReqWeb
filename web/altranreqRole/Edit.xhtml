@@ -25,7 +25,7 @@
                         <p:inputText id="description" value="#{altranreqRoleController.selected.description}" title="#{myBundle.EditAltranreqRoleTitle_description}" size="250" maxlength="250"/>
 
                         <p:outputLabel value="#{myBundle.EditAltranreqRoleLabel_privilegeCollection}" for="privilegeCollection" />
-                        <p:selectManyMenu id="privilegeCollection" value="#{altranreqRoleController.selected.privilegeCollection}"  converter="privilegeConverter">
+                        <p:selectManyMenu id="privilegeCollection" value="#{altranreqRoleController.selected.privilegeCollection}" >
                             <f:selectItems value="#{privilegeController.items}"
                                            var="privilegeCollectionItem"
                                            itemValue="#{privilegeCollectionItem}"
