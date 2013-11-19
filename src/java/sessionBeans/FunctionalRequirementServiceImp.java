@@ -18,7 +18,7 @@ import javax.persistence.PersistenceContext;
  * @author User
  */
 @Stateless
-public class FunctionalRequirementServiceImp extends AbstractServiceImp <FunctionalRequirement> {
+public class FunctionalRequirementServiceImp extends AbstractServiceImp <FunctionalRequirement> implements FunctionalRequirementService{
     @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
 

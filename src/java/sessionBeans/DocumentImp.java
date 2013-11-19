@@ -14,9 +14,13 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 @Stateless
 public class DocumentImp extends AbstractServiceImp<Document> implements DocumentService {
 
+    @PersistenceContext(unitName="AltranReqPU")
+    private EntityManager em;
+    
     @PostConstruct
     public void init() {
         setEntityClass(Document.class);
@@ -24,7 +28,7 @@ public class DocumentImp extends AbstractServiceImp<Document> implements Documen
 
     @Override
     protected EntityManager getEntityManager() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return em;
     }
 
     

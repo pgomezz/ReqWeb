@@ -7,6 +7,7 @@ import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
 import sessionBeans.AbstractService;
+import sessionBeans.FunctionalRequirementService;
 import sessionBeans.FunctionalRequirementServiceImp;
 
 @Named(value = "functionalRequirementController")
@@ -14,7 +15,7 @@ import sessionBeans.FunctionalRequirementServiceImp;
 public class FunctionalRequirementController extends AbstractController<FunctionalRequirement> implements Serializable {
 
     @Inject
-    private AbstractService ejbFacade;
+    private FunctionalRequirementService ejbFacade;
 
     public FunctionalRequirementController() {
         super(FunctionalRequirement.class);

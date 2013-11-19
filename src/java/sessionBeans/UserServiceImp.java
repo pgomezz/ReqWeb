@@ -13,11 +13,15 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 @Named(value = "userServiceImp")
 @Stateless
 public class UserServiceImp extends AbstractServiceImp<AltranreqUser> implements UserService {
 
+    @PersistenceContext(unitName="AltranReqPU")
+    private EntityManager em;
+    
     @PostConstruct
     public void init() {
         setEntityClass(AltranreqUser.class);
@@ -25,7 +29,7 @@ public class UserServiceImp extends AbstractServiceImp<AltranreqUser> implements
 
     @Override
     protected EntityManager getEntityManager() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return em;
     }
 
     @Override
