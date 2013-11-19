@@ -2,20 +2,20 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="AltranReqPU" transaction-type="JTA">
     <jta-data-source>conOracle</jta-data-source>
-    <class>entities.Actor</class>
-    <class>entities.AlternativeFlows</class>
-    <class>entities.AltranreqRole</class>
-    <class>entities.AltranreqUser</class>
-    <class>entities.BusinessCategory</class>
-    <class>entities.Client</class>
-    <class>entities.Document</class>
-    <class>entities.FunctionalRequirement</class>
-    <class>entities.NonFunctionalRequirement</class>
-    <class>entities.Privilege</class>
-    <class>entities.Project</class>
-    <class>entities.ProjectUser</class>
-    <class>entities.ScopeDefinitionInteraction</class>
-    <class>entities.UseCase</class>
+    <class>pt.altran.altranreq.entities.Actor</class>
+    <class>pt.altran.altranreq.entities.AlternativeFlows</class>
+    <class>pt.altran.altranreq.entities.AltranreqRole</class>
+    <class>pt.altran.altranreq.entities.AltranreqUser</class>
+    <class>pt.altran.altranreq.entities.BusinessCategory</class>
+    <class>pt.altran.altranreq.entities.Client</class>
+    <class>pt.altran.altranreq.entities.Document</class>
+    <class>pt.altran.altranreq.entities.FunctionalRequirement</class>
+    <class>pt.altran.altranreq.entities.NonFunctionalRequirement</class>
+    <class>pt.altran.altranreq.entities.Privilege</class>
+    <class>pt.altran.altranreq.entities.Project</class>
+    <class>pt.altran.altranreq.entities.ProjectUser</class>
+    <class>pt.altran.altranreq.entities.ScopeDefinitionInteraction</class>
+    <class>pt.altran.altranreq.entities.UseCase</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>
