@@ -1,19 +1,19 @@
 package backingBeans;
 
 import entities.AlternativeFlows;
-import sessionBeans.AlternativeFlowsFacade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
+import sessionBeans.AlternativeFlowsService;
 
 @Named(value = "alternativeFlowsController")
 @ViewScoped
 public class AlternativeFlowsController extends AbstractController<AlternativeFlows> implements Serializable {
 
     @Inject
-    private AlternativeFlowsFacade ejbFacade;
+    private AlternativeFlowsService ejbService;
 
     public AlternativeFlowsController() {
         super(AlternativeFlows.class);
@@ -21,7 +21,7 @@ public class AlternativeFlowsController extends AbstractController<AlternativeFl
 
     @PostConstruct
     public void init() {
-        super.setFacade(ejbFacade);
+        super.setFacade(ejbService);
     }
 
 }

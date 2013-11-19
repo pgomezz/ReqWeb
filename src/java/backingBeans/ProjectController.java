@@ -1,19 +1,19 @@
 package backingBeans;
 
 import entities.Project;
-import sessionBeans.ProjectFacade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
+import sessionBeans.ProjectService;
 
 @Named(value = "projectController")
 @ViewScoped
 public class ProjectController extends AbstractController<Project> implements Serializable {
 
     @Inject
-    private ProjectFacade ejbFacade;
+    private ProjectService ejbService;
 
     public ProjectController() {
         super(Project.class);
@@ -21,7 +21,7 @@ public class ProjectController extends AbstractController<Project> implements Se
 
     @PostConstruct
     public void init() {
-        super.setFacade(ejbFacade);
+        super.setFacade(ejbService);
     }
 
 }

@@ -1,19 +1,20 @@
 package backingBeans;
 
 import entities.FunctionalRequirement;
-import sessionBeans.FunctionalRequirementFacade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
+import sessionBeans.AbstractService;
+import sessionBeans.FunctionalRequirementServiceImp;
 
 @Named(value = "functionalRequirementController")
 @ViewScoped
 public class FunctionalRequirementController extends AbstractController<FunctionalRequirement> implements Serializable {
 
     @Inject
-    private FunctionalRequirementFacade ejbFacade;
+    private AbstractService ejbFacade;
 
     public FunctionalRequirementController() {
         super(FunctionalRequirement.class);

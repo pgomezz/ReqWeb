@@ -1,7 +1,7 @@
 package Converters;
 
 import entities.NonFunctionalRequirement;
-import sessionBeans.NonFunctionalRequirementFacade;
+import sessionBeans.RNFService;
 import backingBeans.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,14 +15,14 @@ import javax.faces.convert.FacesConverter;
 public class NonFunctionalRequirementConverter implements Converter {
 
     @Inject
-    private NonFunctionalRequirementFacade ejbFacade;
+    private RNFService ejbService;
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
         if (value == null || value.length() == 0 || JsfUtil.isDummySelectItem(component, value)) {
             return null;
         }
-        return this.ejbFacade.find(getKey(value));
+        return this.ejbService.find(getKey(value));
     }
 
     java.math.BigDecimal getKey(String value) {

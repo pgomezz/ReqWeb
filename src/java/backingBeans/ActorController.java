@@ -1,7 +1,7 @@
 package backingBeans;
 
 import entities.Actor;
-import sessionBeans.ActorFacade;
+import sessionBeans.ActorService;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
@@ -13,7 +13,7 @@ import javax.faces.view.ViewScoped;
 public class ActorController extends AbstractController<Actor> implements Serializable {
 
     @Inject
-    private ActorFacade ejbFacade;
+    private ActorService ejbService;
 
     public ActorController() {
         super(Actor.class);
@@ -21,7 +21,7 @@ public class ActorController extends AbstractController<Actor> implements Serial
 
     @PostConstruct
     public void init() {
-        super.setFacade(ejbFacade);
+        super.setFacade(ejbService);
     }
 
 }

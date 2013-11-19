@@ -1,6 +1,6 @@
 package backingBeans;
 
-import sessionBeans.AbstractFacade;
+
 import backingBeans.util.JsfUtil;
 import java.util.List;
 import java.util.logging.Level;
@@ -10,6 +10,7 @@ import javax.faces.event.ActionEvent;
 import java.util.ResourceBundle;
 import javax.ejb.EJBException;
 import javax.faces.component.UIComponent;
+import sessionBeans.AbstractService;
 
 /**
  * Represents an abstract shell of to be used as JSF Controller to be used in
@@ -18,7 +19,7 @@ import javax.faces.component.UIComponent;
  */
 public abstract class AbstractController<T> {
 
-    private AbstractFacade<T> ejbFacade;
+    private AbstractService<T> ejbService;
     private Class<T> itemClass;
     private T selected;
     private List<T> items;
@@ -37,12 +38,12 @@ public abstract class AbstractController<T> {
         this.itemClass = itemClass;
     }
 
-    protected AbstractFacade<T> getFacade() {
-        return ejbFacade;
+    protected AbstractService<T> getFacade() {
+        return ejbService;
     }
 
-    protected void setFacade(AbstractFacade<T> ejbFacade) {
-        this.ejbFacade = ejbFacade;
+    protected void setFacade(AbstractService<T> ejbFacade) {
+        this.ejbService = ejbFacade;
     }
 
     public T getSelected() {
@@ -70,7 +71,7 @@ public abstract class AbstractController<T> {
      */
     public List<T> getItems() {
         if (items == null) {
-            items = this.ejbFacade.findAll();
+            items = this.ejbService.findAll();
         }
         return items;
     }
@@ -102,9 +103,9 @@ public abstract class AbstractController<T> {
             this.setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
-                    this.ejbFacade.edit(selected);
+                    this.ejbService.edit(selected);
                 } else {
-                    this.ejbFacade.remove(selected);
+                    this.ejbService.remove(selected);
                 }
                 JsfUtil.addSuccessMessage(successMessage);
             } catch (EJBException ex) {

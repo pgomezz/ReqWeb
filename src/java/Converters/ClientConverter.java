@@ -1,7 +1,7 @@
 package Converters;
 
 import entities.Client;
-import sessionBeans.ClientFacade;
+import sessionBeans.AbstractService;
 import backingBeans.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,14 +15,14 @@ import javax.faces.convert.FacesConverter;
 public class ClientConverter implements Converter {
 
     @Inject
-    private ClientFacade ejbFacade;
+    private AbstractService ejbService;
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
         if (value == null || value.length() == 0 || JsfUtil.isDummySelectItem(component, value)) {
             return null;
         }
-        return this.ejbFacade.find(getKey(value));
+        return this.ejbService.find(getKey(value));
     }
 
     java.math.BigDecimal getKey(String value) {

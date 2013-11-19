@@ -1,19 +1,20 @@
 package backingBeans;
 
 import entities.AltranreqUser;
-import sessionBeans.AltranreqUserFacade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
+import sessionBeans.AltranReqRoleService;
+import sessionBeans.UserService;
 
 @Named(value = "altranreqUserController")
 @ViewScoped
 public class AltranreqUserController extends AbstractController<AltranreqUser> implements Serializable {
 
     @Inject
-    private AltranreqUserFacade ejbFacade;
+    private UserService ejbService;
 
     public AltranreqUserController() {
         super(AltranreqUser.class);
@@ -21,7 +22,7 @@ public class AltranreqUserController extends AbstractController<AltranreqUser> i
 
     @PostConstruct
     public void init() {
-        super.setFacade(ejbFacade);
+        super.setFacade(ejbService);
     }
 
 }

@@ -1,19 +1,19 @@
 package backingBeans;
 
 import entities.Document;
-import sessionBeans.DocumentFacade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
+import sessionBeans.DocumentService;
 
 @Named(value = "documentController")
 @ViewScoped
 public class DocumentController extends AbstractController<Document> implements Serializable {
 
     @Inject
-    private DocumentFacade ejbFacade;
+    private DocumentService ejbService;
 
     public DocumentController() {
         super(Document.class);
@@ -21,7 +21,7 @@ public class DocumentController extends AbstractController<Document> implements 
 
     @PostConstruct
     public void init() {
-        super.setFacade(ejbFacade);
+        super.setFacade(ejbService);
     }
 
 }
