@@ -1,8 +1,8 @@
 package Converters;
 
-import entities.AltranreqUser;
-import sessionBeans.UserService;
-import backingBeans.util.JsfUtil;
+import pt.altran.altranreq.entities.AltranreqUser;
+import pt.altran.altranreq.services.UserService;
+import pt.altran.altranreq.manager.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Inject;

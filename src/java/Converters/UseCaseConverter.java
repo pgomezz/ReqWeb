@@ -1,8 +1,8 @@
 package Converters;
 
-import entities.UseCase;
-import sessionBeans.UseCaseService;
-import backingBeans.util.JsfUtil;
+import pt.altran.altranreq.entities.UseCase;
+import pt.altran.altranreq.services.UseCaseService;
+import pt.altran.altranreq.manager.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Inject;

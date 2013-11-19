@@ -1,9 +1,9 @@
 package Converters;
 
 
-import entities.Actor;
-import sessionBeans.ActorService;
-import backingBeans.util.JsfUtil;
+import pt.altran.altranreq.entities.Actor;
+import pt.altran.altranreq.services.ActorService;
+import pt.altran.altranreq.manager.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Inject;

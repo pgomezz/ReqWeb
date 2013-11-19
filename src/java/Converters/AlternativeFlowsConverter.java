@@ -1,8 +1,8 @@
 package Converters;
 
-import entities.AlternativeFlows;
-import sessionBeans.AlternativeFlowsService;
-import backingBeans.util.JsfUtil;
+import pt.altran.altranreq.entities.AlternativeFlows;
+import pt.altran.altranreq.services.AlternativeFlowsService;
+import pt.altran.altranreq.manager.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Inject;

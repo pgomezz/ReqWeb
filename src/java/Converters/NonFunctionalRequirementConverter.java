@@ -1,8 +1,8 @@
 package Converters;
 
-import entities.NonFunctionalRequirement;
-import sessionBeans.RNFService;
-import backingBeans.util.JsfUtil;
+import pt.altran.altranreq.entities.NonFunctionalRequirement;
+import pt.altran.altranreq.services.RNFService;
+import pt.altran.altranreq.manager.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Inject;
