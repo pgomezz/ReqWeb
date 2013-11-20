@@ -32,6 +32,7 @@ public class ScopeDefinitionInteractionServiceImp extends AbstractServiceImp<Sco
 
     @Override
     public List<ScopeDefinitionInteraction> findType(String type) {
+        // Isto é para provar a catia que esta errada
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
