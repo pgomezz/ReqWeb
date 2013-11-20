@@ -21,39 +21,12 @@
                 <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                 <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                <p:column sortBy="#{item.idProject}" filterBy="#{item.idProject}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListProjectTitle_idProject}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.idProject}"/>
-                </p:column>
+                
                 <p:column sortBy="#{item.name}" filterBy="#{item.name}">
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListProjectTitle_name}"/>
                     </f:facet>
                     <h:outputText value="#{item.name}"/>
-                </p:column>
-                <p:column sortBy="#{item.description}" filterBy="#{item.description}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListProjectTitle_description}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.description}"/>
-                </p:column>
-                <p:column sortBy="#{item.beginDate}" filterBy="#{item.beginDate}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListProjectTitle_beginDate}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.beginDate}">
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                    </h:outputText>
-                </p:column>
-                <p:column sortBy="#{item.endDate}" filterBy="#{item.endDate}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListProjectTitle_endDate}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.endDate}">
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                    </h:outputText>
                 </p:column>
                 <p:column sortBy="#{item.projectState}" filterBy="#{item.projectState}">
                     <f:facet name="header">
