@@ -5,9 +5,6 @@ package pt.altran.altranreq.services;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -103,8 +100,5 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp <Functio
 
         return getEntityManager().createQuery(query).getResultList();
     }
-    
-    
-    }
-    
-
+       
+}
