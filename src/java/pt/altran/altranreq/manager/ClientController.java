@@ -6,7 +6,6 @@ import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
-import pt.altran.altranreq.services.AbstractService;
 import pt.altran.altranreq.services.ClientService;
 
 @Named(value = "clientController")
