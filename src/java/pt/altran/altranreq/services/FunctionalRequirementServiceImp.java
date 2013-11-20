@@ -7,10 +7,7 @@ package pt.altran.altranreq.services;
  */
 
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
+
 import pt.altran.altranreq.entities.FunctionalRequirement;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;

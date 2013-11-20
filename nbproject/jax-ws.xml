@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
   <services>
-    <service name="UserServiceImp">
-      <implementation-class>pt.altran.altranreq.services.UserServiceImp</implementation-class>
-    </service>
-    <service name="FunctionalRequirementServiceImp">
-      <implementation-class>pt.altran.altranreq.services.FunctionalRequirementServiceImp</implementation-class>
-    </service>
-    <service name="DocumentImp">
-      <implementation-class>pt.altran.altranreq.services.DocumentImp</implementation-class>
-    </service>
-    <service name="ProjectServiceImp">
-      <implementation-class>pt.altran.altranreq.services.ProjectServiceImp</implementation-class>
-    </service>
-    <service name="UseCaseImp">
-      <implementation-class>pt.altran.altranreq.services.UseCaseImp</implementation-class>
-    </service>
     <service name="ActorImp">
       <implementation-class>pt.altran.altranreq.services.ActorImp</implementation-class>
+    </service>
+    <service name="UserServiceImp">
+      <implementation-class>pt.altran.altranreq.services.UserServiceImp</implementation-class>
     </service>
     <service name="RNFServiceImp">
       <implementation-class>pt.altran.altranreq.services.RNFServiceImp</implementation-class>
@@ -25,11 +13,23 @@
     <service name="AlternativeFlowsImp">
       <implementation-class>pt.altran.altranreq.services.AlternativeFlowsImp</implementation-class>
     </service>
+    <service name="FunctionalRequirementServiceImp">
+      <implementation-class>pt.altran.altranreq.services.FunctionalRequirementServiceImp</implementation-class>
+    </service>
+    <service name="DocumentImp">
+      <implementation-class>pt.altran.altranreq.services.DocumentImp</implementation-class>
+    </service>
     <service name="BusinessCategoryServiceImp">
       <implementation-class>pt.altran.altranreq.services.BusinessCategoryServiceImp</implementation-class>
     </service>
     <service name="AltranReqRoleImp">
       <implementation-class>pt.altran.altranreq.services.AltranReqRoleImp</implementation-class>
+    </service>
+    <service name="ProjectServiceImp">
+      <implementation-class>pt.altran.altranreq.services.ProjectServiceImp</implementation-class>
+    </service>
+    <service name="UseCaseImp">
+      <implementation-class>pt.altran.altranreq.services.UseCaseImp</implementation-class>
     </service>
     <service name="ClientServiceImp">
       <implementation-class>pt.altran.altranreq.services.ClientServiceImp</implementation-class>

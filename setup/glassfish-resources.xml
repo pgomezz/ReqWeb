@@ -14,4 +14,5 @@
     <jdbc-resource enabled="true" jndi-name="OracleAgain" object-type="user" pool-name="oracle-thin_XE_altranPool"/>
     <jdbc-resource enabled="true" jndi-name="altran" object-type="user" pool-name="oracle-thin_XE_altranPool"/>
     <jdbc-resource enabled="true" jndi-name="conOracle" object-type="user" pool-name="oracle-thin_XE_altranPool"/>
+    <jdbc-resource enabled="true" jndi-name="newTest" object-type="user" pool-name="oracle-thin_XE_altranPool"/>
 </resources>

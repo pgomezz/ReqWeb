@@ -16,7 +16,6 @@ import javax.persistence.EntityManager;
  * @param <T>
  */
 
-@Stateless
 public abstract class AbstractServiceImp<T> implements AbstractService<T>{
     private Class<T> entityClass;
     
