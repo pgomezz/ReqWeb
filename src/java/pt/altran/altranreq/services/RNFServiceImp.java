@@ -92,6 +92,7 @@ public class RNFServiceImp extends AbstractServiceImp<NonFunctionalRequirement> 
         return getEntityManager().createQuery(query).getResultList();
     }
 
+
    
     
     
