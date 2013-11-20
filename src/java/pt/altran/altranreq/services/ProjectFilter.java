@@ -1,5 +1,7 @@
 package pt.altran.altranreq.services;
 
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
 import pt.altran.altranreq.manager.builder.ProjectState;
 import pt.altran.altranreq.entities.ProjectUser;
 
@@ -16,10 +18,11 @@ import pt.altran.altranreq.entities.ProjectUser;
  *
  * @author User
  */
-public class ProjectFilter {
-    public ProjectUser user;
-    public String name;
-    public ProjectState state;
+@XmlRootElement
+public class ProjectFilter implements Serializable{
+    private ProjectUser user;
+    private String name;
+    private ProjectState state;
 
     public ProjectUser getUser() {
         return user;

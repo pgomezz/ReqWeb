@@ -60,19 +60,19 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
 
         List<Predicate> predicateList = new ArrayList<>();
 
-        if (filter.name != null && !filter.name.isEmpty()) {
+        if (filter.getName() != null && !filter.getName().isEmpty()) {
             Predicate namePredicate = cb.like(
-                    cb.upper(ProjectQuery.<String>get("name")), "%" + filter.name.toUpperCase() + "%");
+                    cb.upper(ProjectQuery.<String>get("name")), "%" + filter.getName().toUpperCase() + "%");
             predicateList.add(namePredicate);
         }
         
-        if (filter.state != null) {
+        if (filter.getState() != null) {
             Expression<BigInteger> idState = ProjectQuery.get("projectState");
             Expression<BigInteger> idStateParam = cb.parameter(BigInteger.class);
             Predicate statePredicate = cb.equal(idState, idStateParam);
             predicateList.add(statePredicate);
         }
-        if (filter.user != null) {
+        if (filter.getUser() != null) {
             
             Expression<BigInteger> idUser = ProjectQuery.get("projectUserCollection");
             Expression<BigInteger> idUserParam = cb.parameter(BigInteger.class);

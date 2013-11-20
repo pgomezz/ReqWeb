@@ -1,5 +1,7 @@
 package pt.altran.altranreq.services;
 
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
 import pt.altran.altranreq.entities.BusinessCategory;
 import pt.altran.altranreq.entities.FunctionalRequirement;
 import pt.altran.altranreq.entities.Project;
@@ -15,12 +17,13 @@ import pt.altran.altranreq.entities.RequirementState;
  *
  * @author User
  */
-public class FunctionalRequirementFilter {
+@XmlRootElement
+public class FunctionalRequirementFilter implements Serializable{
 
-    public String name;
-    public RequirementState state;
-    public Project projecto;
-    public BusinessCategory businessCategory;
+    private String name;
+    private RequirementState state;
+    private Project projecto;
+    private BusinessCategory businessCategory;
 
     public RequirementState getState() {
         return state;

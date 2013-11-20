@@ -62,24 +62,24 @@ public class RNFServiceImp extends AbstractServiceImp<NonFunctionalRequirement> 
 
         List<Predicate> predicateList = new ArrayList<>();
 
-        if (filter.name != null && !filter.name.isEmpty()) {
+        if (filter.getName() != null && !filter.getName().isEmpty()) {
             Predicate namePredicate = cb.like(
-                    cb.upper(nonFuncReqQuery.<String>get("name")), "%" + filter.name.toUpperCase() + "%");
+                    cb.upper(nonFuncReqQuery.<String>get("name")), "%" + filter.getName().toUpperCase() + "%");
             predicateList.add(namePredicate);
         }
-        if (filter.project != null) {
+        if (filter.getProject() != null) {
             Expression<BigDecimal> idProject = nonFuncReqQuery.get("IdNonFuncRequirement");
             Expression<BigDecimal> idProjectParam = cb.parameter(BigDecimal.class);
             Predicate projectPredicate = cb.equal(idProject, idProjectParam);
             predicateList.add(projectPredicate);
         }
-        if (filter.state != null) {
+        if (filter.getState() != null) {
             Expression<BigInteger> idState = nonFuncReqQuery.get("requirementState");
             Expression<BigInteger> idStateParam = cb.parameter(BigInteger.class);
             Predicate statePredicate = cb.equal(idState, idStateParam);
             predicateList.add(statePredicate);
         }
-        if (filter.type != null) {
+        if (filter.getType() != null) {
             
             Expression<BigInteger> idType = nonFuncReqQuery.get("type");
             Expression<BigInteger> idTypeParam = cb.parameter(BigInteger.class);

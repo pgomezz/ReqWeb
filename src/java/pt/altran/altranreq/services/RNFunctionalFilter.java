@@ -1,5 +1,7 @@
 package pt.altran.altranreq.services;
 
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
 import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.entities.RNFType;
 import pt.altran.altranreq.entities.RequirementState;
@@ -15,11 +17,12 @@ import pt.altran.altranreq.entities.RequirementState;
  *
  * @author User
  */
-public class RNFunctionalFilter {
-    public Project project;
-    public String name;
-    public RequirementState state;
-    public RNFType type;
+@XmlRootElement
+public class RNFunctionalFilter implements Serializable{
+    private Project project;
+    private String name;
+    private RequirementState state;
+    private RNFType type;
 
     public Project getProject() {
         return project;

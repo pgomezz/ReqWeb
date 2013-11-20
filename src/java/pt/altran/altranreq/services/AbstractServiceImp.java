@@ -7,6 +7,8 @@
 package pt.altran.altranreq.services;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.jws.WebMethod;
+import javax.jws.WebService;
 
 import javax.persistence.EntityManager;
 
@@ -40,6 +42,7 @@ public abstract class AbstractServiceImp<T> implements AbstractService<T>{
     public T find(Object id) {
         return getEntityManager().find(entityClass, id);
     }
+
 
     @Override
     public List<T> findAll() {

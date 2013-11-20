@@ -5,6 +5,9 @@ package pt.altran.altranreq.services;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -37,52 +40,48 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp <Functio
     private EntityManager em;
     
     @PostConstruct
-    @WebMethod
     public void init() {
         setEntityClass(FunctionalRequirement.class);
     }
 
-    @Override
-    @WebMethod
     protected EntityManager getEntityManager() {
         return em;
     }
 
-    @Override
+    @WebMethod
     public List<FunctionalRequirement> findFunctionalRequirementByFilter(FunctionalRequirementFilter filter) {
-       
-    
+
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<FunctionalRequirement> query = cb.createQuery(FunctionalRequirement.class);
         CriteriaQuery<FunctionalRequirement> c = cb.createQuery(FunctionalRequirement.class);
         ParameterExpression<String> name = cb.parameter(String.class, "name");
         ParameterExpression<Project> project = cb.parameter(Project.class, "project");
         ParameterExpression<RequirementState> state = cb.parameter(RequirementState.class, "state");
-        ParameterExpression<BusinessCategory> BusinessCategory = cb.parameter(BusinessCategory.class, "catefory");
+        ParameterExpression<BusinessCategory> BusinessCategory = cb.parameter(BusinessCategory.class, "category");
         Root<FunctionalRequirement> FuncReqQuery = query.from(FunctionalRequirement.class);
 
         query.select(FuncReqQuery);
 
         List<Predicate> predicateList = new ArrayList<>();
 
-        if (filter.name != null && !filter.name.isEmpty()) {
+        if (filter.getName() != null && !filter.getName().isEmpty()) {
             Predicate namePredicate = cb.like(
-                    cb.upper(FuncReqQuery.<String>get("name")), "%" + filter.name.toUpperCase() + "%");
+                    cb.upper(FuncReqQuery.<String>get("name")), "%" + filter.getName().toUpperCase() + "%");
             predicateList.add(namePredicate);
         }
-        if (filter.projecto != null) {
+        if (filter.getProjecto() != null) {
             Expression<BigDecimal> idProject = FuncReqQuery.get("idFunctionalRequirement");
             Expression<BigDecimal> idProjectParam = cb.parameter(BigDecimal.class);
             Predicate projectPredicate = cb.equal(idProject, idProjectParam);
             predicateList.add(projectPredicate);
         }
-        if (filter.state != null) {
+        if (filter.getState() != null) {
             Expression<BigInteger> idState = FuncReqQuery.get("requirementState");
             Expression<BigInteger> idStateParam = cb.parameter(BigInteger.class);
             Predicate statePredicate = cb.equal(idState, idStateParam);
             predicateList.add(statePredicate);
         }
-        if (filter.businessCategory != null) {
+        if (filter.getBusinessCategory() != null) {
             
             Expression<BigInteger> idBusinessCategory = FuncReqQuery.get("idBusinessCategory");
             Expression<BigInteger> idBusinessCategoryParam = cb.parameter(BigInteger.class);
@@ -100,5 +99,8 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp <Functio
 
         return getEntityManager().createQuery(query).getResultList();
     }
-       
-}
+    
+    
+    }
+    
+
