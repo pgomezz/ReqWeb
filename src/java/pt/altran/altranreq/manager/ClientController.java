@@ -7,18 +7,21 @@ import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
 import pt.altran.altranreq.services.AbstractService;
+import pt.altran.altranreq.services.ClientService;
 
 @Named(value = "clientController")
 @ViewScoped
 public class ClientController extends AbstractController<Client> implements Serializable {
 
     @Inject
-    private AbstractService ejbService;
+    private ClientService ejbService;
 
     public ClientController() {
         super(Client.class);
     }
 
+    
+    
     @PostConstruct
     public void init() {
         super.setFacade(ejbService);
