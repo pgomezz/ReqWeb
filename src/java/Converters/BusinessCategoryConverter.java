@@ -1,7 +1,6 @@
 package Converters;
 
 import pt.altran.altranreq.entities.BusinessCategory;
-import pt.altran.altranreq.services.AbstractService;
 import pt.altran.altranreq.manager.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,12 +9,13 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import pt.altran.altranreq.services.BusinessCategoryService;
 
 @FacesConverter(value = "businessCategoryConverter")
 public class BusinessCategoryConverter implements Converter {
 
     @Inject
-    private AbstractService ejbService;
+    private BusinessCategoryService ejbService;
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
