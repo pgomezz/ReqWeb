@@ -21,7 +21,6 @@ public class FunctionalRequirementFilter {
     public RequirementState state;
     public Project projecto;
     public BusinessCategory businessCategory;
-    public FunctionalRequirement funcReq;
 
     public RequirementState getState() {
         return state;
@@ -45,14 +44,6 @@ public class FunctionalRequirementFilter {
 
     public void setBusinessCategory(BusinessCategory businessCategory) {
         this.businessCategory = businessCategory;
-    }
-
-    public FunctionalRequirement getFuncReq() {
-        return funcReq;
-    }
-
-    public void setFuncReq(FunctionalRequirement funcReq) {
-        this.funcReq = funcReq;
     }
 
     public String getName() {

@@ -8,7 +8,6 @@ package pt.altran.altranreq.services;
 
 
 import java.util.List;
-import javax.jws.WebService;
 
 /**
  *

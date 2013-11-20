@@ -5,8 +5,6 @@ package pt.altran.altranreq.services;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -32,15 +30,15 @@ import pt.altran.altranreq.entities.RequirementState;
 @Stateless
 public class RNFServiceImp extends AbstractServiceImp<NonFunctionalRequirement> implements RNFService {
 
-    @PersistenceContext(unitName="AltranReqPU")
+    @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
-    
+
     @PostConstruct
-    @WebMethod 
+    @WebMethod
     public void init() {
-     setEntityClass(NonFunctionalRequirement.class);
+        setEntityClass(NonFunctionalRequirement.class);
     }
-    
+
     @Override
     @WebMethod
     protected EntityManager getEntityManager() {
@@ -50,48 +48,54 @@ public class RNFServiceImp extends AbstractServiceImp<NonFunctionalRequirement> 
     @Override
     @WebMethod
     public List<NonFunctionalRequirement> findRNFByFilter(RNFunctionalFilter filter) {
-    
-         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<NonFunctionalRequirement> query = cb.createQuery(NonFunctionalRequirement.class);
         CriteriaQuery<NonFunctionalRequirement> c = cb.createQuery(NonFunctionalRequirement.class);
-            ParameterExpression<String> nome = cb.parameter(String.class, "nome");
-            ParameterExpression<Project> project = cb.parameter(Project.class, "project");
-            ParameterExpression<RequirementState> state = cb.parameter(RequirementState.class, "state");
-            ParameterExpression<RNFType> type = cb.parameter(RNFType.class, "type");
-            Root<NonFunctionalRequirement> nonFuncReqQuery = query.from(NonFunctionalRequirement.class);
-            
-            query.select(nonFuncReqQuery);            
-            
-            List<Predicate> predicateList = new ArrayList<>();
-            
-        if (filter.name !=null && !filter.name.isEmpty()) {//TODO falar com o Pessegueiro
-             Predicate namePredicate = cb.like(
-                     cb.upper(nonFuncReqQuery.<String>get("name")), "%"+filter.name.toUpperCase()+"%");
+        ParameterExpression<String> nome = cb.parameter(String.class, "nome");
+        ParameterExpression<Project> project = cb.parameter(Project.class, "project");
+        ParameterExpression<RequirementState> state = cb.parameter(RequirementState.class, "state");
+        ParameterExpression<RNFType> type = cb.parameter(RNFType.class, "type");
+        Root<NonFunctionalRequirement> nonFuncReqQuery = query.from(NonFunctionalRequirement.class);
+
+        query.select(nonFuncReqQuery);
+
+        List<Predicate> predicateList = new ArrayList<>();
+
+        if (filter.name != null && !filter.name.isEmpty()) {
+            Predicate namePredicate = cb.like(
+                    cb.upper(nonFuncReqQuery.<String>get("name")), "%" + filter.name.toUpperCase() + "%");
             predicateList.add(namePredicate);
         }
-        if (filter.project !=null) {            
+        if (filter.project != null) {
             Expression<BigDecimal> idProject = nonFuncReqQuery.get("IdNonFuncRequirement");
             Expression<BigDecimal> idProjectParam = cb.parameter(BigDecimal.class);
-            Predicate projectPredicate = cb.equal(idProject,idProjectParam);
+            Predicate projectPredicate = cb.equal(idProject, idProjectParam);
             predicateList.add(projectPredicate);
         }
-        if (filter.state!=null) {
+        if (filter.state != null) {
             Expression<BigInteger> idState = nonFuncReqQuery.get("requirementState");
             Expression<BigInteger> idStateParam = cb.parameter(BigInteger.class);
-            Predicate statePredicate = cb.equal(idState,idStateParam);
+            Predicate statePredicate = cb.equal(idState, idStateParam);
             predicateList.add(statePredicate);
         }
-        if (filter.type !=null) {
+        if (filter.type != null) {
+            
+            Expression<BigInteger> idType = nonFuncReqQuery.get("type");
+            Expression<BigInteger> idTypeParam = cb.parameter(BigInteger.class);
+            Predicate typePredicate = cb.equal(idType, idTypeParam);
+            predicateList.add(typePredicate);
+            
+            
         }
+        
+        
+        
         Predicate[] predicates = new Predicate[predicateList.size()];
         predicateList.toArray(predicates);
         query.where(predicates);
-        
+
         return getEntityManager().createQuery(query).getResultList();
     }
 
-
-   
-    
-    
 }
