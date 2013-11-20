@@ -15,6 +15,6 @@ import java.util.List;
  */
 public interface ProjectService extends AbstractService<Project> {
     
-    public List<Project> findProjectsByFilter(ProjectFilter filter);
+    public List<Project> findProjectByFilter(ProjectFilter filter);
 
 }

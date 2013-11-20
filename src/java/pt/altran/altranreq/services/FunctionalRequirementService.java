@@ -20,4 +20,7 @@ import pt.altran.altranreq.services.AbstractService;
  * @param <T>
  */
 public interface FunctionalRequirementService extends AbstractService<FunctionalRequirement> {
+    
+    
+    List<FunctionalRequirement> findFunctionalRequirementByFilter(FunctionalRequirementFilter filter);
 }

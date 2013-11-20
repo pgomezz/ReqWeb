@@ -18,6 +18,6 @@ import java.util.List;
  */
 public interface RNFService extends AbstractService<NonFunctionalRequirement> {
     
-    public List<Project> findRNFByFilter(RNFunctionalFilter filter);
+    public List<NonFunctionalRequirement> findRNFByFilter(RNFunctionalFilter filter);
 
 }
