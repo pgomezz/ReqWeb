@@ -7,7 +7,7 @@ package pt.altran.altranreq.services;
  */
 
 
-import pt.altran.altranreq.entities.AltranreqRole;
+
 import pt.altran.altranreq.entities.FunctionalRequirement;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;

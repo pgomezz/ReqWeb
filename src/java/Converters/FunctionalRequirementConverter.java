@@ -10,12 +10,13 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import pt.altran.altranreq.services.FunctionalRequirementService;
 
 @FacesConverter(value = "functionalRequirementConverter")
 public class FunctionalRequirementConverter implements Converter {
 
     @Inject
-    private AbstractService ejbService;
+    private FunctionalRequirementService ejbService;
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
