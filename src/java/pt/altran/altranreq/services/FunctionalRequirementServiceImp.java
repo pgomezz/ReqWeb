@@ -11,11 +11,9 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import pt.altran.altranreq.entities.AltranreqRole;
 import pt.altran.altranreq.entities.FunctionalRequirement;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
-import javax.inject.Named;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
@@ -27,9 +25,7 @@ import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import pt.altran.altranreq.entities.BusinessCategory;
-import pt.altran.altranreq.entities.NonFunctionalRequirement;
 import pt.altran.altranreq.entities.Project;
-import pt.altran.altranreq.entities.RNFType;
 import pt.altran.altranreq.entities.RequirementState;
 
 /**
