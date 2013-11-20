@@ -10,8 +10,6 @@ import pt.altran.altranreq.entities.Document;
 import pt.altran.altranreq.entities.FunctionalRequirement;
 import pt.altran.altranreq.entities.Project;
 import java.util.List;
-import pt.altran.altranreq.services.AbstractService;
-
 /**
  *
  * @author User
