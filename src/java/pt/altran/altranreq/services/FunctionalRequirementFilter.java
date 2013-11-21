@@ -50,9 +50,6 @@ public class FunctionalRequirementFilter implements Serializable{
         this.businessCategory = businessCategory;
     }
 
- 
-
-
     public String getName() {
         return name;
     }
