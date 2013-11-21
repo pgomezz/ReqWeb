@@ -50,10 +50,6 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
         
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Project> query = cb.createQuery(Project.class);
-        CriteriaQuery<Project> c = cb.createQuery(Project.class);
-        ParameterExpression<String> name = cb.parameter(String.class, "name");
-        ParameterExpression<ProjectState> state = cb.parameter(ProjectState.class, "state");
-        ParameterExpression<ProjectUser> user = cb.parameter(ProjectUser.class, "user");
          Root<Project> ProjectQuery = query.from(Project.class);
 
         query.select(ProjectQuery);

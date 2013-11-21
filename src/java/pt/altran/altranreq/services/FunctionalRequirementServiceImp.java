@@ -53,11 +53,6 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp <Functio
 
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<FunctionalRequirement> query = cb.createQuery(FunctionalRequirement.class);
-        CriteriaQuery<FunctionalRequirement> c = cb.createQuery(FunctionalRequirement.class);
-        ParameterExpression<String> name = cb.parameter(String.class, "name");
-        ParameterExpression<Project> project = cb.parameter(Project.class, "project");
-        ParameterExpression<RequirementState> state = cb.parameter(RequirementState.class, "state");
-        ParameterExpression<BusinessCategory> BusinessCategory = cb.parameter(BusinessCategory.class, "category");
         Root<FunctionalRequirement> FuncReqQuery = query.from(FunctionalRequirement.class);
 
         query.select(FuncReqQuery);
