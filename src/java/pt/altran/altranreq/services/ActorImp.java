@@ -6,7 +6,10 @@ package pt.altran.altranreq.services;
  * and open the template in the editor.
  */
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.rmi.UnexpectedException;
+import java.util.ArrayList;
 import pt.altran.altranreq.entities.Actor;
 import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.entities.UseCase;
@@ -18,6 +21,12 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import pt.altran.altranreq.entities.FunctionalRequirement;
 
 @Named
 @Stateless
@@ -41,15 +50,56 @@ public class ActorImp extends AbstractServiceImp<Actor> implements ActorService 
     @WebMethod
      public List<Actor> findActorByProject(Project project) {
          
-        //CriteriaQuery c = getEntityManager().getCriteriaBuilder().createQuery();
-        //c.select(c.from(Project.class));
-        throw  new UnsupportedOperationException("");
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Actor> query = cb.createQuery(Actor.class);
+        Root<Actor> ActorQuery = query.from(Actor.class);
+
+        query.select(ActorQuery);
+
+        List<Predicate> predicateList = new ArrayList<>();
+
+        if (project.getName() != null && !project.getName().isEmpty()) {
+            Predicate namePredicate = cb.like(
+                    cb.upper(ActorQuery.<String>get("name")), "%" + project.getName().toUpperCase() + "%");
+            predicateList.add(namePredicate);
+        }
+        
+        
+        
+        Predicate[] predicates = new Predicate[predicateList.size()];
+        predicateList.toArray(predicates);
+        query.where(predicates);
+
+        return getEntityManager().createQuery(query).getResultList();
+         
+
      }
     
     @WebMethod
      public List<Actor> findActorByUseCase(UseCase useCase) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+     
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Actor> query = cb.createQuery(Actor.class);
+        Root<Actor> FuncReqQuery = query.from(Actor.class);
+
+        query.select(FuncReqQuery);
+
+        List<Predicate> predicateList = new ArrayList<>();
+
+        if (useCase.getName() != null && !useCase.getName().isEmpty()) {
+            Predicate namePredicate = cb.like(
+                    cb.upper(FuncReqQuery.<String>get("name")), "%" + useCase.getName().toUpperCase() + "%");
+            predicateList.add(namePredicate);
+        }
+        
+        
+        
+        Predicate[] predicates = new Predicate[predicateList.size()];
+        predicateList.toArray(predicates);
+        query.where(predicates);
+
+        return getEntityManager().createQuery(query).getResultList();
+     }
 
 
 }
