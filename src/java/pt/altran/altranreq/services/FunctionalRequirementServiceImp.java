@@ -92,10 +92,11 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp <Functio
             
         }
         if (filter.getState() != null) {
-            Expression<BigInteger> idState = funcReqQuery.get("requirementState");
-            Expression<BigInteger> idStateParam = cb.parameter(BigInteger.class);
-            Predicate statePredicate = cb.equal(idState, idStateParam);
-            predicateList.add(statePredicate);
+
+
+            Predicate namePredicate = cb.equal(funcReqQuery.<BigInteger>get("requirementState"), filter.getState());
+            predicateList.add(namePredicate);
+            
         }
         if (filter.getBusinessCategory() != null) {
             

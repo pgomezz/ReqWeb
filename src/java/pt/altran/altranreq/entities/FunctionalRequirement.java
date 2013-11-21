@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package pt.altran.altranreq.entities;
 
 import java.io.Serializable;
@@ -47,6 +46,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "FunctionalRequirement.findByVersion", query = "SELECT f FROM FunctionalRequirement f WHERE f.version = :version"),
     @NamedQuery(name = "FunctionalRequirement.findByOrdernumber", query = "SELECT f FROM FunctionalRequirement f WHERE f.ordernumber = :ordernumber")})
 public class FunctionalRequirement implements Serializable {
+
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
@@ -201,6 +201,55 @@ public class FunctionalRequirement implements Serializable {
         return requirementState;
     }
 
+    public static RequirementState convertRequirementState(int arg) {
+        switch (arg) {
+
+            case 0:
+
+                return RequirementState.ACTIVO;
+
+            case 1:
+
+                return RequirementState.CANCELADO;
+
+            case 2:
+
+                return RequirementState.CONCLUIDO;
+
+            case 3:
+
+                return RequirementState.VERSIONADO;
+        }
+
+        throw new IllegalArgumentException("Is not a supported requirement state");
+
+    }
+
+    public static BigInteger convertRequirementStateEnum(RequirementState requirementState) {
+
+        switch (requirementState) {
+
+            case ACTIVO:
+
+               return BigInteger.valueOf(0);
+                
+
+            case CANCELADO:
+
+                return BigInteger.valueOf(1);
+            case CONCLUIDO:
+
+               return BigInteger.valueOf(2);
+
+            case VERSIONADO:
+
+                return BigInteger.valueOf(3);
+
+        }
+        
+        throw new IllegalArgumentException("Is not supported requirement state");
+    }
+
     public void setRequirementState(BigInteger requirementState) {
         this.requirementState = requirementState;
     }
@@ -288,5 +337,5 @@ public class FunctionalRequirement implements Serializable {
     public String toString() {
         return "entities.FunctionalRequirement[ idFunctionalRequirement=" + idFunctionalRequirement + " ]";
     }
-    
+
 }
