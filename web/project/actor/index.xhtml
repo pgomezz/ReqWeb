@@ -7,14 +7,14 @@
                 template="/template.xhtml">
 
     <ui:define name="title">
-        <h:outputText value="#{myBundle.AltranreqUserTitle}"/>
+        <h:outputText value="#{myBundle.ActorTitle}"/>
     </ui:define>
-    <ui:define name="body">
 
-        <ui:include src="/altranreqUser/List.xhtml"/>
-        <ui:include src="/altranreqUser/View.xhtml"/>
-        <ui:include src="/altranreqUser/Edit.xhtml"/>
-        <ui:include src="/altranreqUser/Create.xhtml"/>
+    <ui:define name="body">
+        <ui:include src="/project/actor/List.xhtml"/>
+        <ui:include src="/project/actor/View.xhtml"/>
+        <ui:include src="/project/actor/Edit.xhtml"/>
+        <ui:include src="/project/actor/Create.xhtml"/>
 
     </ui:define>
 
