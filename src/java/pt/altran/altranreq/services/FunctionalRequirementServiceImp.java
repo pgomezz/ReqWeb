@@ -49,36 +49,57 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp <Functio
     }
 
     @WebMethod
+    @Override
     public List<FunctionalRequirement> findFunctionalRequirementByFilter(FunctionalRequirementFilter filter) {
 
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<FunctionalRequirement> query = cb.createQuery(FunctionalRequirement.class);
-        Root<FunctionalRequirement> FuncReqQuery = query.from(FunctionalRequirement.class);
+        Root<FunctionalRequirement> funcReqQuery = query.from(FunctionalRequirement.class);
 
-        query.select(FuncReqQuery);
+        query.select(funcReqQuery);
 
         List<Predicate> predicateList = new ArrayList<>();
-
+    
+    
+        
+        
         if (filter.getName() != null && !filter.getName().isEmpty()) {
             Predicate namePredicate = cb.like(
-                    cb.upper(FuncReqQuery.<String>get("name")), "%" + filter.getName().toUpperCase() + "%");
+                    cb.upper(funcReqQuery.<String>get("name")), "%" + filter.getName().toUpperCase() + "%");
             predicateList.add(namePredicate);
+            
+                    
+
         }
         if (filter.getProjecto() != null) {
-            Expression<BigDecimal> idProject = FuncReqQuery.get("idFunctionalRequirement");
-            Expression<BigDecimal> idProjectParam = cb.parameter(BigDecimal.class);
-            Predicate projectPredicate = cb.equal(idProject, idProjectParam);
-            predicateList.add(projectPredicate);
+
+            
+            // FunctionalRequirement us = getEntityManager().find(FunctionalRequirement.class, BigDecimal.valueOf(filter.getProjecto()));
+        
+            
+            
+            Project p = new Project();
+            p.setIdProject(BigDecimal.valueOf(filter.getProjecto()));
+            
+            Predicate namePredicate = cb.equal(funcReqQuery.<Project>get("idProject"), p);
+            predicateList.add(namePredicate);
+            
+            
+//            Expression<BigDecimal> idProject = funcReqQuery.get("idFunctionalRequirement");
+//            Expression<BigDecimal> idProjectParam = cb.parameter(BigDecimal.class);
+//            Predicate projectPredicate = cb.equal(idProject, idProjectParam);
+//            predicateList.add(projectPredicate);
+            
         }
         if (filter.getState() != null) {
-            Expression<BigInteger> idState = FuncReqQuery.get("requirementState");
+            Expression<BigInteger> idState = funcReqQuery.get("requirementState");
             Expression<BigInteger> idStateParam = cb.parameter(BigInteger.class);
             Predicate statePredicate = cb.equal(idState, idStateParam);
             predicateList.add(statePredicate);
         }
         if (filter.getBusinessCategory() != null) {
             
-            Expression<BigInteger> idBusinessCategory = FuncReqQuery.get("idBusinessCategory");
+            Expression<BigInteger> idBusinessCategory = funcReqQuery.get("idBusinessCategory");
             Expression<BigInteger> idBusinessCategoryParam = cb.parameter(BigInteger.class);
             Predicate typePredicate = cb.equal(idBusinessCategory, idBusinessCategoryParam);
             predicateList.add(typePredicate);
@@ -87,12 +108,12 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp <Functio
         }
         
         
-        
         Predicate[] predicates = new Predicate[predicateList.size()];
         predicateList.toArray(predicates);
         query.where(predicates);
-
-        return getEntityManager().createQuery(query).getResultList();
+        List<FunctionalRequirement> z = getEntityManager().createQuery(query).getResultList();
+        
+        return z;
     }
     
     

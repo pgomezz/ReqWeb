@@ -21,33 +21,36 @@ import pt.altran.altranreq.entities.RequirementState;
 public class FunctionalRequirementFilter implements Serializable{
 
     private String name;
-    private RequirementState state;
-    private Project projecto;
-    private BusinessCategory businessCategory;
+    private Integer state;
+    private Integer projecto;
+    private Integer businessCategory;
 
-    public RequirementState getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(RequirementState state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 
-    public Project getProjecto() {
+    public Integer getProjecto() {
         return projecto;
     }
 
-    public void setProjecto(Project projecto) {
+    public void setProjecto(Integer projecto) {
         this.projecto = projecto;
     }
 
-    public BusinessCategory getBusinessCategory() {
+    public Integer getBusinessCategory() {
         return businessCategory;
     }
 
-    public void setBusinessCategory(BusinessCategory businessCategory) {
+    public void setBusinessCategory(Integer businessCategory) {
         this.businessCategory = businessCategory;
     }
+
+ 
+
 
     public String getName() {
         return name;

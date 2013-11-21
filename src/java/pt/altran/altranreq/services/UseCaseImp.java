@@ -49,41 +49,23 @@ public class UseCaseImp extends AbstractServiceImp<UseCase> implements UseCaseSe
 
     @Override
     @WebMethod
-    public List<UseCase> findUseCaseByRequirement(FunctionalRequirement functionalRequirement) {
+    public List<UseCase> findUseCaseByRequirement(int pai) {
 
-        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
-        CriteriaQuery<UseCase> query = cb.createQuery(UseCase.class);
-        Root<UseCase> UseCaseQuery = query.from(UseCase.class);
 
-        query.select(UseCaseQuery);
-
-        List<Predicate> predicateList = new ArrayList<>();
-
-        if (functionalRequirement.getName() != null && !functionalRequirement.getName().isEmpty()) {
-            Predicate namePredicate = cb.like(
-                    cb.upper(UseCaseQuery.<String>get("name")), "%" + functionalRequirement.getName().toUpperCase() + "%");
-            predicateList.add(namePredicate);
-        }
-
-        Predicate[] predicates = new Predicate[predicateList.size()];
-        predicateList.toArray(predicates);
-        query.where(predicates);
-
-        return getEntityManager().createQuery(query).getResultList();
+      FunctionalRequirement f = getEntityManager().find(FunctionalRequirement.class, BigDecimal.valueOf(pai));
+       return (List<UseCase>)f.getUseCaseCollection();
 
     }
 
     @Override
     @WebMethod
     public List<UseCase> findUseCaseByDependency(int pai) {
-        UseCase u = new UseCase();
-        //u.setIdUseCase(BigDecimal.valueOf(pai));
-        
+
         
         UseCase us = getEntityManager().find(UseCase.class, BigDecimal.valueOf(pai));
         
         
-       return (List<UseCase>)us.getUseCaseCollection1();
+        return (List<UseCase>)us.getUseCaseCollection1();
 
         
 //        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
