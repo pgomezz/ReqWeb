@@ -1,6 +1,7 @@
 package pt.altran.altranreq.services;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlRootElement;
 import pt.altran.altranreq.entities.BusinessCategory;
 import pt.altran.altranreq.entities.FunctionalRequirement;
@@ -58,6 +59,55 @@ public class FunctionalRequirementFilter implements Serializable{
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+        public RequirementState convertRequirementState(int arg) {
+        switch (arg) {
+
+            case 0:
+
+                return RequirementState.ACTIVO;
+
+            case 1:
+
+                return RequirementState.CANCELADO;
+
+            case 2:
+
+                return RequirementState.CONCLUIDO;
+
+            case 3:
+
+                return RequirementState.VERSIONADO;
+        }
+
+        throw new IllegalArgumentException("Is not a supported requirement state");
+
+    }
+
+    public BigInteger convertRequirementStateEnum(RequirementState requirementState) {
+
+        switch (requirementState) {
+
+            case ACTIVO:
+
+               return BigInteger.valueOf(0);
+                
+
+            case CANCELADO:
+
+                return BigInteger.valueOf(1);
+            case CONCLUIDO:
+
+               return BigInteger.valueOf(2);
+
+            case VERSIONADO:
+
+                return BigInteger.valueOf(3);
+
+        }
+        
+        throw new IllegalArgumentException("Is not supported requirement state");
     }
 
 }

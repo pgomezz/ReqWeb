@@ -48,6 +48,7 @@ public class ActorImp extends AbstractServiceImp<Actor> implements ActorService 
     }
 
     @WebMethod
+    @Override
      public List<Actor> findActorByProject(Project project) {
          
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
@@ -76,6 +77,7 @@ public class ActorImp extends AbstractServiceImp<Actor> implements ActorService 
      }
     
     @WebMethod
+    @Override
      public List<Actor> findActorByUseCase(UseCase useCase) {
      
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();

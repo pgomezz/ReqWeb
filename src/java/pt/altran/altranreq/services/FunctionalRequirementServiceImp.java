@@ -72,19 +72,15 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp <Functio
 
         }
         if (filter.getProjecto() != null) {
-
-            
+ 
             // FunctionalRequirement us = getEntityManager().find(FunctionalRequirement.class, BigDecimal.valueOf(filter.getProjecto()));
-        
-            
-            
+ 
             Project p = new Project();
             p.setIdProject(BigDecimal.valueOf(filter.getProjecto()));
             
             Predicate namePredicate = cb.equal(funcReqQuery.<Project>get("idProject"), p);
             predicateList.add(namePredicate);
-            
-            
+
 //            Expression<BigDecimal> idProject = funcReqQuery.get("idFunctionalRequirement");
 //            Expression<BigDecimal> idProjectParam = cb.parameter(BigDecimal.class);
 //            Predicate projectPredicate = cb.equal(idProject, idProjectParam);
@@ -99,12 +95,17 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp <Functio
             
         }
         if (filter.getBusinessCategory() != null) {
+//            
+//            Expression<BigInteger> idBusinessCategory = funcReqQuery.get("idBusinessCategory");
+//            Expression<BigInteger> idBusinessCategoryParam = cb.parameter(BigInteger.class);
+//            Predicate typePredicate = cb.equal(idBusinessCategory, idBusinessCategoryParam);
+//            predicateList.add(typePredicate);
             
-            Expression<BigInteger> idBusinessCategory = funcReqQuery.get("idBusinessCategory");
-            Expression<BigInteger> idBusinessCategoryParam = cb.parameter(BigInteger.class);
-            Predicate typePredicate = cb.equal(idBusinessCategory, idBusinessCategoryParam);
-            predicateList.add(typePredicate);
+            BusinessCategory bc = new BusinessCategory();
+            bc.setIdBusinessCategory(BigDecimal.valueOf(filter.getBusinessCategory()));
             
+            Predicate namePredicate = cb.equal(funcReqQuery.<BusinessCategory>get("idBusinessCategory"), bc);
+            predicateList.add(namePredicate);
             
         }
         
