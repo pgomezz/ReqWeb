@@ -15,3 +15,8 @@
 .ui-datatable .ui-datatable-footer .footer-section {
     text-align: left;
 }
+
+.ui-tabs .ui-tabs-nav li{
+    float:right!important;
+}
+
