@@ -6,7 +6,6 @@ package pt.altran.altranreq.services;
  * and open the template in the editor.
  */
 import pt.altran.altranreq.entities.AltranreqUser;
-import pt.altran.altranreq.entities.Project;
 import java.util.List;
 
 /**
@@ -24,7 +23,4 @@ public interface UserService extends AbstractService<AltranreqUser> {
     
     public List<AltranreqUser> isAdmin(Boolean bool);
     
-    public boolean isUserValid(AltranreqUser altranrequser,String hash);
-    
-    public boolean hasPermition(AltranreqUser altranrequser, Project project);
 }

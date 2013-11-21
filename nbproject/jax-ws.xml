@@ -31,6 +31,12 @@
     <service name="ClientServiceImp">
       <implementation-class>pt.altran.altranreq.services.ClientServiceImp</implementation-class>
     </service>
+    <service name="AuthorizationServiceImp">
+      <implementation-class>pt.altran.altranreq.services.AuthorizationServiceImp</implementation-class>
+    </service>
+    <service name="AuthenticationServiceImp">
+      <implementation-class>pt.altran.altranreq.services.AuthenticationServiceImp</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>
