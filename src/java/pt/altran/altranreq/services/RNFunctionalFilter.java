@@ -19,16 +19,16 @@ import pt.altran.altranreq.entities.RequirementState;
  */
 @XmlRootElement
 public class RNFunctionalFilter implements Serializable{
-    private Project project;
+    private Integer project;
     private String name;
-    private RequirementState state;
-    private RNFType type;
+    private Integer state;
+    private Integer type;
 
-    public Project getProject() {
+    public Integer getProject() {
         return project;
     }
 
-    public void setProject(Project project) {
+    public void setProject(Integer project) {
         this.project = project;
     }
 
@@ -40,22 +40,23 @@ public class RNFunctionalFilter implements Serializable{
         this.name = name;
     }
 
-    public RequirementState getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(RequirementState state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 
-    public RNFType getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(RNFType type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
+   
  
     
 }
