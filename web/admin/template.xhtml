@@ -9,6 +9,9 @@
         <title><ui:insert name="title">Default Title</ui:insert></title>
         <h:outputStylesheet library="css" name="pfcrud.css"/>
         <h:outputScript library="scripts" name="pfcrud.js"/>
+        
+        <h:outputStylesheet name="css/tab_view_align_right.css"/>
+
     </h:head>
 
     <h:body>
@@ -20,22 +23,17 @@
                 
                 <h:form>
                 <p:tabView id="tabView">
-                    <p:tab id="tab1" title="Godfather Part I">
+                    <p:tab id="tab1" title="Projectos">
                         <h:panelGrid columns="2" cellpadding="10">
                             <p:graphicImage id="tab1Img" value="/images/godfather/godfather1.jpg" />
                             <h:outputText id="tab1Text"
-                                          value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
-                                          His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T
-                                          hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect,
-                                          but given to ruthless violence whenever anything stands against the good of the family." />
+                                          value="This is the Project Side!!!!" />
                         </h:panelGrid>
                     </p:tab>
-                    <p:tab id="tab2" title="Godfather Part II">
+                    <p:tab id="tab2" title="Admistração">
                         <h:panelGrid columns="2" cellpadding="10">
                             <p:graphicImage id="tab2Img" value="/images/godfather/godfather2.jpg" />
-                            <h:outputText id="tab2Text" value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream.
-                                          In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy,
-                                          killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows."/>
+                            <h:outputText id="tab2Text" value="This is the Admin Side!!!"/>
                         </h:panelGrid>
                     </p:tab>
                 </p:tabView>
