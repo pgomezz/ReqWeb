@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -23,6 +24,8 @@ import pt.altran.altranreq.entities.UseCase;
 import pt.altran.altranreq.manager.util.AltranTreeNode;
 import pt.altran.altranreq.manager.util.UpdateCurrentTreeNode;
 import pt.altran.altranreq.services.ProjectService;
+import pt.altran.altranreq.services.RNFService;
+import pt.altran.altranreq.services.RNFunctionalFilter;
 import pt.altran.altranreq.services.TreeService;
 
 @Named(value = "treeBean")
@@ -34,6 +37,9 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
     
     @Inject
     private TreeService treeService;
+    
+    @Inject
+    private RNFService rnfService;
 
     private FunctionalRequirementController frc;
     
@@ -47,8 +53,9 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
 
     private AltranTreeNode FR;
     private AltranTreeNode NFR;
+    private AltranTreeNode Instalacao, Interface, Operacionais, Politicos, Seguranca, Usabilidade;
     private Collection<FunctionalRequirement> functionalRequirements;
-    private Collection<NonFunctionalRequirement> nonFunctionalRequirements;
+    private Collection<NonFunctionalRequirement> nonFunctionalRequirements, nfrlistfiltrer;
 
     private ArrayList<String> str;
 
@@ -101,17 +108,68 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
         //str.add("/ReqWeb/faces/nonFunctionalRequirement/index.xhtml");
 
         nonFunctionalRequirements = ejbService.find(new BigDecimal(1)).getNonFunctionalRequirementCollection();
-        for (NonFunctionalRequirement nonFunctionalRequirement : nonFunctionalRequirements) {
-            AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, NFR);
+        RNFunctionalFilter rnffilter = new RNFunctionalFilter();
+        rnffilter.setProject(1);
+        
+        Instalacao = new AltranTreeNode("Instalação", NFR);
+        Instalacao.setTreenode(this);
+        Interface = new AltranTreeNode("Interface e Imagem", NFR);
+        Interface.setTreenode(this);
+        Operacionais = new AltranTreeNode("Operacionais", NFR);
+        Operacionais.setTreenode(this);
+        Politicos = new AltranTreeNode("Politicos", NFR);
+        Politicos.setTreenode(this);
+        Seguranca = new AltranTreeNode("Segurança", NFR);
+        Seguranca.setTreenode(this);
+        Usabilidade = new AltranTreeNode("Usabilidade", NFR); 
+        Usabilidade.setTreenode(this);
+        
+        rnffilter.setType(0);
+        nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
+        for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
+            AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Instalacao);
             NR.setTreenode(this);
-            //str.add("/ReqWeb/faces/nonFunctionalRequirement/index.xhtml");
+        }
+        
+        rnffilter.setType(1);
+        nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
+        for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
+            AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Interface);
+            NR.setTreenode(this);
+        }
+        
+        rnffilter.setType(2);
+        nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
+        for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
+            AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Operacionais);
+            NR.setTreenode(this);
+        }
+        
+        rnffilter.setType(3);
+        nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
+        for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
+            AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Politicos);
+            NR.setTreenode(this);
+        }
+        
+        rnffilter.setType(4);
+        nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
+        for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
+            AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Seguranca);
+            NR.setTreenode(this);
+        }
+        
+        rnffilter.setType(5);
+        nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
+        for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
+            AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Usabilidade);
+            NR.setTreenode(this);
         }
 
         //id = str.size();
 //        for (int i = str.size() - 1; i >= 0; i--) {
 //            System.out.println(str.get(i));
 //        }
-
     }
 
     public TreeNode getRoot() {
@@ -142,17 +200,59 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
     public void onNodeSelect(NodeSelectEvent event) throws IOException {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", event.getTreeNode().toString());
 
+        String str = event.getTreeNode().toString();
+        
         Object d = ((AltranTreeNode) event.getTreeNode()).getRealData();
         System.out.println("seleccionou " + d.getClass());
 
         treeService.setSelected(d);
         
-        if (d instanceof UseCase) {
+        if (str.equals(FR.toString()))
+        {
+            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+            externalContext.redirect("/ReqWeb/faces/project/functionalRequirement/index.xhtml");
+        }
+        else if (str.equals(NFR.toString()))
+        {
+            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/index.xhtml");
+        }
+        else if (str.equals(Instalacao.toString()))
+        {
+            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/index.xhtml");
+        }
+        else if (str.equals(Interface.toString()))
+        {
+            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/index.xhtml");
+        }
+        else if (str.equals(Operacionais.toString()))
+        {
+            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/index.xhtml");
+        }
+        else if (str.equals(Politicos.toString()))
+        {
+            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/index.xhtml");
+        }
+        else if (str.equals(Seguranca.toString()))
+        {
+            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/index.xhtml");
+        }
+        else if (str.equals(Usabilidade.toString()))
+        {
+            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/index.xhtml");
+        }
+        else if (d instanceof UseCase) {
             UseCase uc = (UseCase) d;
             ucc = new UseCaseController();
             ucc.setSelected(uc);
             ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-            externalContext.redirect("/ReqWeb/faces/project/useCase/index.xhtml");
+            externalContext.redirect("/ReqWeb/faces/project/useCase/indexByTree.xhtml");
         } else if (d instanceof FunctionalRequirement) {
             FunctionalRequirement fr = (FunctionalRequirement) d;
             //FunctionalRequirementController 
@@ -160,7 +260,7 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
             frc.setSelected(fr);
             Object x = treeService.getSelected();
             ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-            externalContext.redirect("/ReqWeb/faces/project/functionalRequirement/index.xhtml"); //?id=" + fr.getIdFunctionalRequirement());
+            externalContext.redirect("/ReqWeb/faces/project/functionalRequirement/indexByTree.xhtml"); //?id=" + fr.getIdFunctionalRequirement());
 
         } else if (d instanceof NonFunctionalRequirement) {
             NonFunctionalRequirement nfr = (NonFunctionalRequirement) d;
@@ -168,7 +268,7 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
             nfrc.setSelected(nfr);
             Object x = treeService.getSelected();
             ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/index.xhtml"); 
+            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/indexByTree.xhtml"); 
         } else {
 
         }
@@ -222,5 +322,4 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
     public void update(TreeNode treenode) {
         current = treenode;
     }
-
 }

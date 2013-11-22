@@ -28,8 +28,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ProjectUser.findAll", query = "SELECT p FROM ProjectUser p"),
     @NamedQuery(name = "ProjectUser.findByIdUser", query = "SELECT p FROM ProjectUser p WHERE p.projectUserPK.idUser = :idUser"),
     @NamedQuery(name = "ProjectUser.findByIdProject", query = "SELECT p FROM ProjectUser p WHERE p.projectUserPK.idProject = :idProject"),
-    @NamedQuery(name = "ProjectUser.findByIdProjIdUser", query = "SELECT p FROM ProjectUser p WHERE p.projectUserPK.idProject = :idProject AND p.projectUserPK.idUser = :idUser"),
-    @NamedQuery(name = "ProjectUser.findRoleIdByIdProjIdUser", query = "SELECT ID_ROLE FROM ( SELECT p FROM ProjectUser p WHERE p.projectUserPK.idProject = :idProject AND p.projectUserPK.idUser = :idUser")})
+    @NamedQuery(name = "ProjectUser.findByIdProjIdUser", query = "SELECT p FROM ProjectUser p WHERE p.projectUserPK.idProject = :idProject AND p.projectUserPK.idUser = :idUser")})
+    //@NamedQuery(name = "ProjectUser.findRoleIdByIdProjIdUser", query = "SELECT ID_ROLE FROM ( SELECT p FROM ProjectUser p WHERE p.projectUserPK.idProject = :idProject AND p.projectUserPK.idUser = :idUser")})
 public class ProjectUser implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
