@@ -34,7 +34,7 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
 
     @PersistenceContext(unitName="AltranReqPU")
     private EntityManager em;
-    
+    //
     @PostConstruct
     @WebMethod 
     public void init() {
