@@ -9,6 +9,7 @@ package pt.altran.altranreq.services;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Collection;
 import pt.altran.altranreq.entities.Project;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -45,6 +46,17 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+    private List<Project> findProjectByUser(int pu){
+        
+        Collection<ProjectUser> listapu = getEntityManager().find(Project.class, BigDecimal.valueOf(pu)).getProjectUserCollection();
+        List<Project> projectsLists = new ArrayList<>();
+        for (ProjectUser projectUser : listapu) {
+            projectsLists.add(projectUser.getProject());
+        }
+        
+         return projectsLists;
+    }
 
     @Override
     @WebMethod
@@ -58,6 +70,12 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
 
         List<Predicate> predicateList = new ArrayList<>();
 
+        if (filter.getUser() != null && filter.getState() == null && filter.getName()
+                 == null) {
+            
+
+            return findProjectByUser(filter.getUser());
+        }
         if (filter.getName() != null && !filter.getName().isEmpty()) {
             Predicate namePredicate = cb.like(
                     cb.upper(ProjectQuery.<String>get("name")), "%" + filter.getName().toUpperCase() + "%");
@@ -69,24 +87,28 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
             Predicate namePredicate = cb.equal(ProjectQuery.<BigInteger>get("projectState"), filter.getState());
             predicateList.add(namePredicate);
         }
-        if (filter.getUser() != null) {
-            
-            Expression<BigInteger> idUser = ProjectQuery.get("projectUserCollection");
-            Expression<BigInteger> idUserParam = cb.parameter(BigInteger.class);
-            Predicate userPredicate = cb.equal(idUser, idUserParam);
-            predicateList.add(userPredicate);
-
-            
-            
-        }
-        
-        
-        
+  
         Predicate[] predicates = new Predicate[predicateList.size()];
         predicateList.toArray(predicates);
         query.where(predicates);
-
-        return getEntityManager().createQuery(query).getResultList(); }
+        List<Project> listaProj = getEntityManager().createQuery(query).getResultList(); 
+        List<Project> listaReturn = new ArrayList<>();
+       if(filter.getUser() != null){
+            for (Project project : listaProj) {
+                for (ProjectUser projectUser : project.getProjectUserCollection()) {
+                    if(!projectUser.getProjectUserPK().getIdUser().equals(BigDecimal.valueOf(filter.getUser()))){
+                        listaReturn.add(project);
+                                
+                    }
+                }
+           }
+            return listaReturn;
+        }
+        
+        return listaProj;
+        
+    
+    }
     
     
 }
