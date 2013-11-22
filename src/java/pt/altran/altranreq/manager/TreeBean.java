@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -23,6 +24,7 @@ import pt.altran.altranreq.entities.UseCase;
 import pt.altran.altranreq.manager.util.AltranTreeNode;
 import pt.altran.altranreq.manager.util.UpdateCurrentTreeNode;
 import pt.altran.altranreq.services.ProjectService;
+import pt.altran.altranreq.services.TreeService;
 
 @Named(value = "treeBean")
 @ViewScoped
@@ -31,6 +33,8 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
     @Inject
     private ProjectService ejbService;
     
+    @Inject
+    private TreeService treeService;
 
     private FunctionalRequirementController frc;
 
@@ -138,6 +142,8 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
         Object d = ((AltranTreeNode) event.getTreeNode()).getRealData();
         System.out.println("seleccionou " + d.getClass());
 
+        treeService.setSelected(d);
+        
         if (d instanceof UseCase) {
             UseCase uc = (UseCase) d;
             UseCaseController ucc = new UseCaseController();
@@ -147,10 +153,9 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
             //FunctionalRequirementController 
             frc = new FunctionalRequirementController();
             frc.setSelected(fr);
-            
-
+            Object x = treeService.getSelected();
             ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-            externalContext.redirect("/ReqWeb/faces/project/functionalRequirement/index.xhtml?id=" + fr.getIdFunctionalRequirement());
+            externalContext.redirect("/ReqWeb/faces/project/functionalRequirement/index.xhtml"); //?id=" + fr.getIdFunctionalRequirement());
 
         } else if (d instanceof NonFunctionalRequirement) {
             NonFunctionalRequirement nfr = (NonFunctionalRequirement) d;
