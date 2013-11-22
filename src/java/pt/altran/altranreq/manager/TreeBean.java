@@ -38,6 +38,8 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
 
     private FunctionalRequirementController frc;
     
+    private NonFunctionalRequirementController nfrc;
+    
     private UseCaseController ucc;
 
     private AltranTreeNode root;
@@ -163,6 +165,11 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
 
         } else if (d instanceof NonFunctionalRequirement) {
             NonFunctionalRequirement nfr = (NonFunctionalRequirement) d;
+            nfrc = new NonFunctionalRequirementController();
+            nfrc.setSelected(nfr);
+            Object x = treeService.getSelected();
+            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/index.xhtml"); 
         } else {
 
         }
