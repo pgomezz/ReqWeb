@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
+import pt.altran.altranreq.services.TreeService;
 import pt.altran.altranreq.services.UseCaseService;
 
 @Named(value = "useCaseController")
@@ -14,6 +15,9 @@ public class UseCaseController extends AbstractController<UseCase> implements Se
 
     @Inject
     private UseCaseService ejbService;
+    
+    @Inject
+    private TreeService treeService;
 
     public UseCaseController() {
         super(UseCase.class);
@@ -22,6 +26,16 @@ public class UseCaseController extends AbstractController<UseCase> implements Se
     @PostConstruct
     public void init() {
         super.setFacade(ejbService);
+    }
+    
+    public boolean isUseCaseType()
+    {
+        return treeService.getSelected() instanceof UseCase;
+    }
+    
+    public UseCase getUseCase()
+    {
+        return (UseCase)treeService.getSelected();
     }
 
 }

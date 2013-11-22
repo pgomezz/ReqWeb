@@ -37,6 +37,8 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
     private TreeService treeService;
 
     private FunctionalRequirementController frc;
+    
+    private UseCaseController ucc;
 
     private AltranTreeNode root;
 
@@ -146,8 +148,10 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
         
         if (d instanceof UseCase) {
             UseCase uc = (UseCase) d;
-            UseCaseController ucc = new UseCaseController();
+            ucc = new UseCaseController();
             ucc.setSelected(uc);
+            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+            externalContext.redirect("/ReqWeb/faces/project/useCase/index.xhtml");
         } else if (d instanceof FunctionalRequirement) {
             FunctionalRequirement fr = (FunctionalRequirement) d;
             //FunctionalRequirementController 
