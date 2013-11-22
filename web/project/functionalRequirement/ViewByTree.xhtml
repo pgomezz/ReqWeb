@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="FunctionalRequirementViewForm">
+
+        <f:param value="#{param.id}" name="idrf" />    
+
+
+
+        <h:panelGroup id="display">
+            <h:outputText value="#{param.id}"/>
+            
+            <ui:param name="idrf" value="#{param.id}" />
+            
+            <f:param name="#{functionalRequirementController.setIdFR()}" value="#{param.id}" />
+
+            <f:metadata>
+                <f:viewParam name="idrd" value="#{param.id}" />      
+            </f:metadata>
+            
+
+            <h:outputText value="#{functionalRequirementController.selected.idFunctionalRequirement}" title="#{myBundle.ViewFunctionalRequirementTitle_idFunctionalRequirement}"/>
+            <p:panelGrid columns="2" rendered="#{functionalRequirementController.selected != null}">
+
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_idFunctionalRequirement}"/>
+                <h:outputText value="#{functionalRequirementController.selected.idFunctionalRequirement}" title="#{myBundle.ViewFunctionalRequirementTitle_idFunctionalRequirement}"/>
+
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_name}"/>
+                <h:outputText value="#{functionalRequirementController.selected.name}" title="#{myBundle.ViewFunctionalRequirementTitle_name}"/>
+
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_description}"/>
+                <h:outputText value="#{functionalRequirementController.selected.description}" title="#{myBundle.ViewFunctionalRequirementTitle_description}"/>
+
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_reason}"/>
+                <h:outputText value="#{functionalRequirementController.selected.reason}" title="#{myBundle.ViewFunctionalRequirementTitle_reason}"/>
+
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_source}"/>
+                <h:outputText value="#{functionalRequirementController.selected.source}" title="#{myBundle.ViewFunctionalRequirementTitle_source}"/>
+
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_avaliationCriteria}"/>
+                <h:outputText value="#{functionalRequirementController.selected.avaliationCriteria}" title="#{myBundle.ViewFunctionalRequirementTitle_avaliationCriteria}"/>
+
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_clientPriority}"/>
+                <h:outputText value="#{functionalRequirementController.selected.clientPriority}" title="#{myBundle.ViewFunctionalRequirementTitle_clientPriority}"/>
+
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_clientInsatisfaction}"/>
+                <h:outputText value="#{functionalRequirementController.selected.clientInsatisfaction}" title="#{myBundle.ViewFunctionalRequirementTitle_clientInsatisfaction}"/>
+
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_requirementState}"/>
+                <h:outputText value="#{functionalRequirementController.selected.requirementState}" title="#{myBundle.ViewFunctionalRequirementTitle_requirementState}"/>
+
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_version}"/>
+                <h:outputText value="#{functionalRequirementController.selected.version}" title="#{myBundle.ViewFunctionalRequirementTitle_version}"/>
+
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_ordernumber}"/>
+                <h:outputText value="#{functionalRequirementController.selected.ordernumber}" title="#{myBundle.ViewFunctionalRequirementTitle_ordernumber}"/>
+
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_functionalRequirementCollection}"/>
+                <h:selectManyMenu converter="functionalRequirementConverter">
+                    <f:selectItems value="#{functionalRequirementController.selected.functionalRequirementCollection}"
+                                   var="functionalRequirementCollectionItem"
+                                   itemValue="#{functionalRequirementCollectionItem}"
+                                   itemLabel="#{functionalRequirementCollectionItem.name.toString()}"
+                                   />
+
+                </h:selectManyMenu>
+
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_idProject}"/>
+                <h:outputText value="#{functionalRequirementController.selected.idProject.name}"/>
+
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_idBusinessCategory}"/>
+                <h:outputText value="#{functionalRequirementController.selected.idBusinessCategory.name}"/>
+            </p:panelGrid>
+            <p:commandButton value="#{myBundle.Close}" onclick="FunctionalRequirementViewDialog.hide()"/>
+        </h:panelGroup>
+
+    </h:form>
+
+</ui:composition>
