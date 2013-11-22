@@ -243,6 +243,130 @@ public class NonFunctionalRequirement implements Serializable {
         this.nonFunctionalRequirementCollection1 = nonFunctionalRequirementCollection1;
     }
 
+    
+     public static RequirementState convertRequirementState(int arg) {
+        switch (arg) {
+
+            case 0:
+
+                return RequirementState.ACTIVO;
+
+            case 1:
+
+                return RequirementState.CANCELADO;
+
+            case 2:
+
+                return RequirementState.CONCLUIDO;
+
+            case 3:
+
+                return RequirementState.VERSIONADO;
+        }
+
+        throw new IllegalArgumentException("Is not a supported requirement state");
+
+    }
+
+    public static BigInteger convertRequirementStateEnum(RequirementState type) {
+
+        switch (type) {
+
+            case ACTIVO:
+
+               return BigInteger.valueOf(0);
+                
+
+            case CANCELADO:
+
+                return BigInteger.valueOf(1);
+            case CONCLUIDO:
+
+               return BigInteger.valueOf(2);
+
+            case VERSIONADO:
+
+                return BigInteger.valueOf(3);
+
+        }
+        
+        throw new IllegalArgumentException("Is not supported requirement state");
+    }
+    
+    
+    
+    
+    
+    public static RNFType convertRequirementType(int arg) {
+        switch (arg) {
+
+            case 0:
+
+                return RNFType.INSTALACAO;
+
+            case 1:
+
+                return RNFType.INTERFACE_E_IMAGEM;
+
+            case 2:
+
+                return RNFType.OPERACIONAIS;
+
+            case 3:
+
+                return RNFType.POLITICOS;
+            case 4:
+
+                return RNFType.SEGURANCA;
+                
+                
+                case 5:
+
+                return RNFType.USABILIDADE;
+        }
+
+        throw new IllegalArgumentException("Is not a supported requirement state");
+
+    }
+
+    public static BigInteger convertRequirementTypeEnum(RNFType requirementType) {
+
+        switch (requirementType) {
+
+            case INSTALACAO:
+
+               return BigInteger.valueOf(0);
+                
+
+            case INTERFACE_E_IMAGEM:
+
+                return BigInteger.valueOf(1);
+            case OPERACIONAIS:
+
+               return BigInteger.valueOf(2);
+
+            case POLITICOS:
+
+                return BigInteger.valueOf(3);
+                
+                case SEGURANCA:
+
+                return BigInteger.valueOf(4);
+                    
+                    case USABILIDADE:
+
+                return BigInteger.valueOf(5);
+
+        }
+        
+        throw new IllegalArgumentException("Is not supported requirement state");
+    }
+
+    
+    
+    
+    
+    
     public Project getIdProject() {
         return idProject;
     }

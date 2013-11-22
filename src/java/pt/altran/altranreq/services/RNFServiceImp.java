@@ -49,6 +49,7 @@ public class RNFServiceImp extends AbstractServiceImp<NonFunctionalRequirement> 
     @WebMethod
     public List<NonFunctionalRequirement> findRNFByFilter(RNFunctionalFilter filter) {
 
+        
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<NonFunctionalRequirement> query = cb.createQuery(NonFunctionalRequirement.class);
         CriteriaQuery<NonFunctionalRequirement> c = cb.createQuery(NonFunctionalRequirement.class);
@@ -68,22 +69,20 @@ public class RNFServiceImp extends AbstractServiceImp<NonFunctionalRequirement> 
             predicateList.add(namePredicate);
         }
         if (filter.getProject() != null) {
-            Expression<BigDecimal> idProject = nonFuncReqQuery.get("IdNonFuncRequirement");
-            Expression<BigDecimal> idProjectParam = cb.parameter(BigDecimal.class);
-            Predicate projectPredicate = cb.equal(idProject, idProjectParam);
+            Project p = new Project();
+            p.setIdProject(BigDecimal.valueOf(filter.getProject()));
+            
+            Predicate projectPredicate = cb.equal(nonFuncReqQuery.<Project>get("idProject"), p);
             predicateList.add(projectPredicate);
         }
         if (filter.getState() != null) {
-            Expression<BigInteger> idState = nonFuncReqQuery.get("requirementState");
-            Expression<BigInteger> idStateParam = cb.parameter(BigInteger.class);
-            Predicate statePredicate = cb.equal(idState, idStateParam);
+           
+            Predicate statePredicate = cb.equal(nonFuncReqQuery.<BigInteger>get("requirementState"), filter.getState());
             predicateList.add(statePredicate);
         }
         if (filter.getType() != null) {
             
-            Expression<BigInteger> idType = nonFuncReqQuery.get("type");
-            Expression<BigInteger> idTypeParam = cb.parameter(BigInteger.class);
-            Predicate typePredicate = cb.equal(idType, idTypeParam);
+            Predicate typePredicate = cb.equal(nonFuncReqQuery.<BigInteger>get("type"), filter.getType());
             predicateList.add(typePredicate);
             
             
@@ -97,5 +96,23 @@ public class RNFServiceImp extends AbstractServiceImp<NonFunctionalRequirement> 
 
         return getEntityManager().createQuery(query).getResultList();
     }
+    
+    
+    
+    @Override
+    @WebMethod
+    public List<NonFunctionalRequirement> findRNFByDependency(int pai) {
+        
+    
+        
+       NonFunctionalRequirement bla = new NonFunctionalRequirement();
+        
+      NonFunctionalRequirement us = getEntityManager().find(NonFunctionalRequirement.class, BigDecimal.valueOf(pai));
+        
+        
+       return (List<NonFunctionalRequirement>)us.getNonFunctionalRequirementCollection();
+    
+    }
+
 
 }

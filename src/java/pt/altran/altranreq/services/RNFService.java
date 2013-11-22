@@ -20,4 +20,6 @@ public interface RNFService extends AbstractService<NonFunctionalRequirement> {
     
     public List<NonFunctionalRequirement> findRNFByFilter(RNFunctionalFilter filter);
 
+    
+    public List<NonFunctionalRequirement> findRNFByDependency(int pai);
 }
