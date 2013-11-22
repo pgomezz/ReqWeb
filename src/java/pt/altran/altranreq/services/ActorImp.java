@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.rmi.UnexpectedException;
 import java.util.ArrayList;
+import java.util.Collection;
 import pt.altran.altranreq.entities.Actor;
 import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.entities.UseCase;
@@ -49,58 +50,36 @@ public class ActorImp extends AbstractServiceImp<Actor> implements ActorService 
 
     @WebMethod
     @Override
-     public List<Actor> findActorByProject(Project project) {
+     public List<Actor> findActorByProject(int idProject) {
          
-        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
-        CriteriaQuery<Actor> query = cb.createQuery(Actor.class);
-        Root<Actor> ActorQuery = query.from(Actor.class);
-
-        query.select(ActorQuery);
-
-        List<Predicate> predicateList = new ArrayList<>();
-
-        if (project.getName() != null && !project.getName().isEmpty()) {
-            Predicate namePredicate = cb.like(
-                    cb.upper(ActorQuery.<String>get("name")), "%" + project.getName().toUpperCase() + "%");
-            predicateList.add(namePredicate);
+  
+        Project project = getEntityManager().find(Project.class, BigDecimal.valueOf(idProject));
+        Collection<FunctionalRequirement> listarefunc = project.getFunctionalRequirementCollection();
+        ArrayList<UseCase> listaCasosUso = new ArrayList<>();
+         for (FunctionalRequirement functionalRequirement : listarefunc) {
+             for (UseCase useCase : functionalRequirement.getUseCaseCollection()) {
+                 listaCasosUso.add(useCase);
+             }
+        } 
+        ArrayList<Actor> listaActores = new ArrayList<>();
+        
+        for (UseCase us : listaCasosUso) {
+            for (Actor actor : us.getActorCollection()) {
+                listaActores.add(actor);
+            }
         }
-        
-        
-        
-        Predicate[] predicates = new Predicate[predicateList.size()];
-        predicateList.toArray(predicates);
-        query.where(predicates);
-
-        return getEntityManager().createQuery(query).getResultList();
          
 
+        return listaActores;
      }
     
     @WebMethod
     @Override
-     public List<Actor> findActorByUseCase(UseCase useCase) {
+     public List<Actor> findActorByUseCase(int idUseCase) {
      
-        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
-        CriteriaQuery<Actor> query = cb.createQuery(Actor.class);
-        Root<Actor> FuncReqQuery = query.from(Actor.class);
+       UseCase useCase = getEntityManager().find(UseCase.class, BigDecimal.valueOf(idUseCase));
 
-        query.select(FuncReqQuery);
-
-        List<Predicate> predicateList = new ArrayList<>();
-
-        if (useCase.getName() != null && !useCase.getName().isEmpty()) {
-            Predicate namePredicate = cb.like(
-                    cb.upper(FuncReqQuery.<String>get("name")), "%" + useCase.getName().toUpperCase() + "%");
-            predicateList.add(namePredicate);
-        }
-        
-        
-        
-        Predicate[] predicates = new Predicate[predicateList.size()];
-        predicateList.toArray(predicates);
-        query.where(predicates);
-
-        return getEntityManager().createQuery(query).getResultList();
+        return  (List<Actor>)useCase.getActorCollection();
      }
 
 

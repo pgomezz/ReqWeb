@@ -24,6 +24,7 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import pt.altran.altranreq.entities.Actor;
+import pt.altran.altranreq.entities.UseCase;
 
 @Stateless
 @WebService
@@ -40,32 +41,13 @@ public class AlternativeFlowsImp extends AbstractServiceImp<AlternativeFlows> im
     
     @Override
     @WebMethod
-    public List<AlternativeFlows> findAlternativeFlowsByUseCase(AlternativeFlows alternativeFlows) {
+    public List<AlternativeFlows> findAlternativeFlowsByUseCase(int idUseCase) {
         
-        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
-        CriteriaQuery<AlternativeFlows> query = cb.createQuery(AlternativeFlows.class);
-        Root<AlternativeFlows> AFQuery = query.from(AlternativeFlows.class);
+        UseCase useCase = getEntityManager().find(UseCase.class, BigDecimal.valueOf(idUseCase));
 
-        query.select(AFQuery);
-
-        List<Predicate> predicateList = new ArrayList<>();
-
-        
-        if (alternativeFlows.getIdUseCase() != null) {
-
-            Expression<BigDecimal> idUseCase = AFQuery.get("idUseCase");
-            Expression<BigDecimal> idUseCaseParam = cb.parameter(BigDecimal.class);
-            Predicate useCasePredicate = cb.equal(idUseCase, idUseCaseParam);
-            predicateList.add(useCasePredicate);
-        }
+        return  (List<AlternativeFlows>)useCase.getAlternativeFlowsCollection();
         
         
-        
-        Predicate[] predicates = new Predicate[predicateList.size()];
-        predicateList.toArray(predicates);
-        query.where(predicates);
-
-        return getEntityManager().createQuery(query).getResultList();
         
     }
 

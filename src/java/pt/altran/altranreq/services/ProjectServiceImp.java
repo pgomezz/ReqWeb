@@ -6,6 +6,7 @@ package pt.altran.altranreq.services;
  * and open the template in the editor.
  */
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import pt.altran.altranreq.entities.Project;
@@ -22,6 +23,7 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import pt.altran.altranreq.entities.BusinessCategory;
 import pt.altran.altranreq.entities.ProjectUser;
 import pt.altran.altranreq.manager.builder.ProjectState;
 
@@ -63,10 +65,9 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
         }
         
         if (filter.getState() != null) {
-            Expression<BigInteger> idState = ProjectQuery.get("projectState");
-            Expression<BigInteger> idStateParam = cb.parameter(BigInteger.class);
-            Predicate statePredicate = cb.equal(idState, idStateParam);
-            predicateList.add(statePredicate);
+            
+            Predicate namePredicate = cb.equal(ProjectQuery.<BigInteger>get("projectState"), filter.getState());
+            predicateList.add(namePredicate);
         }
         if (filter.getUser() != null) {
             
@@ -74,6 +75,7 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
             Expression<BigInteger> idUserParam = cb.parameter(BigInteger.class);
             Predicate userPredicate = cb.equal(idUser, idUserParam);
             predicateList.add(userPredicate);
+
             
             
         }

@@ -20,7 +20,7 @@ import pt.altran.altranreq.services.AbstractService;
  */
 public interface ActorService extends AbstractService<Actor> {
 
-    public List<Actor> findActorByProject(Project project);
+    public List<Actor> findActorByProject(int idProject);
 
-    public List<Actor> findActorByUseCase(UseCase useCase);
+    public List<Actor> findActorByUseCase(int idUseCase);
 }

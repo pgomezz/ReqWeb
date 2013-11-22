@@ -16,6 +16,6 @@ import java.util.List;
  */
 public interface AlternativeFlowsService extends AbstractService<AlternativeFlows> {
     
-    public List<AlternativeFlows> findAlternativeFlowsByUseCase(AlternativeFlows alternativeFlows);
+    public List<AlternativeFlows> findAlternativeFlowsByUseCase(int idUseCase);
 
 }

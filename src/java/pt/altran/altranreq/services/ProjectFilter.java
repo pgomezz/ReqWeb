@@ -20,17 +20,27 @@ import pt.altran.altranreq.entities.ProjectUser;
  */
 @XmlRootElement
 public class ProjectFilter implements Serializable{
-    private ProjectUser user;
+    private Integer user;
     private String name;
-    private ProjectState state;
+    private Integer state;
 
-    public ProjectUser getUser() {
+    public Integer getUser() {
         return user;
     }
 
-    public void setUser(ProjectUser user) {
+    public void setUser(Integer user) {
         this.user = user;
     }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+
 
     public String getName() {
         return name;
@@ -40,13 +50,6 @@ public class ProjectFilter implements Serializable{
         this.name = name;
     }
 
-    public ProjectState getState() {
-        return state;
-    }
-
-    public void setState(ProjectState state) {
-        this.state = state;
-    }
     
     
 }
