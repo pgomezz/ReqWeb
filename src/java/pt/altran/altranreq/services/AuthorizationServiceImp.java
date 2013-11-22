@@ -14,17 +14,14 @@ import pt.altran.altranreq.entities.ProjectUser;
 public class AuthorizationServiceImp implements AuthorizationService {
 
     private EntityManager em;
-    private AltranreqRole role;
 
     public AuthorizationServiceImp() {
         this.em = null;
-        this.role = null;
     }
 
     @WebMethod
     @Override
     public List<Project> getProjects(int userID) {
-
         List<ProjectUser> pu = em.
                 createNamedQuery("ProjectUser.findByIdUser").
                 setParameter("idUser", userID).
@@ -39,42 +36,36 @@ public class AuthorizationServiceImp implements AuthorizationService {
     @WebMethod
     @Override
     public AltranreqRole getProjectRole(int projectID, int userID) {
-        int roleId = (int) em.
-                createNamedQuery("ProjectUser.findByIdUser").
+        //Query para o ProjectUser -> findRoleIdByIdProjIdUser
+        //SELECT ID_ROLE FROM ( SELECT p FROM ProjectUser p WHERE p.projectUserPK.idProject = :idProject AND p.projectUserPK.idUser = :idUser)
+        int idRole = (int) em.
+                createNamedQuery("ProjectUser.findRoleIdByIdProjIdUser").
                 setParameter("idUser", userID).
                 setParameter("idProject", projectID).
                 getSingleResult();
         AltranreqRole role = (AltranreqRole) em.
                 createNamedQuery("AltranreqRole.findByIdRole").
-                setParameter("idRole", roleId).
+                setParameter("idRole", idRole).
                 getSingleResult();
-        if (role != null) {
-            this.role = role;
-        }
         return role;
     }
 
     @WebMethod
     @Override
-    public Collection<Privilege> getRolePrivileges() {
-        Collection<Privilege> p = this.role.getPrivilegeCollection();
+    public Collection<Privilege> getRolePrivileges(AltranreqRole role) {
+        Collection<Privilege> p = role.getPrivilegeCollection();
         return p;
     }
 
     @WebMethod
     @Override
-    public boolean hasPrivilege(int projectID, String privilege) {
-        Collection<Privilege> col = this.role.getPrivilegeCollection();
-        if (col.contains(privilege)) {
+    public boolean hasPrivilege(int projectID, int userID, String privilege) {
+        AltranreqRole role = this.getProjectRole(projectID, userID);
+        
+        if (role.getPrivilegeCollection().contains(privilege)) {
             return true;
         }
         return false;
-    }
-
-    @Override
-    public void logout() {
-        this.em = null;
-        this.role = null;
     }
 
 }

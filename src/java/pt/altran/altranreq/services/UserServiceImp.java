@@ -76,7 +76,7 @@ public class UserServiceImp extends AbstractServiceImp<AltranreqUser> implements
                 .createNamedQuery("AltranreqUser.findAll")
                 .getResultList();
         for (AltranreqUser u : userList) {
-            if (!u.getName().contains(username)) {
+            if (!u.getName().contains(username) && !u.getUsername().contains(username)) {
                 userList.remove(u);
             }
         }

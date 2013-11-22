@@ -9,12 +9,10 @@ import pt.altran.altranreq.entities.AltranreqUser;
 @WebService
 public class AuthenticationServiceImp implements AuthenticationService {
 
-    private AltranreqUser user;
     @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
 
     public AuthenticationServiceImp() {
-        this.user = null;
         this.em = null;
     }
 
@@ -22,33 +20,17 @@ public class AuthenticationServiceImp implements AuthenticationService {
     @Override
     public AltranreqUser Login(String username, String password) {
         AltranreqUser u = (AltranreqUser) em.
-                createNamedQuery("AltranreqUser.findByUserPass").
+                createNamedQuery("AltranreqUser.UserPassword").
                 setParameter("username", username).
                 setParameter("password", password).
                 getSingleResult();
-        if (u != null) {
-            this.user = u;
-        }
         return u;
     }
 
     @WebMethod
     @Override
-    public AltranreqUser getUser() {
-        return this.user;
-    }
-
-    @Override
-    public void logout() {
-        em.clear();
-        em.close();
-
-    }
-
-    @WebMethod
-    @Override
     public boolean isAdmin(AltranreqUser user) {
-        if (this.user.getIsAdmin() == '1') {
+        if (user.getIsAdmin() == '1') {
             return true;
         }
         return false;

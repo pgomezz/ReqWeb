@@ -13,10 +13,10 @@ public interface AuthorizationService {
 
     public AltranreqRole getProjectRole(int projectID, int userID);
 
-    public Collection<Privilege> getRolePrivileges();
+    public Collection<Privilege> getRolePrivileges(AltranreqRole role);
 
-    public boolean hasPrivilege(int projectID, String privilege);
+    public boolean hasPrivilege(int projectID, int userID, String privilege);
 
-    public void logout();
+    
 
 }

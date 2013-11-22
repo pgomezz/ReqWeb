@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
   <services>
-    <service name="ProjectServiceImp">
-      <implementation-class>pt.altran.altranreq.services.ProjectServiceImp</implementation-class>
-    </service>
-    <service name="UserServiceImp">
-      <implementation-class>pt.altran.altranreq.services.UserServiceImp</implementation-class>
-    </service>
     <service name="FunctionalRequirementServiceImp">
       <implementation-class>pt.altran.altranreq.services.FunctionalRequirementServiceImp</implementation-class>
     </service>
@@ -25,17 +19,23 @@
     <service name="AlternativeFlowsImp">
       <implementation-class>pt.altran.altranreq.services.AlternativeFlowsImp</implementation-class>
     </service>
-    <service name="AltranReqRoleImp">
-      <implementation-class>pt.altran.altranreq.services.AltranReqRoleImp</implementation-class>
-    </service>
     <service name="ClientServiceImp">
       <implementation-class>pt.altran.altranreq.services.ClientServiceImp</implementation-class>
+    </service>
+    <service name="AuthenticationServiceImp">
+      <implementation-class>pt.altran.altranreq.services.AuthenticationServiceImp</implementation-class>
+    </service>
+    <service name="ProjectServiceImp">
+      <implementation-class>pt.altran.altranreq.services.ProjectServiceImp</implementation-class>
     </service>
     <service name="AuthorizationServiceImp">
       <implementation-class>pt.altran.altranreq.services.AuthorizationServiceImp</implementation-class>
     </service>
-    <service name="AuthenticationServiceImp">
-      <implementation-class>pt.altran.altranreq.services.AuthenticationServiceImp</implementation-class>
+    <service name="UserServiceImp">
+      <implementation-class>pt.altran.altranreq.services.UserServiceImp</implementation-class>
+    </service>
+    <service name="AltranReqRoleImp">
+      <implementation-class>pt.altran.altranreq.services.AltranReqRoleImp</implementation-class>
     </service>
   </services>
   <clients/>
