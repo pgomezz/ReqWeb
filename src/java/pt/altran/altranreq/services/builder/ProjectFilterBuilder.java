@@ -1,10 +1,8 @@
-package pt.altran.altranreq.manager.builder;
+package pt.altran.altranreq.services.builder;
 
 import pt.altran.altranreq.entities.ProjectUser;
 import pt.altran.altranreq.services.ProjectFilter;
 
-
-// Quero fazer um commiittttrttttt
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

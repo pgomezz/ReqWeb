@@ -2,7 +2,7 @@ package pt.altran.altranreq.services;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
-import pt.altran.altranreq.manager.builder.ProjectState;
+import pt.altran.altranreq.services.builder.ProjectState;
 import pt.altran.altranreq.entities.ProjectUser;
 
 /*

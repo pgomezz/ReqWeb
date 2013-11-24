@@ -1,4 +1,4 @@
-package pt.altran.altranreq.manager.builder;
+package pt.altran.altranreq.services.builder;
 
 import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.entities.RNFType;

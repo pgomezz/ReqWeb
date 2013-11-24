@@ -38,12 +38,12 @@ public abstract class AbstractController<T> {
         this.itemClass = itemClass;
     }
 
-    protected AbstractService<T> getFacade() {
+    protected AbstractService<T> getService() {
         return ejbService;
     }
 
-    protected void setFacade(AbstractService<T> ejbFacade) {
-        this.ejbService = ejbFacade;
+    protected void setFacade(AbstractService<T> ejbService) {
+        this.ejbService = ejbService;
     }
 
     public T getSelected() {
@@ -97,7 +97,8 @@ public abstract class AbstractController<T> {
             items = null; // Invalidate list of items to trigger re-query.
         }
     }
-
+    
+   
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             this.setEmbeddableKeys();

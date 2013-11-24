@@ -3,12 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     
 
     <ui:composition>
-        <p:dialog id="ProjectEditDlg" widgetVar="ProjectEditDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditProjectTitle}" closeOnEscape="true">
+        <p:dialog id="ProjectEditDlg" widgetVar="ProjectEditDialog" modal="true" resizable="true" appendToBody="true" header="#{myBundle.EditProjectTitle}" closeOnEscape="true">
 
             <h:form id="ProjectEditForm">
 
@@ -36,7 +35,7 @@
                         <p:outputLabel value="#{myBundle.EditProjectLabel_idProjectManager}" for="idProjectManager" />
                         <p:inputText id="idProjectManager" value="#{projectController.selected.idProjectManager}" title="#{myBundle.EditProjectTitle_idProjectManager}"/>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{projectController.save}" value="#{myBundle.Save}" update="display,:ProjectListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ProjectEditDialog);"/>
+                    <p:commandButton actionListener="#{projectController.save}" value="#{myBundle.Save}" update="display,:TabProfile:ProjectListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ProjectEditDialog);"/>
                     <p:commandButton value="#{myBundle.Cancel}" onclick="ProjectEditDialog.hide()"/>
                 </h:panelGroup>
 

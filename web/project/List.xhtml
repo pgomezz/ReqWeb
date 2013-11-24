@@ -22,29 +22,29 @@
                 <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
                 
-                <p:column sortBy="#{item.name}" filterBy="#{item.name}">
+                <p:column sortBy="#{item.name}">
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListProjectTitle_name}"/>
                     </f:facet>
                     <h:outputText value="#{item.name}"/>
                 </p:column>
-                <p:column sortBy="#{item.projectState}" filterBy="#{item.projectState}">
+                <p:column>
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListProjectTitle_projectState}"/>
                     </f:facet>
-                    <h:outputText value="#{item.projectState}"/>
+                    <h:outputText value="#{projectController.getState(item.projectState)}"/>
                 </p:column>
-                <p:column sortBy="#{item.idProjectManager}" filterBy="#{item.idProjectManager}">
+                <p:column>
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListProjectTitle_idProjectManager}"/>
                     </f:facet>
-                    <h:outputText value="#{item.idProjectManager}"/>
+                    <h:outputText value="#{projectController.getProjectManagerName(item.idProjectManager)}"/>
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">
-                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{projectController.prepareCreate}" update=":ProjectCreateForm" oncomplete="ProjectCreateDialog.show()"/>
-                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":ProjectViewForm" oncomplete="ProjectViewDialog.show()" disabled="#{empty projectController.selected}"/>
-                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":ProjectEditForm" oncomplete="ProjectEditDialog.show()" disabled="#{empty projectController.selected}"/>
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{projectController.prepareCreate}" update=":TabProfile:ProjectCreateForm" oncomplete="ProjectCreateDialog.show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":TabProfile:ProjectViewForm" oncomplete="ProjectViewDialog.show()" disabled="#{empty projectController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":TabProfile:ProjectEditForm" oncomplete="ProjectEditDialog.show()" disabled="#{empty projectController.selected}"/>
                         <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{projectController.delete}" update=":growl,datalist" disabled="#{empty projectController.selected}"/>
                     </div>
                 </f:facet>

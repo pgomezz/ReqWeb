@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package pt.altran.altranreq.manager.builder;
+package pt.altran.altranreq.services.builder;
 
 /**
  *

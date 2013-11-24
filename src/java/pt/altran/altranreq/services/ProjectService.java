@@ -17,4 +17,8 @@ public interface ProjectService extends AbstractService<Project> {
     
     public List<Project> findProjectByFilter(ProjectFilter filter);
 
+    String getProjectStateString(int projectStateIndice);
+
+    String getProjectUserName(int idUser);
+
 }

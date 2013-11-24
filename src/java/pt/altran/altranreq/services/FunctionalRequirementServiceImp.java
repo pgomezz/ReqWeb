@@ -5,9 +5,6 @@ package pt.altran.altranreq.services;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -21,13 +18,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
-import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import pt.altran.altranreq.entities.BusinessCategory;
 import pt.altran.altranreq.entities.Project;
-import pt.altran.altranreq.entities.RequirementState;
 
 /**
  *
@@ -35,10 +29,11 @@ import pt.altran.altranreq.entities.RequirementState;
  */
 @WebService
 @Stateless
-public class FunctionalRequirementServiceImp extends AbstractServiceImp <FunctionalRequirement> implements FunctionalRequirementService{
+public class FunctionalRequirementServiceImp extends AbstractServiceImp<FunctionalRequirement> implements FunctionalRequirementService {
+
     @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
-    
+
     @PostConstruct
     public void init() {
         setEntityClass(FunctionalRequirement.class);
@@ -59,25 +54,19 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp <Functio
         query.select(funcReqQuery);
 
         List<Predicate> predicateList = new ArrayList<>();
-    
-    
-        
-        
+
         if (filter.getName() != null && !filter.getName().isEmpty()) {
             Predicate namePredicate = cb.like(
                     cb.upper(funcReqQuery.<String>get("name")), "%" + filter.getName().toUpperCase() + "%");
             predicateList.add(namePredicate);
-            
-                    
 
         }
         if (filter.getProjecto() != null) {
- 
+
             // FunctionalRequirement us = getEntityManager().find(FunctionalRequirement.class, BigDecimal.valueOf(filter.getProjecto()));
- 
             Project p = new Project();
             p.setIdProject(BigDecimal.valueOf(filter.getProjecto()));
-            
+
             Predicate namePredicate = cb.equal(funcReqQuery.<Project>get("idProject"), p);
             predicateList.add(namePredicate);
 
@@ -85,14 +74,12 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp <Functio
 //            Expression<BigDecimal> idProjectParam = cb.parameter(BigDecimal.class);
 //            Predicate projectPredicate = cb.equal(idProject, idProjectParam);
 //            predicateList.add(projectPredicate);
-            
         }
         if (filter.getState() != null) {
 
-
             Predicate namePredicate = cb.equal(funcReqQuery.<BigInteger>get("requirementState"), filter.getState());
             predicateList.add(namePredicate);
-            
+
         }
         if (filter.getBusinessCategory() != null) {
 //            
@@ -100,25 +87,21 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp <Functio
 //            Expression<BigInteger> idBusinessCategoryParam = cb.parameter(BigInteger.class);
 //            Predicate typePredicate = cb.equal(idBusinessCategory, idBusinessCategoryParam);
 //            predicateList.add(typePredicate);
-            
+
             BusinessCategory bc = new BusinessCategory();
             bc.setIdBusinessCategory(BigDecimal.valueOf(filter.getBusinessCategory()));
-            
+
             Predicate namePredicate = cb.equal(funcReqQuery.<BusinessCategory>get("idBusinessCategory"), bc);
             predicateList.add(namePredicate);
-            
+
         }
-        
-        
+
         Predicate[] predicates = new Predicate[predicateList.size()];
         predicateList.toArray(predicates);
         query.where(predicates);
         List<FunctionalRequirement> z = getEntityManager().createQuery(query).getResultList();
-        
+
         return z;
     }
-    
-    
-    }
-    
 
+}
