@@ -23,9 +23,32 @@ public class ProjectServiceBean implements Serializable{
 
    @Context
    private Object selected;
+   
+   @Context
+   private int idCategNRF;
+   
+   @Context
+   private boolean Categ;
+
+    public boolean isCateg() {
+        return Categ;
+    }
+
+    public void setCateg(boolean Categ) {
+        this.Categ = Categ;
+    }
 
     public ProjectServiceBean() {
         selected = null;
+        Categ = false;
+    }
+
+    public int getIdCategNRF() {
+        return idCategNRF;
+    }
+
+    public void setIdCategNRF(int idCategNRF) {
+        this.idCategNRF = idCategNRF;
     }
 
     public void setSelected(Object selected) {

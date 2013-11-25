@@ -19,10 +19,12 @@ import org.primefaces.event.NodeUnselectEvent;
 import org.primefaces.model.TreeNode;
 import pt.altran.altranreq.entities.FunctionalRequirement;
 import pt.altran.altranreq.entities.NonFunctionalRequirement;
+import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.entities.UseCase;
 import pt.altran.altranreq.manager.util.AltranTreeNode;
 import pt.altran.altranreq.manager.util.UpdateCurrentTreeNode;
 import pt.altran.altranreq.services.ProjectService;
+import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.RNFService;
 import pt.altran.altranreq.services.RNFunctionalFilter;
 import pt.altran.altranreq.services.TreeService;
@@ -39,6 +41,9 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
     
     @Inject
     private RNFService rnfService;
+    
+    @Inject
+    private ProjectServiceBean projectBean;
 
     private FunctionalRequirementController frc;
     
@@ -88,7 +93,9 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
         //str.add("/ReqWeb/faces/functionalRequirement/index.xhtml");
 
         //str.add("/ReqWeb/faces/nonFunctionalRequirement/index.xhtml");
-        functionalRequirements = ejbService.find(new BigDecimal(1)).getFunctionalRequirementCollection();
+        Project projectSelected = (Project)projectBean.getSelected();
+        //functionalRequirements = ejbService.find(projectSelected.getIdProject()).getFunctionalRequirementCollection();
+        functionalRequirements = projectSelected.getFunctionalRequirementCollection();
         for (FunctionalRequirement functionalRequirement : functionalRequirements) {
             //str.add("/ReqWeb/faces/functionalRequirement/index.xhtml");
         }
@@ -106,9 +113,10 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
 
         //str.add("/ReqWeb/faces/nonFunctionalRequirement/index.xhtml");
 
-        nonFunctionalRequirements = ejbService.find(new BigDecimal(1)).getNonFunctionalRequirementCollection();
+        //nonFunctionalRequirements = ejbService.find(new BigDecimal(1)).getNonFunctionalRequirementCollection();
+        nonFunctionalRequirements = projectSelected.getNonFunctionalRequirementCollection();
         RNFunctionalFilter rnffilter = new RNFunctionalFilter();
-        rnffilter.setProject(1);
+        rnffilter.setProject(Integer.parseInt(projectSelected.getIdProject().toString()));
         
         Instalacao = new AltranTreeNode("Instalação", NFR);
         Instalacao.setTreenode(this);
@@ -221,26 +229,38 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
         }
         else if (str.equals(Instalacao.toString()))
         {
+            projectBean.setCateg(true);
+            projectBean.setIdCategNRF(0);
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
         }
         else if (str.equals(Interface.toString()))
         {
+            projectBean.setCateg(true);
+            projectBean.setIdCategNRF(1);
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
         }
         else if (str.equals(Operacionais.toString()))
         {
+            projectBean.setCateg(true);
+            projectBean.setIdCategNRF(2);
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
         }
         else if (str.equals(Politicos.toString()))
         {
+            projectBean.setCateg(true);
+            projectBean.setIdCategNRF(3);
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
         }
         else if (str.equals(Seguranca.toString()))
         {
+            projectBean.setCateg(true);
+            projectBean.setIdCategNRF(4);
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
         }
         else if (str.equals(Usabilidade.toString()))
         {
+            projectBean.setCateg(true);
+            projectBean.setIdCategNRF(5);
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
         }
         else if (d instanceof UseCase) {
