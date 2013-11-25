@@ -6,7 +6,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -165,6 +164,8 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
             AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Usabilidade);
             NR.setTreenode(this);
         }
+        
+        
 
         //id = str.size();
 //        for (int i = str.size() - 1; i >= 0; i--) {
@@ -203,72 +204,64 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
         String str = event.getTreeNode().toString();
         
         Object d = ((AltranTreeNode) event.getTreeNode()).getRealData();
-        System.out.println("seleccionou " + d.getClass());
 
         treeService.setSelected(d);
         
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        //System.out.println(externalContext.getContextName());
+        System.out.println(externalContext.getApplicationContextPath());
+        
         if (str.equals(FR.toString()))
         {
-            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-            externalContext.redirect("/ReqWeb/faces/project/functionalRequirement/index.xhtml");
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/functionalRequirement/index.xhtml");
         }
         else if (str.equals(NFR.toString()))
         {
-            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/index.xhtml");
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
         }
         else if (str.equals(Instalacao.toString()))
         {
-            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/index.xhtml");
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
         }
         else if (str.equals(Interface.toString()))
         {
-            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/index.xhtml");
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
         }
         else if (str.equals(Operacionais.toString()))
         {
-            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/index.xhtml");
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
         }
         else if (str.equals(Politicos.toString()))
         {
-            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/index.xhtml");
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
         }
         else if (str.equals(Seguranca.toString()))
         {
-            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/index.xhtml");
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
         }
         else if (str.equals(Usabilidade.toString()))
         {
-            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/index.xhtml");
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
         }
         else if (d instanceof UseCase) {
             UseCase uc = (UseCase) d;
             ucc = new UseCaseController();
             ucc.setSelected(uc);
-            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-            externalContext.redirect("/ReqWeb/faces/project/useCase/indexByTree.xhtml");
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/useCase/indexByTree.xhtml");
         } else if (d instanceof FunctionalRequirement) {
             FunctionalRequirement fr = (FunctionalRequirement) d;
             //FunctionalRequirementController 
             frc = new FunctionalRequirementController();
             frc.setSelected(fr);
             Object x = treeService.getSelected();
-            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-            externalContext.redirect("/ReqWeb/faces/project/functionalRequirement/indexByTree.xhtml"); //?id=" + fr.getIdFunctionalRequirement());
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/functionalRequirement/indexByTree.xhtml"); //?id=" + fr.getIdFunctionalRequirement());
 
         } else if (d instanceof NonFunctionalRequirement) {
             NonFunctionalRequirement nfr = (NonFunctionalRequirement) d;
             nfrc = new NonFunctionalRequirementController();
             nfrc.setSelected(nfr);
             Object x = treeService.getSelected();
-            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-            externalContext.redirect("/ReqWeb/faces/project/nonFunctionalRequirement/indexByTree.xhtml"); 
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/indexByTree.xhtml"); 
         } else {
 
         }

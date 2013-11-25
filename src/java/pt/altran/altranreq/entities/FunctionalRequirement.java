@@ -97,7 +97,7 @@ public class FunctionalRequirement implements Serializable {
     private BigInteger version;
     @Column(name = "ORDERNUMBER")
     private BigInteger ordernumber;
-    @JoinTable(name = "FUNCTIONAL_ REQ_DEPENDENCE", joinColumns = {
+    @JoinTable(name = "FUNCTIONAL_REQ_DEPENDENCE", joinColumns = {
         @JoinColumn(name = "ID_FUNC_REQUIREMENT_1", referencedColumnName = "ID_FUNCTIONAL_REQUIREMENT")}, inverseJoinColumns = {
         @JoinColumn(name = "ID_FUNC_REQUIREMENT_2", referencedColumnName = "ID_FUNCTIONAL_REQUIREMENT")})
     @ManyToMany

@@ -16,7 +16,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -42,7 +44,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Project.findByBeginDate", query = "SELECT p FROM Project p WHERE p.beginDate = :beginDate"),
     @NamedQuery(name = "Project.findByEndDate", query = "SELECT p FROM Project p WHERE p.endDate = :endDate"),
     @NamedQuery(name = "Project.findByProjectState", query = "SELECT p FROM Project p WHERE p.projectState = :projectState"),
-    @NamedQuery(name = "Project.findByIdProjectManager", query = "SELECT p FROM Project p WHERE p.idProjectManager = :idProjectManager")})
+    @NamedQuery(name = "Project.findByIdProjectManager", query = "SELECT p FROM Project p WHERE p.idProjectManager = :idProjectManager"),
+    @NamedQuery(name = "Project.findByTerminology", query = "SELECT p FROM Project p WHERE p.terminology = :terminology")})
 public class Project implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -73,6 +76,12 @@ public class Project implements Serializable {
     private BigInteger projectState;
     @Column(name = "ID_PROJECT_MANAGER")
     private BigInteger idProjectManager;
+    @Size(max = 50)
+    @Column(name = "TERMINOLOGY")
+    private String terminology;
+    @JoinColumn(name = "ID_ORGANIZATION", referencedColumnName = "ID_ORGANIZATION")
+    @ManyToOne(optional = false)
+    private Organization idOrganization;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProject")
     private Collection<Document> documentCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProject")
@@ -152,6 +161,22 @@ public class Project implements Serializable {
 
     public void setIdProjectManager(BigInteger idProjectManager) {
         this.idProjectManager = idProjectManager;
+    }
+
+    public String getTerminology() {
+        return terminology;
+    }
+
+    public void setTerminology(String terminology) {
+        this.terminology = terminology;
+    }
+
+    public Organization getIdOrganization() {
+        return idOrganization;
+    }
+
+    public void setIdOrganization(Organization idOrganization) {
+        this.idOrganization = idOrganization;
     }
 
     @XmlTransient
