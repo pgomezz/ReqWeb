@@ -42,8 +42,8 @@
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">
-                        <p:button id="createButton" outcome="project/Create" value="#{myBundle.Create}" icon="ui-icon-plus"/>  
-                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":TabProfile:ProjectViewForm" oncomplete="ProjectViewDialog.show()" disabled="#{empty projectController.selected}"/>
+                        <p:button id="createButton" outcome="project/Create" value="#{myBundle.Create}" icon="ui-icon-plus"/> 
+                        <p:commandButton id="viewButton"  icon="ui-icon-search" value="#{myBundle.View}" actionListener="#{projectController.redirect}"/>
                         <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":TabProfile:ProjectEditForm" oncomplete="ProjectEditDialog.show()" disabled="#{empty projectController.selected}"/>
                         <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{projectController.delete}" update=":growl,datalist" disabled="#{empty projectController.selected}"/>
                     </div>
