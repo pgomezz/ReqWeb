@@ -98,7 +98,7 @@ public class NonFunctionalRequirement implements Serializable {
     private BigInteger version;
     @Column(name = "ORDERNUMBER")
     private BigInteger ordernumber;
-    @JoinTable(name = "NON_FUNCTIONAL_REQ_DEPENDENCE", joinColumns = {
+    @JoinTable(name = "NON_FUNCTIONAL_ REQ_DEPENDENCE", joinColumns = {
         @JoinColumn(name = "ID_NON_FUNCTIONAL_REQ_1", referencedColumnName = "ID_NON_FUNC_REQUIREMENT")}, inverseJoinColumns = {
         @JoinColumn(name = "ID_NON_FUNCTIONAL_REQ_2", referencedColumnName = "ID_NON_FUNC_REQUIREMENT")})
     @ManyToMany

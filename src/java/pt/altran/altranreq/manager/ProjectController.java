@@ -3,6 +3,8 @@ package pt.altran.altranreq.manager;
 import java.io.IOException;
 import pt.altran.altranreq.entities.Project;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
 import javax.faces.context.ExternalContext;
@@ -11,9 +13,10 @@ import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
+import pt.altran.altranreq.entities.AltranreqUser;
 import pt.altran.altranreq.services.ProjectService;
 import pt.altran.altranreq.services.ProjectServiceBean;
-import pt.altran.altranreq.services.TreeService;
+import pt.altran.altranreq.services.UserService;
 
 @Named(value = "projectController")
 @ViewScoped
@@ -21,10 +24,13 @@ public class ProjectController extends AbstractController<Project> implements Se
 
     @Inject
     private ProjectService projectService;
+    @Inject 
+    private UserService userService;
+    private AltranreqUser user;
     
     @Inject
     private ProjectServiceBean projectServiceBean;
-    
+
     private int id;
 
     public int getId() {
@@ -35,7 +41,37 @@ public class ProjectController extends AbstractController<Project> implements Se
         this.id = id;
     }
     
+    private Project project;
+
+    public AltranreqUser getUser() {
+        return user;
+    }
+
+    public void setUser(AltranreqUser user) {
+        this.user = user;
+    }
     
+    
+    public List<AltranreqUser> completeUser(String query) { 
+        System.out.println("sugestion");
+
+        List<AltranreqUser> suggestions = new ArrayList<AltranreqUser>();  
+                  
+        for(AltranreqUser p : userService.findAll()) {  
+            if(p.getName().startsWith(query))  
+                suggestions.add(p);  
+        }  
+          
+        return suggestions;  
+    }  
+    public ProjectService getProjectService() {
+        return projectService;
+    }
+
+    public void setProjectService(ProjectService projectService) {
+        this.projectService = projectService;
+    }
+
     public ProjectController() {
         super(Project.class);
     }
@@ -43,26 +79,26 @@ public class ProjectController extends AbstractController<Project> implements Se
     @PostConstruct
     public void init() {
         super.setService(projectService);
+        project = super.prepareCreate(null);
     }
-
+    
     public String getState(int number) {
         return projectService.getProjectStateString(number);
     }
 
-    public String getProjectManagerName(Integer idProjectManager){
-        if (idProjectManager==null) {
+    public String getProjectManagerName(Integer idProjectManager) {
+        if (idProjectManager == null) {
             return ResourceBundle.getBundle("/project").getString("WithoutProjecManager");
         }
         return projectService.getProjectUserName(idProjectManager);
     }
 
+ 
     @Override
     public void saveNew(ActionEvent event) {
-        super.prepareCreate(event);
-        super.saveNew(event); //To change body of generated methods, choose Tools | Templates.
+        setSelected(project);
+        projectService.create(project);
     }
-    
-    
     
     public boolean isProjectType()
     {
@@ -90,6 +126,4 @@ public class ProjectController extends AbstractController<Project> implements Se
         if (option == 2)
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/Edit.xhtml");
     }
-    
-    
 }
