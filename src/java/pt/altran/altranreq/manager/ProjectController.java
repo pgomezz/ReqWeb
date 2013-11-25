@@ -80,11 +80,15 @@ public class ProjectController extends AbstractController<Project> implements Se
     }
     
     
-    public void redirect() throws IOException
+    public void redirect(int option) throws IOException
     {
         projectServiceBean.setSelected(this.getSelected());
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/View.xhtml");
+        
+        if (option == 1)
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/View.xhtml");
+        if (option == 2)
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/Edit.xhtml");
     }
     
     

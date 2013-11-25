@@ -35,20 +35,20 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
 
     @Inject
     private ProjectService ejbService;
-    
+
     @Inject
     private TreeService treeService;
-    
+
     @Inject
     private RNFService rnfService;
-    
+
     @Inject
     private ProjectServiceBean projectBean;
 
     private FunctionalRequirementController frc;
-    
+
     private NonFunctionalRequirementController nfrc;
-    
+
     private UseCaseController ucc;
 
     private AltranTreeNode root;
@@ -82,98 +82,103 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
 
     @PostConstruct
     public void init() {
-        root = new AltranTreeNode("root", null);
-        root.setTreenode(this);
-        FR = new AltranTreeNode("Functional Requirement", root);
-        FR.setTreenode(this);
-        NFR = new AltranTreeNode("Non-Functional Requirement", root);
-        NFR.setTreenode(this);
+
+        AltranTreeNode rootBean = projectBean.getRoot();
+
+        if (rootBean != null) {
+            root = rootBean;
+        } else {
+            root = new AltranTreeNode("root", null);
+            root.setTreenode(this);
+            FR = new AltranTreeNode("Functional Requirement", root);
+            FR.setTreenode(this);
+            NFR = new AltranTreeNode("Non-Functional Requirement", root);
+            NFR.setTreenode(this);
         //str = new ArrayList<String>();
 
         //str.add("/ReqWeb/faces/functionalRequirement/index.xhtml");
-
-        //str.add("/ReqWeb/faces/nonFunctionalRequirement/index.xhtml");
-        Project projectSelected = (Project)projectBean.getSelected();
-        //functionalRequirements = ejbService.find(projectSelected.getIdProject()).getFunctionalRequirementCollection();
-        functionalRequirements = projectSelected.getFunctionalRequirementCollection();
-        for (FunctionalRequirement functionalRequirement : functionalRequirements) {
-            //str.add("/ReqWeb/faces/functionalRequirement/index.xhtml");
-        }
-
-        for (FunctionalRequirement functionalRequirement : functionalRequirements) {
-            AltranTreeNode aux = new AltranTreeNode(functionalRequirement, FR);
-            aux.setTreenode(this);
-            //str.add("/ReqWeb/faces/functionalRequirement/ViewByTree.xhtml");
-            for (UseCase useCase : functionalRequirement.getUseCaseCollection()) {
-                AltranTreeNode UC = new AltranTreeNode(useCase, aux);
-                UC.setTreenode(this);
-                //str.add("/ReqWeb/faces/useCase/ViewByTree.xhtml");
+            //str.add("/ReqWeb/faces/nonFunctionalRequirement/index.xhtml");
+            Project projectSelected = (Project) projectBean.getSelected();
+            //functionalRequirements = ejbService.find(projectSelected.getIdProject()).getFunctionalRequirementCollection();
+            functionalRequirements = projectSelected.getFunctionalRequirementCollection();
+            for (FunctionalRequirement functionalRequirement : functionalRequirements) {
+                //str.add("/ReqWeb/faces/functionalRequirement/index.xhtml");
             }
-        }
+
+            for (FunctionalRequirement functionalRequirement : functionalRequirements) {
+                AltranTreeNode aux = new AltranTreeNode(functionalRequirement, FR);
+                aux.setTreenode(this);
+                //str.add("/ReqWeb/faces/functionalRequirement/ViewByTree.xhtml");
+                for (UseCase useCase : functionalRequirement.getUseCaseCollection()) {
+                    AltranTreeNode UC = new AltranTreeNode(useCase, aux);
+                    UC.setTreenode(this);
+                    //str.add("/ReqWeb/faces/useCase/ViewByTree.xhtml");
+                }
+            }
 
         //str.add("/ReqWeb/faces/nonFunctionalRequirement/index.xhtml");
+            //nonFunctionalRequirements = ejbService.find(new BigDecimal(1)).getNonFunctionalRequirementCollection();
+            nonFunctionalRequirements = projectSelected.getNonFunctionalRequirementCollection();
+            RNFunctionalFilter rnffilter = new RNFunctionalFilter();
+            rnffilter.setProject(Integer.parseInt(projectSelected.getIdProject().toString()));
 
-        //nonFunctionalRequirements = ejbService.find(new BigDecimal(1)).getNonFunctionalRequirementCollection();
-        nonFunctionalRequirements = projectSelected.getNonFunctionalRequirementCollection();
-        RNFunctionalFilter rnffilter = new RNFunctionalFilter();
-        rnffilter.setProject(Integer.parseInt(projectSelected.getIdProject().toString()));
-        
-        Instalacao = new AltranTreeNode("Instalação", NFR);
-        Instalacao.setTreenode(this);
-        Interface = new AltranTreeNode("Interface e Imagem", NFR);
-        Interface.setTreenode(this);
-        Operacionais = new AltranTreeNode("Operacionais", NFR);
-        Operacionais.setTreenode(this);
-        Politicos = new AltranTreeNode("Politicos", NFR);
-        Politicos.setTreenode(this);
-        Seguranca = new AltranTreeNode("Segurança", NFR);
-        Seguranca.setTreenode(this);
-        Usabilidade = new AltranTreeNode("Usabilidade", NFR); 
-        Usabilidade.setTreenode(this);
-        
-        rnffilter.setType(0);
-        nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
-        for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
-            AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Instalacao);
-            NR.setTreenode(this);
+            Instalacao = new AltranTreeNode("Instalação", NFR);
+            Instalacao.setTreenode(this);
+            Interface = new AltranTreeNode("Interface e Imagem", NFR);
+            Interface.setTreenode(this);
+            Operacionais = new AltranTreeNode("Operacionais", NFR);
+            Operacionais.setTreenode(this);
+            Politicos = new AltranTreeNode("Politicos", NFR);
+            Politicos.setTreenode(this);
+            Seguranca = new AltranTreeNode("Segurança", NFR);
+            Seguranca.setTreenode(this);
+            Usabilidade = new AltranTreeNode("Usabilidade", NFR);
+            Usabilidade.setTreenode(this);
+
+            rnffilter.setType(0);
+            nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
+            for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
+                AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Instalacao);
+                NR.setTreenode(this);
+            }
+
+            rnffilter.setType(1);
+            nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
+            for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
+                AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Interface);
+                NR.setTreenode(this);
+            }
+
+            rnffilter.setType(2);
+            nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
+            for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
+                AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Operacionais);
+                NR.setTreenode(this);
+            }
+
+            rnffilter.setType(3);
+            nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
+            for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
+                AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Politicos);
+                NR.setTreenode(this);
+            }
+
+            rnffilter.setType(4);
+            nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
+            for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
+                AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Seguranca);
+                NR.setTreenode(this);
+            }
+
+            rnffilter.setType(5);
+            nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
+            for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
+                AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Usabilidade);
+                NR.setTreenode(this);
+            }
+            
+            
         }
-        
-        rnffilter.setType(1);
-        nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
-        for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
-            AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Interface);
-            NR.setTreenode(this);
-        }
-        
-        rnffilter.setType(2);
-        nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
-        for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
-            AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Operacionais);
-            NR.setTreenode(this);
-        }
-        
-        rnffilter.setType(3);
-        nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
-        for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
-            AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Politicos);
-            NR.setTreenode(this);
-        }
-        
-        rnffilter.setType(4);
-        nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
-        for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
-            AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Seguranca);
-            NR.setTreenode(this);
-        }
-        
-        rnffilter.setType(5);
-        nfrlistfiltrer = rnfService.findRNFByFilter(rnffilter);
-        for (NonFunctionalRequirement nonFunctionalRequirement : nfrlistfiltrer) {
-            AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Usabilidade);
-            NR.setTreenode(this);
-        }
-        
-        
 
         //id = str.size();
 //        for (int i = str.size() - 1; i >= 0; i--) {
@@ -210,60 +215,46 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", event.getTreeNode().toString());
 
         String str = event.getTreeNode().toString();
-        
+
         Object d = ((AltranTreeNode) event.getTreeNode()).getRealData();
 
         treeService.setSelected(d);
         
+        //projectBean.setRoot(root);
+
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         //System.out.println(externalContext.getContextName());
         System.out.println(externalContext.getApplicationContextPath());
-        
-        if (str.equals(FR.toString()))
-        {
+
+        if (str.equals(FR.toString())) {
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/functionalRequirement/index.xhtml");
-        }
-        else if (str.equals(NFR.toString()))
-        {
+        } else if (str.equals(NFR.toString())) {
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
-        }
-        else if (str.equals(Instalacao.toString()))
-        {
+        } else if (str.equals(Instalacao.toString())) {
             projectBean.setCateg(true);
             projectBean.setIdCategNRF(0);
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
-        }
-        else if (str.equals(Interface.toString()))
-        {
+        } else if (str.equals(Interface.toString())) {
             projectBean.setCateg(true);
             projectBean.setIdCategNRF(1);
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
-        }
-        else if (str.equals(Operacionais.toString()))
-        {
+        } else if (str.equals(Operacionais.toString())) {
             projectBean.setCateg(true);
             projectBean.setIdCategNRF(2);
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
-        }
-        else if (str.equals(Politicos.toString()))
-        {
+        } else if (str.equals(Politicos.toString())) {
             projectBean.setCateg(true);
             projectBean.setIdCategNRF(3);
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
-        }
-        else if (str.equals(Seguranca.toString()))
-        {
+        } else if (str.equals(Seguranca.toString())) {
             projectBean.setCateg(true);
             projectBean.setIdCategNRF(4);
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
-        }
-        else if (str.equals(Usabilidade.toString()))
-        {
+        } else if (str.equals(Usabilidade.toString())) {
             projectBean.setCateg(true);
             projectBean.setIdCategNRF(5);
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
-        }
-        else if (d instanceof UseCase) {
+        } else if (d instanceof UseCase) {
             UseCase uc = (UseCase) d;
             ucc = new UseCaseController();
             ucc.setSelected(uc);
@@ -281,7 +272,7 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
             nfrc = new NonFunctionalRequirementController();
             nfrc.setSelected(nfr);
             Object x = treeService.getSelected();
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/indexByTree.xhtml"); 
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/indexByTree.xhtml");
         } else {
 
         }
