@@ -14,7 +14,7 @@ import pt.altran.altranreq.services.ProjectService;
 @ViewScoped
 public class ProjectController extends AbstractController<Project> implements Serializable {
 
-     @Inject
+    @Inject
     private ProjectService projectService;
     
     
@@ -42,5 +42,7 @@ public class ProjectController extends AbstractController<Project> implements Se
     public void saveNew(ActionEvent event) {
         super.prepareCreate(event);
         super.saveNew(event); //To change body of generated methods, choose Tools | Templates.
-    }        
+    }
+    
+    
 }
