@@ -9,7 +9,6 @@ import javax.faces.event.ActionEvent;
 
 import java.util.ResourceBundle;
 import javax.ejb.EJBException;
-import javax.faces.component.UIComponent;
 import pt.altran.altranreq.services.AbstractService;
 
 /**
@@ -42,7 +41,7 @@ public abstract class AbstractController<T> {
         return ejbService;
     }
 
-    protected void setFacade(AbstractService<T> ejbService) {
+    protected void setService(AbstractService<T> ejbService) {
         this.ejbService = ejbService;
     }
 

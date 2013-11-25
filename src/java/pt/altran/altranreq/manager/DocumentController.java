@@ -21,7 +21,7 @@ public class DocumentController extends AbstractController<Document> implements 
 
     @PostConstruct
     public void init() {
-        super.setFacade(ejbService);
+        super.setService(ejbService);
     }
 
 }

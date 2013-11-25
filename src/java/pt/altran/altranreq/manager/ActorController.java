@@ -21,7 +21,7 @@ public class ActorController extends AbstractController<Actor> implements Serial
 
     @PostConstruct
     public void init() {
-        super.setFacade(ejbService);
+        super.setService(ejbService);
     }
 
 }

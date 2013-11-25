@@ -25,7 +25,7 @@ public class UseCaseController extends AbstractController<UseCase> implements Se
 
     @PostConstruct
     public void init() {
-        super.setFacade(ejbService);
+        super.setService(ejbService);
     }
     
     public boolean isUseCaseType()

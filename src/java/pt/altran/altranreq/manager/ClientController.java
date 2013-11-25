@@ -23,7 +23,7 @@ public class ClientController extends AbstractController<Client> implements Seri
     
     @PostConstruct
     public void init() {
-        super.setFacade(ejbService);
+        super.setService(ejbService);
     }
 
 }

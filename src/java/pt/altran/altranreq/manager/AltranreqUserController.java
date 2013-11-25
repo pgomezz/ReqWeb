@@ -22,7 +22,7 @@ public class AltranreqUserController extends AbstractController<AltranreqUser> i
 
     @PostConstruct
     public void init() {
-        super.setFacade(ejbService);
+        super.setService(ejbService);
     }
 
 }

@@ -39,7 +39,7 @@ public class FunctionalRequirementController extends AbstractController<Function
 
     @PostConstruct
     public void init() {
-        super.setFacade(ejbFacade);
+        super.setService(ejbFacade);
     }  
 
     public boolean isFunctionalRequirementType()

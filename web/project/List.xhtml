@@ -36,13 +36,13 @@
                 </p:column>
                 <p:column>
                     <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListProjectTitle_idProjectManager}"/>
+                        <h:outputText value="#{myBundle.ListProjectTitle_ProjectManager}"/>
                     </f:facet>
                     <h:outputText value="#{projectController.getProjectManagerName(item.idProjectManager)}"/>
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">
-                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{projectController.prepareCreate}" update=":TabProfile:ProjectCreateForm" oncomplete="ProjectCreateDialog.show()"/>
+                        <p:button id="createButton" outcome="project/Create" value="#{myBundle.Create}" icon="ui-icon-plus"/>  
                         <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":TabProfile:ProjectViewForm" oncomplete="ProjectViewDialog.show()" disabled="#{empty projectController.selected}"/>
                         <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":TabProfile:ProjectEditForm" oncomplete="ProjectEditDialog.show()" disabled="#{empty projectController.selected}"/>
                         <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{projectController.delete}" update=":growl,datalist" disabled="#{empty projectController.selected}"/>

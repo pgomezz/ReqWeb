@@ -21,7 +21,7 @@ public class AltranreqRoleController extends AbstractController<AltranreqRole> i
 
     @PostConstruct
     public void init() {
-        super.setFacade(ejbService);
+        super.setService(ejbService);
     }
 
 }

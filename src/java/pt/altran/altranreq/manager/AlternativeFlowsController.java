@@ -21,7 +21,7 @@ public class AlternativeFlowsController extends AbstractController<AlternativeFl
 
     @PostConstruct
     public void init() {
-        super.setFacade(ejbService);
+        super.setService(ejbService);
     }
 
 }

@@ -24,7 +24,7 @@ public class BusinessCategoryController extends AbstractController<BusinessCateg
 
     @PostConstruct
     public void init() {
-        super.setFacade(ejbService);
+        super.setService(ejbService);
     }
 
 }

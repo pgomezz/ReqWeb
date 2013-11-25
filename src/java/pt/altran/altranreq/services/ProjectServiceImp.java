@@ -31,8 +31,6 @@ import pt.altran.altranreq.entities.ProjectUser;
 @Stateless
 public class ProjectServiceImp extends AbstractServiceImp<Project> implements ProjectService {
 
-    static private Properties projectStateStrings = null;
-
     @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
 
@@ -63,7 +61,7 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
     @Override
     public String getProjectUserName(int idUser) {
         try {
-            AltranreqUser altranreqUser = getEntityManager().find(AltranreqUser.class, idUser);
+            AltranreqUser altranreqUser = getEntityManager().find(AltranreqUser.class, BigDecimal.valueOf(idUser));
             String nome = altranreqUser.getName();
             return nome;
         } catch (IllegalArgumentException ia) {
@@ -75,15 +73,15 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
     public String getProjectStateString(int projectStateIndice) {
         switch (projectStateIndice) {
             case 0:
-                return ResourceBundle.getBundle("/projectstates").getString("ongoing");
+                return ResourceBundle.getBundle("/project").getString("State_ongoing");
             case 1:
-                return ResourceBundle.getBundle("/projectstates").getString("standby");
+                return ResourceBundle.getBundle("/project").getString("State_standby");
             case 2:
-                return ResourceBundle.getBundle("/projectstates").getString("done");
+                return ResourceBundle.getBundle("/project").getString("State_done");
             case 3:
-                return ResourceBundle.getBundle("/projectstates").getString("mantainence");
+                return ResourceBundle.getBundle("/project").getString("State_mantainence");
             default:
-                return ResourceBundle.getBundle("/projectstates").getString("undefined");
+                return ResourceBundle.getBundle("/project").getString("State_undefined");
         }
 
     }

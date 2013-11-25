@@ -25,7 +25,7 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
 
     @PostConstruct
     public void init() {
-        super.setFacade(ejbService);
+        super.setService(ejbService);
     }
     
     public boolean isNFRType()
