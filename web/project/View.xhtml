@@ -1,52 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-    
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
 
-    <ui:composition>
-        <p:dialog id="ProjectViewDlg" widgetVar="ProjectViewDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.ViewProjectTitle}" closeOnEscape="true">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template.xhtml">
 
-            <h:form id="ProjectViewForm">
+    <ui:define name="body">
 
-                <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{projectController.selected != null}">
+        <h:form id="ProjectViewDetails">
 
-                        <h:outputText value="#{myBundle.ViewProjectLabel_idProject}"/>
-                        <h:outputText value="#{projectController.selected.idProject}" title="#{myBundle.ViewProjectTitle_idProject}"/>
+            <h:panelGroup rendered="#{projectController.projectType}">
+                <p:panelGrid columns="2">
 
-                        <h:outputText value="#{myBundle.ViewProjectLabel_name}"/>
-                        <h:outputText value="#{projectController.selected.name}" title="#{myBundle.ViewProjectTitle_name}"/>
+                    <h:outputText value="#{myBundle.ViewProjectLabel_idProject}"/>
+                    <h:outputText value="#{projectController.project.idProject}" title="#{myBundle.ViewProjectTitle_idProject}"/>
 
-                        <h:outputText value="#{myBundle.ViewProjectLabel_description}"/>
-                        <h:outputText value="#{projectController.selected.description}" title="#{myBundle.ViewProjectTitle_description}"/>
+                    <h:outputText value="#{myBundle.ViewProjectLabel_name}"/>
+                    <h:outputText value="#{projectController.project.name}" title="#{myBundle.ViewProjectTitle_name}"/>
 
-                        <h:outputText value="#{myBundle.ViewProjectLabel_beginDate}"/>
-                        <h:outputText value="#{projectController.selected.beginDate}" title="#{myBundle.ViewProjectTitle_beginDate}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                        </h:outputText>
+                    <h:outputText value="#{myBundle.ViewProjectLabel_description}"/>
+                    <h:outputText value="#{projectController.project.description}" title="#{myBundle.ViewProjectTitle_description}"/>
 
-                        <h:outputText value="#{myBundle.ViewProjectLabel_endDate}"/>
-                        <h:outputText value="#{projectController.selected.endDate}" title="#{myBundle.ViewProjectTitle_endDate}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                        </h:outputText>
+                    <h:outputText value="#{myBundle.ViewProjectLabel_beginDate}"/>
+                    <h:outputText value="#{projectController.project.beginDate}" title="#{myBundle.ViewProjectTitle_beginDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
 
-                        <h:outputText value="#{myBundle.ViewProjectLabel_projectState}"/>
-                        <h:outputText value="#{projectController.selected.projectState}" title="#{myBundle.ViewProjectTitle_projectState}"/>
+                    <h:outputText value="#{myBundle.ViewProjectLabel_endDate}"/>
+                    <h:outputText value="#{projectController.project.endDate}" title="#{myBundle.ViewProjectTitle_endDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
 
-                        <h:outputText value="#{myBundle.ViewProjectLabel_idProjectManager}"/>
-                        <h:outputText value="#{projectController.selected.idProjectManager}" title="#{myBundle.ViewProjectTitle_idProjectManager}"/>
-                    </p:panelGrid>
-                    <p:commandButton value="#{myBundle.Close}" onclick="ProjectViewDialog.hide()"/>
-                </h:panelGroup>
+                    <h:outputText value="#{myBundle.ViewProjectLabel_projectState}"/>
+                    <h:outputText value="#{projectController.project.projectState}" title="#{myBundle.ViewProjectTitle_projectState}"/>
 
-            </h:form>
+                    <h:outputText value="#{myBundle.ViewProjectLabel_idProjectManager}"/>
+                    <h:outputText value="#{projectController.project.idProjectManager}" title="#{myBundle.ViewProjectTitle_idProjectManager}"/>
+                </p:panelGrid>
+                <p:commandButton value="#{myBundle.Close}" onclick="ProjectViewDialog.hide()"/>
+            </h:panelGroup>        
 
-        </p:dialog>
+        </h:form>
 
-    </ui:composition>
+    </ui:define>
 
-</html>
+</ui:composition>
