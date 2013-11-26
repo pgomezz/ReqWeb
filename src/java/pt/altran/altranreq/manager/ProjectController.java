@@ -14,6 +14,7 @@ import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
 import pt.altran.altranreq.entities.AltranreqUser;
+import pt.altran.altranreq.services.ProjectFilter;
 import pt.altran.altranreq.services.ProjectService;
 import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.UserService;
@@ -99,6 +100,14 @@ public class ProjectController extends AbstractController<Project> implements Se
         setSelected(project);
         projectService.create(project);
     }
+    
+    public List<Project> getProjectsbyUser(){
+        ProjectFilter projectFilter = new ProjectFilter();
+        projectFilter.setUser(1);
+        return projectService.findProjectByFilter(projectFilter);
+    }
+    
+    
     
     public boolean isProjectType()
     {

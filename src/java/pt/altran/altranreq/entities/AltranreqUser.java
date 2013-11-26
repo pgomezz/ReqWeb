@@ -8,6 +8,7 @@ package pt.altran.altranreq.entities;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -35,11 +36,14 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "AltranreqUser.findByIdUser", query = "SELECT a FROM AltranreqUser a WHERE a.idUser = :idUser"),
     @NamedQuery(name = "AltranreqUser.findByName", query = "SELECT a FROM AltranreqUser a WHERE a.name = :name"),
     @NamedQuery(name = "AltranreqUser.findByPassword", query = "SELECT a FROM AltranreqUser a WHERE a.password = :password"),
-    @NamedQuery(name = "AltranreqUser.UserPassword", query = "SELECT a FROM AltranreqUser a WHERE a.username = :username AND a.password = :password"),
     @NamedQuery(name = "AltranreqUser.findByUsername", query = "SELECT a FROM AltranreqUser a WHERE a.username = :username"),
     @NamedQuery(name = "AltranreqUser.findByEmail", query = "SELECT a FROM AltranreqUser a WHERE a.email = :email"),
     @NamedQuery(name = "AltranreqUser.findByMobile", query = "SELECT a FROM AltranreqUser a WHERE a.mobile = :mobile"),
-    @NamedQuery(name = "AltranreqUser.findByIsAdmin", query = "SELECT a FROM AltranreqUser a WHERE a.isAdmin = :isAdmin")})
+    @NamedQuery(name = "AltranreqUser.findByIsAdmin", query = "SELECT a FROM AltranreqUser a WHERE a.isAdmin = :isAdmin"),
+    @NamedQuery(name = "AltranreqUser.findByAge", query = "SELECT a FROM AltranreqUser a WHERE a.age = :age"),
+    @NamedQuery(name = "AltranreqUser.findByAddress", query = "SELECT a FROM AltranreqUser a WHERE a.address = :address"),
+    @NamedQuery(name = "AltranreqUser.findByCity", query = "SELECT a FROM AltranreqUser a WHERE a.city = :city"),
+    @NamedQuery(name = "AltranreqUser.findByZipCode", query = "SELECT a FROM AltranreqUser a WHERE a.zipCode = :zipCode")})
 public class AltranreqUser implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -78,6 +82,17 @@ public class AltranreqUser implements Serializable {
     @NotNull
     @Column(name = "IS_ADMIN")
     private char isAdmin;
+    @Column(name = "AGE")
+    private BigInteger age;
+    @Size(max = 200)
+    @Column(name = "ADDRESS")
+    private String address;
+    @Size(max = 100)
+    @Column(name = "CITY")
+    private String city;
+    @Size(max = 50)
+    @Column(name = "ZIP_CODE")
+    private String zipCode;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "altranreqUser")
     private Collection<ProjectUser> projectUserCollection;
 
@@ -104,8 +119,6 @@ public class AltranreqUser implements Serializable {
     public void setIntIdUser(int idUser){
         setIdUser(BigDecimal.valueOf(idUser));
     }
-    
-    
     
     public BigDecimal getIdUser() {
         return idUser;
@@ -161,6 +174,38 @@ public class AltranreqUser implements Serializable {
 
     public void setIsAdmin(char isAdmin) {
         this.isAdmin = isAdmin;
+    }
+
+    public BigInteger getAge() {
+        return age;
+    }
+
+    public void setAge(BigInteger age) {
+        this.age = age;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
     @XmlTransient
