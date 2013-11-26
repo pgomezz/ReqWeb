@@ -4,12 +4,12 @@ import java.util.Collection;
 import java.util.List;
 import pt.altran.altranreq.entities.AltranreqRole;
 import pt.altran.altranreq.entities.Privilege;
-import pt.altran.altranreq.entities.Project;
+import pt.altran.altranreq.entities.ProjectUser;
 
 
 public interface AuthorizationService {
 
-    public List<Project> getProjects(int userID);
+    public List<ProjectUser> getProjects(int userID);
 
     public AltranreqRole getProjectRole(int projectID, int userID);
 
