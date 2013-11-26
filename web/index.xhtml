@@ -15,9 +15,6 @@
             <p:tabView id="TabProfile" activeIndex="0">
                 <p:tab title="#{myBundle.ProjectsTab}" id="TabProjects" >
                     <ui:include src="/project/List.xhtml"/>
-                    <ui:include src="/project/View.xhtml"/>
-                    <ui:include src="/project/Edit.xhtml"/>
-                    <ui:include src="/project/CreateOld.xhtml"/>
                 </p:tab>
                 <p:tab title="#{myBundle.Administration}" id="TabAdministration" disabled="true">
                     Falta o conteúdo de administração basta colocar o metodo do ben com acesso 
@@ -26,9 +23,4 @@
             </p:tabView>
         </ui:define>
     </ui:composition>
-
-
-
-
-
 </html>

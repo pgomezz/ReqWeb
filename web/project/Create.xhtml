@@ -4,7 +4,8 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      >
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -32,16 +33,23 @@
                             <p:outputLabel value="#{myBundle.CreateProjectLabel_endDate}" for="endDate" />
                             <p:calendar id="endDate" pattern="MM/dd/yyyy HH:mm:ss" value="#{projectController.selected.endDate}" title="#{myBundle.EditProjectTitle_endDate}"  showOn="button"/>
 
-                            <p:outputLabel value="#{myBundle.CreateProjectLabel_projectState}" for="projectState" />
-                            <p:inputText id="projectState" value="#{projectController.selected.projectState}" title="#{myBundle.CreateProjectTitle_projectState}" required="true" requiredMessage="#{myBundle.CreateProjectRequiredMessage_projectState}"/>
+                            <h:outputText value="#{project.State}" />
+                            <p:selectOneMenu value="#{projectController.selected.projectState}">            
+                                <f:selectItem itemLabel="#{project.SelecteOne}" itemValue="" />
+                                <f:selectItem itemLabel="#{project.State_ongoing}" itemValue="0" />
+                                <f:selectItem itemLabel="#{project.State_standby}" itemValue="1" />
+                                <f:selectItem itemLabel="#{project.State_done}" itemValue="2" />
+                                <f:selectItem itemLabel="#{project.State_mantainence}" itemValue="3" />
+                            </p:selectOneMenu>                            
 
-                            <p:outputLabel value="#{myBundle.CreateProjectLabel_idProjectManager}" for="idProjectManager" />
-                            <p:inputText id="idProjectManager" value="#{projectController.selected.idProjectManager}" title="#{myBundle.CreateProjectTitle_idProjectManager}"/>
+                            <h:outputLabel value="#{project.ProjectManager}" for="idProjectManager"/>  
+                            <p:autoComplete value="#{projectController.selected.idProjectManager}" id="basicPojo" completeMethod="#{projectController.completeUser}"  
+                                            var="u" itemValue="#{u.intIdUser}" itemLabel="#{u.name}" converter="#{altranreqUserConverter}" forceSelection="true"/>  
+
                         </p:panelGrid>
-                        <p:commandButton actionListener="#{projectController.saveNew}" value="#{myBundle.Save}" ajax="false" />
+                        <p:commandButton actionListener="#{projectController.saveNew}" action="/index"  value="#{myBundle.Save}"  ajax="true"/>
                         <p:commandButton value="#{myBundle.Cancel}" />
                     </h:panelGroup>
-
                 </h:form>
             </p:panel>
         </ui:define>

@@ -51,7 +51,6 @@ public class Project implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "ID_PROJECT")
     private BigDecimal idProject;
     @Basic(optional = false)
@@ -162,7 +161,10 @@ public class Project implements Serializable {
     public void setIdProjectManager(BigInteger idProjectManager) {
         this.idProjectManager = idProjectManager;
     }
-
+    public void setIdProjectManager(int idProjectManager) {
+        this.setIdProjectManager(BigInteger.valueOf(idProjectManager));
+    }
+    
     public String getTerminology() {
         return terminology;
     }
@@ -243,6 +245,7 @@ public class Project implements Serializable {
         }
         return true;
     }
+    
 
     @Override
     public String toString() {

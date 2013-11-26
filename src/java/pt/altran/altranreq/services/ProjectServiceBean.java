@@ -11,6 +11,7 @@ import javax.enterprise.context.Dependent;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.ws.rs.core.Context;
+import pt.altran.altranreq.manager.util.AltranTreeNode;
 
 /**
  *
@@ -29,6 +30,17 @@ public class ProjectServiceBean implements Serializable{
    
    @Context
    private boolean Categ;
+   
+   @Context
+   private AltranTreeNode root;
+
+    public AltranTreeNode getRoot() {
+        return root;
+    }
+
+    public void setRoot(AltranTreeNode root) {
+        this.root = root;
+    }
 
     public boolean isCateg() {
         return Categ;
@@ -41,6 +53,7 @@ public class ProjectServiceBean implements Serializable{
     public ProjectServiceBean() {
         selected = null;
         Categ = false;
+        root = null;
     }
 
     public int getIdCategNRF() {

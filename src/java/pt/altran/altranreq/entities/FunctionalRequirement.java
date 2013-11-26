@@ -51,7 +51,6 @@ public class FunctionalRequirement implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "ID_FUNCTIONAL_REQUIREMENT")
     private BigDecimal idFunctionalRequirement;
     @Basic(optional = false)
@@ -97,7 +96,7 @@ public class FunctionalRequirement implements Serializable {
     private BigInteger version;
     @Column(name = "ORDERNUMBER")
     private BigInteger ordernumber;
-    @JoinTable(name = "FUNCTIONAL_REQ_DEPENDENCE", joinColumns = {
+    @JoinTable(name = "FUNCTIONAL_ REQ_DEPENDENCE", joinColumns = {
         @JoinColumn(name = "ID_FUNC_REQUIREMENT_1", referencedColumnName = "ID_FUNCTIONAL_REQUIREMENT")}, inverseJoinColumns = {
         @JoinColumn(name = "ID_FUNC_REQUIREMENT_2", referencedColumnName = "ID_FUNCTIONAL_REQUIREMENT")})
     @ManyToMany
