@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 import pt.altran.altranreq.entities.FunctionalRequirement;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
@@ -103,24 +102,6 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp<Function
         List<FunctionalRequirement> z = getEntityManager().createQuery(query).getResultList();
 
         return z;
-    }
-
-    @Override
-    public String getRequirementStateString(int requirementStateIndice) {
-    switch (requirementStateIndice) {
-            case 0:
-                return ResourceBundle.getBundle("/bundle_requirement").getString("State_active");
-            case 1:
-                return ResourceBundle.getBundle("/bundle_requirement").getString("State_versioned");
-            case 2:
-                return ResourceBundle.getBundle("/bundle_requirement").getString("State_cancelled");
-            case 3:
-                return ResourceBundle.getBundle("/bundle_requirement").getString("State_done");
-            default:
-                return ResourceBundle.getBundle("/bundle_requirement").getString("State_undefined");
-        }    
-    
-    
     }
 
 }

@@ -12,13 +12,5 @@
             <base-name>/project</base-name>
             <var>project</var>
         </resource-bundle>
-        <resource-bundle>
-            <base-name>/bundle_nfrType</base-name>
-            <var>bundle_nfrType</var>
-        </resource-bundle>
-        <resource-bundle>
-            <base-name>/bundle_requirement</base-name>
-            <var>bundle_requirement</var>
-        </resource-bundle>
     </application>
 </faces-config>

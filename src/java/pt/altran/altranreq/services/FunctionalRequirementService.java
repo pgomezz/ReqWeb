@@ -20,5 +20,4 @@ public interface FunctionalRequirementService extends AbstractService<Functional
     
     
     List<FunctionalRequirement> findFunctionalRequirementByFilter(FunctionalRequirementFilter filter);
-    String getRequirementStateString(int requirementStateIndice);
 }

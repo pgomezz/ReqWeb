@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import pt.altran.altranreq.entities.NonFunctionalRequirement;
 import pt.altran.altranreq.entities.Project;
 import java.util.List;
-import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
@@ -112,46 +111,6 @@ public class RNFServiceImp extends AbstractServiceImp<NonFunctionalRequirement> 
         
         
        return (List<NonFunctionalRequirement>)us.getNonFunctionalRequirementCollection();
-    
-    }
-
-    @Override
-    public String getRequirementStateString(int requirementStateIndice) {
-    switch (requirementStateIndice) {
-            case 0:
-                return ResourceBundle.getBundle("/bundle_requirement").getString("State_active");
-            case 1:
-                return ResourceBundle.getBundle("/bundle_requirement").getString("State_versioned");
-            case 2:
-                return ResourceBundle.getBundle("/bundle_requirement").getString("State_cancelled");
-            case 3:
-                return ResourceBundle.getBundle("/bundle_requirement").getString("State_done");
-            default:
-                return ResourceBundle.getBundle("/bundle_requirement").getString("State_undefined");
-        }  
-    
-    
-    }
-
-    @Override
-    public String getRequirementTypeString(int requirementTypeIndice) {
-    switch (requirementTypeIndice) {
-            case 0:
-                return ResourceBundle.getBundle("/bundle_nfrType").getString("Type_usability");
-            case 1:
-                return ResourceBundle.getBundle("/bundle_nfrType").getString("Type_interface");
-            case 2:
-                return ResourceBundle.getBundle("/bundle_nfrType").getString("Type_operational");
-            case 3:
-                return ResourceBundle.getBundle("/bundle_nfrType").getString("Type_install");
-            case 4:
-                return ResourceBundle.getBundle("/bundle_nfrType").getString("Type_security");
-            case 5:
-                return ResourceBundle.getBundle("/bundle_nfrType").getString("Type_politic");
-            default:
-                return ResourceBundle.getBundle("/bundle_nfrType").getString("State_undefined");
-        }
-    
     
     }
 

@@ -1,20 +1,13 @@
 package pt.altran.altranreq.manager;
 
-import java.io.IOException;
 import pt.altran.altranreq.entities.NonFunctionalRequirement;
 import java.io.Serializable;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
 import pt.altran.altranreq.entities.Project;
-import pt.altran.altranreq.services.FunctionalRequirementServiceBean;
 import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.RNFService;
 import pt.altran.altranreq.services.RNFunctionalFilter;
@@ -32,9 +25,6 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
     
     @Inject
     private ProjectServiceBean projectBean;
-    
-    
-    private NonFunctionalRequirement nfrequirement;
 
     public NonFunctionalRequirementController() {
         super(NonFunctionalRequirement.class);
@@ -43,7 +33,6 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
     @PostConstruct
     public void init() {
         super.setService(ejbService);
-        nfrequirement = super.prepareCreate(null);
     }
     
     public boolean isNFRType()
@@ -77,26 +66,6 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
         
         
         //return items;
-    }
-    
-    public String getState(int number) {
-        return ejbService.getRequirementStateString(number);
-    }
-    public String getType(int number) {
-        return ejbService.getRequirementTypeString(number);
-    }
-    
-    
-    @Override
-    public void saveNew(ActionEvent event) {
-        setSelected(nfrequirement);
-        ejbService.create(nfrequirement);
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        try {
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
-        } catch (IOException ex) {
-            Logger.getLogger(FunctionalRequirementController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
 }
