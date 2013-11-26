@@ -36,4 +36,5 @@
         <property name="driverClass" value="oracle.jdbc.OracleDriver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="miguel_local" object-type="user" pool-name="oracle-thin_XE_altranPool_1"/>
+    <jdbc-resource enabled="true" jndi-name="server" object-type="user" pool-name="oracle-thin_XE_altranPool"/>
 </resources>
