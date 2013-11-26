@@ -6,55 +6,32 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <title><ui:insert name="title">#{myBundle.AppName}</ui:insert></title>
         <h:outputStylesheet library="css" name="pfcrud.css"/>
         <h:outputScript library="scripts" name="pfcrud.js"/>
-
-        <h:outputStylesheet name="css/tab_view_align_right.css"/>
-
     </h:head>
 
     <h:body>
         <p:growl id="growl" life="3000"/>
+       
         <p:layout fullPage="true">
-            <p:layoutUnit position="north" size="100" header="#{myBundle.AppName}">
-                <!-- Menu here. Also a layout and a way to log a user out -->
-                <ui:include src="/admin/menuTab.xhtml"/>
+            <!--<p:layoutUnit position="north" size="200">
+             Menu here. Also a layout and a way to log a user out 
                 
-                <h:form>
-                <p:tabView id="tabView">
-                    <p:tab id="tab1" title="Projectos">
-                        <h:panelGrid columns="2" cellpadding="10">
-                            <p:graphicImage id="tab1Img" value="/resources/images/altran/LogoAltran.jpg" />
-                            <h:outputText id="tab1Text"
-                                          value="This is the Project Side!!!!" />
-                        </h:panelGrid>
-                    </p:tab>
-                    <p:tab id="tab2" title="Admistração">
-                        <h:panelGrid columns="2" cellpadding="10">
-                            <p:graphicImage id="tab2Img" value="/resources/images/altran/LogoAltran.jpg" />
-                            <h:outputText id="tab2Text" value="This is the Admin Side!!!"/>
-                        </h:panelGrid>
-                    </p:tab>
-                </p:tabView>
-                    </h:form>
-            </p:layoutUnit>
-            <p:layoutUnit position="west" size="300">
+            </p:layoutUnit>-->
+            
+           <!-- <p:layoutUnit position="west" size="300">
                 <ui:include src="/admin/accordion.xhtml"/>
-            </p:layoutUnit>
-
-            <p:layoutUnit position="east" size="50"/>
-
-            <p:layoutUnit position="south" size="60">
-                <ui:insert name="footer"/>
-            </p:layoutUnit>
-
-            <p:layoutUnit position="center">
+            </p:layoutUnit>-->
+            
+           <p:layoutUnit position="center" style="border: none;">
+                <ui:include src="/admin/altranLogo.xhtml"/>
+                <ui:include src="/admin/breadCrumb.xhtml"/>
                 <ui:insert name="body"/>
+                <ui:include src="/admin/menuTab.xhtml"/>
             </p:layoutUnit>
-
+           
         </p:layout>
-
     </h:body>
 
 </html>
