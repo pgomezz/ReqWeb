@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="AltranreqUserViewDlg" widgetVar="AltranreqUserViewDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.ViewAltranreqUserTitle}" closeOnEscape="true">
+
+            <h:form id="AltranreqUserViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{altranreqUserController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewAltranreqUserLabel_idUser}"/>
+                        <h:outputText value="#{altranreqUserController.selected.idUser}" title="#{myBundle.ViewAltranreqUserTitle_idUser}"/>
+
+                        <h:outputText value="#{myBundle.ViewAltranreqUserLabel_name}"/>
+                        <h:outputText value="#{altranreqUserController.selected.name}" title="#{myBundle.ViewAltranreqUserTitle_name}"/>
+
+                        <h:outputText value="#{myBundle.ViewAltranreqUserLabel_password}"/>
+                        <h:outputText value="#{altranreqUserController.selected.password}" title="#{myBundle.ViewAltranreqUserTitle_password}"/>
+
+                        <h:outputText value="#{myBundle.ViewAltranreqUserLabel_username}"/>
+                        <h:outputText value="#{altranreqUserController.selected.username}" title="#{myBundle.ViewAltranreqUserTitle_username}"/>
+
+                        <h:outputText value="#{myBundle.ViewAltranreqUserLabel_email}"/>
+                        <h:outputText value="#{altranreqUserController.selected.email}" title="#{myBundle.ViewAltranreqUserTitle_email}"/>
+
+                        <h:outputText value="#{myBundle.ViewAltranreqUserLabel_mobile}"/>
+                        <h:outputText value="#{altranreqUserController.selected.mobile}" title="#{myBundle.ViewAltranreqUserTitle_mobile}"/>
+
+                        <h:outputText value="#{myBundle.ViewAltranreqUserLabel_isAdmin}"/>
+                        <h:outputText value="#{altranreqUserController.selected.isAdmin}" title="#{myBundle.ViewAltranreqUserTitle_isAdmin}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="AltranreqUserViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

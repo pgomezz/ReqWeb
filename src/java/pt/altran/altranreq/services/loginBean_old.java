@@ -7,7 +7,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.context.ExternalContext;
 import pt.altran.altranreq.entities.AltranreqUser;
 
 import javax.faces.context.FacesContext;
@@ -24,7 +23,7 @@ import pt.altran.altranreq.entities.Project;
 @Named
 @SessionScoped
 //@Stateless
-public class loginBean implements Serializable {
+public class loginBean_old implements Serializable {
 
     private AltranreqUser user;
     private String username;
@@ -35,13 +34,13 @@ public class loginBean implements Serializable {
     RequestContext context;
     HttpSession session;
     String originalURL = "faces/index.xhtml";
-    String original = "faces/login.xhtml";
+    String original = "faces/login/login.xhtml";
 
     @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
     //private Object isAdmin;
 
-    public loginBean() {
+    public loginBean_old() {
         this.user = null;
         this.username = null;
         this.password = null;
@@ -91,17 +90,16 @@ public class loginBean implements Serializable {
         return null;
     }
 
-
-    public String login() {
-        RequestContext context = RequestContext.getCurrentInstance();
-        FacesMessage msg = null;
-        boolean loggedIn = false;
-          AltranreqUser u = (AltranreqUser) em.
-                createNamedQuery("AltranreqUser.findByUsername").
-                setParameter("username", username).
-                getSingleResult();
-     
-        if (username.equals(u.getUsername()) && password.equals(u.getPassword())){ //username.equals("bb") && password.equals("bb")
+    //  @WebMethod  
+    public void login2(ActionEvent e) {
+        this.context = RequestContext.getCurrentInstance();
+        FacesMessage msg;
+        boolean loggedIn;
+        /*if(username.equals(null))
+         {          
+         msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login error", "Deve inserir um Username e Password válido."); 
+         }*/
+        if (valid) { //username.equals("bb") && password.equals("bb")
             loggedIn = true;
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem-vindo", username);
             try {
@@ -109,19 +107,65 @@ public class loginBean implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext().redirect(originalURL);
             } catch (IOException ex) {
                 Logger.getLogger(AuthenticationServiceImp.class.getName()).log(Level.SEVERE, null, ex);
-            }      
-            System.out.println("Login Sucess");       
+            }
+            //   FacesContext.getCurrentInstance().getExternalContext().redirect(originalURL);
+            // originalURL="faces/index.xhtml";
+            System.out.println("Login Sucess");
+            //return new AltranreqUser();
+            //  return true;
+        } else {
+            loggedIn = false;
+            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login error", "Username e/ou Password inválidos.");
+            /*try {
+             msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login error", "Username e/ou Password inválidos."); 
+             //   this.originalURL = request.getContextPath() + "home.xhtml";
+             FacesContext.getCurrentInstance().getExternalContext().redirect(original);
+             } catch (IOException ex) {
+             Logger.getLogger(AuthenticationServiceImp.class.getName()).log(Level.SEVERE, null, ex);
+             }*/
+            //  username.equals("");
+            // password.equals("");
+            System.out.println("Login Failed");
+            // return false;
+            //  return null;
+        }
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        context.addCallbackParam("loggedIn", loggedIn);
+        //  context.addCallbackParam("originalURL", originalURL);
+        //System.out.println(""+em.createQuery("AltranreqUser.findByUsername").getFirstResult());
+
+    }
+
+    public String login() {
+        this.context = RequestContext.getCurrentInstance();
+        FacesMessage msg = null;
+        boolean loggedIn = false;
+        AltranreqUser u = (AltranreqUser) em.
+                createNamedQuery("AltranreqUser.findByUsername").
+                setParameter("username", username).
+                getSingleResult();
+
+        if (username.equals(u.getUsername()) && password.equals(u.getPassword())) { //username.equals("bb") && password.equals("bb")
+            loggedIn = true;
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem-vindo", username);
+            try {
+                //   this.originalURL = request.getContextPath() + "home.xhtml";
+                FacesContext.getCurrentInstance().getExternalContext().redirect(originalURL);
+            } catch (IOException ex) {
+                Logger.getLogger(AuthenticationServiceImp.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            System.out.println("Login Sucess");
         } else {
             loggedIn = false;
             msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login error", "Username e/ou Password inválidos.");
             System.out.println("Login Failed");
-             return "fail";
+            return "fail";
         }
         FacesContext.getCurrentInstance().addMessage(null, msg);
         context.addCallbackParam("loggedIn", loggedIn);
         return "success";
     }
-     
+
     public boolean isValid() {
         AuthenticationService s = null;
         this.user = s.Login(this.username, this.password);
@@ -147,45 +191,38 @@ public class loginBean implements Serializable {
 
     }
 
-    public BigDecimal getUserID()
-    {
-       RequestContext context = RequestContext.getCurrentInstance();
-      // ExternalContext a;
-      // a.
-        FacesMessage msg = null;
-        boolean loggedIn = false;
-          AltranreqUser u = (AltranreqUser) em.
+    public BigDecimal getUserID() {
+        this.context = RequestContext.getCurrentInstance();
+        /* FacesMessage msg = null;
+         boolean loggedIn = false;*/
+        AltranreqUser u = (AltranreqUser) em.
                 createNamedQuery("AltranreqUser.findByUsername").
                 setParameter("username", username).
-                getSingleResult(); 
-          return u.getIdUser();
+                getSingleResult();
+        return u.getIdUser();
     }
-    
-   public String getNameUser()
-    {
-       RequestContext context = RequestContext.getCurrentInstance();
-        FacesMessage msg = null;
-        boolean loggedIn = false;
-          AltranreqUser u = (AltranreqUser) em.
-                createNamedQuery("AltranreqUser.findByUsername").
-                setParameter("username", username).
-                getSingleResult(); 
-          return u.getName();
-    }
-    
-   public char getIsAdmin()
-    {
-       RequestContext context = RequestContext.getCurrentInstance();
+
+    public String getNameUser() {
+        this.context = RequestContext.getCurrentInstance();
         FacesMessage msg = null;
         boolean loggedIn = false;
         AltranreqUser u = (AltranreqUser) em.
                 createNamedQuery("AltranreqUser.findByUsername").
                 setParameter("username", username).
-                getSingleResult(); 
+                getSingleResult();
+        return u.getName();
+    }
+
+    public char getIsAdmin() {
+        this.context = RequestContext.getCurrentInstance();
+
+        AltranreqUser u = (AltranreqUser) em.
+                createNamedQuery("AltranreqUser.findByUsername").
+                setParameter("username", username).
+                getSingleResult();
         return u.getIsAdmin();
     }
-   
-   
+
     public boolean isAdmin() {
         this.context = RequestContext.getCurrentInstance();
 
@@ -219,5 +256,5 @@ public class loginBean implements Serializable {
             return null;
         }
     }
-   
+
 }
