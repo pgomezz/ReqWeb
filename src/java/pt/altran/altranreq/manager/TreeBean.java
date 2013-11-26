@@ -24,6 +24,7 @@ import pt.altran.altranreq.entities.UseCase;
 import pt.altran.altranreq.manager.util.AltranTreeNode;
 import pt.altran.altranreq.manager.util.UpdateCurrentTreeNode;
 import pt.altran.altranreq.services.ProjectService;
+import pt.altran.altranreq.services.FunctionalRequirementServiceBean;
 import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.RNFService;
 import pt.altran.altranreq.services.RNFunctionalFilter;

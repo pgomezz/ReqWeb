@@ -16,6 +16,7 @@ import javax.faces.view.ViewScoped;
 import pt.altran.altranreq.entities.AltranreqUser;
 import pt.altran.altranreq.services.ProjectFilter;
 import pt.altran.altranreq.services.ProjectService;
+import pt.altran.altranreq.services.FunctionalRequirementServiceBean;
 import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.UserService;
 
