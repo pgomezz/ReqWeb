@@ -22,4 +22,7 @@ public interface RNFService extends AbstractService<NonFunctionalRequirement> {
 
     
     public List<NonFunctionalRequirement> findRNFByDependency(int pai);
+    
+    String getRequirementStateString(int requirementStateIndice);
+    String getRequirementTypeString(int requirementTypeIndice);
 }

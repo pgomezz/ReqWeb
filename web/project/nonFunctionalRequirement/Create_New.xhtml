@@ -1,0 +1,96 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template.xhtml">
+
+    <ui:define name="body">
+
+        
+            <h:form id="NonFunctionalRequirementCreateNewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+                       
+                       
+                        <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{nonFunctionalRequirementController.selected.name}" title="#{myBundle.CreateNonFunctionalRequirementTitle_name}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_name}" size="50" maxlength="50"/>
+ 
+                        <h:outputText value="#{bundle_nfrType.Type}" />  
+                        <p:selectOneMenu value="#{nonFunctionalRequirementController.selected.type}">  
+                            <f:selectItem itemLabel="#{bundle_nfrType.Type_undefined}" itemValue="" />  
+                            <f:selectItem itemLabel="#{bundle_nfrType.Type_usability}" itemValue="0" />  
+                            <f:selectItem itemLabel="#{bundle_nfrType.Type_interface}" itemValue="1" />  
+                            <f:selectItem itemLabel="#{bundle_nfrType.Type_operational}" itemValue="2" />  
+                            <f:selectItem itemLabel="#{bundle_nfrType.Type_install}" itemValue="3" />  
+                            <f:selectItem itemLabel="#{bundle_nfrType.Type_security}" itemValue="4" />  
+                            <f:selectItem itemLabel="#{bundle_nfrType.Type_politic}" itemValue="5" />  
+                    </p:selectOneMenu>
+                        
+                        
+                        <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{nonFunctionalRequirementController.selected.description}" title="#{myBundle.CreateNonFunctionalRequirementTitle_description}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_description}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_reason}" for="reason" />
+                        <p:inputTextarea rows="4" cols="30" id="reason" value="#{nonFunctionalRequirementController.selected.reason}" title="#{myBundle.CreateNonFunctionalRequirementTitle_reason}" />
+
+                        <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_source}" for="source" />
+                        <p:inputText id="source" value="#{nonFunctionalRequirementController.selected.source}" title="#{myBundle.CreateNonFunctionalRequirementTitle_source}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_source}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_avaliationCriteria}" for="avaliationCriteria" />
+                        <p:inputTextarea rows="4" cols="30" id="avaliationCriteria" value="#{nonFunctionalRequirementController.selected.avaliationCriteria}" title="#{myBundle.CreateNonFunctionalRequirementTitle_avaliationCriteria}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_avaliationCriteria}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_clientPriority}" for="clientPriority" />
+                        <p:inputText id="clientPriority" value="#{nonFunctionalRequirementController.selected.clientPriority}" title="#{myBundle.CreateNonFunctionalRequirementTitle_clientPriority}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_clientPriority}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_clientInsatisfaction}" for="clientInsatisfaction" />
+                        <p:inputText id="clientInsatisfaction" value="#{nonFunctionalRequirementController.selected.clientInsatisfaction}" title="#{myBundle.CreateNonFunctionalRequirementTitle_clientInsatisfaction}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_clientInsatisfaction}"/>
+
+                        <h:outputText value="#{bundle_requirement.State}" />  
+                    <p:selectOneMenu value="#{nonFunctionalRequirementController.selected.requirementState}">  
+                        <f:selectItem itemLabel="#{bundle_requirement.State_undefined}" itemValue="" />  
+                        <f:selectItem itemLabel="#{bundle_requirement.State_active}" itemValue="0" />  
+                        <f:selectItem itemLabel="#{bundle_requirement.State_versioned}" itemValue="1" />  
+                        <f:selectItem itemLabel="#{bundle_requirement.State_cancelled}" itemValue="2" />  
+                        <f:selectItem itemLabel="#{bundle_requirement.State_done}" itemValue="3" />  
+                    </p:selectOneMenu>
+                        <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_version}" for="version" />
+                        <p:inputText id="version" value="#{nonFunctionalRequirementController.selected.version}" title="#{myBundle.CreateNonFunctionalRequirementTitle_version}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_version}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_ordernumber}" for="ordernumber" />
+                        <p:inputText id="ordernumber" value="#{nonFunctionalRequirementController.selected.ordernumber}" title="#{myBundle.CreateNonFunctionalRequirementTitle_ordernumber}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_nonFunctionalRequirementCollection}" for="nonFunctionalRequirementCollection" />
+                        <p:selectManyMenu id="nonFunctionalRequirementCollection" value="#{nonFunctionalRequirementController.selected.nonFunctionalRequirementCollection}"  converter="nonFunctionalRequirementConverter">
+                            <f:selectItems value="#{nonFunctionalRequirementController.items}"
+                                           var="nonFunctionalRequirementCollectionItem"
+                                           itemValue="#{nonFunctionalRequirementCollectionItem}"
+                                           itemLabel="#{nonFunctionalRequirementCollectionItem.name.toString()}"
+                                           />
+
+                        </p:selectManyMenu>
+
+                        <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_idProject}" for="idProject" />
+                        <p:selectOneMenu id="idProject" value="#{nonFunctionalRequirementController.selected.idProject}" required="true" requiredMessage="#{myBundle.EditNonFunctionalRequirementRequiredMessage_idProject}" converter="projectConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{projectController.items}"
+                                           var="idProjectItem"
+                                           itemValue="#{idProjectItem}"
+                                           itemLabel="#{idProjectItem.name.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{nonFunctionalRequirementController.saveNew}"  action="/index"  value="#{myBundle.Save}"  ajax="true" />
+                    <p:commandButton value="#{myBundle.Cancel}" />
+                </h:panelGroup>
+
+            </h:form>
+
+   </ui:define>
+
+    </ui:composition>
+
