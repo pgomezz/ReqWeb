@@ -44,14 +44,14 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Project.findByBeginDate", query = "SELECT p FROM Project p WHERE p.beginDate = :beginDate"),
     @NamedQuery(name = "Project.findByEndDate", query = "SELECT p FROM Project p WHERE p.endDate = :endDate"),
     @NamedQuery(name = "Project.findByProjectState", query = "SELECT p FROM Project p WHERE p.projectState = :projectState"),
-    @NamedQuery(name = "Project.findByIdProjectManager", query = "SELECT p FROM Project p WHERE p.idProjectManager = :idProjectManager"),
-    @NamedQuery(name = "Project.findByTerminology", query = "SELECT p FROM Project p WHERE p.terminology = :terminology")})
+    @NamedQuery(name = "Project.findByIdProjectManager", query = "SELECT p FROM Project p WHERE p.idProjectManager = :idProjectManager")})
 public class Project implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
     @Column(name = "ID_PROJECT")
+    
     private BigDecimal idProject;
     @Basic(optional = false)
     @NotNull
@@ -75,12 +75,6 @@ public class Project implements Serializable {
     private BigInteger projectState;
     @Column(name = "ID_PROJECT_MANAGER")
     private BigInteger idProjectManager;
-    @Size(max = 50)
-    @Column(name = "TERMINOLOGY")
-    private String terminology;
-    @JoinColumn(name = "ID_ORGANIZATION", referencedColumnName = "ID_ORGANIZATION")
-    @ManyToOne(optional = false)
-    private Organization idOrganization;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProject")
     private Collection<Document> documentCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProject")
