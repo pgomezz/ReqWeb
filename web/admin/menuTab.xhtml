@@ -1,13 +1,20 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui">
-    
-    <h:form>
-        <p:tabMenu activeIndex="0">
-            <p:menuitem value="Admistração" url="#"/>
-            <p:menuitem value="Projectos" url="../index.xhtml" />
-        </p:tabMenu>
-    </h:form>
+        
+    <p:tabView activeIndex="1">
+        <p:tab title="Projectos">
+
+        </p:tab>
+
+        <p:tab title="Administração" >
+            <ui:include src="/admin/accordion.xhtml"/>
+            <ui:include src="/admin/businessCategory/List.xhtml"/>
+            <!--<ui:include src="/admin/newjsf.xhtml"/>-->
+            
+        </p:tab>
+    </p:tabView>
+         
+   
 </ui:composition>
 
