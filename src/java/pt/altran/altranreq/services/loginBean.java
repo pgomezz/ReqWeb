@@ -2,6 +2,7 @@ package pt.altran.altranreq.services;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
@@ -11,6 +12,9 @@ import pt.altran.altranreq.entities.AltranreqUser;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.servlet.http.HttpSession;
 import org.primefaces.context.RequestContext;
 import pt.altran.altranreq.entities.AltranreqRole;
 import pt.altran.altranreq.entities.Project;
@@ -27,8 +31,14 @@ public class loginBean implements Serializable {
     private boolean valid;
     private Project project;
     private AltranreqRole role;
+    RequestContext context;
+    HttpSession session;
     String originalURL = "faces/index.xhtml";
-    String original = "faces/login.xhtml";
+    String original = "faces/login/login.xhtml";
+
+    @PersistenceContext(unitName = "AltranReqPU")
+    private EntityManager em;
+    //private Object isAdmin;
 
     public loginBean() {
         this.user = null;
@@ -38,7 +48,6 @@ public class loginBean implements Serializable {
         this.project = null;
         this.role = null;
     }
-
 
     public void setValid(boolean valid) {
         this.valid = valid;
@@ -82,10 +91,10 @@ public class loginBean implements Serializable {
     }
 
     //  @WebMethod  
-    public void login(ActionEvent e) {
-        RequestContext context = RequestContext.getCurrentInstance();
-        FacesMessage msg = null;
-        boolean loggedIn = false;
+    public void login2(ActionEvent e) {
+        this.context = RequestContext.getCurrentInstance();
+        FacesMessage msg;
+        boolean loggedIn;
         /*if(username.equals(null))
          {          
          msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login error", "Deve inserir um Username e Password válido."); 
@@ -127,6 +136,36 @@ public class loginBean implements Serializable {
 
     }
 
+    public String login() {
+        this.context = RequestContext.getCurrentInstance();
+        FacesMessage msg = null;
+        boolean loggedIn = false;
+        AltranreqUser u = (AltranreqUser) em.
+                createNamedQuery("AltranreqUser.findByUsername").
+                setParameter("username", username).
+                getSingleResult();
+
+        if (username.equals(u.getUsername()) && password.equals(u.getPassword())) { //username.equals("bb") && password.equals("bb")
+            loggedIn = true;
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem-vindo", username);
+            try {
+                //   this.originalURL = request.getContextPath() + "home.xhtml";
+                FacesContext.getCurrentInstance().getExternalContext().redirect(originalURL);
+            } catch (IOException ex) {
+                Logger.getLogger(AuthenticationServiceImp.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            System.out.println("Login Sucess");
+        } else {
+            loggedIn = false;
+            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login error", "Username e/ou Password inválidos.");
+            System.out.println("Login Failed");
+            return "fail";
+        }
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        context.addCallbackParam("loggedIn", loggedIn);
+        return "success";
+    }
+
     public boolean isValid() {
         AuthenticationService s = null;
         this.user = s.Login(this.username, this.password);
@@ -144,14 +183,78 @@ public class loginBean implements Serializable {
     }
 
     public void logout() {
-        this.user=null;
-        this.username=null;
-        this.password=null;
+        this.user = null;
+        this.username = null;
+        this.password = null;
+        this.session = null;
+        this.context = null;
+
+    }
+
+    public BigDecimal getUserID() {
+        this.context = RequestContext.getCurrentInstance();
+        /* FacesMessage msg = null;
+         boolean loggedIn = false;*/
+        AltranreqUser u = (AltranreqUser) em.
+                createNamedQuery("AltranreqUser.findByUsername").
+                setParameter("username", username).
+                getSingleResult();
+        return u.getIdUser();
+    }
+
+    public String getNameUser() {
+        this.context = RequestContext.getCurrentInstance();
+        FacesMessage msg = null;
+        boolean loggedIn = false;
+        AltranreqUser u = (AltranreqUser) em.
+                createNamedQuery("AltranreqUser.findByUsername").
+                setParameter("username", username).
+                getSingleResult();
+        return u.getName();
+    }
+
+    public char getIsAdmin() {
+        this.context = RequestContext.getCurrentInstance();
+
+        AltranreqUser u = (AltranreqUser) em.
+                createNamedQuery("AltranreqUser.findByUsername").
+                setParameter("username", username).
+                getSingleResult();
+        return u.getIsAdmin();
     }
 
     public boolean isAdmin() {
-        AuthenticationService s = null;
-        return s.isAdmin(this.user);
+        this.context = RequestContext.getCurrentInstance();
+
+        AltranreqUser u = (AltranreqUser) em.
+                createNamedQuery("AltranreqUser.findByUsername").
+                setParameter("username", username).
+                getSingleResult();
+
+        if (u.getIsAdmin() == '1') {
+            return true;
+        } else if (u.getIsAdmin() == '0') {
+            return false;
+        }
+        //  AuthenticationService s = null;
+        // return s.isAdmin(this.user);
+        return false;
+    }
+
+    public static HttpSession getSession() {
+        return (HttpSession) FacesContext.
+                getCurrentInstance().
+                getExternalContext().
+                getSession(false);
+    }
+
+    public String getUserIdBN() {
+        this.session = getSession();
+        if (session != null) {
+            return (String) session.getAttribute("userid");
+        } else {
+            return null;
+        }
     }
 
 }
