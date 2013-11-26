@@ -62,6 +62,16 @@ public class ProjectController extends AbstractController<Project> implements Se
         projectService.edit(pj); //To change body of generated methods, choose Tools | Templates.
     }
     
+        @Override
+    public void delete(ActionEvent event) {
+        System.out.println("passei acckiasoidasfgshlgçadhfhs");
+        Project pj = (Project)projectServiceBean.getSelected();
+        setSelected(pj);
+        projectService.remove(pj); //To change body of generated methods, choose Tools | Templates.
+        
+        
+    }
+    
     
     public List<AltranreqUser> completeUser(String query) { 
         System.out.println("sugestion");

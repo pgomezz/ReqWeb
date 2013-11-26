@@ -42,11 +42,11 @@
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">
-                        <p:button id="createButton" outcome="project/Create" value="#{myBundle.Create}" icon="ui-icon-plus"/>  
+                         <p:commandButton id="createButton" icon="ui-icon-plus" value="#{myBundle.Create}" action="project/Create" />  
                         <p:commandButton id="viewButton"  icon="ui-icon-search" value="#{myBundle.View}" actionListener="#{projectController.redirect}" action="/project/View"/>
                         <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" actionListener="#{projectController.redirect}" action="/project/Edit"/>
-                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{projectController.delete}" disabled="#{empty projectController.selected}"/>
-                    </div>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{projectController.redirect}" oncomplete="ProjectRemoveDialog.show()" update=":TabProfile:ProjectRemoveForm"  disabled="#{empty projectController.selected}"/>
+                         </div>
                 </f:facet>
 
             </p:dataTable>
