@@ -53,6 +53,15 @@ public class ProjectController extends AbstractController<Project> implements Se
         this.user = user;
     }
     
+    @Override
+    public void save(ActionEvent event) {
+        //setSelected(project);
+        Project pj = (Project)projectServiceBean.getSelected();
+        setSelected(pj);
+        System.out.println(pj.getBeginDate() + " - " + pj.getIdProject() + " - " + pj.getIdOrganization()+ " - " + pj.getIdProjectManager() + " - " + pj.getProjectState());
+        projectService.edit(pj); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     
     public List<AltranreqUser> completeUser(String query) { 
         System.out.println("sugestion");
@@ -126,14 +135,14 @@ public class ProjectController extends AbstractController<Project> implements Se
     }
     
     
-    public void redirect(int option) throws IOException
+    public void redirect() throws IOException
     {
         projectServiceBean.setSelected(this.getSelected());
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        
-        if (option == 1)
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/View.xhtml");
-        if (option == 2)
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/Edit.xhtml");
+//        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+//        
+//        if (option == 1)
+//            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/View.xhtml");
+//        if (option == 2)
+//            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/Edit.xhtml");
     }
 }
