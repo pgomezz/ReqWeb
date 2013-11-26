@@ -1,13 +1,15 @@
 package pt.altran.altranreq.services;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
+import static java.util.Collections.emptyList;
 import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import pt.altran.altranreq.entities.AltranreqRole;
+import pt.altran.altranreq.entities.AltranreqUser;
 import pt.altran.altranreq.entities.Privilege;
 import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.entities.ProjectUser;
@@ -24,13 +26,13 @@ public class AuthorizationServiceImp implements AuthorizationService {
 
     @WebMethod
     @Override
-    public List<ProjectUser> getProjects(int userID) { //ERRO PARA RESOLVER
+    public List<Project> getProjects(int userID) {
         List<ProjectUser> pu_list = em.
                 createNamedQuery("ProjectUser.findByIdUser").
                 setParameter("idUser", userID).
                 getResultList();
-        /*List<Project> allProject = em.createNamedQuery("Project.findAll").getResultList();
-        List<Project> projectList = null;
+        List<Project> allProject = em.createNamedQuery("Project.findAll").getResultList();
+        List<Project> projectList = new ArrayList<>();
         Project p = null;
         for (int j = 0; j < pu_list.size(); j++) {
             for (int i = 0; i < allProject.size(); i++) {
@@ -40,32 +42,59 @@ public class AuthorizationServiceImp implements AuthorizationService {
                     projectList.add(p);
                 }
             }
-        }*/
-        return pu_list;
+        }
+        return projectList;
+
     }
 
     @WebMethod
     @Override
     public AltranreqRole getProjectRole(int projectID, int userID) {
-        //Query para o ProjectUser -> findRoleIdByIdProjIdUser
-        //SELECT ID_ROLE FROM ( SELECT p FROM ProjectUser p WHERE p.projectUserPK.idProject = :idProject AND p.projectUserPK.idUser = :idUser)
         ProjectUser p_user = (ProjectUser) em.
                 createNamedQuery("ProjectUser.findByIdProjIdUser").
                 setParameter("idUser", userID).
                 setParameter("idProject", projectID).
                 getSingleResult();
         int idRole = p_user.getIdRole().getIdRole().intValueExact();
-        AltranreqRole role = (AltranreqRole) em.
+        AltranreqRole role = null;
+        role = (AltranreqRole) em.
                 createNamedQuery("AltranreqRole.findByIdRole").
                 setParameter("idRole", idRole).
                 getSingleResult();
+        if (role == null) {
+            return null;
+        }
         return role;
+    }
+
+    @Override
+    public List<AltranreqUser> getUsersByProject(int projectID, int idRole) {
+        List<ProjectUser> p_user = em.
+                createNamedQuery("ProjectUser.findByIdProjIdRole").
+                setParameter("idProject", projectID).
+                setParameter("idRole", idRole).
+                getResultList();
+        List<AltranreqUser> user_list = new ArrayList<>();
+        List<AltranreqUser> all_users = em.
+                createNamedQuery("AltranreqUser.findAll").getResultList();
+        for (ProjectUser p : p_user) {
+            for (int i = 0; i < all_users.size(); i++) {
+                if (p.getProjectUserPK().getIdProject().intValue()
+                        == all_users.get(i).getIdUser().intValue()) {
+                    user_list.add(all_users.get(i));
+                }
+            }
+        }
+        return user_list;
     }
 
     @WebMethod
     @Override
     public Collection<Privilege> getRolePrivileges(AltranreqRole role) {
-        Collection<Privilege> p = role.getPrivilegeCollection();
+        Collection<Privilege> p = null;
+        if (!role.getPrivilegeCollection().isEmpty()) {
+            return role.getPrivilegeCollection();
+        }
         return p;
     }
 
