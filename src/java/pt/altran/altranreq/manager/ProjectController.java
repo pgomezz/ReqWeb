@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import javax.inject.Inject;
@@ -53,20 +55,39 @@ public class ProjectController extends AbstractController<Project> implements Se
     @Override
     public void save(ActionEvent event) {
         //setSelected(project);
+        try{
         Project pj = (Project)projectServiceBean.getSelected();
         setSelected(pj);
         System.out.println(pj.getBeginDate() + " - " + pj.getIdProject() + " - " + pj.getIdOrganization()+ " - " + pj.getIdProjectManager() + " - " + pj.getProjectState());
         projectService.edit(pj); //To change body of generated methods, choose Tools | Templates.
+        
+            sendMessages(FacesMessage.SEVERITY_INFO, ResourceBundle.getBundle("/project").getString("EditSuccessMessage"), null);
+        }
+        catch(Exception e){
+ 
+          sendMessages(FacesMessage.SEVERITY_ERROR, ResourceBundle.getBundle("/project").getString("ErrorMessage"), null );
+            
+        }
+    }
+        public void sendMessages(FacesMessage.Severity severity,String summary,String details){
+         
+        FacesMessage message = new FacesMessage(severity, summary, details);
+
+         FacesContext.getCurrentInstance().addMessage(null, message);
     }
     
         @Override
     public void delete(ActionEvent event) {
+           try{
+        
         System.out.println("passei acckiasoidasfgshlgçadhfhs");
         Project pj = (Project)projectServiceBean.getSelected();
         setSelected(pj);
         projectService.remove(pj); //To change body of generated methods, choose Tools | Templates.
-        
-        
+        sendMessages(FacesMessage.SEVERITY_ERROR, ResourceBundle.getBundle("/project").getString("RemoveSuccessMessage"), null);
+                }catch(Exception e){
+            sendMessages(FacesMessage.SEVERITY_ERROR, ResourceBundle.getBundle("/project").getString("ErrorMessage"), null);
+        }
     }
        public List<AltranreqUser> getUsersList() { 
         List<AltranreqUser> users = userService.findAll();
@@ -119,9 +140,14 @@ public class ProjectController extends AbstractController<Project> implements Se
     
     @Override
     public void saveNew(ActionEvent event) {
+        try{
         project.setIdProjectManager(user.getIdUser().toBigInteger());
         setSelected(project);
         projectService.create(project);
+        sendMessages(FacesMessage.SEVERITY_INFO, ResourceBundle.getBundle("/project").getString("CreateSuccessMessage"), null);
+                }catch(Exception e){
+            sendMessages(FacesMessage.SEVERITY_ERROR, ResourceBundle.getBundle("/project").getString("ErrorMessage"), null);
+        }
     }
     
     public List<Project> getProjectsbyUser(){
