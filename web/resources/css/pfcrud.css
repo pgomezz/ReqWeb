@@ -47,7 +47,7 @@
     margin-bottom: 0 !important;
 }
 
-#datalist thead, #datalist th
+.ui-selectonemenu-label
 {
-    border: 1px solid red;
+    width:100% !important;
 }
