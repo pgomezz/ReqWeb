@@ -7,36 +7,23 @@
       xmlns:p="http://primefaces.org/ui"       
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="/template2.xhtml">
+    <ui:composition template="/template.xhtml">
 
     <ui:define name="title">
         <h:outputText value="#{myBundle.AltranreqUserTitle}"/>
     </ui:define>
         
+            <ui:define name="abc">
+                    <ui:include src="../../accordion.xhtml"/>
+              
+    </ui:define>
+        
     <ui:define name="body">
-        <ui:include src="/admin/altranreqUser/List.xhtml"/>
+      <!--  <ui:include src="/admin/altranreqUser/List.xhtml"/>
         <ui:include src="/admin/altranreqUser/View.xhtml"/>
         <ui:include src="/admin/altranreqUser/Edit.xhtml"/>
-        <ui:include src="/admin/altranreqUser/Create.xhtml"/>
+        <ui:include src="/admin/altranreqUser/Create.xhtml"/> -->
     </ui:define>
-    
-   <ui:define name="westt">     
-            <p:accordionPanel style="width: 200px;  margin-top: 11%" activeIndex="-1">                  
-                 <p:tab title="Utilizadores" disabled="#{!loginBean.admin}">  
-                        <h:panelGrid columns="2">  
-                               <h:link value="Contas de Utilizadores" outcome="/admin/altranreqUser/index">
-                                </h:link> <br/>
-                                <h:link value="Perfis de Utilizadores" outcome="/project/altranreqRole/index">
-                              </h:link> <br/>                                     
-                        </h:panelGrid>  
-                    </p:tab>  
-                    <p:tab title="Projectos">  
-                        <h:panelGrid columns="2">  
-                            <h:link value="Lista de Projectos">
-                                 </h:link> <br/>
-                        </h:panelGrid>  
-                    </p:tab>  
-              </p:accordionPanel>  
-       </ui:define>
+  
     </ui:composition>
  </html>

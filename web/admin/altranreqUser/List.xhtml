@@ -65,10 +65,10 @@
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">
-                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{altranreqUserController.prepareCreate}" update=":AltranreqUserCreateForm" oncomplete="AltranreqUserCreateDialog.show()"/>
-                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":AltranreqUserViewForm" oncomplete="AltranreqUserViewDialog.show()" disabled="#{empty altranreqUserController.selected}"/>
-                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":AltranreqUserEditForm" oncomplete="AltranreqUserEditDialog.show()" disabled="#{empty altranreqUserController.selected}"/>
-                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{altranreqUserController.delete}" update=":growl,datalist" disabled="#{empty altranreqUserController.selected}"/>
+              <p:commandButton id="createButton" icon="ui-icon-plus" value="#{myBundle.Create}" action="admin/altranreqUser/Create" />  
+              <p:commandButton id="viewButton"  icon="ui-icon-search" value="#{myBundle.View}"  action="admin/altranreqUser/View"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}"  action="admin/altranreqUser/Edit"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" />
                     </div>
                 </f:facet>
 

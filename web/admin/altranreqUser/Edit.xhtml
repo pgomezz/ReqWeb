@@ -7,7 +7,6 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition>
-        <p:dialog id="AltranreqUserEditDlg" widgetVar="AltranreqUserEditDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditAltranreqUserTitle}" closeOnEscape="true">
 
             <h:form id="AltranreqUserEditForm">
 
@@ -35,13 +34,13 @@
                         <p:outputLabel value="#{myBundle.EditAltranreqUserLabel_isAdmin}" for="isAdmin" />
                         <p:inputText id="isAdmin" value="#{altranreqUserController.selected.isAdmin}" title="#{myBundle.EditAltranreqUserTitle_isAdmin}" required="true" requiredMessage="#{myBundle.EditAltranreqUserRequiredMessage_isAdmin}"/>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{altranreqUserController.save}" value="#{myBundle.Save}" update="display,:AltranreqUserListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AltranreqUserEditDialog);"/>
-                    <p:commandButton value="#{myBundle.Cancel}" onclick="AltranreqUserEditDialog.hide()"/>
+                  
+                    <p:commandButton actionListener="#{altranreqUserController.save}" action="/index" value="#{myBundle.Save}" ajax="false" />
+                <p:commandButton value="#{myBundle.Cancel}" />
                 </h:panelGroup>
 
             </h:form>
 
-        </p:dialog>
 
     </ui:composition>
 

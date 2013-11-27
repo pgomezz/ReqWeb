@@ -10,9 +10,9 @@
     </h:head>
     <h:body>
         <div class="container">
-            <p:growl id="growl" showDetail="true" life="3000" />
+            <p:growl id="growl2" showDetail="true" life="3000" />
             <h:form id="formLogin">   
-                <p:growl id="growl" showDetail="true" />
+                <p:growl id="growl3" showDetail="true" />
                 <p:panel header="Login">
                     <h:panelGrid columns="2" cellpadding="5">  
                         <h:outputLabel for="username" value="Username:" />  
@@ -24,7 +24,7 @@
                             id="password" required="true" label="password" value="#{loginBean.password}" />  
 
                         <f:facet name="footer">  
-                            <p:commandButton id="loginButton" value="Login" update="growl" action="#{loginBean.login()}"
+                            <p:commandButton id="loginButton" value="Login" update="growl3" action="#{loginBean.login()}"
                                              oncomplete="handleLoginRequest(xhr, status, args)"/>  
                         </f:facet>  
                     </h:panelGrid>  

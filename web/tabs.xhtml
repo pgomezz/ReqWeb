@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template.xhtml"
+                >
+        
+        <ui:define name="body">
+            <p:tabView id="TabProfile" activeIndex="0">
+                <p:tab title="#{myBundle.ProjectsTab}" id="TabProjects" >
+                    <ui:insert name="projectTab"/>
+                </p:tab>
+                <p:tab title="#{myBundle.Administration}" id="TabAdministration" disabled="#{!loginBean.admin}">
+                    Falta o conteúdo de administração basta colocar o metodo do ben com acesso 
+                    ao serviço de autorização nesta aba
+                  <ui:include src="/admin/altranreqUser/List.xhtml"/>
+                </p:tab>
+            </p:tabView>
+        </ui:define>
+    </ui:composition>

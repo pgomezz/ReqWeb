@@ -37,6 +37,9 @@
     <service name="AltranReqRoleImp">
       <implementation-class>pt.altran.altranreq.services.AltranReqRoleImp</implementation-class>
     </service>
+    <service name="PrivilegeImp">
+      <implementation-class>pt.altran.altranreq.services.PrivilegeImp</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>

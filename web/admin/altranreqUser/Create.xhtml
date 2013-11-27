@@ -7,7 +7,6 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition>
-        <p:dialog id="AltranreqUserCreateDlg" widgetVar="AltranreqUserCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.CreateAltranreqUserTitle}" closeOnEscape="true">
 
             <h:form id="AltranreqUserCreateForm">
 
@@ -35,13 +34,13 @@
                         <p:outputLabel value="#{myBundle.CreateAltranreqUserLabel_isAdmin}" for="isAdmin" />
                         <p:inputText id="isAdmin" value="#{altranreqUserController.selected.isAdmin}" title="#{myBundle.CreateAltranreqUserTitle_isAdmin}" required="true" requiredMessage="#{myBundle.CreateAltranreqUserRequiredMessage_isAdmin}"/>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{altranreqUserController.saveNew}" value="#{myBundle.Save}" update="display,:AltranreqUserListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AltranreqUserCreateDialog);"/>
-                    <p:commandButton value="#{myBundle.Cancel}" onclick="AltranreqUserCreateDialog.hide()"/>
+                    <p:commandButton actionListener="#{altranreqUserController.saveNew}" action="/index"  value="#{altranreqUser.Save}"  ajax="false"  />
+                    <p:button value="#{altranreqUser.Cancel}" outcome="/index"/>
+
                 </h:panelGroup>
 
             </h:form>
 
-        </p:dialog>
 
     </ui:composition>
 
