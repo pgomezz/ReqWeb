@@ -89,17 +89,16 @@ public class loginBean implements Serializable {
         return null;
     }
 
-
     public String login() {
-        RequestContext context = RequestContext.getCurrentInstance();
-        FacesMessage msg = null;
-        boolean loggedIn = false;
-          AltranreqUser u = (AltranreqUser) em.
+        this.context = RequestContext.getCurrentInstance();
+        FacesMessage msg;
+        boolean loggedIn;
+        AltranreqUser u = (AltranreqUser) em.
                 createNamedQuery("AltranreqUser.findByUsername").
                 setParameter("username", username).
                 getSingleResult();
-     
-        if (username.equals(u.getUsername()) && password.equals(u.getPassword())){ //username.equals("bb") && password.equals("bb")
+
+        if (username.equals(u.getUsername()) && password.equals(u.getPassword())) { //username.equals("bb") && password.equals("bb")
             loggedIn = true;
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem-vindo", username);
             try {
@@ -107,19 +106,19 @@ public class loginBean implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext().redirect(originalURL);
             } catch (IOException ex) {
                 Logger.getLogger(AuthenticationServiceImp.class.getName()).log(Level.SEVERE, null, ex);
-            }      
-            System.out.println("Login Sucess");       
+            }
+            System.out.println("Login Sucess");
         } else {
             loggedIn = false;
             msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login error", "Username e/ou Password inválidos.");
             System.out.println("Login Failed");
-             return "fail";
+            return "fail";
         }
         FacesContext.getCurrentInstance().addMessage(null, msg);
-        context.addCallbackParam("loggedIn", loggedIn);
+        this.context.addCallbackParam("loggedIn", loggedIn);
         return "success";
     }
-     
+
     public boolean isValid() {
         AuthenticationService s = null;
         this.user = s.Login(this.username, this.password);
@@ -145,45 +144,35 @@ public class loginBean implements Serializable {
 
     }
 
-    public BigDecimal getUserID()
-    {
-       RequestContext context = RequestContext.getCurrentInstance();
-      // ExternalContext a;
-      // a.
-        FacesMessage msg = null;
-        boolean loggedIn = false;
-          AltranreqUser u = (AltranreqUser) em.
-                createNamedQuery("AltranreqUser.findByUsername").
-                setParameter("username", username).
-                getSingleResult(); 
-          return u.getIdUser();
-    }
-    
-   public String getNameUser()
-    {
-       RequestContext context = RequestContext.getCurrentInstance();
-        FacesMessage msg = null;
-        boolean loggedIn = false;
-          AltranreqUser u = (AltranreqUser) em.
-                createNamedQuery("AltranreqUser.findByUsername").
-                setParameter("username", username).
-                getSingleResult(); 
-          return u.getName();
-    }
-    
-   public char getIsAdmin()
-    {
-       RequestContext context = RequestContext.getCurrentInstance();
-        FacesMessage msg = null;
-        boolean loggedIn = false;
+    public BigDecimal getUserID() {
+        this.context = RequestContext.getCurrentInstance();
         AltranreqUser u = (AltranreqUser) em.
                 createNamedQuery("AltranreqUser.findByUsername").
                 setParameter("username", username).
-                getSingleResult(); 
+                getSingleResult();
+        return u.getIdUser();
+    }
+
+    public String getNameUser() {
+        context = RequestContext.getCurrentInstance();
+
+        AltranreqUser u = (AltranreqUser) em.
+                createNamedQuery("AltranreqUser.findByUsername").
+                setParameter("username", username).
+                getSingleResult();
+        return u.getName();
+    }
+
+    public char getIsAdmin() {
+        this.context = RequestContext.getCurrentInstance();
+
+        AltranreqUser u = (AltranreqUser) em.
+                createNamedQuery("AltranreqUser.findByUsername").
+                setParameter("username", username).
+                getSingleResult();
         return u.getIsAdmin();
     }
-   
-   
+
     public boolean isAdmin() {
         this.context = RequestContext.getCurrentInstance();
 
@@ -217,5 +206,5 @@ public class loginBean implements Serializable {
             return null;
         }
     }
-   
+
 }
