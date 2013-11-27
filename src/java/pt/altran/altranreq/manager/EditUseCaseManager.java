@@ -19,9 +19,9 @@ import pt.altran.altranreq.services.TreeService;
 import pt.altran.altranreq.services.UseCaseBean;
 import pt.altran.altranreq.services.UseCaseService;
 
-@Named(value = "useCaseController")
+@Named(value = "editUseCaseManager")
 @ViewScoped
-public class UseCaseController extends AbstractController<UseCase> implements Serializable {
+public class EditUseCaseManager extends AbstractController<UseCase> implements Serializable {
 
     @Inject
     private UseCaseService ejbService;
@@ -35,7 +35,7 @@ public class UseCaseController extends AbstractController<UseCase> implements Se
     @Inject
     private UseCaseBean useCaseBean;
 
-    public UseCaseController() {
+    public EditUseCaseManager() {
         super(UseCase.class);
     }
 
@@ -72,18 +72,18 @@ public class UseCaseController extends AbstractController<UseCase> implements Se
         return ejbService.findUseCaseByRequirement(idfuncReq);
     }
 
-//    @Override
-//    public void save(ActionEvent event) {
-//        UseCase uc = (UseCase) useCaseBean.getSelected();
-//        setSelected(uc);
-//        ejbService.edit(uc);
-//        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-//        try {
-//            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/useCase/index.xhtml");
-//        } catch (IOException ex) {
-//            Logger.getLogger(UseCaseController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
+    @Override
+    public void save(ActionEvent event) {
+        UseCase uc = (UseCase) useCaseBean.getSelected();
+        setSelected(uc);
+        ejbService.edit(uc);
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/useCase/index.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(EditUseCaseManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     
 

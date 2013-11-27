@@ -36,8 +36,8 @@
                     <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_clientPriority}"/>
                     <h:outputText value="#{functionalRequirementController.FRequirement.clientPriority}" title="#{myBundle.ViewFunctionalRequirementTitle_clientPriority}"/>
 
-                        <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_requirementState}"/>
-                        <h:outputText value="#{functionalRequirementController.getState(FRequirement.requirementState)}" title="#{myBundle.ViewFunctionalRequirementTitle_requirementState}"/>
+                    <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_requirementState}"/>
+                    <h:outputText value="#{functionalRequirementController.getState(FRequirement.requirementState)}" title="#{myBundle.ViewFunctionalRequirementTitle_requirementState}"/>
 
                     <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_requirementState}"/>
                     <h:outputText value="#{functionalRequirementController.FRequirement.requirementState}" title="#{myBundle.ViewFunctionalRequirementTitle_requirementState}"/>
@@ -58,17 +58,15 @@
 
                     </h:selectManyMenu>
 
-                        <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_idBusinessCategory}"/>
-                        <h:outputText value="#{functionalRequirementController.FRequirement.idBusinessCategory.name}"/>
-                    </p:panelGrid>
-                    <p:commandButton value="#{myBundle.Close}" action="/project/functionalRequirement/index" immediate="true"/>
-                </h:panelGroup>
-
                     <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_idBusinessCategory}"/>
                     <h:outputText value="#{functionalRequirementController.FRequirement.idBusinessCategory.name}"/>
                 </p:panelGrid>
-                <p:commandButton value="#{myBundle.Close}" onclick="FunctionalRequirementViewDialog.hide()"/>
+                <p:commandButton value="#{myBundle.Close}" action="/project/functionalRequirement/index" immediate="true"/>
             </h:panelGroup>
+
+            <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_idBusinessCategory}"/>
+            <h:outputText value="#{functionalRequirementController.FRequirement.idBusinessCategory.name}"/>
+            
 
             <p:panel header="#{myBundle.ListUseCaseTitle}">
 
