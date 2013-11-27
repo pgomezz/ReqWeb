@@ -6,17 +6,13 @@
 
 package Converters;
 
-import java.math.BigDecimal;
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
 import javax.inject.Named;
 import pt.altran.altranreq.entities.AltranreqUser;
-import pt.altran.altranreq.services.UserService;
 
 /**
  *
@@ -32,7 +28,7 @@ public class BigDecimalConverter implements Converter{
     
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        Object obj = altranreqUser.getAsObject(context, component, value);
+        AltranreqUser obj = (AltranreqUser) altranreqUser.getAsObject(context, component, value);
         return obj;
     }
 

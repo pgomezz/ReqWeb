@@ -155,15 +155,13 @@ public class Project implements Serializable {
         this.projectState = projectState;
     }
 
+    
     public BigInteger getIdProjectManager() {
         return idProjectManager;
     }
 
     public void setIdProjectManager(BigInteger idProjectManager) {
         this.idProjectManager = idProjectManager;
-    }
-    public void setIdProjectManager(int idProjectManager) {
-        this.setIdProjectManager(BigInteger.valueOf(idProjectManager));
     }
     
     public String getTerminology() {

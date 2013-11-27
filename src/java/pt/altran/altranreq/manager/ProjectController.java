@@ -28,6 +28,7 @@ public class ProjectController extends AbstractController<Project> implements Se
     
     @Inject
     private ProjectServiceBean projectServiceBean;
+    
 
     private int id;
 
@@ -100,9 +101,25 @@ public class ProjectController extends AbstractController<Project> implements Se
         return projectService.getProjectUserName(idProjectManager);
     }
 
+    public void setTerminology(String terminology){
+        project.setTerminology(terminology);
+    }
+    
+    public String getTerminology(){
+        return project.getTerminology();
+    }
  
+    public void setProjectManager(AltranreqUser aru){
+        user= aru;
+    }
+    public AltranreqUser getProjectManager(){
+        System.out.println("tentou apanhar");
+        return user;
+    }
+    
     @Override
     public void saveNew(ActionEvent event) {
+        project.setIdProjectManager(user.getIdUser().toBigInteger());
         setSelected(project);
         projectService.create(project);
     }

@@ -22,13 +22,11 @@ public class AltranreqUserConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
-        System.out.println("Tentei fazer o carregamento do id "+value+" do altranReqUser"); 
         if (value == null || value.length() == 0 || JsfUtil.isDummySelectItem(component, value)) {           
             return null;
         }
         
         AltranreqUser altranreqUser = this.ejbService.find(getKey(value));
-        System.out.println("Consegui o nome dele é:");
         return altranreqUser;
     }
 

@@ -13,7 +13,7 @@
         </ui:define>
         <ui:define name="tree"/>
         <ui:define name="body">
-
+            <p:messages id="messages"/>
             <p:panel header="#{myBundle.CreateProjectTitle}">
                 <h:form id="ProjectCreateForm">
 
@@ -33,7 +33,7 @@
                             <p:calendar id="endDate" pattern="dd/MM/yyyy" value="#{projectController.selected.endDate}" title="#{myBundle.EditProjectTitle_endDate}"  showOn="button"/>
 
                             <h:outputText value="#{project.State}" />
-                            <p:selectOneMenu value="#{projectController.selected.projectState}">            
+                            <p:selectOneMenu value="#{projectController.selected.projectState}" >            
                                 <f:selectItem itemLabel="#{project.SelecteOneState}" itemValue="" />
                                 <f:selectItem itemLabel="#{project.State_ongoing}" itemValue="0" />
                                 <f:selectItem itemLabel="#{project.State_standby}" itemValue="1" />
@@ -41,21 +41,19 @@
                                 <f:selectItem itemLabel="#{project.State_mantainence}" itemValue="3" />
                             </p:selectOneMenu>                            
 
-                            <h:outputLabel value="#{project.ProjectManager}*" for="idProjectManager"/>  
+                            <h:outputLabel value="#{project.ProjectManager}*" for="projectManager"/>  
 
-                            <p:selectOneMenu value="#{projectController.selected.idProjectManager}"  panelStyle="width:300px"  
-                                             converter="#{bigDecimalConverter}" effect="fade" var="u" style="width:260px"  filter="true" filterMatchMode="startsWith">  
+                            <p:selectOneMenu id="projectManager" value="#{projectController.projectManager}"  panelStyle="width:300px"  
+                                             converter="#{bigDecimalConverter}"  effect="fade" var="u" style="width:260px"  filter="true" filterMatchMode="startsWith">  
                                 <f:selectItem itemLabel="#{project.SelecteOneStateProjectManager}" itemValue="" />  
                                 <f:selectItems value="#{projectController.usersList}" var="u" itemValue="#{u}" itemLabel="#{u.name}" />  
                                 <p:column>  
                                     #{u.name}
                                 </p:column>  
                             </p:selectOneMenu>  
-                            <p:outputLabel value="#{project.Terminology}" for="terminology" />
-                            <p:inputText id="terminology" value="#{projectController.selected.terminology}" title="#{project.Terminology}" size="50" maxlength="50"/>
 
                         </p:panelGrid>
-                        <p:commandButton actionListener="#{projectController.saveNew}" action="/index"  value="#{project.Save}"  ajax="true" update=":growl" />
+                        <p:commandButton actionListener="#{projectController.saveNew}" action="/index"  value="#{project.Save}"  ajax="false"  />
                         <p:button value="#{project.Cancel}" update=":growl" outcome="/index"/>
                     </h:panelGroup>
                 </h:form>
