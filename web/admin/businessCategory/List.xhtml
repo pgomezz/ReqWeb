@@ -41,10 +41,10 @@
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">
-                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{businessCategoryController.prepareCreate}" update=":BusinessCategoryCreateForm" oncomplete="BusinessCategoryCreateDialog.show()"/>
-                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":BusinessCategoryViewForm" oncomplete="BusinessCategoryViewDialog.show()" disabled="#{empty businessCategoryController.selected}"/>
-                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":BusinessCategoryEditForm" oncomplete="BusinessCategoryEditDialog.show()" disabled="#{empty businessCategoryController.selected}"/>
-                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{businessCategoryController.delete}" update=":growl,datalist" disabled="#{empty businessCategoryController.selected}"/>
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" action="/admin/businessCategory/Create"/>
+                        <p:commandButton id="viewButton"  icon="ui-icon-search" value="#{myBundle.View}" actionListener="#{businessCategoryController.redirect}" action="/admin/businessCategory/View"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" actionListener="#{businessCategoryController.redirect}" action="/admin/businessCategory/Edit"/>
+                         <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{businessCategoryController.delete}" update=":BCRemoveForm" oncomplete="BCRemoveDialog.show()" disabled="#{empty businessCategoryController.selected}"/>
                     </div>
                 </f:facet>
 
