@@ -19,7 +19,6 @@ import pt.altran.altranreq.manager.util.AltranTreeNode;
  */
 @Named
 @SessionScoped
-//@Dependent
 public class ProjectServiceBean implements Serializable{
 
    @Context
