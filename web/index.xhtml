@@ -16,13 +16,12 @@
         <ui:define name="body">
             <p:tabView id="TabProfile" activeIndex="0">
                 <p:tab title="#{myBundle.ProjectsTab}" id="TabProjects" >
-                     <ui:include src="/project/List.xhtml"/>
+                    <ui:include src="/project/List.xhtml"/>
                     <ui:include src="/project/RemoveProject.xhtml"/>
                 </p:tab>
                 <p:tab title="#{myBundle.Administration}" id="TabAdministration" disabled="#{!loginBean.admin}">
                     Falta o conteúdo de administração basta colocar o metodo do ben com acesso 
-                    ao serviço de autorização nesta aba
-                  
+                    ao serviço de autorização nesta aba                  
                 </p:tab>
             </p:tabView>
         </ui:define>
