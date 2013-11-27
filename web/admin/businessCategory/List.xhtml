@@ -18,8 +18,8 @@
                          rowsPerPageTemplate="10,20,30"
                          >
 
-                <p:ajax event="rowSelect"   update="createButton editButton"/>
-                <p:ajax event="rowUnselect" update="createButton editButton"/>
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
                 <p:column sortBy="#{item.idBusinessCategory}" filterBy="#{item.idBusinessCategory}">
                     <f:facet name="header">
@@ -42,7 +42,9 @@
                 <f:facet name="footer">
                     <div class="footer-section">
                         <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" action="/admin/businessCategory/Create"/>
+                        <p:commandButton id="viewButton"  icon="ui-icon-search" value="#{myBundle.View}" actionListener="#{businessCategoryController.redirect}" action="/admin/businessCategory/View"/>
                         <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" actionListener="#{businessCategoryController.redirect}" action="/admin/businessCategory/Edit"/>
+                         <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{businessCategoryController.delete}" update=":BCRemoveForm" oncomplete="BCRemoveDialog.show()" disabled="#{empty businessCategoryController.selected}"/>
                     </div>
                 </f:facet>
 
