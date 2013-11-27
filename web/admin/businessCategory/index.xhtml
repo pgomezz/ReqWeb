@@ -5,7 +5,18 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="template.xhtml">
+    <ui:define name="title">
+        <h:outputText value="#{myBundle.BusinessCategoryTitle}"/>
+    </ui:define>
+    <ui:define name="body">
+        <h:form>
+            <p:breadCrumb>
+                <p:menuitem value="Administracao" url="#" />
+                <p:menuitem value="Gestão de Categoria de Negocio" url="#" />
+            </p:breadCrumb>
+        </h:form>
+        <ui:include src="/admin/businessCategory/List.xhtml"/>
+        
 
         <ui:define name="title">
             <h:outputText value="#{myBundle.BusinessCategoryTitle}"/>
