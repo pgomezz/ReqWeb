@@ -10,6 +10,7 @@
 
     <ui:define name="body">
 
+        <p:messages id="messages"/>  
         <h:form id="ProjectEditForm">
 
             <h:panelGroup id="display">
@@ -19,7 +20,7 @@
                     <p:inputText id="name" value="#{projectController.project.name}" title="#{myBundle.CreateProjectTitle_name}" required="true" requiredMessage="#{myBundle.CreateProjectRequiredMessage_name}" size="100" maxlength="100"/>
 
                     <p:outputLabel value="#{myBundle.CreateProjectLabel_description}" for="description" />
-                    <p:inputTextarea rows="4" cols="30" id="description" value="#{projectController.project.description}" title="#{myBundle.CreateProjectTitle_description}" requiredMessage="#{myBundle.CreateProjectRequiredMessage_description}"/>
+                    <p:inputTextarea rows="4" cols="30" id="description" value="#{projectController.project.description}" title="#{myBundle.CreateProjectTitle_description}" required="true" requiredMessage="#{myBundle.CreateProjectRequiredMessage_description}"/>
 
                     <p:outputLabel value="#{myBundle.CreateProjectLabel_beginDate}" for="beginDate" />
                     <p:calendar id="beginDate" pattern="MM/dd/yyyy HH:mm:ss" value="#{projectController.project.beginDate}" title="#{myBundle.EditProjectTitle_beginDate}"  showOn="button"/>
