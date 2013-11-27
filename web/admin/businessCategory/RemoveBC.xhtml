@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition>
+
+
+        <p:dialog id="BCRemoveDlg" widgetVar="BCRemoveDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.PopUpRmove}" closeOnEscape="true">
+
+            <h:form id="BCRemoveForm">
+
+                <h:panelGroup id="display">
+
+                    <p:commandButton actionListener="#{businessCategoryController.delete}" value="#{myBundle.Delete}" ajax="true"  update="display,:BusinessCategoryListForm:datalist,:growl" oncomplete="handleSubmit(:BusinessCategoryListForm:BCRemoveDialog);"/>
+                    
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="BCRemoveDialog.hide()"/>
+                </h:panelGroup>
+
+
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

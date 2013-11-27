@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/admin/template.xhtml">
+        <ui:define name="Role">
+            <h:outputText value="AltranReq"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body" >
+            <f:view>
+                <h:form >
+                    <h:dataTable id="datalist" value="#{privilegeCollection.allPrivileges}" var="item" >
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Permissões"/>
+                            </f:facet>
+                            <h:outputText value="#{item.actionName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="CheckBox"/>
+                            </f:facet>
+                            <h:selectBooleanCheckbox value="#{false}" />
+                        </h:column>
+                    </h:dataTable>
+                    <h:commandButton action="Guardar" disabled="" value="Guardar"/>
+                    <h:commandButton action="Cancelar" disabled="" value="Cancelar"/>
+                </h:form>
+            </f:view>
+            
+        </ui:define>
+    </ui:composition>
+
+</html>

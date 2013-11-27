@@ -5,6 +5,7 @@ package pt.altran.altranreq.services;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.util.Collection;
 import pt.altran.altranreq.entities.AltranreqRole;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -13,6 +14,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import pt.altran.altranreq.entities.Privilege;
 
 @WebService
 @Stateless
@@ -38,8 +40,8 @@ public class AltranReqRoleImp extends AbstractServiceImp<AltranreqRole> implemen
         List<AltranreqRole> r = em.
                 createNamedQuery("AltranreqRole.all").
                 getResultList();
-        for (AltranreqRole a : r){
-            if(a.getDescription().contains(name)==false){
+        for (AltranreqRole a : r) {
+            if (a.getDescription().contains(name) == false) {
                 r.remove(a);
             }
         }
@@ -53,6 +55,14 @@ public class AltranReqRoleImp extends AbstractServiceImp<AltranreqRole> implemen
                 createNamedQuery("AltranreqRole.findAll").
                 getResultList();
         return r;
+    }
+
+    @Override
+    @WebMethod
+    public Collection<Privilege> getRolePrivileges(int idRole) {
+        AltranreqRole r = (AltranreqRole) em.
+                createNamedQuery("AltranreqRole.findByIdRole").getSingleResult();
+        return r.getPrivilegeCollection();
     }
 
 }
