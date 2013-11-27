@@ -5,24 +5,31 @@ import pt.altran.altranreq.services.UserService;
 import pt.altran.altranreq.manager.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
+import javax.inject.Named;
 
-@FacesConverter(value = "altranreqUserConverter")
+@Named(value = "altranreqUserConverter")
+@RequestScoped
 public class AltranreqUserConverter implements Converter {
 
     @Inject
     private UserService ejbService;
+    
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
-        if (value == null || value.length() == 0 || JsfUtil.isDummySelectItem(component, value)) {
+        System.out.println("Tentei fazer o carregamento do id "+value+" do altranReqUser"); 
+        if (value == null || value.length() == 0 || JsfUtil.isDummySelectItem(component, value)) {           
             return null;
         }
-        return this.ejbService.find(getKey(value));
+        
+        AltranreqUser altranreqUser = this.ejbService.find(getKey(value));
+        System.out.println("Consegui o nome dele é:");
+        return altranreqUser;
     }
 
     java.math.BigDecimal getKey(String value) {

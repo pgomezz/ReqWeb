@@ -3,25 +3,21 @@ package pt.altran.altranreq.manager;
 import java.io.IOException;
 import pt.altran.altranreq.entities.Project;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import javax.inject.Inject;
-import javax.faces.view.ViewScoped;
 import pt.altran.altranreq.entities.AltranreqUser;
 import pt.altran.altranreq.services.ProjectFilter;
 import pt.altran.altranreq.services.ProjectService;
-import pt.altran.altranreq.services.FunctionalRequirementServiceBean;
 import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.UserService;
 
 @Named(value = "projectController")
-@ViewScoped
+@RequestScoped
 public class ProjectController extends AbstractController<Project> implements Serializable {
 
     @Inject
@@ -71,19 +67,9 @@ public class ProjectController extends AbstractController<Project> implements Se
         
         
     }
-    
-    
-    public List<AltranreqUser> completeUser(String query) { 
-        System.out.println("sugestion");
-
-        List<AltranreqUser> suggestions = new ArrayList<AltranreqUser>();  
-                  
-        for(AltranreqUser p : userService.findAll()) {  
-            if(p.getName().startsWith(query))  
-                suggestions.add(p);  
-        }  
-          
-        return suggestions;  
+       public List<AltranreqUser> getUsersList() { 
+        List<AltranreqUser> users = userService.findAll();
+        return users;
     }  
     public ProjectService getProjectService() {
         return projectService;
@@ -143,7 +129,6 @@ public class ProjectController extends AbstractController<Project> implements Se
     {
         projectServiceBean.setSelected(this.getSelected());
     }
-    
     
     public void redirect() throws IOException
     {
