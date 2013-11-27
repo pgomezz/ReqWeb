@@ -31,10 +31,18 @@
                     <p:inputTextarea rows="4" cols="30" id="avaliationCriteria" value="#{functionalRequirementController.selected.avaliationCriteria}" title="#{myBundle.CreateFunctionalRequirementTitle_avaliationCriteria}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_avaliationCriteria}"/>
 
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_clientPriority}" for="clientPriority" />
-                    <p:inputText id="clientPriority" value="#{functionalRequirementController.selected.clientPriority}" title="#{myBundle.CreateFunctionalRequirementTitle_clientPriority}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_clientPriority}"/>
+                    <p:inputText id="clientPriority" value="#{functionalRequirementController.selected.clientPriority}" title="#{myBundle.CreateFunctionalRequirementTitle_clientPriority}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_clientPriority}">
+                    
+                         <f:validateDoubleRange minimum="0" maximum="5" /> 
+                    
+                    </p:inputText>
 
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_clientInsatisfaction}" for="clientInsatisfaction" />
-                    <p:inputText id="clientInsatisfaction" value="#{functionalRequirementController.selected.clientInsatisfaction}" title="#{myBundle.CreateFunctionalRequirementTitle_clientInsatisfaction}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_clientInsatisfaction}"/>
+                    <p:inputText id="clientInsatisfaction" value="#{functionalRequirementController.selected.clientInsatisfaction}" title="#{myBundle.CreateFunctionalRequirementTitle_clientInsatisfaction}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_clientInsatisfaction}" >
+                    
+                         <f:validateDoubleRange minimum="0" maximum="5" /> 
+                    
+                    </p:inputText>
 
                   
                     <h:outputText value="#{bundle_requirement.State}" />  
@@ -64,15 +72,9 @@
                     </p:selectManyMenu>
 
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_idProject}" for="idProject" />
-                    <p:selectOneMenu id="idProject" value="#{functionalRequirementController.selected.idProject}" required="true" requiredMessage="#{myBundle.EditFunctionalRequirementRequiredMessage_idProject}" converter="projectConverter">
-                        <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                        <f:selectItems value="#{projectController.items}"
-                                       var="idProjectItem"
-                                       itemValue="#{idProjectItem}"
-                                       itemLabel="#{idProjectItem.name.toString()}"
-                                       />
+                    <p:inputText id="idProject" value="#{functionalRequirementController.nameProject}" title="#{myBundle.CreateFunctionalRequirementTitle_ordernumber}" disabled="true"/>
 
-                    </p:selectOneMenu>
+                    
 
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_idBusinessCategory}" for="idBusinessCategory" />
                     <p:selectOneMenu id="idBusinessCategory" value="#{functionalRequirementController.selected.idBusinessCategory}" required="true" requiredMessage="#{myBundle.EditFunctionalRequirementRequiredMessage_idBusinessCategory}" converter="businessCategoryConverter">
@@ -86,7 +88,7 @@
                     </p:selectOneMenu>
                 </p:panelGrid>
                 <p:commandButton actionListener="#{functionalRequirementController.saveNew}"  action="/index"  value="#{myBundle.Save}"  ajax="true"/>
-                <p:commandButton value="#{myBundle.Cancel}" />
+                <p:commandButton value="#{myBundle.Cancel}" action="/project/functionalRequirement/index" immediate="true"/>
             </h:panelGroup>
 
         </h:form>

@@ -36,8 +36,8 @@
                 <f:facet name="footer">
                     <div class="footer-section">
                         <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" />
-                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" actionListener="#{useCaseController.redirect}" action="/project/useCase/Edit"/>
-                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" />
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" actionListener="#{useCaseController.redirect}" action="/project/useCase/Edit"/>
                         <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" />
                     </div>
                 </f:facet>
