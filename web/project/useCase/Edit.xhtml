@@ -1,72 +1,68 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
 
-    <ui:composition>
-        <p:dialog id="UseCaseEditDlg" widgetVar="UseCaseEditDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditUseCaseTitle}" closeOnEscape="true">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template.xhtml">
 
+    <ui:define name="body" >
             <h:form id="UseCaseEditForm">
 
                 <h:panelGroup id="display">
-                    <p:panelGrid  columns="2" rendered="#{useCaseController.selected != null}">
+                    <p:panelGrid  columns="2" rendered="#{useCaseController.useCaseTypeByNavigation}">
 
                         <h:outputLabel value="#{myBundle.EditUseCaseLabel_idUseCase}" for="idUseCase" />
-                        <h:outputText id="idUseCase" value="#{useCaseController.selected.idUseCase}" />
+                        <h:outputText id="idUseCase" value="#{useCaseController.useCaseByNavigation.idUseCase}" />
 
                         <p:outputLabel value="#{myBundle.EditUseCaseLabel_name}" for="name" />
-                        <p:inputText id="name" value="#{useCaseController.selected.name}" title="#{myBundle.EditUseCaseTitle_name}" required="true" requiredMessage="#{myBundle.EditUseCaseRequiredMessage_name}" size="100" maxlength="100"/>
+                        <p:inputText id="name" value="#{useCaseController.useCaseByNavigation.name}" title="#{myBundle.EditUseCaseTitle_name}" required="true" requiredMessage="#{myBundle.EditUseCaseRequiredMessage_name}" size="100" maxlength="100"/>
 
                         <p:outputLabel value="#{myBundle.EditUseCaseLabel_description}" for="description" />
-                        <p:inputTextarea rows="4" cols="30" id="description" value="#{useCaseController.selected.description}" title="#{myBundle.EditUseCaseTitle_description}" required="true" requiredMessage="#{myBundle.EditUseCaseRequiredMessage_description}"/>
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{useCaseController.useCaseByNavigation.description}" title="#{myBundle.EditUseCaseTitle_description}" required="true" requiredMessage="#{myBundle.EditUseCaseRequiredMessage_description}"/>
 
                         <p:outputLabel value="#{myBundle.EditUseCaseLabel_avaliationCriteria}" for="avaliationCriteria" />
-                        <p:inputTextarea rows="4" cols="30" id="avaliationCriteria" value="#{useCaseController.selected.avaliationCriteria}" title="#{myBundle.EditUseCaseTitle_avaliationCriteria}" required="true" requiredMessage="#{myBundle.EditUseCaseRequiredMessage_avaliationCriteria}"/>
+                        <p:inputTextarea rows="4" cols="30" id="avaliationCriteria" value="#{useCaseController.useCaseByNavigation.avaliationCriteria}" title="#{myBundle.EditUseCaseTitle_avaliationCriteria}" required="true" requiredMessage="#{myBundle.EditUseCaseRequiredMessage_avaliationCriteria}"/>
 
                         <p:outputLabel value="#{myBundle.EditUseCaseLabel_preCondition}" for="preCondition" />
-                        <p:inputTextarea rows="4" cols="30" id="preCondition" value="#{useCaseController.selected.preCondition}" title="#{myBundle.EditUseCaseTitle_preCondition}" />
+                        <p:inputTextarea rows="4" cols="30" id="preCondition" value="#{useCaseController.useCaseByNavigation.preCondition}" title="#{myBundle.EditUseCaseTitle_preCondition}" />
 
                         <p:outputLabel value="#{myBundle.EditUseCaseLabel_posCondition}" for="posCondition" />
-                        <p:inputTextarea rows="4" cols="30" id="posCondition" value="#{useCaseController.selected.posCondition}" title="#{myBundle.EditUseCaseTitle_posCondition}" />
+                        <p:inputTextarea rows="4" cols="30" id="posCondition" value="#{useCaseController.useCaseByNavigation.posCondition}" title="#{myBundle.EditUseCaseTitle_posCondition}" />
 
                         <p:outputLabel value="#{myBundle.EditUseCaseLabel_mainScenario}" for="mainScenario" />
-                        <p:inputTextarea rows="4" cols="30" id="mainScenario" value="#{useCaseController.selected.mainScenario}" title="#{myBundle.EditUseCaseTitle_mainScenario}" required="true" requiredMessage="#{myBundle.EditUseCaseRequiredMessage_mainScenario}"/>
+                        <p:inputTextarea rows="4" cols="30" id="mainScenario" value="#{useCaseController.useCaseByNavigation.mainScenario}" title="#{myBundle.EditUseCaseTitle_mainScenario}" required="true" requiredMessage="#{myBundle.EditUseCaseRequiredMessage_mainScenario}"/>
 
                         <p:outputLabel value="#{myBundle.EditUseCaseLabel_ordernumber}" for="ordernumber" />
-                        <p:inputText id="ordernumber" value="#{useCaseController.selected.ordernumber}" title="#{myBundle.EditUseCaseTitle_ordernumber}"/>
+                        <p:inputText id="ordernumber" value="#{useCaseController.useCaseByNavigation.ordernumber}" title="#{myBundle.EditUseCaseTitle_ordernumber}"/>
 
                         <p:outputLabel value="#{myBundle.EditUseCaseLabel_useCaseCollection}" for="useCaseCollection" />
-                        <p:selectManyMenu id="useCaseCollection" value="#{useCaseController.selected.useCaseCollection}"  converter="useCaseConverter">
+                        <p:selectManyMenu id="useCaseCollection" value="#{useCaseController.useCaseByNavigation.useCaseCollection}"  converter="useCaseConverter">
                             <f:selectItems value="#{useCaseController.items}"
                                            var="useCaseCollectionItem"
                                            itemValue="#{useCaseCollectionItem}"
                                            itemLabel="#{useCaseCollectionItem.name.toString()}"
                                            />
-
                         </p:selectManyMenu>
 
                         <p:outputLabel value="#{myBundle.EditUseCaseLabel_idFunctionalRequirement}" for="idFunctionalRequirement" />
-                        <p:selectOneMenu id="idFunctionalRequirement" value="#{useCaseController.selected.idFunctionalRequirement}" required="true" requiredMessage="#{myBundle.EditUseCaseRequiredMessage_idFunctionalRequirement}" converter="functionalRequirementConverter">
+                        <p:selectOneMenu id="idFunctionalRequirement" value="#{useCaseController.useCaseByNavigation.idFunctionalRequirement}" required="true" requiredMessage="#{myBundle.EditUseCaseRequiredMessage_idFunctionalRequirement}" converter="functionalRequirementConverter">
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{functionalRequirementController.items}"
                                            var="idFunctionalRequirementItem"
                                            itemValue="#{idFunctionalRequirementItem}"
                                            itemLabel="#{idFunctionalRequirementItem.name.toString()}"
                                            />
-
                         </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{useCaseController.save}" value="#{myBundle.Save}" update="display,:UseCaseListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,UseCaseEditDialog);"/>
-                    <p:commandButton value="#{myBundle.Cancel}" onclick="UseCaseEditDialog.hide()"/>
+                    <p:commandButton actionListener="#{useCaseController.save}" action="/index"  value="#{myBundle.Save}"  ajax="true" />
+                    <p:commandButton value="#{myBundle.Cancel}"/>
                 </h:panelGroup>
 
             </h:form>
 
-        </p:dialog>
 
+        </ui:define>
     </ui:composition>
-
-</html>
