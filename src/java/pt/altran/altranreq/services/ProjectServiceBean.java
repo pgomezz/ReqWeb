@@ -13,12 +13,10 @@ import javax.inject.Named;
 import javax.ws.rs.core.Context;
 import pt.altran.altranreq.manager.util.AltranTreeNode;
 
-/**
- *
- * @author User
- */
+
 @Named
 @SessionScoped
+//@Dependent
 public class ProjectServiceBean implements Serializable{
 
    @Context

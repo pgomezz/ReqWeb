@@ -1,8 +1,9 @@
 package pt.altran.altranreq.services;
 
-
+import java.util.Collection;
 import pt.altran.altranreq.entities.AltranreqRole;
 import java.util.List;
+import pt.altran.altranreq.entities.Privilege;
 import pt.altran.altranreq.services.AbstractService;
 
 /*
@@ -10,8 +11,6 @@ import pt.altran.altranreq.services.AbstractService;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 /**
  *
  * @author User
@@ -22,4 +21,7 @@ public interface AltranReqRoleService extends AbstractService<AltranreqRole> {
     public List<AltranreqRole> findRoleByName(String name);
 
     public List<AltranreqRole> findRoleByState(Boolean bool);
+
+    public Collection<Privilege> getRolePrivileges(int idRole);
+
 }

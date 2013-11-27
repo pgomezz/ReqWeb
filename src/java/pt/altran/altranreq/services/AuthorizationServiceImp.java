@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import static java.util.Collections.emptyList;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
@@ -15,6 +16,7 @@ import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.entities.ProjectUser;
 
 @WebService
+@Stateless
 public class AuthorizationServiceImp implements AuthorizationService {
 
     @PersistenceContext(unitName = "AltranReqPU")
@@ -43,6 +45,9 @@ public class AuthorizationServiceImp implements AuthorizationService {
                 }
             }
         }
+        if (projectList.isEmpty()) {
+            return emptyList();
+        }
         return projectList;
 
     }
@@ -61,9 +66,6 @@ public class AuthorizationServiceImp implements AuthorizationService {
                 createNamedQuery("AltranreqRole.findByIdRole").
                 setParameter("idRole", idRole).
                 getSingleResult();
-        if (role == null) {
-            return null;
-        }
         return role;
     }
 
@@ -85,7 +87,11 @@ public class AuthorizationServiceImp implements AuthorizationService {
                 }
             }
         }
-        return user_list;
+        if (user_list.isEmpty()) {
+            return emptyList();
+        } else {
+            return user_list;
+        }
     }
 
     @WebMethod
@@ -94,6 +100,9 @@ public class AuthorizationServiceImp implements AuthorizationService {
         Collection<Privilege> p = null;
         if (!role.getPrivilegeCollection().isEmpty()) {
             return role.getPrivilegeCollection();
+        }
+        if (p.isEmpty()) {
+            return emptyList();
         }
         return p;
     }
