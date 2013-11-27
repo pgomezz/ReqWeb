@@ -84,7 +84,7 @@ public class ProjectController extends AbstractController<Project> implements Se
         Project pj = (Project)projectServiceBean.getSelected();
         setSelected(pj);
         projectService.remove(pj); //To change body of generated methods, choose Tools | Templates.
-        
+        sendMessages(FacesMessage.SEVERITY_ERROR, ResourceBundle.getBundle("/project").getString("RemoveSuccessMessage"), null);
                 }catch(Exception e){
             sendMessages(FacesMessage.SEVERITY_ERROR, ResourceBundle.getBundle("/project").getString("ErrorMessage"), null);
         }
@@ -144,6 +144,7 @@ public class ProjectController extends AbstractController<Project> implements Se
         project.setIdProjectManager(user.getIdUser().toBigInteger());
         setSelected(project);
         projectService.create(project);
+        sendMessages(FacesMessage.SEVERITY_INFO, ResourceBundle.getBundle("/project").getString("CreateSuccessMessage"), null);
                 }catch(Exception e){
             sendMessages(FacesMessage.SEVERITY_ERROR, ResourceBundle.getBundle("/project").getString("ErrorMessage"), null);
         }

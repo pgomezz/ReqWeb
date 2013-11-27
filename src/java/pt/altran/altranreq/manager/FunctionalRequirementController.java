@@ -38,9 +38,16 @@ public class FunctionalRequirementController extends AbstractController<Function
     @Inject
     private FunctionalRequirementServiceBean frequirementBean;
     private FunctionalRequirement requirement;
-    private FunctionalRequirement requirementedit;
+   
     
     private List<FunctionalRequirement> items;
+    
+    public String getNameProject (){
+    
+    
+        return ((Project)projectBean.getSelected()).getName();
+        
+    }
     
     private int id;
 
@@ -94,6 +101,7 @@ public class FunctionalRequirementController extends AbstractController<Function
     
      @Override
     public void saveNew(ActionEvent event) {
+        requirement.setIdProject((Project)projectBean.getSelected());
         setSelected(requirement);
         ejbFacade.create(requirement);
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();

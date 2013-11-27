@@ -17,6 +17,7 @@ import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.services.FunctionalRequirementServiceBean;
 import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.RNFService;
+import pt.altran.altranreq.services.RNFtServiceBean;
 import pt.altran.altranreq.services.RNFunctionalFilter;
 import pt.altran.altranreq.services.TreeService;
 
@@ -33,12 +34,24 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
     @Inject
     private ProjectServiceBean projectBean;
     
-    
+    @Inject
+    private RNFtServiceBean rnfbean;
     private NonFunctionalRequirement nfrequirement;
 
     public NonFunctionalRequirementController() {
         super(NonFunctionalRequirement.class);
     }
+    
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
     @PostConstruct
     public void init() {
@@ -98,5 +111,54 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
             Logger.getLogger(FunctionalRequirementController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
+    
+    
+    
+    
+    @Override
+    public void save(ActionEvent event) {
+        
+        NonFunctionalRequirement nfr = (NonFunctionalRequirement) rnfbean.getSelected();
+        setSelected(nfr);
+        ejbService.edit(nfr);
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(FunctionalRequirementController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+          
+    public boolean isNFRequirementType()
+    {
+        return rnfbean.getSelected() instanceof NonFunctionalRequirement;
+    }
+    
+    public NonFunctionalRequirement getNFRequirement()
+    {
+        
+        return (NonFunctionalRequirement)rnfbean.getSelected();
+    }
+    
+    public void setFunctionalRequirement()
+    {
+        rnfbean.setSelected(this.getSelected());
+    }
+    
+    
+    public void redirect(int option) throws IOException
+    {
+        rnfbean.setSelected(this.getSelected());
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        
+        if (option == 1)
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/View_New.xhtml");
+        if (option == 2)
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/Edit_New.xhtml");
+    }
+    
 
 }
