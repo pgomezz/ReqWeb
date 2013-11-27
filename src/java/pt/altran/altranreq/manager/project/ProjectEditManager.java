@@ -16,6 +16,7 @@ import pt.altran.altranreq.entities.AltranreqUser;
 import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.manager.AbstractController;
 import pt.altran.altranreq.services.ProjectService;
+import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.UserService;
 
 /**
@@ -28,6 +29,8 @@ public class ProjectEditManager extends AbstractController<Project> implements S
 
     @Inject
     private ProjectService projectService;
+    @Inject
+    private ProjectServiceBean projectServiceBean;            
     @Inject
     private UserService userService;
     private AltranreqUser user;

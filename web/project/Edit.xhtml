@@ -1,49 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:p="http://primefaces.org/ui"
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
 
-                xmlns:f="http://xmlns.jcp.org/jsf/core"
-                template="/template.xhtml">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:define name="body">
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{project.EditTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="tree"/>
+        <ui:define name="body">
+            <p:panel header="#{project.EditTitle}">
+                <h:form id="ProjectCreateForm">
 
-        <p:messages id="messages"/>  
-        <h:form id="ProjectEditForm">
+                    <h:panelGroup id="display">
+                        <p:panelGrid columns="2">
 
-            <h:panelGroup id="display">
-                <p:panelGrid columns="2">
+                            <p:outputLabel value="#{project.Name}" for="name" />
+                            <p:inputText id="name" value="#{projectEditManager.project.name}" title="#{project.Name}" required="true" requiredMessage="#{myBundle.CreateProjectRequiredMessage_name}" size="100" maxlength="100"/>
 
-                    <p:outputLabel value="#{project.Name}" for="name" />
-                    <p:inputText id="name" value="#{projectController.project.name}" title="#{myBundle.CreateProjectTitle_name}" required="true" requiredMessage="#{myBundle.CreateProjectRequiredMessage_name}" size="100" maxlength="100"/>
+                            <p:outputLabel value="#{project.Description}" for="description" />
+                            <p:inputTextarea rows="4" cols="30" id="description" value="#{projectEditManager.project.description}" title="#{myBundle.CreateProjectTitle_description}" required="true" requiredMessage="#{myBundle.CreateProjectRequiredMessage_description}"/>
 
-                    <p:outputLabel value="#{myBundle.CreateProjectLabel_description}" for="description" />
-                    <p:inputTextarea rows="4" cols="30" id="description" value="#{projectController.project.description}" title="#{myBundle.CreateProjectTitle_description}" required="true" requiredMessage="#{myBundle.CreateProjectRequiredMessage_description}"/>
+                            <p:outputLabel value="#{project.BeginDate}" for="beginDate" />
+                            <p:calendar id="beginDate" pattern="dd/MM/yyyy" value="#{projectEditManager.project.beginDate}" title="#{myBundle.EditProjectTitle_beginDate}"  showOn="button"/>
 
-                    <p:outputLabel value="#{myBundle.CreateProjectLabel_beginDate}" for="beginDate" />
-                    <p:calendar id="beginDate" pattern="MM/dd/yyyy HH:mm:ss" value="#{projectController.project.beginDate}" title="#{myBundle.EditProjectTitle_beginDate}"  showOn="button"/>
+                            <p:outputLabel value="#{project.EndDate}" for="endDate" />
+                            <p:calendar id="endDate" pattern="dd/MM/yyyy" value="#{projectEditManager.project.endDate}" title="#{myBundle.EditProjectTitle_endDate}"  showOn="button"/>
 
-                    <p:outputLabel value="#{myBundle.CreateProjectLabel_endDate}" for="endDate" />
-                    <p:calendar id="endDate" pattern="MM/dd/yyyy HH:mm:ss" value="#{projectController.project.endDate}" title="#{myBundle.EditProjectTitle_endDate}"  showOn="button"/>
+                            <h:outputText value="#{project.State}" />
+                            <p:selectOneMenu value="#{projectEditManager.project.projectState}" >            
+                                <f:selectItem itemLabel="#{project.SelecteOneState}" itemValue="" />
+                                <f:selectItem itemLabel="#{project.State_ongoing}" itemValue="0" />
+                                <f:selectItem itemLabel="#{project.State_standby}" itemValue="1" />
+                                <f:selectItem itemLabel="#{project.State_done}" itemValue="2" />
+                                <f:selectItem itemLabel="#{project.State_mantainence}" itemValue="3" />
+                            </p:selectOneMenu>                            
 
-                    <p:outputLabel value="#{myBundle.CreateProjectLabel_projectState}" for="projectState" />
-                    <p:selectOneMenu id ="projectState" value="#{projectController.project.projectState}">            
-                        <f:selectItem itemLabel="#{project.SelecteOne}" itemValue="" />
-                        <f:selectItem itemLabel="#{project.State_ongoing}" itemValue="0" />
-                        <f:selectItem itemLabel="#{project.State_standby}" itemValue="1" />
-                        <f:selectItem itemLabel="#{project.State_done}" itemValue="2" />
-                        <f:selectItem itemLabel="#{project.State_mantainence}" itemValue="3" />
-                    </p:selectOneMenu>    
+                            <h:outputLabel value="#{project.ProjectManager}*" for="projectManager"/>  
 
-                    <p:outputLabel value="#{myBundle.CreateProjectLabel_idProjectManager}" for="idProjectManager" />
-                    <p:inputText id="idProjectManager" value="#{projectController.project.idProjectManager}" title="#{myBundle.CreateProjectTitle_idProjectManager}"/>
-                </p:panelGrid>
-                <p:commandButton actionListener="#{projectController.save}" action="/index" value="#{myBundle.Save}" ajax="false" />
-                <p:commandButton value="#{myBundle.Cancel}" />
-            </h:panelGroup>
-
-        </h:form>
-    </ui:define>
-</ui:composition>
+                            <p:selectOneMenu id="projectManager" value="#{projectEditManagerManager.projectManager}"  panelStyle="width:300px"  
+                                             converter="#{bigDecimalConverter}"  effect="fade" var="u" style="width:260px"  filter="true" filterMatchMode="startsWith">  
+                                <f:selectItem itemLabel="#{project.SelecteOneStateProjectManager}" itemValue="" />  
+                                <f:selectItems value="#{projectEditManager.usersList}" var="u" itemValue="#{u}" itemLabel="#{u.name}" />  
+                                <p:column>  
+                                    #{u.name}
+                                </p:column>  
+                            </p:selectOneMenu>  
+                            <p:outputLabel value="#{project.Terminology}" for="terminology" />
+                            <p:inputText id="terminology" value="#{projectEditManager.project.terminology}" title="#{project.Terminology}" requiredMessage="#{myBundle.CreateProjectRequiredMessage_name}" size="100" maxlength="100"/>
+                        </p:panelGrid>
+                        <p:commandButton actionListener="#{projectEditManager.save}" action="/index"  value="#{crudLabels.Save}"  ajax="false"  />
+                        <p:button value="#{crudLabels.Cancel}" outcome="/index"/>
+                    </h:panelGroup>
+                </h:form>
+            </p:panel>
+        </ui:define>
+    </ui:composition>
+</html>

@@ -20,5 +20,9 @@
             <base-name>/bundle_requirement</base-name>
             <var>bundle_requirement</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>/crudLabels</base-name>
+            <var>crudLabels</var>
+        </resource-bundle>
     </application>
 </faces-config>
