@@ -1,36 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-    
-    <ui:composition>
-        <p:dialog id="BusinessCategoryEditDlg" widgetVar="BusinessCategoryEditDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditBusinessCategoryTitle}" closeOnEscape="true">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
 
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template.xhtml">
+
+    <ui:define name="body">
             <h:form id="BusinessCategoryEditForm">
 
                 <h:panelGroup id="display">
-                    <p:panelGrid  columns="2" rendered="#{businessCategoryController.selected != null}">
+                    <p:panelGrid  columns="2" >
 
                         <h:outputLabel value="#{myBundle.EditBusinessCategoryLabel_idBusinessCategory}" for="idBusinessCategory" />
-                        <h:outputText id="idBusinessCategory" value="#{businessCategoryController.selected.idBusinessCategory}" />
+                        <h:outputText id="idBusinessCategory" value="#{businessCategoryController.businessCategory.idBusinessCategory}" />
 
                         <p:outputLabel value="#{myBundle.EditBusinessCategoryLabel_name}" for="name" />
-                        <p:inputText id="name" value="#{businessCategoryController.selected.name}" title="#{myBundle.EditBusinessCategoryTitle_name}" required="true" requiredMessage="#{myBundle.EditBusinessCategoryRequiredMessage_name}" size="50" maxlength="50"/>
+                        <p:inputText id="name" value="#{businessCategoryController.businessCategory.name}" title="#{myBundle.EditBusinessCategoryTitle_name}" required="true" requiredMessage="#{myBundle.EditBusinessCategoryRequiredMessage_name}" size="50" maxlength="32"/>
 
                         <p:outputLabel value="#{myBundle.EditBusinessCategoryLabel_description}" for="description" />
-                        <p:inputTextarea rows="4" cols="30" id="description" value="#{businessCategoryController.selected.description}" title="#{myBundle.EditBusinessCategoryTitle_description}" required="true" requiredMessage="#{myBundle.EditBusinessCategoryRequiredMessage_description}"/>
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{businessCategoryController.businessCategory.description}" title="#{myBundle.EditBusinessCategoryTitle_description}" required="true" requiredMessage="#{myBundle.EditBusinessCategoryRequiredMessage_description}" maxlength="255"/>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{businessCategoryController.save}" value="#{myBundle.Save}" update="display,:BusinessCategoryListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,BusinessCategoryEditDialog);"/>
-                    <p:commandButton value="#{myBundle.Cancel}" onclick="BusinessCategoryEditDialog.hide()"/>
+                    <p:commandButton actionListener="#{businessCategoryController.save}" value="#{myBundle.Save}" action="/admin/businessCategory/index" ajax="true"/>
+                    <p:commandButton value="#{myBundle.Cancel}"/>
                 </h:panelGroup>
 
             </h:form>
 
-        </p:dialog>
+    </ui:define>
 
-    </ui:composition>
-
-</html>
+</ui:composition>
