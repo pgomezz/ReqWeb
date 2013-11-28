@@ -80,7 +80,7 @@ public class ProjectController extends AbstractController<Project> implements Se
     public void delete(ActionEvent event) {
            try{
         
-        System.out.println("passei acckiasoidasfgshlgçadhfhs");
+        System.out.println("passei acckiasoidas fgshlgçadhfhs");
         Project pj = (Project)projectServiceBean.getSelected();
         setSelected(pj);
         projectService.remove(pj); //To change body of generated methods, choose Tools | Templates.
