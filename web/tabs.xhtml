@@ -25,7 +25,7 @@
                    
                 </p:panelGrid>
             </p:tab>
-            <p:tab title="#{myBundle.Administration}" id="TabAdministration" disabled="#{!loginBean.admin}">
+            <p:tab title="#{myBundle.Administration}" id="TabAdministration" disabled="#{!authenticationController.isAdmin}">
 
                 <p:panelGrid columns="2" >
 
