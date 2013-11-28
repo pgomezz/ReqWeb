@@ -44,7 +44,6 @@ public class UseCaseController extends AbstractController<UseCase> implements Se
     @PostConstruct
     public void init() {
         super.setService(ejbService);
-        useCase = super.prepareCreate(null);
     }
 
     public boolean isUseCaseType() {
@@ -89,7 +88,11 @@ public class UseCaseController extends AbstractController<UseCase> implements Se
         ejbService.remove(pj);
     }
 
-    public void redirect() throws IOException {
-        useCaseBean.setSelected(this.getSelected());
+    public void redirect(int action) throws IOException {
+        if (action == 1) {
+            useCase = super.prepareCreate(null);
+        } else {
+            useCaseBean.setSelected(this.getSelected());
+        }
     }
 }
