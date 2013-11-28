@@ -17,7 +17,7 @@
         <h:form id="FunctionalRequirementCreateNewForm">
 
             <h:panelGroup id="display">
-                <p:panelGrid columns="2" id="grid">
+                <p:panelGrid columns="3" id="grid">
 
                    
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_name}" for="name" />
@@ -59,15 +59,15 @@
                     <p:message for="clientInsatisfaction" display="${myBundle.CreateFunctionalRequirementHelpText_clientInsatisfaction}" /> 
 
                   
-                    <h:outputText value="#{bundle_requirement.State}" />  
-                    <p:selectOneMenu value="#{functionalRequirementController.selected.requirementState}">  
+                    <h:outputText value="#{bundle_requirement.State}" id="idState" />  
+                    <p:selectOneMenu value="#{functionalRequirementController.selected.requirementState}" required="true" requiredMessage="${myBundle.CreateFunctionalRequirementHelpText_requirementState}">  
                         <f:selectItem itemLabel="#{bundle_requirement.State_undefined}" itemValue="" />  
                         <f:selectItem itemLabel="#{bundle_requirement.State_active}" itemValue="0" />  
                         <f:selectItem itemLabel="#{bundle_requirement.State_versioned}" itemValue="1" />  
                         <f:selectItem itemLabel="#{bundle_requirement.State_cancelled}" itemValue="2" />  
                         <f:selectItem itemLabel="#{bundle_requirement.State_done}" itemValue="3" />  
                     </p:selectOneMenu>
-
+                    <p:message for="idState" display="${myBundle.CreateFunctionalRequirementHelpText_requirementState}" /> 
 
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_version}" for="version" />
                     <p:inputText id="version" value="#{functionalRequirementController.selected.version}" title="#{myBundle.CreateFunctionalRequirementTitle_version}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_version}">
@@ -98,10 +98,12 @@
                                        />
 
                     </p:selectManyMenu>
-
+                    <p:outputLabel value="" for="functionalRequirementCollection" />
+                    
+                    
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_idProject}" for="idProject" />
                     <p:inputText id="idProject" value="#{functionalRequirementController.nameProject}" title="#{myBundle.CreateFunctionalRequirementTitle_ordernumber}" disabled="true"/>
-
+                    <p:outputLabel value="" for="idProject" />
                     
 
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_idBusinessCategory}" for="idBusinessCategory" />
