@@ -58,7 +58,7 @@
                             <p:inputText id="terminology" value="#{projectCreateManager.project.terminology}" title="#{project.Terminology}" requiredMessage="#{myBundle.CreateProjectRequiredMessage_name}" size="100" maxlength="100"/>
                         </p:panelGrid>
                         <p:commandButton actionListener="#{projectCreateManager.saveNew}" action="/index"  value="#{project.Save}"  ajax="false"  />
-                        <p:button value="#{project.Cancel}" update=":growl" outcome="/index"/>
+                        <p:button value="#{project.Cancel}" outcome="/index"/>
                     </h:panelGroup>
                 </h:form>
             </p:panel>
