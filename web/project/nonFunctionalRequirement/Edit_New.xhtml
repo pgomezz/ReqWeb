@@ -42,13 +42,13 @@
 
                     <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_clientPriority}" for="clientPriority" />
                     <p:inputText id="clientPriority" value="#{nonFunctionalRequirementController.NFRequirement.clientPriority}" title="#{myBundle.EditNonFunctionalRequirementTitle_clientPriority}" required="true" requiredMessage="#{myBundle.EditNonFunctionalRequirementRequiredMessage_clientPriority}">
-                        <f:validateDoubleRange minimum="0" maximum="5" /> 
+                        <f:validateDoubleRange minimum="1" maximum="5" /> 
                     
                     </p:inputText>
 
                     <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_clientInsatisfaction}" for="clientInsatisfaction" />
                     <p:inputText id="clientInsatisfaction" value="#{nonFunctionalRequirementController.NFRequirement.clientInsatisfaction}" title="#{myBundle.EditNonFunctionalRequirementTitle_clientInsatisfaction}" required="true" requiredMessage="#{myBundle.EditNonFunctionalRequirementRequiredMessage_clientInsatisfaction}">
-                        <f:validateDoubleRange minimum="0" maximum="5" /> 
+                        <f:validateDoubleRange minimum="1" maximum="5" /> 
                     
                     </p:inputText>
                     <h:outputText value="#{bundle_requirement.State}" />  
@@ -69,7 +69,7 @@
                     <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_ordernumber}" for="ordernumber" />
                     <p:inputText id="ordernumber" value="#{nonFunctionalRequirementController.NFRequirement.ordernumber}" title="#{myBundle.EditNonFunctionalRequirementTitle_ordernumber}">
                         
-                        <f:validateDoubleRange minimum="0"  /> 
+                        <f:validateDoubleRange minimum="1"  /> 
                     
                     </p:inputText>
 
