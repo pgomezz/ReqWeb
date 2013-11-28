@@ -10,14 +10,18 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.enterprise.context.SessionScoped;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import pt.altran.altranreq.entities.AltranreqUser;
 import pt.altran.altranreq.services.AuthenticationBean;
 import pt.altran.altranreq.services.AuthenticationService;
+import pt.altran.altranreq.services.AuthorizationService;
+import pt.altran.altranreq.services.AuthorizationServiceImp;
 import pt.altran.altranreq.services.ProjectService;
 import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.loginBean;
@@ -28,7 +32,7 @@ import pt.altran.altranreq.services.loginBean;
  */
 
 @Named(value = "authenticationController")
-@SessionScoped
+@ViewScoped
 
 public class AuthenticationController implements Serializable {
     
@@ -44,19 +48,24 @@ public class AuthenticationController implements Serializable {
     @Inject
     private ProjectServiceBean projectServiceBean;
         
+    @Inject
+    private AuthorizationService authorizationService;
+
     private AltranreqUser user;
     
     private String username; 
     private String password; 
     private boolean isAdmin;
 
+    @PostConstruct
+    public void init(){
+        System.out.println("Bem injectado");
+    }
+    
     public boolean isIsAdmin() {
-        return authenticationService.isAdmin(authenticationBean.getUser());
+        return authorizationService.isAdmin();
     }
 
-    public void setIsAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
-    }
 
     public String getUsername() {
         return username;
@@ -65,6 +74,8 @@ public class AuthenticationController implements Serializable {
     public void setUsername(String username) {
         this.username = username;
     }
+    
+
 
     public String getPassword() {
         return password;
@@ -82,15 +93,20 @@ public class AuthenticationController implements Serializable {
         this.user = user;
     }
     
-    public void login() {
+    public void login(ActionEvent event) {
         //RequestContext contextt = RequestContext.getCurrentInstance();
         FacesMessage msg = null;
        // boolean loggedIn = false;
        
-        user=authenticationService.Login(username, password);
+        user=authenticationService.login(username, password);
+        authorizationService.setUserID(user.getIdUser().intValue());
           if(user!=null)
       //  if (username.equals(u.getUsername()) && password.equals(u.getPassword())) //username.equals("bn") && password.equals("bn")
         { 
+              AuthorizationServiceImp authorizationServiceImp = (AuthorizationServiceImp)authorizationService;
+              //Porque só o imp é que tem o set
+              authorizationServiceImp.setIsAdmin(user.getIsAdmin()=='1');
+              
             //loggedIn = true;
             //msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem-vindo", username);
            // try {
@@ -98,13 +114,10 @@ public class AuthenticationController implements Serializable {
                   msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem-vindo", authenticationBean.getUsername());
                   FacesContext context = FacesContext.getCurrentInstance();
                   context.addMessage("SUCESSO", msg);
-            try {
                 // this.originalURL = request.getContextPath() + "home.xhtml";
                 authenticationBean.setUser(user);
-                FacesContext.getCurrentInstance().getExternalContext().redirect("faces/index.xhtml");
-            } catch (IOException ex) {
-                Logger.getLogger(loginBean.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                //FacesContext.getCurrentInstance().getExternalContext().redirect("faces/index.xhtml");
+        
                 System.out.println("Login Sucess");   
            // } catch (IOException ex) {
                // Logger.getLogger(AuthenticationServiceImp.class.getName()).log(Level.SEVERE, null, ex);

@@ -66,6 +66,8 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
             return nome;
         } catch (IllegalArgumentException ia) {
             return "projectuser invalid for this project";
+        } catch (NullPointerException np){
+            return "invalid constrainght in project";
         }
     }
 

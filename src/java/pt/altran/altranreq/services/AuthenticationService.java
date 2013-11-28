@@ -3,7 +3,6 @@ import pt.altran.altranreq.entities.AltranreqUser;
 
 public interface AuthenticationService {
 
-    public AltranreqUser Login(String username, String password);
-    
-    public boolean isAdmin(AltranreqUser User);
+    public AltranreqUser login(String username, String password);
+   
 }

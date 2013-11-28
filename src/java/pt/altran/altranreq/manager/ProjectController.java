@@ -159,7 +159,10 @@ public class ProjectController extends AbstractController<Project> implements Se
     }
      
     public List<Project> getProjectsbyUser(){
-        return authService.getProjects(authenticationBean.getUser().getIntIdUser());
+        if(authService.isAdmin()){
+            return projectService.findAll();
+        }
+        return authService.getProjectsFromUser();
     }
     
     
