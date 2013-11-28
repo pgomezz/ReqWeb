@@ -24,7 +24,7 @@
                             id="password" required="true" label="password" value="#{authenticationController.password}" />  
 
                         <f:facet name="footer">  
-                            <p:commandButton id="loginButton" value="Login" update="growl" action="#{authenticationController.login()}"
+                            <p:commandButton id="loginButton" value="Login" update="growl" actionListener="#{authenticationController.login}" action="/index"
                                              oncomplete="handleLoginRequest(xhr, status, args)"/>  
                         </f:facet>  
                     </h:panelGrid>  
