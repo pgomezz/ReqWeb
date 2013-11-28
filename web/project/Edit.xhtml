@@ -7,12 +7,16 @@
 
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="/template.xhtml">
+    <ui:composition template="/tabs.xhtml">
         <ui:define name="title">
             <h:outputText value="#{project.EditTitle}"></h:outputText>
         </ui:define>
-        <ui:define name="tree"/>
-        <ui:define name="body">
+        
+          <ui:define name="accorTree">
+             
+             <ui:include src="/accordion.xhtml"/>
+        </ui:define>
+        <ui:define name="projectTab">
             <p:panel header="#{project.EditTitle}">
                 <h:form id="ProjectCreateForm">
 
