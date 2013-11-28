@@ -21,9 +21,9 @@
                    
                     </p:panelGrid>
                     <p:commandButton actionListener="#{businessCategoryController.saveNew}" action="/admin/businessCategory/index" value="#{myBundle.Save}" ajax="true"/>
-                    <p:commandButton value="#{myBundle.Cancel}" />
+                    <p:button value="#{myBundle.Cancel}" outcome="/admin/businessCategory/index"/>
                 </h:panelGroup>
-
+               
             </h:form>
     </ui:define>
 

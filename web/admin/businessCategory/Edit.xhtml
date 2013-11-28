@@ -24,7 +24,7 @@
                         <p:inputTextarea rows="4" cols="30" id="description" value="#{businessCategoryController.businessCategory.description}" title="#{myBundle.EditBusinessCategoryTitle_description}" required="true" requiredMessage="#{myBundle.EditBusinessCategoryRequiredMessage_description}" maxlength="255"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{businessCategoryController.save}" value="#{myBundle.Save}" action="/admin/businessCategory/index" ajax="true"/>
-                    <p:commandButton value="#{myBundle.Cancel}"/>
+                    <p:button value="#{myBundle.Cancel}" outcome="/admin/businessCategory/index"/>
                 </h:panelGroup>
 
             </h:form>
