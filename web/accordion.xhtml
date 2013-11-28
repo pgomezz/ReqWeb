@@ -5,7 +5,7 @@
 
     <h:form id="accordion">    
             <p:accordionPanel style="width: 200px;  margin-top: 11%" activeIndex="-1">                  
-                <p:tab title="Utilizadores" disabled="#{!authenticationController.isAdmin}">  
+                <p:tab title="Utilizadores" disabled="#{!authorizationService.admin}">  
                         <h:panelGrid columns="2">  
                                 <h:link value="Contas de Utilizadores" outcome="/admin/altranreqUser/index">
                                 </h:link> <br/>

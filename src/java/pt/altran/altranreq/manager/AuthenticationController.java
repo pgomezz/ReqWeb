@@ -99,10 +99,11 @@ public class AuthenticationController implements Serializable {
        // boolean loggedIn = false;
        
         user=authenticationService.login(username, password);
-        authorizationService.setUserID(user.getIdUser().intValue());
+        
           if(user!=null)
       //  if (username.equals(u.getUsername()) && password.equals(u.getPassword())) //username.equals("bn") && password.equals("bn")
         { 
+              authorizationService.setUserID(user.getIdUser().intValue());
               AuthorizationServiceImp authorizationServiceImp = (AuthorizationServiceImp)authorizationService;
               //Porque só o imp é que tem o set
               authorizationServiceImp.setIsAdmin(user.getIsAdmin()=='1');
@@ -116,7 +117,11 @@ public class AuthenticationController implements Serializable {
                   context.addMessage("SUCESSO", msg);
                 // this.originalURL = request.getContextPath() + "home.xhtml";
                 authenticationBean.setUser(user);
-                //FacesContext.getCurrentInstance().getExternalContext().redirect("faces/index.xhtml");
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("faces/index.xhtml");
+            } catch (IOException ex) {
+                Logger.getLogger(AuthenticationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
                 System.out.println("Login Sucess");   
            // } catch (IOException ex) {
