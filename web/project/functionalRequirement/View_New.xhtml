@@ -15,9 +15,7 @@
             <h:panelGroup  rendered="#{functionalRequirementController.FRequirementType}">
                 <p:panelGrid columns="2" >
 
-                    <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_idFunctionalRequirement}"/>
-                    <h:outputText value="#{functionalRequirementController.FRequirement.idFunctionalRequirement}" title="#{myBundle.ViewFunctionalRequirementTitle_idFunctionalRequirement}"/>
-
+                
                     <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_name}"/>
                     <h:outputText value="#{functionalRequirementController.FRequirement.name}" title="#{myBundle.ViewFunctionalRequirementTitle_name}"/>
 
@@ -38,9 +36,6 @@
 
                     <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_requirementState}"/>
                     <h:outputText value="#{functionalRequirementController.getState(FRequirement.requirementState)}" title="#{myBundle.ViewFunctionalRequirementTitle_requirementState}"/>
-
-                    <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_requirementState}"/>
-                    <h:outputText value="#{functionalRequirementController.FRequirement.requirementState}" title="#{myBundle.ViewFunctionalRequirementTitle_requirementState}"/>
 
                     <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_version}"/>
                     <h:outputText value="#{functionalRequirementController.FRequirement.version}" title="#{myBundle.ViewFunctionalRequirementTitle_version}"/>
@@ -63,9 +58,10 @@
                 </p:panelGrid>
                 <p:commandButton value="#{myBundle.Close}" action="/project/functionalRequirement/index" immediate="true"/>
             </h:panelGroup>
+            
+            
 
-            <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_idBusinessCategory}"/>
-            <h:outputText value="#{functionalRequirementController.FRequirement.idBusinessCategory.name}"/>
+            
             
 
             <p:panel header="#{myBundle.ListUseCaseTitle}">
