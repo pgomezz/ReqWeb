@@ -65,7 +65,8 @@ public class ActorImp extends AbstractServiceImp<Actor> implements ActorService 
         
         for (UseCase us : listaCasosUso) {
             for (Actor actor : us.getActorCollection()) {
-                listaActores.add(actor);
+                if(!listaActores.contains(actor))
+                    listaActores.add(actor);
             }
         }
          

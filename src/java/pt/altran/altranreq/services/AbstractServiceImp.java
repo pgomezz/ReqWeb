@@ -6,9 +6,6 @@
 
 package pt.altran.altranreq.services;
 import java.util.List;
-import javax.ejb.Stateless;
-import javax.jws.WebMethod;
-import javax.jws.WebService;
 
 import javax.persistence.EntityManager;
 
@@ -17,7 +14,6 @@ import javax.persistence.EntityManager;
  * @author User
  * @param <T>
  */
-
 public abstract class AbstractServiceImp<T> implements AbstractService<T>{
     private Class<T> entityClass;
     

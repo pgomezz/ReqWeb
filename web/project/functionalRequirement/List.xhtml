@@ -11,7 +11,9 @@
         <p:panel header="#{myBundle.ListFunctionalRequirementTitle}">
 
             <p:dataTable id="datalist" value="#{functionalRequirementController.lista}" var="item"
+                         
                          selectionMode="single" selection="#{functionalRequirementController.selected}"
+                        
                          rowKey="#{item.idFunctionalRequirement}"
                          paginator="true"
                          rows="10"
@@ -48,7 +50,7 @@
                         <p:button id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" outcome="/project/functionalRequirement/Create_New"/>
                         <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}"  actionListener="#{functionalRequirementController.redirect(1)}" disabled="#{empty functionalRequirementController.selected}" />
                         <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}"  actionListener="#{functionalRequirementController.redirect(2)}" disabled="#{empty functionalRequirementController.selected}"/>
-                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}"  update=":FRRemoveForm" oncomplete="FRRemoveDialog.show()" disabled="#{empty functionalRequirementController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}"  update=":TabProfile:FRRemoveForm" oncomplete="FRRemoveDialog.show()" disabled="#{empty functionalRequirementController.selected}"/>
                         
                     </div>
                 </f:facet>
