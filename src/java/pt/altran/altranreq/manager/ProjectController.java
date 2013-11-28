@@ -13,6 +13,8 @@ import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import javax.inject.Inject;
 import pt.altran.altranreq.entities.AltranreqUser;
+import pt.altran.altranreq.services.AuthenticationBean;
+import pt.altran.altranreq.services.AuthorizationService;
 import pt.altran.altranreq.services.ProjectFilter;
 import pt.altran.altranreq.services.ProjectService;
 import pt.altran.altranreq.services.ProjectServiceBean;
@@ -26,12 +28,18 @@ public class ProjectController extends AbstractController<Project> implements Se
     private ProjectService projectService;
     @Inject 
     private UserService userService;
-    private AltranreqUser user;
+    
+    @Inject
+    private AuthorizationService authService;
+    @Inject
+    private AuthenticationBean authenticationBean;
     
     @Inject
     private ProjectServiceBean projectServiceBean;
     
-
+   private AltranreqUser user;
+       
+    
     private int id;
 
     public int getId() {
@@ -149,13 +157,10 @@ public class ProjectController extends AbstractController<Project> implements Se
             sendMessages(FacesMessage.SEVERITY_ERROR, ResourceBundle.getBundle("/project").getString("ErrorMessage"), null);
         }
     }
-    
+     
     public List<Project> getProjectsbyUser(){
-        ProjectFilter projectFilter = new ProjectFilter();
-        projectFilter.setUser(1);
-        return projectService.findProjectByFilter(projectFilter);
+        return authService.getProjects(authenticationBean.getUser().getIntIdUser());
     }
-    
     
     
     public boolean isProjectType()
