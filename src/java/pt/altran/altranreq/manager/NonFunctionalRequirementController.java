@@ -59,6 +59,14 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
         nfrequirement = super.prepareCreate(null);
     }
     
+    public String getNameProject (){
+    
+    
+        return ((Project)projectBean.getSelected()).getName();
+        
+    }
+    
+    
     public boolean isNFRType()
     {
         return treeService.getSelected() instanceof NonFunctionalRequirement;
