@@ -1,14 +1,17 @@
 package pt.altran.altranreq.services;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import static java.util.Collections.emptyList;
 import java.util.List;
-import javax.ejb.Stateless;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.ws.rs.core.Context;
 import pt.altran.altranreq.entities.AltranreqRole;
 import pt.altran.altranreq.entities.AltranreqUser;
 import pt.altran.altranreq.entities.Privilege;
@@ -16,19 +19,27 @@ import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.entities.ProjectUser;
 
 @WebService
-@Stateless
-public class AuthorizationServiceImp implements AuthorizationService {
+@Named(value = "authorizationService")
+@SessionScoped
+public class AuthorizationServiceImp implements AuthorizationService, Serializable{
 
     @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
 
+    @Context
+    private int userID;
+    @Context
+    private int projectID;
+    @Context
+    private boolean isAdmin;
+    
     public AuthorizationServiceImp() {
         this.em = null;
     }
 
     @WebMethod
     @Override
-    public List<Project> getProjects(int userID) {
+    public List<Project> getProjectsFromUser() {
         List<ProjectUser> pu_list = em.
                 createNamedQuery("ProjectUser.findByIdUser").
                 setParameter("idUser", userID).
@@ -54,7 +65,7 @@ public class AuthorizationServiceImp implements AuthorizationService {
 
     @WebMethod
     @Override
-    public AltranreqRole getProjectRole(int projectID, int userID) {
+    public AltranreqRole getProjectRole() {
         ProjectUser p_user = (ProjectUser) em.
                 createNamedQuery("ProjectUser.findByIdProjIdUser").
                 setParameter("idUser", userID).
@@ -70,11 +81,10 @@ public class AuthorizationServiceImp implements AuthorizationService {
     }
 
     @Override
-    public List<AltranreqUser> getUsersByProject(int projectID, int idRole) {
+    public List<AltranreqUser> getUsersByProject() {
         List<ProjectUser> p_user = em.
                 createNamedQuery("ProjectUser.findByIdProjIdRole").
                 setParameter("idProject", projectID).
-                setParameter("idRole", idRole).
                 getResultList();
         List<AltranreqUser> user_list = new ArrayList<>();
         List<AltranreqUser> all_users = em.
@@ -109,12 +119,33 @@ public class AuthorizationServiceImp implements AuthorizationService {
 
     @WebMethod
     @Override
-    public boolean hasPrivilege(int projectID, int userID, String privilege) {
-        AltranreqRole role = this.getProjectRole(projectID, userID);
-        if (role.getPrivilegeCollection().contains(privilege)) {
-            return true;
-        }
+    public boolean hasPrivilege(String privilege) {
+//        AltranreqRole role = this.getProjectRole(userID);
+//        if (role.getPrivilegeCollection().contains(privilege)) {
+//            return true;
+//        }
         return false;
     }
 
+    @Override
+    public void setProject(int projectID) {
+        this.projectID = projectID;
+    }
+    
+    public void setIsAdmin(boolean isAdmin){
+        this.isAdmin = isAdmin;
+    }
+
+    @WebMethod
+    @Override
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+    
+    @WebMethod
+    @Override
+    public void setUserID(int userID){
+        this.userID = userID;
+    }
+    
 }

@@ -20,7 +20,7 @@ public class AuthenticationServiceImp implements AuthenticationService {
 
     @WebMethod
     @Override
-    public AltranreqUser Login(String username, String password) {
+    public AltranreqUser login(String username, String password) {
         AltranreqUser u = (AltranreqUser) em.
                 createNamedQuery("AltranreqUser.findByUsernameAndPassword").
                 setParameter("username", username).
@@ -29,13 +29,6 @@ public class AuthenticationServiceImp implements AuthenticationService {
         return u;
     }
 
-    @WebMethod
-    @Override
-    public boolean isAdmin(AltranreqUser user) {
-        if (user.getIsAdmin() == '1') {
-            return true;
-        }
-        return false;
-    }
+
 
 }

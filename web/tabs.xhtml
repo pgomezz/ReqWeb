@@ -26,18 +26,13 @@
                 </p:panelGrid>
             </p:tab>
             <p:tab title="#{myBundle.Administration}" id="TabAdministration" disabled="#{!authenticationController.isAdmin}">
-
                 <p:panelGrid columns="2" >
-
-
                     <p:panel style="width: 1040px; height: 600px">
                         Falta o conteúdo de administração basta colocar o metodo do ben com acesso 
                         ao serviço de autorização nesta aba
                         <ui:include src="/admin/altranreqUser/List.xhtml"/>
                     </p:panel>
-
                 </p:panelGrid>
-
             </p:tab>
         </p:tabView>
     </ui:define>

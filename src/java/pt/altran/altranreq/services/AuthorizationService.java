@@ -9,14 +9,19 @@ import pt.altran.altranreq.entities.Project;
 
 public interface AuthorizationService {
 
-    public List<Project> getProjects(int userID);
+    public List<Project> getProjectsFromUser();
 
-    public AltranreqRole getProjectRole(int projectID, int userID);
+    public AltranreqRole getProjectRole();
 
     public Collection<Privilege> getRolePrivileges(AltranreqRole role);
 
-    public List<AltranreqUser> getUsersByProject(int projectID, int idRole);
+    public List<AltranreqUser> getUsersByProject();
 
-    public boolean hasPrivilege(int projectID, int userID, String privilege);
-
+    public boolean hasPrivilege(String privilege);
+    
+    public void setProject(int project);
+    
+    public boolean isAdmin();
+    
+    public void setUserID(int userID);
 }
