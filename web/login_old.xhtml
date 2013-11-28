@@ -10,27 +10,41 @@
     </h:head>
     <h:body>
         <div class="container">
-            <p:growl id="growl" showDetail="true" life="3000" />
+            <p:growl id="growl2" showDetail="true" life="3000" />
             <h:form id="formLogin">   
-                <p:growl id="growl" showDetail="true" />
+                <p:growl id="growl3" showDetail="true" />
                 <p:panel header="Login">
                     <h:panelGrid columns="2" cellpadding="5">  
                         <h:outputLabel for="username" value="Username:" />  
                         <p:inputText 
-                            id="username" required="true" label="username" value="#{authenticationController.username}" />  
+                            id="username" required="true" label="username" value="#{loginBean.username}" />  
 
                         <h:outputLabel for="password" value="Password:" />  
                         <h:inputSecret   
-                            id="password" required="true" label="password" value="#{authenticationController.password}" />  
+                            id="password" required="true" label="password" value="#{loginBean.password}" />  
 
                         <f:facet name="footer">  
-                            <p:commandButton id="loginButton" value="Login" update="growl" action="#{authenticationController.login()}"
+                            <p:commandButton id="loginButton" value="Login" update="growl3" action="#{loginBean.login()}"
                                              oncomplete="handleLoginRequest(xhr, status, args)"/>  
                         </f:facet>  
                     </h:panelGrid>  
                 </p:panel>
             </h:form>  
         </div>
+        <script type="text/javascript">
+            function handleLoginRequest(xhr, status, args) {
+                if (args.validationFailed || !args.loggedIn) {
+                    PF('formLogin').jq.effect("shake", {times: 5}, 100);
+                }
+                else {
+                    PF('formLogin').hide();
+                    $('#loginLink').fadeOut();
+                    location.href = "faces/index.html";
+                    document.getElementById("formLogin").action = "faces/index.xhtml";
+                    document.getElementById("formLogin").onsubmit = "return true";
+                }
+            }
+        </script>  
     </h:body>
 </html>
 
