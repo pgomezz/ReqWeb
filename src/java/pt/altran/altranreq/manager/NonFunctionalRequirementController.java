@@ -110,6 +110,7 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
     
     @Override
     public void saveNew(ActionEvent event) {
+        nfrequirement.setIdProject((Project)projectBean.getSelected());
         setSelected(nfrequirement);
         ejbService.create(nfrequirement);
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
