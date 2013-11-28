@@ -51,7 +51,7 @@
                         <p:button id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" outcome="/project/nonFunctionalRequirement/Create_New"/>
                         <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}"  actionListener="#{nonFunctionalRequirementController.redirect(1)}"/>
                         <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}"  actionListener="#{nonFunctionalRequirementController.redirect(2)}"/>
-                         <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}"  update=":NFRRemoveForm" oncomplete="NFRRemoveDialog.show()" disabled="#{empty functionalRequirementController.selected}"/>
+                         <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}"  update=":TabProfile:NFRRemoveForm" oncomplete="NFRRemoveDialog.show()" disabled="#{empty functionalRequirementController.selected}"/>
                          </div>
                 </f:facet>
 
