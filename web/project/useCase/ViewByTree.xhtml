@@ -3,56 +3,59 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-    <h:form id="UseCaseViewByTreeForm">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/tabs.xhtml">
+    <ui:define name="title">
+        <h:outputText value="#{project.EditTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="accorTree">
+        <ui:include src="/tree/tree.xhtml"/>
+    </ui:define>
+    <ui:define name="projectTab">
+        <p:panel header="#{project.EditTitle}">
+            <h:form id="UseCaseViewByTreeForm">
 
-        <h:panelGroup rendered="#{useCaseController.useCaseType}">
-            <p:panelGrid columns="2">
+                <h:panelGroup rendered="#{useCaseController.useCaseType}">
+                    <p:panelGrid columns="2">
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_name}"/>
+                        <h:outputText value="#{useCaseController.useCase.name}" title="#{myBundle.ViewUseCaseTitle_name}"/>
 
-                <h:outputText value="#{myBundle.ViewUseCaseLabel_idUseCase}"/>
-                <h:outputText value="#{useCaseController.useCase.idUseCase}" title="#{myBundle.ViewUseCaseTitle_idUseCase}"/>
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_description}"/>
+                        <h:outputText value="#{useCaseController.useCase.description}" title="#{myBundle.ViewUseCaseTitle_description}"/>
 
-                <h:outputText value="#{myBundle.ViewUseCaseLabel_name}"/>
-                <h:outputText value="#{useCaseController.useCase.name}" title="#{myBundle.ViewUseCaseTitle_name}"/>
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_avaliationCriteria}"/>
+                        <h:outputText value="#{useCaseController.useCase.avaliationCriteria}" title="#{myBundle.ViewUseCaseTitle_avaliationCriteria}"/>
 
-                <h:outputText value="#{myBundle.ViewUseCaseLabel_description}"/>
-                <h:outputText value="#{useCaseController.useCase.description}" title="#{myBundle.ViewUseCaseTitle_description}"/>
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_preCondition}"/>
+                        <h:outputText value="#{useCaseController.useCase.preCondition}" title="#{myBundle.ViewUseCaseTitle_preCondition}"/>
 
-                <h:outputText value="#{myBundle.ViewUseCaseLabel_avaliationCriteria}"/>
-                <h:outputText value="#{useCaseController.useCase.avaliationCriteria}" title="#{myBundle.ViewUseCaseTitle_avaliationCriteria}"/>
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_posCondition}"/>
+                        <h:outputText value="#{useCaseController.useCase.posCondition}" title="#{myBundle.ViewUseCaseTitle_posCondition}"/>
 
-                <h:outputText value="#{myBundle.ViewUseCaseLabel_preCondition}"/>
-                <h:outputText value="#{useCaseController.useCase.preCondition}" title="#{myBundle.ViewUseCaseTitle_preCondition}"/>
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_mainScenario}"/>
+                        <h:outputText value="#{useCaseController.useCase.mainScenario}" title="#{myBundle.ViewUseCaseTitle_mainScenario}"/>
 
-                <h:outputText value="#{myBundle.ViewUseCaseLabel_posCondition}"/>
-                <h:outputText value="#{useCaseController.useCase.posCondition}" title="#{myBundle.ViewUseCaseTitle_posCondition}"/>
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_ordernumber}"/>
+                        <h:outputText value="#{useCaseController.useCase.ordernumber}" title="#{myBundle.ViewUseCaseTitle_ordernumber}"/>
 
-                <h:outputText value="#{myBundle.ViewUseCaseLabel_mainScenario}"/>
-                <h:outputText value="#{useCaseController.useCase.mainScenario}" title="#{myBundle.ViewUseCaseTitle_mainScenario}"/>
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_useCaseCollection}"/>
+                        <h:selectManyMenu converter="useCaseConverter">
+                            <f:selectItems value="#{useCaseController.useCase.useCaseCollection}"
+                                           var="useCaseCollectionItem"
+                                           itemValue="#{useCaseCollectionItem}"
+                                           itemLabel="#{useCaseCollectionItem.name.toString()}"
+                                           />
 
-                <h:outputText value="#{myBundle.ViewUseCaseLabel_ordernumber}"/>
-                <h:outputText value="#{useCaseController.useCase.ordernumber}" title="#{myBundle.ViewUseCaseTitle_ordernumber}"/>
-
-                <h:outputText value="#{myBundle.ViewUseCaseLabel_useCaseCollection}"/>
-                <h:selectManyMenu converter="useCaseConverter">
-                    <f:selectItems value="#{useCaseController.useCase.useCaseCollection}"
-                                   var="useCaseCollectionItem"
-                                   itemValue="#{useCaseCollectionItem}"
-                                   itemLabel="#{useCaseCollectionItem.name.toString()}"
-                                   />
-
-                </h:selectManyMenu>
-
-                <h:outputText value="#{myBundle.ViewUseCaseLabel_idFunctionalRequirement}"/>
-                <h:outputText value="#{useCaseController.useCase.idFunctionalRequirement.name}"/>
-            </p:panelGrid>
-
-        </h:panelGroup>
-
-
-    </h:form>
-
+                        </h:selectManyMenu>
+                        
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_idFunctionalRequirement}"/>
+                        <h:outputText value="#{useCaseController.useCase.idFunctionalRequirement.name}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" action="/project/useCase/index"/>
+                </h:panelGroup>
+            </h:form>
+        </p:panel>
+    </ui:define>
 </ui:composition>

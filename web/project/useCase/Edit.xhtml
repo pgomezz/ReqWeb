@@ -6,16 +6,23 @@
                 xmlns:p="http://primefaces.org/ui"
 
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
-                template="/template.xhtml">
+                template="/tabs.xhtml">
 
-    <ui:define name="body" >
+    <ui:define name="title">
+        <h:outputText value="#{project.EditTitle}"></h:outputText>
+    </ui:define>
+
+    <ui:define name="accorTree">
+
+        <ui:include src="/tree/tree.xhtml"/>
+    </ui:define>
+    <ui:define name="projectTab">
+        <p:panel header="#{project.EditTitle}">
+
             <h:form id="UseCaseEditForm">
 
                 <h:panelGroup id="display">
                     <p:panelGrid  columns="2" rendered="#{editUseCaseManager.useCaseTypeByNavigation}">
-
-                        <h:outputLabel value="#{myBundle.EditUseCaseLabel_idUseCase}" for="idUseCase" />
-                        <h:outputText id="idUseCase" value="#{editUseCaseManager.useCaseByNavigation.idUseCase}" />
 
                         <p:outputLabel value="#{myBundle.EditUseCaseLabel_name}" for="name" />
                         <p:inputText id="name" value="#{editUseCaseManager.useCaseByNavigation.name}" title="#{myBundle.EditUseCaseTitle_name}" required="true" requiredMessage="#{myBundle.EditUseCaseRequiredMessage_name}" size="100" maxlength="100"/>
@@ -36,7 +43,9 @@
                         <p:inputTextarea rows="4" cols="30" id="mainScenario" value="#{editUseCaseManager.useCaseByNavigation.mainScenario}" title="#{myBundle.EditUseCaseTitle_mainScenario}" required="true" requiredMessage="#{myBundle.EditUseCaseRequiredMessage_mainScenario}"/>
 
                         <p:outputLabel value="#{myBundle.EditUseCaseLabel_ordernumber}" for="ordernumber" />
-                        <p:inputText id="ordernumber" value="#{editUseCaseManager.useCaseByNavigation.ordernumber}" title="#{myBundle.EditUseCaseTitle_ordernumber}"/>
+                        <p:inputText id="ordernumber" value="#{editUseCaseManager.useCaseByNavigation.ordernumber}" title="#{myBundle.EditUseCaseTitle_ordernumber}">
+                            <f:validateDoubleRange minimum="0" />
+                        </p:inputText>
 
                         <p:outputLabel value="#{myBundle.EditUseCaseLabel_useCaseCollection}" for="useCaseCollection" />
                         <p:selectManyMenu id="useCaseCollection" value="#{editUseCaseManager.useCaseByNavigation.useCaseCollection}"  converter="useCaseConverter">
@@ -46,23 +55,12 @@
                                            itemLabel="#{useCaseCollectionItem.name.toString()}"
                                            />
                         </p:selectManyMenu>
-
-                        <p:outputLabel value="#{myBundle.EditUseCaseLabel_idFunctionalRequirement}" for="idFunctionalRequirement" />
-                        <p:selectOneMenu id="idFunctionalRequirement" value="#{editUseCaseManager.useCaseByNavigation.idFunctionalRequirement}" required="true" requiredMessage="#{myBundle.EditUseCaseRequiredMessage_idFunctionalRequirement}" converter="functionalRequirementConverter">
-                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{functionalRequirementController.lista}"
-                                           var="idFunctionalRequirementItem"
-                                           itemValue="#{idFunctionalRequirementItem}"
-                                           itemLabel="#{idFunctionalRequirementItem.name.toString()}"
-                                           />
-                        </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{editUseCaseManager.save}" action="/index"  value="#{myBundle.Save}"  ajax="true" />
-                    <p:commandButton value="#{myBundle.Cancel}"/>
+                    <p:commandButton value="#{myBundle.Cancel}" action="/project/useCase/index"/>
                 </h:panelGroup>
 
             </h:form>
-
-
-        </ui:define>
-    </ui:composition>
+        </p:panel>
+    </ui:define>
+</ui:composition>

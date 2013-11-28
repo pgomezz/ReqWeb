@@ -1,72 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
 
-    <ui:composition>
-        <p:dialog id="UseCaseCreateDlg" widgetVar="UseCaseCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.CreateUseCaseTitle}" closeOnEscape="true">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/tabs.xhtml">
 
+    <ui:define name="title">
+        <h:outputText value="#{project.EditTitle}"></h:outputText>
+    </ui:define>
+
+    <ui:define name="accorTree">
+
+        <ui:include src="/tree/tree.xhtml"/>
+    </ui:define>
+    <ui:define name="projectTab">
+        <p:panel header="#{project.EditTitle}">
             <h:form id="UseCaseCreateForm">
 
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2">
-
-                        <p:outputLabel value="#{myBundle.CreateUseCaseLabel_idUseCase}" for="idUseCase" />
-                        <p:inputText id="idUseCase" value="#{useCaseController.selected.idUseCase}" title="#{myBundle.CreateUseCaseTitle_idUseCase}" required="true" requiredMessage="#{myBundle.CreateUseCaseRequiredMessage_idUseCase}"/>
-
                         <p:outputLabel value="#{myBundle.CreateUseCaseLabel_name}" for="name" />
-                        <p:inputText id="name" value="#{useCaseController.selected.name}" title="#{myBundle.CreateUseCaseTitle_name}" required="true" requiredMessage="#{myBundle.CreateUseCaseRequiredMessage_name}" size="100" maxlength="100"/>
+                        <p:inputText id="name" value="#{createUseCaseManager.useCase.name}" title="#{myBundle.CreateUseCaseTitle_name}" required="true" requiredMessage="#{myBundle.CreateUseCaseRequiredMessage_name}" size="100" maxlength="100"/>
 
                         <p:outputLabel value="#{myBundle.CreateUseCaseLabel_description}" for="description" />
-                        <p:inputTextarea rows="4" cols="30" id="description" value="#{useCaseController.selected.description}" title="#{myBundle.CreateUseCaseTitle_description}" required="true" requiredMessage="#{myBundle.CreateUseCaseRequiredMessage_description}"/>
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{createUseCaseManager.useCase.description}" title="#{myBundle.CreateUseCaseTitle_description}" required="true" requiredMessage="#{myBundle.CreateUseCaseRequiredMessage_description}"/>
 
                         <p:outputLabel value="#{myBundle.CreateUseCaseLabel_avaliationCriteria}" for="avaliationCriteria" />
-                        <p:inputTextarea rows="4" cols="30" id="avaliationCriteria" value="#{useCaseController.selected.avaliationCriteria}" title="#{myBundle.CreateUseCaseTitle_avaliationCriteria}" required="true" requiredMessage="#{myBundle.CreateUseCaseRequiredMessage_avaliationCriteria}"/>
+                        <p:inputTextarea rows="4" cols="30" id="avaliationCriteria" value="#{createUseCaseManager.useCase.avaliationCriteria}" title="#{myBundle.CreateUseCaseTitle_avaliationCriteria}" required="true" requiredMessage="#{myBundle.CreateUseCaseRequiredMessage_avaliationCriteria}"/>
 
                         <p:outputLabel value="#{myBundle.CreateUseCaseLabel_preCondition}" for="preCondition" />
-                        <p:inputTextarea rows="4" cols="30" id="preCondition" value="#{useCaseController.selected.preCondition}" title="#{myBundle.CreateUseCaseTitle_preCondition}" />
+                        <p:inputTextarea rows="4" cols="30" id="preCondition" value="#{createUseCaseManager.useCase.preCondition}" title="#{myBundle.CreateUseCaseTitle_preCondition}" />
 
                         <p:outputLabel value="#{myBundle.CreateUseCaseLabel_posCondition}" for="posCondition" />
-                        <p:inputTextarea rows="4" cols="30" id="posCondition" value="#{useCaseController.selected.posCondition}" title="#{myBundle.CreateUseCaseTitle_posCondition}" />
+                        <p:inputTextarea rows="4" cols="30" id="posCondition" value="#{createUseCaseManager.useCase.posCondition}" title="#{myBundle.CreateUseCaseTitle_posCondition}" />
 
                         <p:outputLabel value="#{myBundle.CreateUseCaseLabel_mainScenario}" for="mainScenario" />
-                        <p:inputTextarea rows="4" cols="30" id="mainScenario" value="#{useCaseController.selected.mainScenario}" title="#{myBundle.CreateUseCaseTitle_mainScenario}" required="true" requiredMessage="#{myBundle.CreateUseCaseRequiredMessage_mainScenario}"/>
+                        <p:inputTextarea rows="4" cols="30" id="mainScenario" value="#{createUseCaseManager.useCase.mainScenario}" title="#{myBundle.CreateUseCaseTitle_mainScenario}" required="true" requiredMessage="#{myBundle.CreateUseCaseRequiredMessage_mainScenario}"/>
 
                         <p:outputLabel value="#{myBundle.CreateUseCaseLabel_ordernumber}" for="ordernumber" />
-                        <p:inputText id="ordernumber" value="#{useCaseController.selected.ordernumber}" title="#{myBundle.CreateUseCaseTitle_ordernumber}"/>
+                        <p:inputText id="ordernumber" value="#{createUseCaseManager.useCase.ordernumber}" title="#{myBundle.CreateUseCaseTitle_ordernumber}"/>
 
                         <p:outputLabel value="#{myBundle.CreateUseCaseLabel_useCaseCollection}" for="useCaseCollection" />
-                        <p:selectManyMenu id="useCaseCollection" value="#{useCaseController.selected.useCaseCollection}"  converter="useCaseConverter">
-                            <f:selectItems value="#{useCaseController.items}"
+                        <p:selectManyMenu id="useCaseCollection" value="#{createUseCaseManager.useCase.useCaseCollection}"  converter="useCaseConverter">
+                            <f:selectItems value="#{createUseCaseManager.items}"
                                            var="useCaseCollectionItem"
                                            itemValue="#{useCaseCollectionItem}"
                                            itemLabel="#{useCaseCollectionItem.name.toString()}"
                                            />
-
                         </p:selectManyMenu>
-
-                        <p:outputLabel value="#{myBundle.CreateUseCaseLabel_idFunctionalRequirement}" for="idFunctionalRequirement" />
-                        <p:selectOneMenu id="idFunctionalRequirement" value="#{useCaseController.selected.idFunctionalRequirement}" required="true" requiredMessage="#{myBundle.EditUseCaseRequiredMessage_idFunctionalRequirement}" converter="functionalRequirementConverter">
-                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{functionalRequirementController.items}"
-                                           var="idFunctionalRequirementItem"
-                                           itemValue="#{idFunctionalRequirementItem}"
-                                           itemLabel="#{idFunctionalRequirementItem.name.toString()}"
-                                           />
-
-                        </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{useCaseController.saveNew}" value="#{myBundle.Save}" update="display,:UseCaseListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,UseCaseCreateDialog);"/>
-                    <p:commandButton value="#{myBundle.Cancel}" onclick="UseCaseCreateDialog.hide()"/>
+                    <p:commandButton actionListener="#{createUseCaseManager.saveNew}" value="#{myBundle.Save}" action="/project/useCase/index"/>
+                    <p:commandButton value="#{myBundle.Close}" action="/project/useCase/index"/>
                 </h:panelGroup>
 
             </h:form>
-
-        </p:dialog>
-
-    </ui:composition>
-
-</html>
+        </p:panel>
+    </ui:define>
+</ui:composition>
