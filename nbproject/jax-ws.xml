@@ -40,6 +40,9 @@
     <service name="PrivilegeImp">
       <implementation-class>pt.altran.altranreq.services.PrivilegeImp</implementation-class>
     </service>
+    <service name="AuthenticationServiceImp_old">
+      <implementation-class>pt.altran.altranreq.services.AuthenticationServiceImp_old</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>

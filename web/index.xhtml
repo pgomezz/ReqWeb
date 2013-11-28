@@ -16,7 +16,8 @@
         <ui:define name="body">
             <p:tabView id="TabProfile" activeIndex="0">
                 <p:tab title="#{myBundle.ProjectsTab}" id="TabProjects" >
-                    
+                    <ui:include src="/project/List.xhtml"></ui:include>
+                    <ui:include src="/project/RemoveProject.xhtml"></ui:include>
                     
                 </p:tab>
                 <p:tab title="#{myBundle.Administration}" id="TabAdministration" disabled="#{!authenticationController.isAdmin}">
