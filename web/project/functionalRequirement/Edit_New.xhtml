@@ -35,10 +35,16 @@
                         <p:inputTextarea rows="4" cols="30" id="avaliationCriteria" value="#{functionalRequirementController.FRequirement.avaliationCriteria}" title="#{myBundle.EditFunctionalRequirementTitle_avaliationCriteria}" required="true" requiredMessage="#{myBundle.EditFunctionalRequirementRequiredMessage_avaliationCriteria}"/>
 
                         <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_clientPriority}" for="clientPriority" />
-                        <p:inputText id="clientPriority" value="#{functionalRequirementController.FRequirement.clientPriority}" title="#{myBundle.EditFunctionalRequirementTitle_clientPriority}" required="true" requiredMessage="#{myBundle.EditFunctionalRequirementRequiredMessage_clientPriority}"/>
+                        <p:inputText id="clientPriority" value="#{functionalRequirementController.FRequirement.clientPriority}" title="#{myBundle.EditFunctionalRequirementTitle_clientPriority}" required="true" requiredMessage="#{myBundle.EditFunctionalRequirementRequiredMessage_clientPriority}">
+                        <f:validateDoubleRange minimum="1" maximum="5" /> 
+                    
+                    </p:inputText>
 
                         <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_clientInsatisfaction}" for="clientInsatisfaction" />
-                        <p:inputText id="clientInsatisfaction" value="#{functionalRequirementController.FRequirement.clientInsatisfaction}" title="#{myBundle.EditFunctionalRequirementTitle_clientInsatisfaction}" required="true" requiredMessage="#{myBundle.EditFunctionalRequirementRequiredMessage_clientInsatisfaction}"/>
+                        <p:inputText id="clientInsatisfaction" value="#{functionalRequirementController.FRequirement.clientInsatisfaction}" title="#{myBundle.EditFunctionalRequirementTitle_clientInsatisfaction}" required="true" requiredMessage="#{myBundle.EditFunctionalRequirementRequiredMessage_clientInsatisfaction}">
+                        <f:validateDoubleRange minimum="1" maximum="5" /> 
+                    
+                    </p:inputText>
 
                       
                         
@@ -54,10 +60,16 @@
                         
                         
                         <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_version}" for="version" />
-                        <p:inputText id="version" value="#{functionalRequirementController.FRequirement.version}" title="#{myBundle.EditFunctionalRequirementTitle_version}" required="true" requiredMessage="#{myBundle.EditFunctionalRequirementRequiredMessage_version}"/>
+                        <p:inputText id="version" value="#{functionalRequirementController.FRequirement.version}" title="#{myBundle.EditFunctionalRequirementTitle_version}" required="true" requiredMessage="#{myBundle.EditFunctionalRequirementRequiredMessage_version}">
+                        <f:validateDoubleRange minimum="1"  /> 
+                    
+                    </p:inputText>
 
                         <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_ordernumber}" for="ordernumber" />
-                        <p:inputText id="ordernumber" value="#{functionalRequirementController.FRequirement.ordernumber}" title="#{myBundle.EditFunctionalRequirementTitle_ordernumber}"/>
+                        <p:inputText id="ordernumber" value="#{functionalRequirementController.FRequirement.ordernumber}" title="#{myBundle.EditFunctionalRequirementTitle_ordernumber}">
+                        <f:validateDoubleRange minimum="1"  /> 
+                    
+                    </p:inputText>
 
                         <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_functionalRequirementCollection}" for="functionalRequirementCollection" />
                         <p:selectManyMenu id="functionalRequirementCollection" value="#{functionalRequirementController.FRequirement.functionalRequirementCollection}"  converter="functionalRequirementConverter">
