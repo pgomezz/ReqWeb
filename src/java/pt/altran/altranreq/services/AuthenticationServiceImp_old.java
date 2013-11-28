@@ -1,6 +1,5 @@
 package pt.altran.altranreq.services;
 
-import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
@@ -8,13 +7,12 @@ import javax.persistence.PersistenceContext;
 import pt.altran.altranreq.entities.AltranreqUser;
 
 @WebService
-@Stateless
-public class AuthenticationServiceImp implements AuthenticationService {
+public class AuthenticationServiceImp_old implements AuthenticationService_old {
 
     @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
 
-    public AuthenticationServiceImp() {
+    public AuthenticationServiceImp_old() {
         this.em = null;
     }
 
@@ -22,7 +20,7 @@ public class AuthenticationServiceImp implements AuthenticationService {
     @Override
     public AltranreqUser Login(String username, String password) {
         AltranreqUser u = (AltranreqUser) em.
-                createNamedQuery("AltranreqUser.findByUsernameAndPassword").
+                createNamedQuery("AltranreqUser.UserPassword").
                 setParameter("username", username).
                 setParameter("password", password).
                 getSingleResult();

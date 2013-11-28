@@ -6,9 +6,14 @@
                 xmlns:p="http://primefaces.org/ui"
 
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
-                template="/template.xhtml">
+                template="/tabs.xhtml">
+    
+    <ui:define name="accorTree">
+                    <ui:include src="/tree/tree.xhtml"/>
+              
+    </ui:define>
 
-    <ui:define name="body">
+    <ui:define name="projectTab">
         <h:form id="FunctionalRequirementCreateNewForm">
 
             <h:panelGroup id="display">
@@ -33,14 +38,14 @@
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_clientPriority}" for="clientPriority" />
                     <p:inputText id="clientPriority" value="#{functionalRequirementController.selected.clientPriority}" title="#{myBundle.CreateFunctionalRequirementTitle_clientPriority}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_clientPriority}">
                     
-                         <f:validateDoubleRange minimum="0" maximum="5" /> 
+                         <f:validateDoubleRange minimum="1" maximum="5" /> 
                     
                     </p:inputText>
 
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_clientInsatisfaction}" for="clientInsatisfaction" />
                     <p:inputText id="clientInsatisfaction" value="#{functionalRequirementController.selected.clientInsatisfaction}" title="#{myBundle.CreateFunctionalRequirementTitle_clientInsatisfaction}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_clientInsatisfaction}" >
                     
-                         <f:validateDoubleRange minimum="0" maximum="5" /> 
+                         <f:validateDoubleRange minimum="1" maximum="5" /> 
                     
                     </p:inputText>
 

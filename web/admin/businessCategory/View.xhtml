@@ -4,9 +4,7 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
-
-                xmlns:f="http://xmlns.jcp.org/jsf/core"
-                template="/template.xhtml">
+                template="template.xhtml">
 
     <ui:define name="body">
 
@@ -14,10 +12,6 @@
 
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2">
-
-                        <h:outputText value="#{myBundle.ViewBusinessCategoryLabel_idBusinessCategory}"/>
-                        <h:outputText value="#{businessCategoryController.businessCategory.idBusinessCategory}" title="#{myBundle.ViewBusinessCategoryTitle_idBusinessCategory}"/>
-
                         <h:outputText value="#{myBundle.ViewBusinessCategoryLabel_name}"/>
                         <h:outputText value="#{businessCategoryController.businessCategory.name}" title="#{myBundle.ViewBusinessCategoryTitle_name}"/>
 

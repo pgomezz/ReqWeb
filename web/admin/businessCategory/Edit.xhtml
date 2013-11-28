@@ -4,9 +4,7 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
-
-                xmlns:f="http://xmlns.jcp.org/jsf/core"
-                template="/template.xhtml">
+                template="template.xhtml">
 
     <ui:define name="body">
             <h:form id="BusinessCategoryEditForm">
@@ -14,17 +12,16 @@
                 <h:panelGroup id="display">
                     <p:panelGrid  columns="2" >
 
-                        <h:outputLabel value="#{myBundle.EditBusinessCategoryLabel_idBusinessCategory}" for="idBusinessCategory" />
-                        <h:outputText id="idBusinessCategory" value="#{businessCategoryController.businessCategory.idBusinessCategory}" />
-
                         <p:outputLabel value="#{myBundle.EditBusinessCategoryLabel_name}" for="name" />
-                        <p:inputText id="name" value="#{businessCategoryController.businessCategory.name}" title="#{myBundle.EditBusinessCategoryTitle_name}" required="true" requiredMessage="#{myBundle.EditBusinessCategoryRequiredMessage_name}" size="50" maxlength="32"/>
+                        <p:inputText id="name" value="#{businessCategoryController.businessCategory.name}" title="#{myBundle.EditBusinessCategoryTitle_name}" required="true" requiredMessage="#{myBundle.EditBusinessCategoryRequiredMessage_name}" size="40" maxlength="32"/>
 
                         <p:outputLabel value="#{myBundle.EditBusinessCategoryLabel_description}" for="description" />
-                        <p:inputTextarea rows="4" cols="30" id="description" value="#{businessCategoryController.businessCategory.description}" title="#{myBundle.EditBusinessCategoryTitle_description}" required="true" requiredMessage="#{myBundle.EditBusinessCategoryRequiredMessage_description}" maxlength="255"/>
+                        <p:inputTextarea rows="5" cols="70" id="description" value="#{businessCategoryController.businessCategory.description}" title="#{myBundle.EditBusinessCategoryTitle_description}" required="true" requiredMessage="#{myBundle.EditBusinessCategoryRequiredMessage_description}" maxlength="255" autoResize="false"/>
+                    
                     </p:panelGrid>
                     <p:commandButton actionListener="#{businessCategoryController.save}" value="#{myBundle.Save}" action="/admin/businessCategory/index" ajax="true"/>
                     <p:button value="#{myBundle.Cancel}" outcome="/admin/businessCategory/index"/>
+                
                 </h:panelGroup>
 
             </h:form>

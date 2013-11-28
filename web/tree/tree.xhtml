@@ -3,17 +3,17 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui">
 
-    <h:form id="tree">  
+    <h:form id="tree" >  
 
         <p:growl id="messages" showDetail="true" /> 
         
         <p:tree value="#{treeBean.root}" var="node" dynamic="true" cache="false"  
             selectionMode="single"  selection="#{treeBean.selectedNode}" id="tree">  
 
-            <p:ajax event="expand" update=":tree:messages" listener="#{treeBean.onNodeExpand}" />  
-            <p:ajax event="collapse" update=":tree:messages" listener="#{treeBean.onNodeCollapse}" />  
-            <p:ajax event="select" update=":tree:messages" listener="#{treeBean.onNodeSelect}" />  
-            <p:ajax event="unselect" update=":tree:messages" listener="#{treeBean.onNodeUnselect}" />
+            <p:ajax event="expand" update=":TabProfile:tree:messages" listener="#{treeBean.onNodeExpand}" />  
+            <p:ajax event="collapse" update=":TabProfile:tree:messages" listener="#{treeBean.onNodeCollapse}" />  
+            <p:ajax event="select" update=":TabProfile:tree:messages" listener="#{treeBean.onNodeSelect}" />  
+            <p:ajax event="unselect" update=":TabProfile:tree:messages" listener="#{treeBean.onNodeUnselect}" />
 
             <p:treeNode id="treeNode">  
                 <h:outputText value="#{node}" id="lblNode"/>  

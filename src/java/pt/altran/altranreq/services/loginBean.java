@@ -105,7 +105,7 @@ public class loginBean implements Serializable {
                 //   this.originalURL = request.getContextPath() + "home.xhtml";
                 FacesContext.getCurrentInstance().getExternalContext().redirect(originalURL);
             } catch (IOException ex) {
-                Logger.getLogger(AuthenticationServiceImp.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AuthenticationServiceImp_old.class.getName()).log(Level.SEVERE, null, ex);
             }
             System.out.println("Login Sucess");
         } else {
@@ -120,7 +120,7 @@ public class loginBean implements Serializable {
     }
 
     public boolean isValid() {
-        AuthenticationService s = null;
+        AuthenticationService_old s = null;
         this.user = s.Login(this.username, this.password);
         if (this.user == null) {
             this.valid = false;
