@@ -25,15 +25,17 @@ public class UseCaseController extends AbstractController<UseCase> implements Se
 
     @Inject
     private UseCaseService ejbService;
-    
+
     @Inject
     private TreeService treeService;
-    
+
     @Inject
     private FunctionalRequirementServiceBean funcReqBean;
-    
+
     @Inject
     private UseCaseBean useCaseBean;
+
+    private UseCase useCase;
 
     public UseCaseController() {
         super(UseCase.class);
@@ -42,32 +44,28 @@ public class UseCaseController extends AbstractController<UseCase> implements Se
     @PostConstruct
     public void init() {
         super.setService(ejbService);
+        useCase = super.prepareCreate(null);
     }
-    
-    public boolean isUseCaseType()
-    {
+
+    public boolean isUseCaseType() {
         return treeService.getSelected() instanceof UseCase;
     }
-    
-    public boolean isUseCaseTypeByNavigation()
-    {
+
+    public boolean isUseCaseTypeByNavigation() {
         return useCaseBean.getSelected() instanceof UseCase;
     }
-    
-    public UseCase getUseCase()
-    {
-        return (UseCase)treeService.getSelected();
+
+    public UseCase getUseCase() {
+        return (UseCase) treeService.getSelected();
     }
-    
-    public UseCase getUseCaseByNavigation()
-    {
-        return (UseCase)useCaseBean.getSelected();
+
+    public UseCase getUseCaseByNavigation() {
+        return (UseCase) useCaseBean.getSelected();
     }
-    
-    public List<UseCase> getLista()
-    {
-        FunctionalRequirement funcReqSelected = (FunctionalRequirement)funcReqBean.getSelected();
-        
+
+    public List<UseCase> getLista() {
+        FunctionalRequirement funcReqSelected = (FunctionalRequirement) funcReqBean.getSelected();
+
         int idfuncReq = Integer.parseInt(funcReqSelected.getIdFunctionalRequirement().toString());
         return ejbService.findUseCaseByRequirement(idfuncReq);
     }
@@ -84,8 +82,12 @@ public class UseCaseController extends AbstractController<UseCase> implements Se
 //            Logger.getLogger(UseCaseController.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //    }
-    
-    
+    @Override
+    public void delete(ActionEvent event) {
+        UseCase pj = (UseCase) useCaseBean.getSelected();
+        setSelected(pj);
+        ejbService.remove(pj);
+    }
 
     public void redirect() throws IOException {
         useCaseBean.setSelected(this.getSelected());
