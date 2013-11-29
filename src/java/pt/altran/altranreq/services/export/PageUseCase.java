@@ -21,7 +21,7 @@ import pt.altran.altranreq.entities.UseCase;
 
 public class PageUseCase {
 
-    //"Identificador", "Designação",  
+    //List of Use Cases attributes
     private static void listUseCase(XWPFParagraph paragraph) {
         JavaPoi.setBulletStyle(paragraph, "Identificador");
         JavaPoi.setBulletStyle(paragraph, "Designação");
@@ -34,14 +34,11 @@ public class PageUseCase {
         JavaPoi.setBulletStyle(paragraph, "Pós-Condição – condição verificada após a realização do Use Case.");
 
     }
-
+    
+    //Create sub chapter UseCase
     public static void createPage(XWPFDocument document, Collection<FunctionalRequirement> listRF) {
         XWPFParagraph paragraph0 = document.createParagraph();
         paragraph0.setPageBreak(true);
-
-        XWPFNumbering numbering = null;
-        XWPFParagraph para = null;
-        XWPFNum num = null;
 
         JavaPoi.setSubtitleStyle(document.createParagraph(), "Especificação de Use Cases");
 
@@ -58,6 +55,7 @@ public class PageUseCase {
 
     }
 
+    // Division by Functional Requirement of the Use Cases
     private static void listUseCaseByFuncReq(XWPFDocument document, FunctionalRequirement aux) {
 
         JavaPoi.setSubSubtitleStyle(document.createParagraph(), aux.getName());
@@ -70,15 +68,15 @@ public class PageUseCase {
     }
 
     private static void listUseCaseTable(XWPFDocument doc, Collection<UseCase> listRF) {
+        int nTabela = 0;
         for (UseCase useCase : listRF) {
-            createUseCaseTabela(doc, useCase);
+            createUseCaseTabela(doc, useCase, nTabela);
+            nTabela++;
         }
 
     }
 
-    private static int ucCount = 0;
-
-    private static XWPFDocument createUseCaseTabela(XWPFDocument doc, UseCase useCase) {
+    private static XWPFDocument createUseCaseTabela(XWPFDocument doc, UseCase useCase, int nTabela) {
         int[] cols = {2943, 6507};
         int tamTotTabRow = 6 + useCase.getAlternativeFlowsCollection().size() + 1;
         List<AlternativeFlows> lstAF = (List<AlternativeFlows>)useCase.getAlternativeFlowsCollection();
@@ -127,7 +125,7 @@ public class PageUseCase {
                 if (colCt == 0) {
                     rh.setBold(true);
                     if (rowCt == 0) {
-                        rh.setText("USE CASE " + ++ucCount + ".");
+                        rh.setText("USE CASE " + nTabela + ".");
                     } else if (rowCt == 1) {
                         rh.setText("Actor");
                     } else if (rowCt == 2) {
