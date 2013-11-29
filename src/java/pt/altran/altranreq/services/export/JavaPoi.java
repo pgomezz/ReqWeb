@@ -33,21 +33,20 @@ import pt.altran.altranreq.services.ProjectServiceBean;
 @ManagedBean
 @RequestScoped
 public class JavaPoi {
-
+    
+    // Injection of the ProjectService for getting the current Project info
     @Inject
     ProjectServiceBean projectService;
-
-    private StreamedContent file;
 
     public JavaPoi() {
     }
 
+    //Method for downloading
     public void download(OutputStream out) throws IOException {
         String nomeProjecto = ((Project)projectService.getSelected()).getName();
         InputStream in = new FileInputStream(nomeProjecto +"_SpecReq_v1.0.docx");
 
-        // Prepare.
-        //byte[] pdfData = getItSomehow();
+        //Prepare.
         FacesContext facesContext = FacesContext.getCurrentInstance();
         ExternalContext externalContext = facesContext.getExternalContext();
         HttpServletResponse response = (HttpServletResponse) externalContext.getResponse();
@@ -63,9 +62,9 @@ public class JavaPoi {
 
         // Inform JSF to not take the response in hands.
         facesContext.responseComplete();
-
     }
 
+    //Auxiliar method for passing the input to output
     public static void flow(InputStream is, OutputStream os, byte[] buf) throws IOException {
         int numRead;
         while ((numRead = is.read(buf)) >= 0) {
@@ -73,11 +72,7 @@ public class JavaPoi {
         }
     }
 
-    public StreamedContent getFile() {
-        System.out.println("Estao a chamar por mim");
-        return file;
-    }
-
+    //get run with "AltranHeading1" style format
     protected static XWPFRun setTitleStyle(XWPFParagraph titleParagraph, String text) {
         XWPFRun title = titleParagraph.createRun();
         titleParagraph.setStyle("AltranHeading1");
@@ -86,6 +81,7 @@ public class JavaPoi {
         return title;
     }
 
+    //get run with "AltranHeading2" style format
     protected static XWPFRun setSubtitleStyle(XWPFParagraph subTitleParagraph, String text) {
         subTitleParagraph.setStyle("AltranHeading2");
         XWPFRun subtitle = subTitleParagraph.createRun();
@@ -94,6 +90,7 @@ public class JavaPoi {
         return subtitle;
     }
 
+    //get run with "AltranHeading3" style format
     protected static XWPFRun setSubSubtitleStyle(XWPFParagraph subTitleParagraph, String text) {
         subTitleParagraph.setStyle("AltranHeading3");
         XWPFRun subtitle = subTitleParagraph.createRun();
@@ -102,6 +99,7 @@ public class JavaPoi {
         return subtitle;
     }
 
+    //get run with "AltranNormal" style format
     protected static XWPFRun setBodyStyle(XWPFParagraph paragraph, String text) {
         paragraph.setStyle("AltranNormal");
         XWPFRun paragraphRun = paragraph.createRun();
@@ -110,6 +108,7 @@ public class JavaPoi {
         return paragraphRun;
     }
 
+    //get run with "AltranNormal" style format making bullet like setence
     protected static XWPFRun setBulletStyle(XWPFParagraph paragraph, String text) {
         paragraph.setStyle("AltranNormal");
         XWPFRun paragraphRun = paragraph.createRun();
@@ -118,27 +117,27 @@ public class JavaPoi {
         return paragraphRun;
     }
 
-    //Devera receber o Projecto na totalidade
+    // Begin to create all document with all specification
     public void createDocument() {
 
         Project project = (Project) projectService.getSelected();
 
         Collection<FunctionalRequirement> aux = project.getFunctionalRequirementCollection();
-        System.out.println(new File(".").getAbsolutePath());
+        //System.out.println(new File(".").getAbsolutePath());
         try {
-            //File file = request.getServletContext().getRealPath("\\resources\\AltranEspTemplate.docx");
+            //Get the template document saved on the path specified
             XWPFDocument template = new XWPFDocument(new FileInputStream(new File("Template\\AltranEspTemplate.docx")));
 
-            //Estrutura do Documento
-            //1. Introdução
-            //2. Âmbito do projecto
-            //3. Requisitos Funcionais
-            //3.x Especificação de Requisitos Funcionais
+            //Document Chapters
+            //1. Introduction
+            //2. Scope of Project
+            //3. Functional Requirement
+            //3.x Specification of Functional Requirement
             PageFunctionalRequirements.createPage(template, (List<FunctionalRequirement>) project.getFunctionalRequirementCollection());
-            //3.x Especificação de UseCase
+            //3.x Specification of  UseCase
             PageUseCase.createPage(template, project.getFunctionalRequirementCollection());
 
-            //4. Requisitos Não funcionais
+            //4. Non Functional Requirement
             //4.x Usubilidade
             if (project.getNonFunctionalRequirementCollection() != null) {
                 boolean Usub = false;
@@ -156,7 +155,7 @@ public class JavaPoi {
                     PageNonFunctionalReq.createUsubilidade(template, (List<NonFunctionalRequirement>) project.getNonFunctionalRequirementCollection());
                 }
                 if (Interface == true) {
-                    //4.x Interface e Imagem
+                    //4.x Interface e Image
                     PageNonFunctionalReq.createInterface(template, (List<NonFunctionalRequirement>) project.getNonFunctionalRequirementCollection());
                 }
             }
@@ -178,26 +177,6 @@ public class JavaPoi {
         }
             
        
-    }
-
-    public void teste2() throws FileNotFoundException, IOException {
-        FileOutputStream fos = new FileOutputStream(new File("transformed.docx"));
-        XWPFDocument doc = new XWPFDocument(new FileInputStream(new File("AltranEspTemplate.docx")));
-
-        for (XWPFParagraph p : doc.getParagraphs()) {
-            for (XWPFRun r : p.getRuns()) {
-                for (CTText ct : r.getCTR().getTList()) {
-                    String str = ct.getStringValue();
-
-                    if (str.contains("${Req.Funcionais}")) {
-                        str = str.replace("NAME", "Java Dev");
-                        ct.setStringValue(str);
-                    }
-
-                }
-            }
-        }
-        doc.write(fos);
     }
 
 }
