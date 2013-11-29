@@ -13,13 +13,10 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTcPr;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.STShd;
 import pt.altran.altranreq.entities.NonFunctionalRequirement;
 
-/**
- *
- * @author User
- */
+// Create Non Functional Requirement 
 public class PageNonFunctionalReq {
 
-
+    // Create sub Chapter usability
     public static void createUsubilidade(XWPFDocument document, List<NonFunctionalRequirement> aux) {
         XWPFParagraph paragraph0 = document.createParagraph();
         paragraph0.setPageBreak(true);
@@ -44,6 +41,7 @@ public class PageNonFunctionalReq {
         createAllNonFuncReqTable(document, aux);
     }
     
+    // Create sub Chapter Inteface
     public static void createInterface(XWPFDocument document, List<NonFunctionalRequirement> aux) {
                 
         JavaPoi.setSubtitleStyle(document.createParagraph(), "Requisitos de Interface e Imagem");
@@ -65,6 +63,7 @@ public class PageNonFunctionalReq {
 
     }
 
+    //Detect the type of Non Functional Requirement
     private static String getRNFType(BigInteger rnf) {
         switch (rnf.intValue()) {
             case 0:
@@ -86,6 +85,8 @@ public class PageNonFunctionalReq {
     }
     
     private static int x = 1;
+    
+    // Create Table
     private static void createNonFuncReqTable(XWPFDocument doc, NonFunctionalRequirement funcReq) {
         int[] cols = {2943, 6507};
 
