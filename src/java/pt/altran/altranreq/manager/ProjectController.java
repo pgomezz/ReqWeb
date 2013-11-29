@@ -15,7 +15,6 @@ import javax.inject.Inject;
 import pt.altran.altranreq.entities.AltranreqUser;
 import pt.altran.altranreq.services.AuthenticationBean;
 import pt.altran.altranreq.services.AuthorizationService;
-import pt.altran.altranreq.services.ProjectFilter;
 import pt.altran.altranreq.services.ProjectService;
 import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.UserService;
@@ -26,20 +25,21 @@ public class ProjectController extends AbstractController<Project> implements Se
 
     @Inject
     private ProjectService projectService;
-    @Inject 
+
+    @Inject
     private UserService userService;
-    
+
     @Inject
     private AuthorizationService authService;
+
     @Inject
     private AuthenticationBean authenticationBean;
-    
+
     @Inject
     private ProjectServiceBean projectServiceBean;
-    
-   private AltranreqUser user;
-       
-    
+
+    private AltranreqUser user;
+
     private int id;
 
     public int getId() {
@@ -49,7 +49,7 @@ public class ProjectController extends AbstractController<Project> implements Se
     public void setId(int id) {
         this.id = id;
     }
-    
+
     private Project project;
 
     public AltranreqUser getUser() {
@@ -59,48 +59,44 @@ public class ProjectController extends AbstractController<Project> implements Se
     public void setUser(AltranreqUser user) {
         this.user = user;
     }
-    
+
     @Override
     public void save(ActionEvent event) {
-        //setSelected(project);
-        try{
-        Project pj = (Project)projectServiceBean.getSelected();
-        setSelected(pj);
-        System.out.println(pj.getBeginDate() + " - " + pj.getIdProject() + " - " + pj.getIdOrganization()+ " - " + pj.getIdProjectManager() + " - " + pj.getProjectState());
-        projectService.edit(pj); //To change body of generated methods, choose Tools | Templates.
-        
-            sendMessages(FacesMessage.SEVERITY_INFO, ResourceBundle.getBundle("/project").getString("EditSuccessMessage"), null);
-        }
-        catch(Exception e){
- 
-          sendMessages(FacesMessage.SEVERITY_ERROR, ResourceBundle.getBundle("/project").getString("ErrorMessage"), null );
-            
-        }
-    }
-        public void sendMessages(FacesMessage.Severity severity,String summary,String details){
-         
-        FacesMessage message = new FacesMessage(severity, summary, details);
+        try {
+            Project pj = (Project) projectServiceBean.getSelected();
+            setSelected(pj);
+            System.out.println(pj.getBeginDate() + " - " + pj.getIdProject() + " - " + pj.getIdOrganization() + " - " + pj.getIdProjectManager() + " - " + pj.getProjectState());
+            projectService.edit(pj); //To change body of generated methods, choose Tools | Templates.
 
-         FacesContext.getCurrentInstance().addMessage(null, message);
-    }
-    
-        @Override
-    public void delete(ActionEvent event) {
-           try{
-        
-        System.out.println("passei acckiasoidas fgshlgçadhfhs");
-        Project pj = (Project)projectServiceBean.getSelected();
-        setSelected(pj);
-        projectService.remove(pj); //To change body of generated methods, choose Tools | Templates.
-        sendMessages(FacesMessage.SEVERITY_INFO, ResourceBundle.getBundle("/project").getString("RemoveSuccessMessage"), null);
-                }catch(Exception e){
+            sendMessages(FacesMessage.SEVERITY_INFO, ResourceBundle.getBundle("/project").getString("EditSuccessMessage"), null);
+        } catch (Exception e) {
             sendMessages(FacesMessage.SEVERITY_ERROR, ResourceBundle.getBundle("/project").getString("ErrorMessage"), null);
         }
     }
-       public List<AltranreqUser> getUsersList() { 
+
+    public void sendMessages(FacesMessage.Severity severity, String summary, String details) {
+        FacesMessage message = new FacesMessage(severity, summary, details);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+
+    @Override
+    public void delete(ActionEvent event) {
+        try {
+            System.out.println("passei acckiasoidas fgshlgçadhfhs");
+            Project pj = (Project) projectServiceBean.getSelected();
+            setSelected(pj);
+            projectService.remove(pj); //To change body of generated methods, choose Tools | Templates.
+            sendMessages(FacesMessage.SEVERITY_INFO, ResourceBundle.getBundle("/project").getString("RemoveSuccessMessage"), null);
+        } catch (Exception e) {
+            sendMessages(FacesMessage.SEVERITY_ERROR, ResourceBundle.getBundle("/project").getString("ErrorMessage"), null);
+        }
+    }
+
+    public List<AltranreqUser> getUsersList() {
         List<AltranreqUser> users = userService.findAll();
         return users;
-    }  
+    }
+
     public ProjectService getProjectService() {
         return projectService;
     }
@@ -118,7 +114,7 @@ public class ProjectController extends AbstractController<Project> implements Se
         super.setService(projectService);
         project = super.prepareCreate(null);
     }
-    
+
     public String getState(int number) {
         return projectService.getProjectStateString(number);
     }
@@ -130,65 +126,55 @@ public class ProjectController extends AbstractController<Project> implements Se
         return projectService.getProjectUserName(idProjectManager);
     }
 
-    public void setTerminology(String terminology){
+    public void setTerminology(String terminology) {
         project.setTerminology(terminology);
     }
-    
-    public String getTerminology(){
+
+    public String getTerminology() {
         return project.getTerminology();
     }
- 
-    public void setProjectManager(AltranreqUser aru){
-        user= aru;
+
+    public void setProjectManager(AltranreqUser aru) {
+        user = aru;
     }
-    public AltranreqUser getProjectManager(){
+
+    public AltranreqUser getProjectManager() {
         System.out.println("tentou apanhar");
         return user;
     }
-    
+
     @Override
     public void saveNew(ActionEvent event) {
-        try{
-        project.setIdProjectManager(user.getIdUser().toBigInteger());
-        setSelected(project);
-        projectService.create(project);
-        sendMessages(FacesMessage.SEVERITY_INFO, ResourceBundle.getBundle("/project").getString("CreateSuccessMessage"), null);
-                }catch(Exception e){
+        try {
+            project.setIdProjectManager(user.getIdUser().toBigInteger());
+            setSelected(project);
+            projectService.create(project);
+            sendMessages(FacesMessage.SEVERITY_INFO, ResourceBundle.getBundle("/project").getString("CreateSuccessMessage"), null);
+        } catch (Exception e) {
             sendMessages(FacesMessage.SEVERITY_ERROR, ResourceBundle.getBundle("/project").getString("ErrorMessage"), null);
         }
     }
-     
-    public List<Project> getProjectsbyUser(){
-        if(authService.isAdmin()){
+
+    public List<Project> getProjectsbyUser() {
+        if (authService.isAdmin()) {
             return projectService.findAll();
         }
         return authService.getProjectsFromUser();
     }
-    
-    
-    public boolean isProjectType()
-    {
+
+    public boolean isProjectType() {
         return projectServiceBean.getSelected() instanceof Project;
     }
-    
-    public Project getProject()
-    {
-        return (Project)projectServiceBean.getSelected();
+
+    public Project getProject() {
+        return (Project) projectServiceBean.getSelected();
     }
-    
-    public void setProject()
-    {
+
+    public void setProject() {
         projectServiceBean.setSelected(this.getSelected());
     }
-    
-    public void redirect() throws IOException
-    {
+
+    public void redirect() throws IOException {
         projectServiceBean.setSelected(this.getSelected());
-//        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-//        
-//        if (option == 1)
-//            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/View.xhtml");
-//        if (option == 2)
-//            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/Edit.xhtml");
     }
 }

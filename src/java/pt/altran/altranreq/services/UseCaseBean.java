@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package pt.altran.altranreq.services;
 
 import java.io.Serializable;
@@ -17,13 +16,11 @@ import javax.ws.rs.core.Context;
  */
 @Named
 @SessionScoped
-//@Dependent
-public class UseCaseBean implements Serializable{
+public class UseCaseBean implements Serializable {
 
-   @Context
-   private Object selected;
-   
-  
+    @Context
+    private Object selected;
+
     public void setSelected(Object selected) {
         this.selected = selected;
     }

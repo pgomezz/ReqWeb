@@ -5,14 +5,12 @@ package pt.altran.altranreq.services;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
 import pt.altran.altranreq.entities.Project;
 import java.util.List;
-import java.util.Properties;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
@@ -34,7 +32,6 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
     @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
 
-    //
     @PostConstruct
     @WebMethod
     public void init() {
@@ -48,13 +45,11 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
     }
 
     private List<Project> findProjectByUser(int pu) {
-
         Collection<ProjectUser> listapu = getEntityManager().find(Project.class, BigDecimal.valueOf(pu)).getProjectUserCollection();
         List<Project> projectsLists = new ArrayList<>();
         for (ProjectUser projectUser : listapu) {
             projectsLists.add(projectUser.getProject());
         }
-
         return projectsLists;
     }
 
@@ -85,13 +80,11 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
             default:
                 return ResourceBundle.getBundle("/project").getString("State_undefined");
         }
-
     }
 
     @Override
     @WebMethod
     public List<Project> findProjectByFilter(ProjectFilter filter) {
-
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Project> query = cb.createQuery(Project.class);
         Root<Project> ProjectQuery = query.from(Project.class);
@@ -127,15 +120,11 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
                 for (ProjectUser projectUser : project.getProjectUserCollection()) {
                     if (!projectUser.getProjectUserPK().getIdUser().equals(BigDecimal.valueOf(filter.getUser()))) {
                         listaReturn.add(project);
-
                     }
                 }
             }
             return listaReturn;
         }
-
         return listaProj;
-
     }
-
 }

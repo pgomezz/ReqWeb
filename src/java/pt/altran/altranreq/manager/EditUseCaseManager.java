@@ -24,14 +24,14 @@ import pt.altran.altranreq.services.UseCaseService;
 public class EditUseCaseManager extends AbstractController<UseCase> implements Serializable {
 
     @Inject
-    private UseCaseService ejbService;
-    
+    private UseCaseService useCaseService;
+
     @Inject
     private TreeService treeService;
-    
+
     @Inject
     private FunctionalRequirementServiceBean funcReqBean;
-    
+
     @Inject
     private UseCaseBean useCaseBean;
 
@@ -41,42 +41,37 @@ public class EditUseCaseManager extends AbstractController<UseCase> implements S
 
     @PostConstruct
     public void init() {
-        super.setService(ejbService);
+        super.setService(useCaseService);
     }
-    
-    public boolean isUseCaseType()
-    {
+
+    public boolean isUseCaseType() {
         return treeService.getSelected() instanceof UseCase;
     }
-    
-    public boolean isUseCaseTypeByNavigation()
-    {
+
+    public boolean isUseCaseTypeByNavigation() {
         return useCaseBean.getSelected() instanceof UseCase;
     }
-    
-    public UseCase getUseCase()
-    {
-        return (UseCase)treeService.getSelected();
+
+    public UseCase getUseCase() {
+        return (UseCase) treeService.getSelected();
     }
-    
-    public UseCase getUseCaseByNavigation()
-    {
-        return (UseCase)useCaseBean.getSelected();
+
+    public UseCase getUseCaseByNavigation() {
+        return (UseCase) useCaseBean.getSelected();
     }
-    
-    public List<UseCase> getLista()
-    {
-        FunctionalRequirement funcReqSelected = (FunctionalRequirement)funcReqBean.getSelected();
-        
+
+    public List<UseCase> getLista() {
+        FunctionalRequirement funcReqSelected = (FunctionalRequirement) funcReqBean.getSelected();
+
         int idfuncReq = Integer.parseInt(funcReqSelected.getIdFunctionalRequirement().toString());
-        return ejbService.findUseCaseByRequirement(idfuncReq);
+        return useCaseService.findUseCaseByRequirement(idfuncReq);
     }
 
     @Override
     public void save(ActionEvent event) {
         UseCase uc = (UseCase) useCaseBean.getSelected();
         setSelected(uc);
-        ejbService.edit(uc);
+        useCaseService.edit(uc);
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         try {
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/useCase/index.xhtml");
@@ -84,8 +79,6 @@ public class EditUseCaseManager extends AbstractController<UseCase> implements S
             Logger.getLogger(EditUseCaseManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
 
     public void redirect() throws IOException {
         useCaseBean.setSelected(this.getSelected());

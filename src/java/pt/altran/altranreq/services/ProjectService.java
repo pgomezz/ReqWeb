@@ -20,9 +20,4 @@ public interface ProjectService extends AbstractService<Project> {
     String getProjectStateString(int projectStateIndice);
 
     String getProjectUserName(int idUser);
-   
-
 }
-
-
-

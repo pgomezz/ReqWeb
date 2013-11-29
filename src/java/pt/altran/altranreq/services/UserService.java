@@ -14,13 +14,11 @@ import java.util.List;
  * @param <T>
  */
 public interface UserService extends AbstractService<AltranreqUser> {
-
     public List<AltranreqUser> findUsersByName(String name);
 
     public List<AltranreqUser> findUsersByStatus(Boolean bool);
-    
+
     public List<AltranreqUser> findUsersByUserName(String username);
-    
+
     public List<AltranreqUser> isAdmin(Boolean bool);
-    
 }
