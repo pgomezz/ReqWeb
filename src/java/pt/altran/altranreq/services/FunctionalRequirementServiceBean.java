@@ -12,7 +12,7 @@ import javax.inject.Named;
 import javax.ws.rs.core.Context;
 
 /**
- *
+ * This bean has the same purpose as the RNFtServiceBean but is used to avoid information conflicts 
  * @author User
  */
 @Named

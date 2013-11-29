@@ -44,6 +44,7 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp<Function
         return em;
     }
 
+    //this method is used to filter searches by the parameters specified in the FunctionalRequirementFilter class.
     @WebMethod
     @Override
     public List<FunctionalRequirement> findFunctionalRequirementByFilter(FunctionalRequirementFilter filter) {
@@ -64,17 +65,13 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp<Function
         }
         if (filter.getProjecto() != null) {
 
-            // FunctionalRequirement us = getEntityManager().find(FunctionalRequirement.class, BigDecimal.valueOf(filter.getProjecto()));
             Project p = new Project();
             p.setIdProject(BigDecimal.valueOf(filter.getProjecto()));
 
             Predicate namePredicate = cb.equal(funcReqQuery.<Project>get("idProject"), p);
             predicateList.add(namePredicate);
 
-//            Expression<BigDecimal> idProject = funcReqQuery.get("idFunctionalRequirement");
-//            Expression<BigDecimal> idProjectParam = cb.parameter(BigDecimal.class);
-//            Predicate projectPredicate = cb.equal(idProject, idProjectParam);
-//            predicateList.add(projectPredicate);
+
         }
         if (filter.getState() != null) {
 
@@ -83,11 +80,7 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp<Function
 
         }
         if (filter.getBusinessCategory() != null) {
-//            
-//            Expression<BigInteger> idBusinessCategory = funcReqQuery.get("idBusinessCategory");
-//            Expression<BigInteger> idBusinessCategoryParam = cb.parameter(BigInteger.class);
-//            Predicate typePredicate = cb.equal(idBusinessCategory, idBusinessCategoryParam);
-//            predicateList.add(typePredicate);
+
 
             BusinessCategory bc = new BusinessCategory();
             bc.setIdBusinessCategory(BigDecimal.valueOf(filter.getBusinessCategory()));
@@ -105,6 +98,7 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp<Function
         return z;
     }
 
+    //this method converts the id of the requirement state to it´s text meaning so it can be more perceptive to the user
     @Override
     public String getRequirementStateString(int requirementStateIndice) {
     switch (requirementStateIndice) {
