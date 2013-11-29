@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+//ScopeDefinitionInteraction for v2 Implemantion
 package pt.altran.altranreq.services;
 
 import java.util.List;
@@ -12,10 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import pt.altran.altranreq.entities.ScopeDefinitionInteraction;
 
-/**
- *
- * @author User
- */
 @Stateless
 public class ScopeDefinitionInteractionServiceImp extends AbstractServiceImp<ScopeDefinitionInteraction> implements ScopeDefinitionInteractionService {
     @PersistenceContext(unitName = "AltranReqPU")
@@ -32,7 +23,6 @@ public class ScopeDefinitionInteractionServiceImp extends AbstractServiceImp<Sco
 
     @Override
     public List<ScopeDefinitionInteraction> findType(String type) {
-        // Isto é para provar a catia que esta errada
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
