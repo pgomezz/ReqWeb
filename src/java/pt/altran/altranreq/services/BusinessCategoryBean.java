@@ -21,7 +21,8 @@ import pt.altran.altranreq.manager.util.AltranTreeNode;
 @SessionScoped
 //@Dependent
 public class BusinessCategoryBean implements Serializable{
-
+   
+   //Project object
    @Context
    private Object selected;
 
