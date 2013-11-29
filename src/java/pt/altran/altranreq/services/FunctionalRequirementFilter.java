@@ -3,9 +3,6 @@ package pt.altran.altranreq.services;
 import java.io.Serializable;
 import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlRootElement;
-import pt.altran.altranreq.entities.BusinessCategory;
-import pt.altran.altranreq.entities.FunctionalRequirement;
-import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.entities.RequirementState;
 
 /*

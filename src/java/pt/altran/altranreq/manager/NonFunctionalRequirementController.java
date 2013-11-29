@@ -14,7 +14,6 @@ import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
 import pt.altran.altranreq.entities.Project;
-import pt.altran.altranreq.services.FunctionalRequirementServiceBean;
 import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.RNFService;
 import pt.altran.altranreq.services.RNFtServiceBean;
@@ -26,7 +25,7 @@ import pt.altran.altranreq.services.TreeService;
 public class NonFunctionalRequirementController extends AbstractController<NonFunctionalRequirement> implements Serializable {
 
     @Inject
-    private RNFService ejbService;
+    private RNFService nonFunctionalRequirementService;
     
     @Inject
     private TreeService treeService;
@@ -35,8 +34,8 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
     private ProjectServiceBean projectBean;
     
     @Inject
-    private RNFtServiceBean rnfbean;
-    private NonFunctionalRequirement nfrequirement;
+    private RNFtServiceBean nonFunctionalRequirementBean;
+    private NonFunctionalRequirement nonFunctionalRequirement;
 
     public NonFunctionalRequirementController() {
         super(NonFunctionalRequirement.class);
@@ -55,8 +54,8 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
 
     @PostConstruct
     public void init() {
-        super.setService(ejbService);
-        nfrequirement = super.prepareCreate(null);
+        super.setService(nonFunctionalRequirementService);
+        nonFunctionalRequirement = super.prepareCreate(null);
     }
     
     public String getNameProject (){
@@ -89,11 +88,11 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
         {
             nReqFuncFilter.setType(projectBean.getIdCategNRF());
             projectBean.setCateg(false);
-            return ejbService.findRNFByFilter(nReqFuncFilter);
+            return nonFunctionalRequirementService.findRNFByFilter(nReqFuncFilter);
         }
         else
         {
-            return ejbService.findRNFByFilter(nReqFuncFilter);
+            return nonFunctionalRequirementService.findRNFByFilter(nReqFuncFilter);
         }
         
         
@@ -101,18 +100,18 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
     }
     
     public String getState(int number) {
-        return ejbService.getRequirementStateString(number);
+        return nonFunctionalRequirementService.getRequirementStateString(number);
     }
     public String getType(int number) {
-        return ejbService.getRequirementTypeString(number);
+        return nonFunctionalRequirementService.getRequirementTypeString(number);
     }
     
     
     @Override
     public void saveNew(ActionEvent event) {
-        nfrequirement.setIdProject((Project)projectBean.getSelected());
-        setSelected(nfrequirement);
-        ejbService.create(nfrequirement);
+        nonFunctionalRequirement.setIdProject((Project)projectBean.getSelected());
+        setSelected(nonFunctionalRequirement);
+        nonFunctionalRequirementService.create(nonFunctionalRequirement);
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         try {
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
@@ -129,9 +128,9 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
     @Override
     public void save(ActionEvent event) {
         
-        NonFunctionalRequirement nfr = (NonFunctionalRequirement) rnfbean.getSelected();
+        NonFunctionalRequirement nfr = (NonFunctionalRequirement) nonFunctionalRequirementBean.getSelected();
         setSelected(nfr);
-        ejbService.edit(nfr);
+        nonFunctionalRequirementService.edit(nfr);
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         try {
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
@@ -143,24 +142,24 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
           
     public boolean isNFRequirementType()
     {
-        return rnfbean.getSelected() instanceof NonFunctionalRequirement;
+        return nonFunctionalRequirementBean.getSelected() instanceof NonFunctionalRequirement;
     }
     
     public NonFunctionalRequirement getNFRequirement()
     {
         
-        return (NonFunctionalRequirement)rnfbean.getSelected();
+        return (NonFunctionalRequirement)nonFunctionalRequirementBean.getSelected();
     }
     
     public void setFunctionalRequirement()
     {
-        rnfbean.setSelected(this.getSelected());
+        nonFunctionalRequirementBean.setSelected(this.getSelected());
     }
     
     
     public void redirect(int option) throws IOException
     {
-        rnfbean.setSelected(this.getSelected());
+        nonFunctionalRequirementBean.setSelected(this.getSelected());
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         
         if (option == 1)

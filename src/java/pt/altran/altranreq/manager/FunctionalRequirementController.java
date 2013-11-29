@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ConversationScoped;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -27,7 +25,7 @@ import pt.altran.altranreq.services.TreeService;
 public class FunctionalRequirementController extends AbstractController<FunctionalRequirement> implements Serializable {
 
     @Inject
-    private FunctionalRequirementService ejbFacade;
+    private FunctionalRequirementService functionalRequirementService;
 
     @Inject
     private TreeService treeService;
@@ -36,12 +34,12 @@ public class FunctionalRequirementController extends AbstractController<Function
     private ProjectServiceBean projectBean;
 
     @Inject
-    private FunctionalRequirementServiceBean frequirementBean;
+    private FunctionalRequirementServiceBean functionalRequirementBean;
     
-    private FunctionalRequirement requirement;
+    private FunctionalRequirement functionalRequirement;
    
     
-    private List<FunctionalRequirement> items;
+    
     
     public String getNameProject (){
     
@@ -66,8 +64,8 @@ public class FunctionalRequirementController extends AbstractController<Function
 
     @PostConstruct
     public void init() {
-        super.setService(ejbFacade);
-        requirement = super.prepareCreate(null);
+        super.setService(functionalRequirementService);
+        functionalRequirement = super.prepareCreate(null);
 
     }
 
@@ -85,19 +83,19 @@ public class FunctionalRequirementController extends AbstractController<Function
         int idproj = Integer.parseInt(projectSelected.getIdProject().toString());
         FunctionalRequirementFilter reqFuncFilter = new FunctionalRequirementFilter();
         reqFuncFilter.setProjecto(idproj);
-        return ejbFacade.findFunctionalRequirementByFilter(reqFuncFilter);
-        //return items;
+        return functionalRequirementService.findFunctionalRequirementByFilter(reqFuncFilter);
+       
     }
 
     public String getState(int number) {
-        return ejbFacade.getRequirementStateString(number);
+        return functionalRequirementService.getRequirementStateString(number);
     }
 
     @Override
     public void saveNew(ActionEvent event) {
-        requirement.setIdProject((Project)projectBean.getSelected());
-        setSelected(requirement);
-        ejbFacade.create(requirement);
+        functionalRequirement.setIdProject((Project)projectBean.getSelected());
+        setSelected(functionalRequirement);
+        functionalRequirementService.create(functionalRequirement);
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         try {
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/functionalRequirement/index.xhtml");
@@ -110,9 +108,9 @@ public class FunctionalRequirementController extends AbstractController<Function
     @Override
     public void save(ActionEvent event) {
 
-        FunctionalRequirement fr = (FunctionalRequirement) frequirementBean.getSelected();
+        FunctionalRequirement fr = (FunctionalRequirement) functionalRequirementBean.getSelected();
         setSelected(fr);
-        ejbFacade.edit(fr);
+        functionalRequirementService.edit(fr);
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         try {
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/functionalRequirement/index.xhtml");
@@ -123,19 +121,19 @@ public class FunctionalRequirementController extends AbstractController<Function
     }
 
     public boolean isFRequirementType() {
-        return frequirementBean.getSelected() instanceof FunctionalRequirement;
+        return functionalRequirementBean.getSelected() instanceof FunctionalRequirement;
     }
 
     public FunctionalRequirement getFRequirement() {
-        return (FunctionalRequirement) frequirementBean.getSelected();
+        return (FunctionalRequirement) functionalRequirementBean.getSelected();
     }
 
     public void setFunctionalRequirement() {
-        frequirementBean.setSelected(this.getSelected());
+        functionalRequirementBean.setSelected(this.getSelected());
     }
 
     public void redirect(int option) throws IOException {
-        frequirementBean.setSelected(this.getSelected());
+        functionalRequirementBean.setSelected(this.getSelected());
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 
         if (option == 1) {

@@ -11,9 +11,6 @@ import pt.altran.altranreq.entities.ProjectUser;
  * and open the template in the editor.
  */
 
-
-
-
 /**
  *
  * @author User
@@ -39,9 +36,7 @@ public class ProjectFilter implements Serializable{
     public void setState(Integer state) {
         this.state = state;
     }
-
-
-
+    
     public String getName() {
         return name;
     }
@@ -49,7 +44,4 @@ public class ProjectFilter implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-
-    
-    
 }

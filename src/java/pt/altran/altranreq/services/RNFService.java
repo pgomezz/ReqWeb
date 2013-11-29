@@ -8,7 +8,6 @@ package pt.altran.altranreq.services;
 
 
 import pt.altran.altranreq.entities.NonFunctionalRequirement;
-import pt.altran.altranreq.entities.Project;
 import java.util.List;
 
 /**

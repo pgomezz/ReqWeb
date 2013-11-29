@@ -30,7 +30,7 @@ public class ProjectEditManager extends AbstractController<Project> implements S
     @Inject
     private ProjectService projectService;
     @Inject
-    private ProjectServiceBean projectServiceBean;            
+    private ProjectServiceBean projectServiceBean;
     @Inject
     private UserService userService;
     private AltranreqUser user;
@@ -45,11 +45,11 @@ public class ProjectEditManager extends AbstractController<Project> implements S
         return projectService.getProjectStateString(number);
     }
 
-    public Project getProject(){
+    public Project getProject() {
         Project sel = getSelected();
         return sel;
     }
-    
+
     @Override
     public void saveNew(ActionEvent event) {
         getProject().setIdProjectManager(user.getIdUser().toBigInteger());
@@ -61,11 +61,12 @@ public class ProjectEditManager extends AbstractController<Project> implements S
         List<AltranreqUser> users = userService.findAll();
         return users;
     }
-    public void setProjectManager(AltranreqUser aru){
-        user= aru;
-    }
-    public AltranreqUser getProjectManager(){
-        return user;
+
+    public void setProjectManager(AltranreqUser aru) {
+        user = aru;
     }
 
+    public AltranreqUser getProjectManager() {
+        return user;
+    }
 }

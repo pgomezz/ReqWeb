@@ -13,11 +13,11 @@ import javax.ws.rs.core.Context;
 
 /**
  *
- * @author User
+ * Bean used to store the selected information on the List, in order to be able
+ * to use it to view the details and to edit the information.
  */
 @Named
 @SessionScoped
-//@Dependent
 public class RNFtServiceBean implements Serializable{
 
    @Context

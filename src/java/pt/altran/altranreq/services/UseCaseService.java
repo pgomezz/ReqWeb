@@ -5,9 +5,6 @@ package pt.altran.altranreq.services;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-import java.math.BigDecimal;
-import pt.altran.altranreq.entities.FunctionalRequirement;
 import pt.altran.altranreq.entities.UseCase;
 import java.util.List;
 
@@ -17,7 +14,6 @@ import java.util.List;
  * @param <T>
  */
 public interface UseCaseService extends AbstractService<UseCase> {
-
     public List<UseCase> findUseCaseByDependency(int pai);
 
     public List<UseCase> findUseCaseByRequirement(int pai);

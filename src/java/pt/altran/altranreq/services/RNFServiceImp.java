@@ -20,12 +20,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
-import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import pt.altran.altranreq.entities.RNFType;
-import pt.altran.altranreq.entities.RequirementState;
 
 @WebService
 @Stateless
@@ -53,11 +49,6 @@ public class RNFServiceImp extends AbstractServiceImp<NonFunctionalRequirement> 
         
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<NonFunctionalRequirement> query = cb.createQuery(NonFunctionalRequirement.class);
-        CriteriaQuery<NonFunctionalRequirement> c = cb.createQuery(NonFunctionalRequirement.class);
-        ParameterExpression<String> nome = cb.parameter(String.class, "nome");
-        ParameterExpression<Project> project = cb.parameter(Project.class, "project");
-        ParameterExpression<RequirementState> state = cb.parameter(RequirementState.class, "state");
-        ParameterExpression<RNFType> type = cb.parameter(RNFType.class, "type");
         Root<NonFunctionalRequirement> nonFuncReqQuery = query.from(NonFunctionalRequirement.class);
 
         query.select(nonFuncReqQuery);

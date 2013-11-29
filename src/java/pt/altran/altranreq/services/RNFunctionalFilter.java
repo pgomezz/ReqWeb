@@ -2,9 +2,6 @@ package pt.altran.altranreq.services;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
-import pt.altran.altranreq.entities.Project;
-import pt.altran.altranreq.entities.RNFType;
-import pt.altran.altranreq.entities.RequirementState;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
