@@ -1,3 +1,4 @@
+// BusinessCategory manage bean
 package pt.altran.altranreq.manager;
 
 import java.io.IOException;
