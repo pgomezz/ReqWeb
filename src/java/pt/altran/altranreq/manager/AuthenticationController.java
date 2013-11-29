@@ -138,6 +138,7 @@ public class AuthenticationController implements Serializable {
             System.out.println("Login Failed");
            //  return "fail";
         }
+   
         //FacesContext.getCurrentInstance().addMessage(null, msg);
        // context.addCallbackParam("loggedIn", loggedIn);
        // return "sucess";
