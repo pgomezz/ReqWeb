@@ -14,10 +14,7 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.STShd;
 import pt.altran.altranreq.entities.FunctionalRequirement;
 import pt.altran.altranreq.entities.UseCase;
 
-/**
- *
- * @author User
- */
+// Create Functional Requirement Table
 public class TableFunctionalReq {
 
     static int x = 1;
@@ -68,7 +65,6 @@ public class TableFunctionalReq {
                 
                 // create a run to contain the content
                 XWPFRun rh = para.createRun();
-                //rh.setFontSize(11);
                 
                 rh.setFontFamily("Lucida Sans Unicode");
 
