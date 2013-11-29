@@ -10,7 +10,7 @@
 }
 .ui-widget-header {
     text-align: center;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 .ui-datatable .ui-datatable-footer .footer-section {
     text-align: left;
@@ -20,8 +20,12 @@
     float:right!important;
 }
 
-//Resolve o problema das Labels no selectonemenu
-.ui-selectonemenu-label
+.ui-inputfield
 {
-    width:100% !important;
+    width: 366px !important;
+}
+
+.ui-inputtext
+{
+    width: 366px !important;
 }
