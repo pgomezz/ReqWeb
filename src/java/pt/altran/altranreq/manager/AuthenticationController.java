@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package pt.altran.altranreq.manager;
 
 import java.io.IOException;
@@ -26,14 +20,10 @@ import pt.altran.altranreq.services.ProjectService;
 import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.loginBean;
 
-/**
- *
- * @author User
- */
-
 @Named(value = "authenticationController")
 @ViewScoped
 
+//AuthenticationController  
 public class AuthenticationController implements Serializable {
     
     @Inject
@@ -59,7 +49,7 @@ public class AuthenticationController implements Serializable {
 
     @PostConstruct
     public void init(){
-        System.out.println("Bem injectado");
+        //System.out.println("Bem injectado");
     }
     
     public boolean isIsAdmin() {
@@ -75,8 +65,6 @@ public class AuthenticationController implements Serializable {
         this.username = username;
     }
     
-
-
     public String getPassword() {
         return password;
     }
@@ -93,54 +81,39 @@ public class AuthenticationController implements Serializable {
         this.user = user;
     }
     
+    //Verify username e password 
     public void login(ActionEvent event) {
-        //RequestContext contextt = RequestContext.getCurrentInstance();
         FacesMessage msg = null;
-       // boolean loggedIn = false;
-       
         user=authenticationService.login(username, password);
         
           if(user!=null)
-      //  if (username.equals(u.getUsername()) && password.equals(u.getPassword())) //username.equals("bn") && password.equals("bn")
-        { 
+      { 
               authorizationService.setUserID(user.getIdUser().intValue());
               AuthorizationServiceImp authorizationServiceImp = (AuthorizationServiceImp)authorizationService;
-              //Porque só o imp é que tem o set
+             
               authorizationServiceImp.setIsAdmin(user.getIsAdmin()=='1');
               
-            //loggedIn = true;
-            //msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem-vindo", username);
-           // try {
-               // loggedIn = true;
+            
                   msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem-vindo", authenticationBean.getUsername());
                   FacesContext context = FacesContext.getCurrentInstance();
                   context.addMessage("SUCESSO", msg);
-                // this.originalURL = request.getContextPath() + "home.xhtml";
+                
                 authenticationBean.setUser(user);
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("faces/index.xhtml");
             } catch (IOException ex) {
                 Logger.getLogger(AuthenticationController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
-                System.out.println("Login Sucess");   
-           // } catch (IOException ex) {
-               // Logger.getLogger(AuthenticationServiceImp.class.getName()).log(Level.SEVERE, null, ex);
-            //}                 
         } 
         else {
-            //loggedIn = false;
             msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login error", "Username e/ou Password inválidos.");
-           // FacesMessage message = new FacesMessage("Invalid password length");
+
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage("ERROR", msg);
             
             System.out.println("Login Failed");
-           //  return "fail";
+
         }
    
-        //FacesContext.getCurrentInstance().addMessage(null, msg);
-       // context.addCallbackParam("loggedIn", loggedIn);
-       // return "sucess";
     }
 }
