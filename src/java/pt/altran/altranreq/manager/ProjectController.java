@@ -65,7 +65,6 @@ public class ProjectController extends AbstractController<Project> implements Se
         try {
             Project pj = (Project) projectServiceBean.getSelected();
             setSelected(pj);
-            System.out.println(pj.getBeginDate() + " - " + pj.getIdProject() + " - " + pj.getIdOrganization() + " - " + pj.getIdProjectManager() + " - " + pj.getProjectState());
             projectService.edit(pj); //To change body of generated methods, choose Tools | Templates.
 
             sendMessages(FacesMessage.SEVERITY_INFO, ResourceBundle.getBundle("/project").getString("EditSuccessMessage"), null);
@@ -82,7 +81,6 @@ public class ProjectController extends AbstractController<Project> implements Se
     @Override
     public void delete(ActionEvent event) {
         try {
-            System.out.println("passei acckiasoidas fgshlgçadhfhs");
             Project pj = (Project) projectServiceBean.getSelected();
             setSelected(pj);
             projectService.remove(pj); //To change body of generated methods, choose Tools | Templates.
@@ -139,7 +137,6 @@ public class ProjectController extends AbstractController<Project> implements Se
     }
 
     public AltranreqUser getProjectManager() {
-        System.out.println("tentou apanhar");
         return user;
     }
 
