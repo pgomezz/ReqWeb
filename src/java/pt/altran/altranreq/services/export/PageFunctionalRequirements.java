@@ -6,13 +6,10 @@ import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import pt.altran.altranreq.entities.FunctionalRequirement;
 
-/**
- *
- * @author User
- */
+//Chapter Functional Requirements
 public class PageFunctionalRequirements {
     
-
+    //List of Functional Requirements in bullet style
     private static void listFunctionalRequirements(XWPFParagraph paragraph, List<FunctionalRequirement> aux) {
         
         for (FunctionalRequirement functionalRequirement : aux) {
@@ -21,6 +18,7 @@ public class PageFunctionalRequirements {
         paragraph.createRun().addCarriageReturn();
     }
 
+    
     public static void createPage(XWPFDocument document, List<FunctionalRequirement> aux) {
         String nomeProjecto = "(Nome do Projecto)";
         
