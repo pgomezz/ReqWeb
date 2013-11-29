@@ -12,7 +12,7 @@
 
                 <h:panelGroup id="display">
 
-                    <p:commandButton actionListener="#{businessCategoryController.delete}" value="#{myBundle.Delete}" ajax="true" action="/index" update="display,:TabProfile:BusinessCategoryListForm:datalist,:growl" oncomplete="handleSubmit(:TabProfile:BusinessCategoryListForm:BCRemoveDialog);"/>
+                    <p:commandButton actionListener="#{businessCategoryController.delete}" value="#{myBundle.Delete}" ajax="true" action="/admin/businessCategory/index" update="display,:TabProfile:BusinessCategoryListForm:datalist,:growl" oncomplete="handleSubmit(:TabProfile:BusinessCategoryListForm:BCRemoveDialog);"/>
                     
                     <p:commandButton value="#{myBundle.Cancel}" onclick="BCRemoveDialog.hide()"/>
                 </h:panelGroup>
