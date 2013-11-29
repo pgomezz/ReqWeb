@@ -33,7 +33,7 @@
 
                         </p:selectManyMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{altranreqRoleController.saveNew}" value="#{myBundle.Save}" update="display,:AltranreqRoleListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AltranreqRoleCreateDialog);"/>
+                    <p:commandButton actionListener="#{altranreqRoleController.saveNew}" value="#{myBundle.Save}" update="display,:TabProfile:AltranreqRoleListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AltranreqRoleCreateDialog);"/>
                     <p:commandButton value="#{myBundle.Cancel}" onclick="AltranreqRoleCreateDialog.hide()"/>
                 </h:panelGroup>
 

@@ -9,7 +9,7 @@ import javax.faces.view.ViewScoped;
 import pt.altran.altranreq.services.AltranReqRoleService;
 import pt.altran.altranreq.services.UserService;
 
-@Named(value = "altranreqUserControllere")
+@Named(value = "altranreqUserController")
 @ViewScoped
 public class AltranreqUserController extends AbstractController<AltranreqUser> implements Serializable {
 

@@ -27,11 +27,21 @@
             </p:tab>
             <p:tab title="#{myBundle.Administration}" id="TabAdministration" disabled="#{!authenticationController.isAdmin}">
                 <p:panelGrid columns="2" >
-                    <p:panel style="width: 1040px; height: 600px">
-                        Falta o conteúdo de administração basta colocar o metodo do ben com acesso 
+                    
+                        <p:panel style= "height: 600px">
+                                <ui:insert name="TreeTab">
+                                    Caso nao faça um override aparece isto
+                                </ui:insert>
+                            </p:panel>
+                            <p:panel  style=" height: 600px">
+                                <ui:insert name="AdminTab">
+                                    estão a fazer o override no template
+                                    Falta o conteúdo de administração basta colocar o metodo do ben com acesso 
                         ao serviço de autorização nesta aba
-                        <ui:include src="/admin/altranreqUser/List.xhtml"/>
-                    </p:panel>
+                       <!-- <ui:include src="/admin/altranreqUser/List.xhtml"/> -->
+                                </ui:insert>
+                            </p:panel>
+
                 </p:panelGrid>
             </p:tab>
         </p:tabView>
