@@ -38,7 +38,6 @@ public class ProjectEditManager extends AbstractController<Project> implements S
     @PostConstruct
     public void init() {
         super.setService(projectService);
-        super.setSelected(new Project());
     }
 
     public String getState(int number) {
@@ -46,15 +45,12 @@ public class ProjectEditManager extends AbstractController<Project> implements S
     }
 
     public Project getProject() {
-        Project sel = getSelected();
-        return sel;
+        return (Project) projectServiceBean.getSelected();
     }
 
     @Override
-    public void saveNew(ActionEvent event) {
-        getProject().setIdProjectManager(user.getIdUser().toBigInteger());
-        setSelected(getProject());
-        projectService.create(getProject());
+    public void save(ActionEvent event) {
+        projectService.edit(getProject());
     }
 
     public List<AltranreqUser> getUsersList() {
