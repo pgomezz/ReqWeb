@@ -6,10 +6,10 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.inject.Inject;
 import pt.altran.altranreq.entities.AltranreqUser;
@@ -20,7 +20,7 @@ import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.UserService;
 
 @Named(value = "projectController")
-@RequestScoped
+@ViewScoped
 public class ProjectController extends AbstractController<Project> implements Serializable {
 
     @Inject
@@ -110,7 +110,7 @@ public class ProjectController extends AbstractController<Project> implements Se
     @PostConstruct
     public void init() {
         super.setService(projectService);
-        project = super.prepareCreate(null);
+        
     }
 
     public String getState(int number) {
@@ -170,8 +170,13 @@ public class ProjectController extends AbstractController<Project> implements Se
     public void setProject() {
         projectServiceBean.setSelected(this.getSelected());
     }
-
-    public void redirect() throws IOException {
-        projectServiceBean.setSelected(this.getSelected());
+    
+    public void redirect(int action) throws IOException {
+        if (action == 1) {
+            project = super.prepareCreate(null);
+        } else {
+            projectServiceBean.setSelected(this.getSelected());
+        }
     }
+    
 }
