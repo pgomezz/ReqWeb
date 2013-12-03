@@ -1,5 +1,5 @@
 package pt.altran.altranreq.services.export;
-
+ 
 import java.util.List;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
@@ -58,7 +58,7 @@ public class PageFunctionalRequirements {
         textRun = "Nesta secção especifica-se detalhadamente cada requisito funcional da solução "+nomeProjecto+" a desenvolver.";
         JavaPoi.setBodyStyle(paragraph3 , textRun);
         
-        TableFunctionalReq.createAllReqFuncTable(document, aux);
+        TableFunctionalReq.createAllReqFuncTable(document, aux); 
 
     }
 }

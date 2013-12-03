@@ -16,9 +16,6 @@ import pt.altran.altranreq.services.AuthenticationBean;
 import pt.altran.altranreq.services.AuthenticationService;
 import pt.altran.altranreq.services.AuthorizationService;
 import pt.altran.altranreq.services.AuthorizationServiceImp;
-import pt.altran.altranreq.services.ProjectService;
-import pt.altran.altranreq.services.ProjectServiceBean;
-import pt.altran.altranreq.services.loginBean;
 
 @Named(value = "authenticationController")
 @ViewScoped
@@ -27,16 +24,10 @@ import pt.altran.altranreq.services.loginBean;
 public class AuthenticationController implements Serializable {
     
     @Inject
-    private ProjectService projectService;
-
-    @Inject
     private AuthenticationService authenticationService;
     
     @Inject
     private AuthenticationBean authenticationBean;
-    
-    @Inject
-    private ProjectServiceBean projectServiceBean;
         
     @Inject
     private AuthorizationService authorizationService;
@@ -51,11 +42,10 @@ public class AuthenticationController implements Serializable {
     public void init(){
         //System.out.println("Bem injectado");
     }
-    
+
     public boolean isIsAdmin() {
         return authorizationService.isAdmin();
     }
-
 
     public String getUsername() {
         return username;

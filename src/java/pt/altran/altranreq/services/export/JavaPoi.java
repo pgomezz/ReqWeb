@@ -22,8 +22,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTText;
-import org.primefaces.model.StreamedContent;
 import pt.altran.altranreq.entities.FunctionalRequirement;
 import pt.altran.altranreq.entities.NonFunctionalRequirement;
 import pt.altran.altranreq.entities.Project;
@@ -127,7 +125,7 @@ public class JavaPoi {
         try {
             //Get the template document saved on the path specified
             XWPFDocument template = new XWPFDocument(new FileInputStream(new File("Template\\AltranEspTemplate.docx")));
-
+ 
             //Document Chapters
             //1. Introduction
             //2. Scope of Project

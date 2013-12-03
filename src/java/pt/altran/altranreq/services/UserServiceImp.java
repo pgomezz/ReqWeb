@@ -5,16 +5,22 @@ package pt.altran.altranreq.services;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import pt.altran.altranreq.entities.AltranreqUser;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import pt.altran.altranreq.entities.ProjectUser;
+import pt.altran.altranreq.manager.AuthenticationController;
 
 @WebService
 @Named(value = "userServiceImp")
@@ -23,6 +29,9 @@ public class UserServiceImp extends AbstractServiceImp<AltranreqUser> implements
 
     @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
+    
+    @Inject
+    private PasswordEncryptionService passwordService;
 
     @PostConstruct
     @WebMethod
@@ -91,5 +100,31 @@ public class UserServiceImp extends AbstractServiceImp<AltranreqUser> implements
                 .getResultList();
         return userlist;
     }
+
+    @Override
+    public void edit(AltranreqUser entity) {
+        byte[] newPassword = null;
+        try {
+            newPassword = passwordService.getEncryptedPassword(entity.getPassword(), "AltranREQ".getBytes());
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
+            Logger.getLogger(AuthenticationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        entity.setPassword(new String(newPassword));
+        super.edit(entity); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void create(AltranreqUser entity) {
+        byte[] newPassword = null;
+        try {
+            newPassword = passwordService.getEncryptedPassword(entity.getPassword(), "AltranREQ".getBytes());
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
+            Logger.getLogger(AuthenticationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        entity.setPassword(new String(newPassword));
+        super.create(entity); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 
 }
