@@ -33,9 +33,6 @@ public class ProjectController extends AbstractController<Project> implements Se
     private AuthorizationService authService;
 
     @Inject
-    private AuthenticationBean authenticationBean;
-
-    @Inject
     private ProjectServiceBean projectServiceBean;
 
     private AltranreqUser user;
@@ -110,7 +107,8 @@ public class ProjectController extends AbstractController<Project> implements Se
     @PostConstruct
     public void init() {
         super.setService(projectService);
-        project = super.prepareCreate(null);
+//TODO apagar abaixo caso já não faça falta        
+//project = super.prepareCreate(null);
     }
 
     public String getState(int number) {

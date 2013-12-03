@@ -54,7 +54,6 @@ public class ProjectCreateManager extends AbstractController<Project> implements
         getProject().setIdProjectManager(user.getIdUser().toBigInteger());
         setSelected(getProject());
         projectService.create(getProject());
-                projectService.edit(getProject());
         String successMsg = ResourceBundle.getBundle("/project").getString("Success_on_create");
         JsfUtil.addSuccessMessage(successMsg);
     }
