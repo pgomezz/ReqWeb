@@ -7,6 +7,7 @@ package pt.altran.altranreq.manager.project;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
 import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
@@ -15,6 +16,7 @@ import javax.inject.Named;
 import pt.altran.altranreq.entities.AltranreqUser;
 import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.manager.AbstractController;
+import pt.altran.altranreq.manager.util.JsfUtil;
 import pt.altran.altranreq.services.ProjectService;
 import pt.altran.altranreq.services.UserService;
 
@@ -52,6 +54,8 @@ public class ProjectCreateManager extends AbstractController<Project> implements
         getProject().setIdProjectManager(user.getIdUser().toBigInteger());
         setSelected(getProject());
         projectService.create(getProject());
+        String successMsg = ResourceBundle.getBundle("/project").getString("Success_on_create");
+        JsfUtil.addSuccessMessage(successMsg);
     }
 
     public List<AltranreqUser> getUsersList() {

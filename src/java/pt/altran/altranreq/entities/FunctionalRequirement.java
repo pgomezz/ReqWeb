@@ -200,7 +200,7 @@ public class FunctionalRequirement implements Serializable {
         return requirementState;
     }
 
-    public static RequirementState convertRequirementState(int arg) {
+   public static RequirementState convertRequirementState(int arg) {
         switch (arg) {
 
             case 0:
@@ -209,22 +209,23 @@ public class FunctionalRequirement implements Serializable {
 
             case 1:
 
-                return RequirementState.CANCELADO;
+                return RequirementState.VERSIONADO;
 
             case 2:
 
-                return RequirementState.CONCLUIDO;
+                return RequirementState.CANCELADO;
 
             case 3:
 
-                return RequirementState.VERSIONADO;
+                return RequirementState.CONCLUIDO;
         }
 
         throw new IllegalArgumentException("Is not a supported requirement state");
 
     }
 
-    public static BigInteger convertRequirementStateEnum(RequirementState requirementState) {
+
+   public static BigInteger convertRequirementStateEnum(RequirementState requirementState) {
 
         switch (requirementState) {
 
@@ -233,14 +234,14 @@ public class FunctionalRequirement implements Serializable {
                return BigInteger.valueOf(0);
                 
 
-            case CANCELADO:
+            case VERSIONADO:
 
                 return BigInteger.valueOf(1);
-            case CONCLUIDO:
+            case CANCELADO:
 
                return BigInteger.valueOf(2);
 
-            case VERSIONADO:
+            case CONCLUIDO:
 
                 return BigInteger.valueOf(3);
 
@@ -248,6 +249,7 @@ public class FunctionalRequirement implements Serializable {
         
         throw new IllegalArgumentException("Is not supported requirement state");
     }
+
 
     public void setRequirementState(BigInteger requirementState) {
         this.requirementState = requirementState;

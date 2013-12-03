@@ -122,59 +122,63 @@ public class JavaPoi {
 
         Collection<FunctionalRequirement> aux = project.getFunctionalRequirementCollection();
         //System.out.println(new File(".").getAbsolutePath());
+        XWPFDocument template = null;
         try {
             //Get the template document saved on the path specified
-            XWPFDocument template = new XWPFDocument(new FileInputStream(new File("Template\\AltranEspTemplate.docx")));
- 
-            //Document Chapters
-            //1. Introduction
-            //2. Scope of Project
-            //3. Functional Requirement
-            //3.x Specification of Functional Requirement
-            PageFunctionalRequirements.createPage(template, (List<FunctionalRequirement>) project.getFunctionalRequirementCollection());
-            //3.x Specification of  UseCase
-            PageUseCase.createPage(template, project.getFunctionalRequirementCollection());
+            template = new XWPFDocument(new FileInputStream(new File("Template\\AltranEspTemplate.docx")));
+        } catch (FileNotFoundException ex) {
+            template = new XWPFDocument();
+        } catch (IOException ex) {
+            Logger.getLogger(JavaPoi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //Document Chapters
+        //1. Introduction
+        //2. Scope of Project
+        //3. Functional Requirement
+        //3.x Specification of Functional Requirement
+        PageFunctionalRequirements.createPage(template, (List<FunctionalRequirement>) project.getFunctionalRequirementCollection());
+        //3.x Specification of  UseCase
+        PageUseCase.createPage(template, project.getFunctionalRequirementCollection());
 
-            //4. Non Functional Requirement
-            //4.x Usubilidade
-            if (project.getNonFunctionalRequirementCollection() != null) {
-                boolean Usub = false;
-                boolean Interface = false;
-                for (NonFunctionalRequirement nonfunctionalRequirement : project.getNonFunctionalRequirementCollection()) {
-                    if (BigInteger.valueOf(5) == nonfunctionalRequirement.getType()) {
-                        Usub = true;
-                    }
-                    if (BigInteger.valueOf(1) == nonfunctionalRequirement.getType()) {
-                        Interface = true;
-                    }
+        //4. Non Functional Requirement
+        //4.x Usubilidade
+        if (project.getNonFunctionalRequirementCollection() != null) {
+            boolean Usub = false;
+            boolean Interface = false;
+            for (NonFunctionalRequirement nonfunctionalRequirement : project.getNonFunctionalRequirementCollection()) {
+                if (BigInteger.valueOf(5) == nonfunctionalRequirement.getType()) {
+                    Usub = true;
                 }
-
-                if (Usub == true) {
-                    PageNonFunctionalReq.createUsubilidade(template, (List<NonFunctionalRequirement>) project.getNonFunctionalRequirementCollection());
-                }
-                if (Interface == true) {
-                    //4.x Interface e Image
-                    PageNonFunctionalReq.createInterface(template, (List<NonFunctionalRequirement>) project.getNonFunctionalRequirementCollection());
+                if (BigInteger.valueOf(1) == nonfunctionalRequirement.getType()) {
+                    Interface = true;
                 }
             }
-            //4.x Operacionais
-            //4.x Instalação
-            //4.x Manutenção
-            //4.x Segurança
-            //4.x Políticos e Culturais
 
-            FileOutputStream fos = new FileOutputStream(new File(((Project)projectService.getSelected()).getName() +"_SpecReq_v1.0.docx")); //ProjectName_SpecReq.docx
+            if (Usub == true) {
+                PageNonFunctionalReq.createUsubilidade(template, (List<NonFunctionalRequirement>) project.getNonFunctionalRequirementCollection());
+            }
+            if (Interface == true) {
+                //4.x Interface e Image
+                PageNonFunctionalReq.createInterface(template, (List<NonFunctionalRequirement>) project.getNonFunctionalRequirementCollection());
+            }
+        }
+        //4.x Operacionais
+        //4.x Instalação
+        //4.x Manutenção
+        //4.x Segurança
+        //4.x Políticos e Culturais
 
+        FileOutputStream fos;
+        try {
+            fos = new FileOutputStream(new File(((Project) projectService.getSelected()).getName() + "_SpecReq_v1.0.docx")); //ProjectName_SpecReq.docx
             template.write(fos);
-            
             download(fos);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(JavaPoi.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(JavaPoi.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
-       
+
     }
 
 }

@@ -33,9 +33,6 @@ public class ProjectController extends AbstractController<Project> implements Se
     private AuthorizationService authService;
 
     @Inject
-    private AuthenticationBean authenticationBean;
-
-    @Inject
     private ProjectServiceBean projectServiceBean;
 
     private AltranreqUser user;
