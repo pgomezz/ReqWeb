@@ -51,7 +51,6 @@ public abstract class AbstractController<T> {
 
     public void setSelected(T selected) {
         this.selected = selected;
-        System.out.println(selected.toString());
     }
 
     protected void setEmbeddableKeys() {

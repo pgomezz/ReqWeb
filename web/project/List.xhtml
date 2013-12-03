@@ -42,7 +42,7 @@
                     <h:outputText value="#{projectController.getProjectManagerName(item.idProjectManager)}"/>
                 </p:column>
                 <f:facet name="footer">
-                         <p:commandButton id="createButton" icon="ui-icon-plus" value="#{myBundle.Create}" actionListener="#{projectController.redirect(1)}" action="project/Create" />  
+                         <p:commandButton id="createButton" icon="ui-icon-plus" value="#{myBundle.Create}" actionListener="#{projectController.redirect(1)}" action="/project/Create" />  
                         <p:commandButton id="viewButton"  icon="ui-icon-search" value="#{myBundle.View}" actionListener="#{projectController.redirect(2)}" action="/project/View" disabled="#{empty projectController.selected}"/>
                         <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" actionListener="#{projectController.redirect(3)}" action="/project/Edit" disabled="#{empty projectController.selected}"/>
                         <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{projectController.redirect(4)}" oncomplete="ProjectRemoveDialog.show()" update=":TabProfile:ProjectRemoveForm"  disabled="#{empty projectController.selected}"/>
