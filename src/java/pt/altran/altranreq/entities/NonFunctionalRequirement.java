@@ -243,7 +243,7 @@ public class NonFunctionalRequirement implements Serializable {
     }
 
     
-     public static RequirementState convertRequirementState(int arg) {
+    public static RequirementState convertRequirementState(int arg) {
         switch (arg) {
 
             case 0:
@@ -252,38 +252,38 @@ public class NonFunctionalRequirement implements Serializable {
 
             case 1:
 
-                return RequirementState.CANCELADO;
+                return RequirementState.VERSIONADO;
 
             case 2:
 
-                return RequirementState.CONCLUIDO;
+                return RequirementState.CANCELADO;
 
             case 3:
 
-                return RequirementState.VERSIONADO;
+                return RequirementState.CONCLUIDO;
         }
 
         throw new IllegalArgumentException("Is not a supported requirement state");
 
     }
 
-    public static BigInteger convertRequirementStateEnum(RequirementState type) {
+     public static BigInteger convertRequirementStateEnum(RequirementState requirementState) {
 
-        switch (type) {
+        switch (requirementState) {
 
             case ACTIVO:
 
                return BigInteger.valueOf(0);
                 
 
-            case CANCELADO:
+            case VERSIONADO:
 
                 return BigInteger.valueOf(1);
-            case CONCLUIDO:
+            case CANCELADO:
 
                return BigInteger.valueOf(2);
 
-            case VERSIONADO:
+            case CONCLUIDO:
 
                 return BigInteger.valueOf(3);
 
@@ -301,7 +301,7 @@ public class NonFunctionalRequirement implements Serializable {
 
             case 0:
 
-                return RNFType.INSTALACAO;
+                return RNFType.USABILIDADE;
 
             case 1:
 
@@ -313,7 +313,7 @@ public class NonFunctionalRequirement implements Serializable {
 
             case 3:
 
-                return RNFType.POLITICOS;
+                return RNFType.INSTALACAO;
             case 4:
 
                 return RNFType.SEGURANCA;
@@ -321,7 +321,7 @@ public class NonFunctionalRequirement implements Serializable {
                 
                 case 5:
 
-                return RNFType.USABILIDADE;
+                return RNFType.POLITICOS;
         }
 
         throw new IllegalArgumentException("Is not a supported requirement state");
@@ -332,7 +332,7 @@ public class NonFunctionalRequirement implements Serializable {
 
         switch (requirementType) {
 
-            case INSTALACAO:
+            case USABILIDADE:
 
                return BigInteger.valueOf(0);
                 
@@ -344,7 +344,7 @@ public class NonFunctionalRequirement implements Serializable {
 
                return BigInteger.valueOf(2);
 
-            case POLITICOS:
+            case INSTALACAO:
 
                 return BigInteger.valueOf(3);
                 
@@ -352,7 +352,7 @@ public class NonFunctionalRequirement implements Serializable {
 
                 return BigInteger.valueOf(4);
                     
-                    case USABILIDADE:
+                    case POLITICOS:
 
                 return BigInteger.valueOf(5);
 
