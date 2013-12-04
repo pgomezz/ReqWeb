@@ -55,7 +55,6 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
     @PostConstruct
     public void init() {
         super.setService(nonFunctionalRequirementService);
-        nonFunctionalRequirement = super.prepareCreate(null);
     }
     
     public String getNameProject (){
@@ -106,7 +105,6 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
         return nonFunctionalRequirementService.getRequirementTypeString(number);
     }
     
-    
     @Override
     public void saveNew(ActionEvent event) {
         nonFunctionalRequirement.setIdProject((Project)projectBean.getSelected());
@@ -119,11 +117,6 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
             Logger.getLogger(FunctionalRequirementController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-    
-    
-    
     
     @Override
     public void save(ActionEvent event) {
@@ -163,7 +156,8 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
             nonFunctionalRequirement = super.prepareCreate(null);
         } else {
             nonFunctionalRequirementBean.setSelected(this.getSelected());
-        }}
+        }
+    }
     
 
 }
