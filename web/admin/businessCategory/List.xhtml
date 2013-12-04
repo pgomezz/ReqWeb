@@ -40,7 +40,7 @@
                         <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" action="/admin/businessCategory/Create"/>
                         <p:commandButton id="viewButton"  icon="ui-icon-search" value="#{myBundle.View}" actionListener="#{businessCategoryController.redirect}" action="/admin/businessCategory/View"/>
                         <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" actionListener="#{businessCategoryController.redirect}" action="/admin/businessCategory/Edit" />
-                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{businessCategoryController.delete}" update=":TabProfile:BCRemoveForm" oncomplete="BCRemoveDialog.show()" disabled="#{empty businessCategoryController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" update=":TabProfile:BCRemoveForm" oncomplete="BCRemoveDialog.show()" disabled="#{empty businessCategoryController.selected}"/>
                     </div>
                 </f:facet>
 

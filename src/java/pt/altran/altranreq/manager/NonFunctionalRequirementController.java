@@ -157,16 +157,13 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
     }
     
     
-    public void redirect(int option) throws IOException
+    public void redirect(int action) throws IOException
     {
-        nonFunctionalRequirementBean.setSelected(this.getSelected());
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        
-        if (option == 1)
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/View_New.xhtml");
-        if (option == 2)
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/Edit_New.xhtml");
-    }
+        if (action == 1) {
+            nonFunctionalRequirement = super.prepareCreate(null);
+        } else {
+            nonFunctionalRequirementBean.setSelected(this.getSelected());
+        }}
     
 
 }
