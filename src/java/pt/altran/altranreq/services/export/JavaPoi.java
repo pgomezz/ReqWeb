@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTText;
 import pt.altran.altranreq.entities.FunctionalRequirement;
 import pt.altran.altranreq.entities.NonFunctionalRequirement;
 import pt.altran.altranreq.entities.Project;
@@ -31,7 +32,7 @@ import pt.altran.altranreq.services.ProjectServiceBean;
 @ManagedBean
 @RequestScoped
 public class JavaPoi {
-    
+
     // Injection of the ProjectService for getting the current Project info
     @Inject
     ProjectServiceBean projectService;
@@ -41,8 +42,8 @@ public class JavaPoi {
 
     //Method for downloading
     public void download(OutputStream out) throws IOException {
-        String nomeProjecto = ((Project)projectService.getSelected()).getName();
-        InputStream in = new FileInputStream(nomeProjecto +"_SpecReq_v1.0.docx");
+        String nomeProjecto = ((Project) projectService.getSelected()).getName();
+        InputStream in = new FileInputStream(nomeProjecto + "_SpecReq_v1.0.docx");
 
         //Prepare.
         FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -52,8 +53,8 @@ public class JavaPoi {
         // Initialize response.
         response.reset(); // Some JSF component library or some Filter might have set some headers in the buffer beforehand. We want to get rid of them, else it may collide.
         response.setContentType("application/msword"); // Check http://www.iana.org/assignments/media-types for all types. Use if necessary ServletContext#getMimeType() for auto-detection based on filename.
-        response.setHeader("Content-disposition", "attachment; filename=\""+nomeProjecto +"_SpecReq_v1.0.docx\""); // The Save As popup magic is done here. You can give it any filename you want, this only won't work in MSIE, it will use current request URL as filename instead.
-        
+        response.setHeader("Content-disposition", "attachment; filename=\"" + nomeProjecto + "_SpecReq_v1.0.docx\""); // The Save As popup magic is done here. You can give it any filename you want, this only won't work in MSIE, it will use current request URL as filename instead.
+
         OutputStream output = response.getOutputStream();
         flow(in, output, new byte[1024]);
         output.close();
@@ -121,7 +122,7 @@ public class JavaPoi {
         Project project = (Project) projectService.getSelected();
 
         Collection<FunctionalRequirement> aux = project.getFunctionalRequirementCollection();
-        //System.out.println(new File(".").getAbsolutePath());
+        System.out.println(new File(".").getAbsolutePath());
         XWPFDocument template = null;
         try {
             //Get the template document saved on the path specified
@@ -131,6 +132,8 @@ public class JavaPoi {
         } catch (IOException ex) {
             Logger.getLogger(JavaPoi.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        replaceKeyWords(template,project);
         //Document Chapters
         //1. Introduction
         //2. Scope of Project
@@ -179,6 +182,23 @@ public class JavaPoi {
             Logger.getLogger(JavaPoi.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    private void replaceKeyWords(XWPFDocument doc, Project project) {
+        for (XWPFParagraph p : doc.getParagraphs()) {
+            for (XWPFRun r : p.getRuns()) {
+                for (CTText ct : r.getCTR().getTList()) {
+                    String str = ct.getStringValue();
+                    if (str.contains("Proj3ct0.N0m3")) {
+                        str = str.replace("Proj3ct0.N0m3", project.getName());
+                        ct.setStringValue(str);
+                    } else if (str.contains("Gest0r.Proj3ct0")){
+                        
+                    }
+
+                }
+            }
+        }
     }
 
 }
