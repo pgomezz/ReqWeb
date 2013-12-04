@@ -9,7 +9,12 @@
     <h:form id="FunctionalRequirementListForm">
 
         <p:panel header="#{myBundle.ListFunctionalRequirementTitle}">
-
+            
+            
+            
+            
+            
+             
             <p:dataTable id="datalist" value="#{functionalRequirementController.lista}" var="item"
                          
                          selectionMode="single" selection="#{functionalRequirementController.selected}"
@@ -36,10 +41,16 @@
                     </f:facet>
                     <h:outputText value="#{item.clientPriority}"/>
                 </p:column>
-                <p:column sortBy="#{item.requirementState}" filterBy="#{item.requirementState}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListFunctionalRequirementTitle_requirementState}"/>
-                    </f:facet>
+                <p:column sortBy="#{item.requirementState}" filterBy="#{item.requirementState}" 
+                          
+                          
+                          headerText="#{bundle_requirement.State}" 
+                          filterOptions="#{tableListBean.stateOptions}"  
+                          
+                          filterMatchMode="exact" > 
+                  
+                         
+                    
                     <h:outputText value="#{functionalRequirementController.getState(item.requirementState)}"/>
                 </p:column>
                
