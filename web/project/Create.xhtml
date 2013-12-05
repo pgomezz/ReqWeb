@@ -29,18 +29,12 @@
                             <p:outputLabel value="#{project.Description}" for="description" />
                             <p:inputTextarea rows="4" cols="30" id="description" value="#{projectCreateManager.project.description}" title="#{myBundle.CreateProjectTitle_description}" required="true" requiredMessage="#{myBundle.CreateProjectRequiredMessage_description}"/>
 
-                            <p:outputLabel value="#{project.BeginDate}" for="from" />
-                            <p:calendar id="from" value="#{projectCreateManager.project.beginDate}" binding="#{from}"  pattern="dd/mm/yy">
-                                <p:ajax process="from to" update=":growl" />
-                            </p:calendar>
-                            
-                            <p:outputLabel value="#{project.EndDate}" for="to" />
-                            <p:calendar id="to" value="#{projectCreateManager.project.endDate}" pattern="dd/mm/yy">
-                                <f:attribute name="fromDate" value="#{from.value}" />
-                                <f:validator validatorId="validator.dateRangeValidator" />
-                                <p:ajax process="from to" update=":growl" />                               
-                            </p:calendar>
-    
+                            <p:outputLabel value="#{project.BeginDate}" for="beginDate" />
+                            <p:calendar id="beginDate" pattern="dd/MM/yyyy" value="#{projectCreateManager.project.beginDate}" title="#{myBundle.EditProjectTitle_beginDate}"  showOn="button"/>
+
+                            <p:outputLabel value="#{project.EndDate}" for="endDate" />
+                            <p:calendar id="endDate" pattern="dd/MM/yyyy" value="#{projectCreateManager.project.endDate}" title="#{myBundle.EditProjectTitle_endDate}"  showOn="button"/>
+
                             <h:outputText value="#{project.State}" />
                             <p:selectOneMenu value="#{projectCreateManager.project.projectState}" >            
                                 <f:selectItem itemLabel="#{project.SelecteOneState}" itemValue="" />
