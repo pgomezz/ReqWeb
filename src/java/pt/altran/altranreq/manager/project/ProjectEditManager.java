@@ -36,6 +36,7 @@ public class ProjectEditManager extends AbstractController<Project> implements S
     @Inject
     private UserService userService;
     private AltranreqUser user;
+    private List<AltranreqUser> usersList;
 
     @PostConstruct
     public void init() {
@@ -59,8 +60,10 @@ public class ProjectEditManager extends AbstractController<Project> implements S
     }
 
     public List<AltranreqUser> getUsersList() {
-        List<AltranreqUser> users = userService.findAll();
-        return users;
+        if (usersList == null) {
+            usersList = userService.findAll();
+        }
+        return usersList;
     }
 
     public void setProjectManager(AltranreqUser aru) {
@@ -68,6 +71,14 @@ public class ProjectEditManager extends AbstractController<Project> implements S
     }
 
     public AltranreqUser getProjectManager() {
+        if (user==null) {
+            for (AltranreqUser userFound:usersList) {
+                if (getProject().getIdProjectManager().intValue() == userFound.getIdUser().intValue()) {
+                    user = userFound;
+                    return user;
+                }
+            }
+        }
         return user;
     }
 }
