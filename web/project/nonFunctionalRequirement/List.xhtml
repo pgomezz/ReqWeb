@@ -44,14 +44,12 @@
                     <h:outputText value="#{nonFunctionalRequirementController.getState(item.requirementState)}"/>
                 </p:column>
                 
-                
-                
                 <f:facet name="footer">
                     <div class="footer-section">
-                        <p:button id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" outcome="/project/nonFunctionalRequirement/Create_New"/>
-                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}"  actionListener="#{nonFunctionalRequirementController.redirect(1)}"/>
-                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}"  actionListener="#{nonFunctionalRequirementController.redirect(2)}"/>
-                         <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}"  update=":TabProfile:NFRRemoveForm" oncomplete="NFRRemoveDialog.show()" disabled="#{empty functionalRequirementController.selected}"/>
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{nonFunctionalRequirementController.redirect(1)}" action="/project/nonFunctionalRequirement/Create_New"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}"  actionListener="#{nonFunctionalRequirementController.redirect(2)}" action="/project/nonFunctionalRequirement/View_New.xhtml" disabled="#{empty nonFunctionalRequirementController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}"  actionListener="#{nonFunctionalRequirementController.redirect(3)}" action="/project/nonFunctionalRequirement/Edit_New.xhtml" disabled="#{empty nonFunctionalRequirementController.selected}"/>
+                         <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{nonFunctionalRequirementController.redirect(4)}" update=":TabProfile:NFRRemoveForm" oncomplete="NFRRemoveDialog.show()" disabled="#{empty nonFunctionalRequirementController.selected}"/>
                          </div>
                 </f:facet>
 

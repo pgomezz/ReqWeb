@@ -65,7 +65,8 @@ public class FunctionalRequirementController extends AbstractController<Function
     @PostConstruct
     public void init() {
         super.setService(functionalRequirementService);
-        functionalRequirement = super.prepareCreate(null);
+        
+        
 
     }
 
@@ -91,34 +92,6 @@ public class FunctionalRequirementController extends AbstractController<Function
         return functionalRequirementService.getRequirementStateString(number);
     }
 
-    @Override
-    public void saveNew(ActionEvent event) {
-        functionalRequirement.setIdProject((Project)projectBean.getSelected());
-        setSelected(functionalRequirement);
-        functionalRequirementService.create(functionalRequirement);
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        try {
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/functionalRequirement/index.xhtml");
-        } catch (IOException ex) {
-            Logger.getLogger(FunctionalRequirementController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    @Override
-    public void save(ActionEvent event) {
-
-        FunctionalRequirement fr = (FunctionalRequirement) functionalRequirementBean.getSelected();
-        setSelected(fr);
-        functionalRequirementService.edit(fr);
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        try {
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/functionalRequirement/index.xhtml");
-        } catch (IOException ex) {
-            Logger.getLogger(FunctionalRequirementController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
 
     public boolean isFRequirementType() {
         return functionalRequirementBean.getSelected() instanceof FunctionalRequirement;
@@ -133,14 +106,20 @@ public class FunctionalRequirementController extends AbstractController<Function
     }
 
     public void redirect(int option) throws IOException {
-        functionalRequirementBean.setSelected(this.getSelected());
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-
         if (option == 1) {
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/functionalRequirement/View_New.xhtml");
-        }
-        if (option == 2) {
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/functionalRequirement/Edit_New.xhtml");
+            functionalRequirement = super.prepareCreate(null);
+        } else {
+            functionalRequirementBean.setSelected(this.getSelected());
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
