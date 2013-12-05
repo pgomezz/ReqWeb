@@ -11,22 +11,44 @@
         <p:dialog id="AltranreqRoleEditDlg1" widgetVar="AltranreqRoleEditDialog1" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditAltranreqRoleTitle}" closeOnEscape="true">
 
             <h:form id="AltranreqRoleEditForm1">
-                <h:dataTable id="datalist" value="#{privilegeCollection.allPrivileges}" var="item" >
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Permissões"/>
-                        </f:facet>
-                        <h:outputText value="#{item.actionName}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="CheckBox"/>
-                        </f:facet>
-                        <h:selectBooleanCheckbox value="#{false}" />
-                    </h:column>
-                </h:dataTable>
-                <h:commandButton action="Guardar" disabled="" value="Guardar"/>
-                <h:commandButton action="Cancelar" disabled="" value="Cancelar"/>
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{altranreqRoleController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditAltranreqRoleLabel_idRole}" for="idRole" />
+                        <h:outputText id="idRole" value="#{altranreqRoleController.selected.idRole}" />
+
+                        <p:outputLabel value="#{myBundle.EditAltranreqRoleLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{altranreqRoleController.selected.type}" title="#{myBundle.EditAltranreqRoleTitle_type}" required="true" requiredMessage="#{myBundle.EditAltranreqRoleRequiredMessage_type}" size="20" maxlength="20"/>
+
+                        <p:outputLabel value="#{myBundle.EditAltranreqRoleLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{altranreqRoleController.selected.description}" title="#{myBundle.EditAltranreqRoleTitle_description}" size="250" maxlength="250"/>
+
+                        <p:outputLabel value="#{myBundle.EditAltranreqRoleLabel_privilegeCollection}" for="privilegeCollection" />
+                        <p:selectManyMenu id="privilegeCollection" value="#{altranreqRoleController.selected.privilegeCollection}" >
+                            <f:selectItems value="#{privilegeController.items}"
+                                           var="privilegeCollectionItem"
+                                           itemValue="#{privilegeCollectionItem}"
+                                           itemLabel="#{privilegeCollectionItem.idPrivilege.toString()}"
+                                           />
+                        </p:selectManyMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{altranreqRoleController.save}" value="#{myBundle.Save}" update="display,:TabProfile:AltranreqRoleListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AltranreqRoleEditDialog);"/>
+                    <h:dataTable id="datalist" value="#{privilegeCollection.allPrivileges}" var="item" >                       <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Permissões"/>
+                            </f:facet>
+                            <h:outputText value="#{item.actionName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="CheckBox"/>
+                            </f:facet>
+                            <h:selectBooleanCheckbox value="#{altranreqRoleController.selected.privilegeCollection}" />
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <p:commandButton actionListener="#{altranreqRoleController.save}" value="#{myBundle.Save}" update="display,:TabProfile:AltranreqRoleListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AltranreqRoleEditDialog);"/>
+                <p:commandButton value="#{myBundle.Cancel}" onclick="AltranreqRoleEditDialog1.hide()"/>
             </h:form>
         </p:dialog>
 
