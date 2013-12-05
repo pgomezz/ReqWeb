@@ -239,7 +239,10 @@ public class Project implements Serializable {
             return false;
         }
         Project other = (Project) object;
-        if ((this.idProject == null && other.idProject != null) || (this.idProject != null && !this.idProject.equals(other.idProject))) {
+        
+        if ((this.idProject == null && other.idProject != null) 
+                || 
+                (this.idProject != null && !this.idProject.equals(other.idProject))) {
             return false;
         }
         return true;
