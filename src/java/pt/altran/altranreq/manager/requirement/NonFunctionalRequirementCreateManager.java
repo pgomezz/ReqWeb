@@ -148,7 +148,8 @@ public class NonFunctionalRequirementCreateManager extends AbstractController<No
     public NonFunctionalRequirement getNFRequirement()
     {
         
-        return (NonFunctionalRequirement)nonFunctionalRequirementBean.getSelected();
+        //return (NonFunctionalRequirement)nonFunctionalRequirementBean.getSelected();
+        return getSelected();
     }
     
     public void setNonFunctionalRequirement()
