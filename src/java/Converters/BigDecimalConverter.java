@@ -10,6 +10,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import pt.altran.altranreq.entities.AltranreqUser;
@@ -19,7 +20,7 @@ import pt.altran.altranreq.entities.AltranreqUser;
  * @author francisco
  */
 @Named(value = "bigDecimalConverter")
-@RequestScoped
+@ViewScoped
 public class BigDecimalConverter implements Converter{
 
     @Inject

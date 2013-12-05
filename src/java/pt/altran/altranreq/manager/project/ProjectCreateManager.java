@@ -6,6 +6,8 @@
 package pt.altran.altranreq.manager.project;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;

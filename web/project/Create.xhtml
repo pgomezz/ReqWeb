@@ -29,16 +29,18 @@
                             <p:outputLabel value="#{project.Description}" for="description" />
                             <p:inputTextarea rows="4" cols="30" id="description" value="#{projectCreateManager.project.description}" title="#{myBundle.CreateProjectTitle_description}" required="true" requiredMessage="#{myBundle.CreateProjectRequiredMessage_description}"/>
 
-                            <p:calendar id="from" value="#{project.BeginDate}" binding="#{from}" >
-                                <p:ajax process="from to" update="toDateMsg" />
+                            <p:outputLabel value="#{project.BeginDate}" for="from" />
+                            <p:calendar id="from" value="#{projectCreateManager.project.beginDate}" binding="#{from}"  pattern="dd/mm/yy">
+                                <p:ajax process="from to" update=":growl" />
                             </p:calendar>
-                            <p:calendar id="to"   value="#{project.EndDate}" >
+                            
+                            <p:outputLabel value="#{project.EndDate}" for="to" />
+                            <p:calendar id="to" value="#{projectCreateManager.project.endDate}" pattern="dd/mm/yy">
                                 <f:attribute name="fromDate" value="#{from.value}" />
                                 <f:validator validatorId="validator.dateRangeValidator" />
-                                <p:ajax process="from to" update="toDateMsg" />
+                                <p:ajax process="from to" update=":growl" />                               
                             </p:calendar>
-                            <p:message for="to" id="toDateMsg" />
-                            
+    
                             <h:outputText value="#{project.State}" />
                             <p:selectOneMenu value="#{projectCreateManager.project.projectState}" >            
                                 <f:selectItem itemLabel="#{project.SelecteOneState}" itemValue="" />

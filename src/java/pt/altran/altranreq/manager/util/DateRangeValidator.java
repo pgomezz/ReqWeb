@@ -2,6 +2,7 @@
 package pt.altran.altranreq.manager.util;
 
 import java.util.Date;
+import java.util.ResourceBundle;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -20,9 +21,12 @@ public class DateRangeValidator implements Validator {
         
         Date toDate   = (Date) value; 
         Date fromDate = (Date) component.getAttributes().get("fromDate");
+        
+        System.out.println("todate:"+toDate.toString());
+        System.out.println("fromdate:"+fromDate.toString());
 
-        if (toDate.after(fromDate)) {
-            FacesMessage message = new FacesMessage("Invalid dates submitted.");
+        if (fromDate.after(toDate)) {
+            FacesMessage message = new FacesMessage(ResourceBundle.getBundle("/project").getString("InvalidDatesRange"));
             message.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(message);
         }
