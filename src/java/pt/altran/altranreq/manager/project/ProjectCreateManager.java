@@ -53,7 +53,7 @@ public class ProjectCreateManager extends AbstractController<Project> implements
     public void saveNew(ActionEvent event) {
         setSelected(getProject());
         projectService.create(getProject());
-        String successMsg = ResourceBundle.getBundle("/project").getString("Success_on_create");
+        String successMsg = ResourceBundle.getBundle("/project").getString("CreateSuccessMessage");
         JsfUtil.addSuccessMessage(successMsg);
     }
 
