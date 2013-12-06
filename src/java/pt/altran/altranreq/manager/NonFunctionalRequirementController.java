@@ -4,6 +4,7 @@ import java.io.IOException;
 import pt.altran.altranreq.entities.NonFunctionalRequirement;
 import java.io.Serializable;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -14,6 +15,7 @@ import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
 import pt.altran.altranreq.entities.Project;
+import pt.altran.altranreq.manager.util.JsfUtil;
 import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.RNFService;
 import pt.altran.altranreq.services.RNFtServiceBean;
@@ -159,6 +161,26 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
             nonFunctionalRequirementBean.setSelected(this.getSelected());
         }
         
+    }
+    
+    
+    @Override
+    public void delete(ActionEvent event) {
+        try {
+
+            Project currentProject = (Project)projectBean.getSelected();
+            getNFRequirement().setIdProject(currentProject);
+        
+            setSelected(getNFRequirement());
+            nonFunctionalRequirementService.remove(getNFRequirement());
+            String successMsg = ResourceBundle.getBundle("MyBundle").getString("FunctionalRequirementDeleted");
+            JsfUtil.addSuccessMessage(successMsg);
+            
+        } catch (Exception e) {
+            String successMsg = ResourceBundle.getBundle("/project").getString("ErrorMessage");
+            JsfUtil.addErrorMessage(e.getMessage());
+
+        }
     }
     
 

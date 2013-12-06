@@ -14,6 +14,8 @@
     </ui:define>
 
     <ui:define name="projectTab">
+        
+        <ui:include src="/project/functionalRequirement/ConfirmCancel.xhtml"/>
         <h:form id="FunctionalRequirementCreateNewForm">
 
             <h:panelGroup id="display">
@@ -21,23 +23,23 @@
 
                    
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_name}" for="name" />
-                    <p:inputText id="name" value="#{functionalRequirementCreateManager.selected.name}" title="#{myBundle.CreateFunctionalRequirementTitle_name}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_name}" size="100" maxlength="100"/>
+                    <p:inputText id="name" value="#{functionalRequirementCreateManager.selected.name}" title="#{myBundle.CreateFunctionalRequirementTitle_name}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_name}" size="60" maxlength="60"/>
                     <p:message for="name" display="${myBundle.CreateFunctionalRequirementHelpText_name}" /> 
                     
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_description}" for="description" />
-                    <p:inputTextarea rows="4" cols="30" id="description" value="#{functionalRequirementCreateManager.selected.description}" title="#{myBundle.CreateFunctionalRequirementTitle_description}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_description}"/>
+                    <p:inputTextarea rows="4" cols="30" id="description" value="#{functionalRequirementCreateManager.selected.description}" title="#{myBundle.CreateFunctionalRequirementTitle_description}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_description}"  maxlength="1500"/>
                     <p:message for="description" display="${myBundle.CreateFunctionalRequirementHelpText_description}" /> 
                     
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_reason}" for="reason" />
-                    <p:inputTextarea rows="4" cols="30" id="reason" value="#{functionalRequirementCreateManager.selected.reason}" title="#{myBundle.CreateFunctionalRequirementTitle_reason}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_reason}"/>
+                    <p:inputTextarea rows="4" cols="30" id="reason" value="#{functionalRequirementCreateManager.selected.reason}" title="#{myBundle.CreateFunctionalRequirementTitle_reason}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_reason}"  maxlength="60"/>
                     <p:message for="reason" display="${myBundle.CreateFunctionalRequirementHelpText_reason}" /> 
                     
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_source}" for="source" />
-                    <p:inputText id="source" value="#{functionalRequirementCreateManager.selected.source}" title="#{myBundle.CreateFunctionalRequirementTitle_source}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_source}" size="100" maxlength="100"/>
+                    <p:inputText id="source" value="#{functionalRequirementCreateManager.selected.source}" title="#{myBundle.CreateFunctionalRequirementTitle_source}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_source}" size="60" maxlength="60"/>
                     <p:message for="source" display="${myBundle.CreateFunctionalRequirementHelpText_source}" /> 
                     
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_avaliationCriteria}" for="avaliationCriteria" />
-                    <p:inputTextarea rows="4" cols="30" id="avaliationCriteria" value="#{functionalRequirementCreateManager.selected.avaliationCriteria}" title="#{myBundle.CreateFunctionalRequirementTitle_avaliationCriteria}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_avaliationCriteria}"/>
+                    <p:inputTextarea rows="4" cols="30" id="avaliationCriteria" value="#{functionalRequirementCreateManager.selected.avaliationCriteria}" title="#{myBundle.CreateFunctionalRequirementTitle_avaliationCriteria}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_avaliationCriteria}" maxlength="255"/>
                     <p:message for="avaliationCriteria" display="${myBundle.CreateFunctionalRequirementHelpText_avaliationCriteria}" /> 
                     
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_clientPriority}" for="clientPriority" />
@@ -122,8 +124,8 @@
 
                     
                 </p:panelGrid>
-                <p:commandButton actionListener="#{functionalRequirementCreateManager.saveNew}"  action="/index"  value="#{myBundle.Save}"  ajax="true" update="grid"/>
-                <p:commandButton value="#{myBundle.Cancel}" action="/project/functionalRequirement/index" immediate="true"/>
+                <p:commandButton actionListener="#{functionalRequirementCreateManager.saveNew}"  action="/project/functionalRequirement/index"  value="#{myBundle.Save}"  ajax="false" update="grid"/>
+                <p:commandButton value="#{myBundle.Cancel}" oncomplete="ConfirmCancelDialog.show()" immediate="true"/>
             </h:panelGroup>
 
         </h:form>

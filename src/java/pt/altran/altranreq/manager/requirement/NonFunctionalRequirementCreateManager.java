@@ -8,6 +8,7 @@ package pt.altran.altranreq.manager.requirement;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -22,6 +23,7 @@ import pt.altran.altranreq.entities.NonFunctionalRequirement;
 import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.manager.AbstractController;
 import pt.altran.altranreq.manager.FunctionalRequirementController;
+import pt.altran.altranreq.manager.util.JsfUtil;
 import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.RNFService;
 import pt.altran.altranreq.services.RNFtServiceBean;
@@ -127,12 +129,8 @@ public class NonFunctionalRequirementCreateManager extends AbstractController<No
         setSelected(getNFRequirement());
         nonFunctionalRequirementService.create(getNFRequirement());
         
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        try {
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
-        } catch (IOException ex) {
-            Logger.getLogger(FunctionalRequirementController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        String successMsg = ResourceBundle.getBundle("MyBundle").getString("FunctionalRequirementCreated");
+        JsfUtil.addSuccessMessage(successMsg);
         
     }
 
