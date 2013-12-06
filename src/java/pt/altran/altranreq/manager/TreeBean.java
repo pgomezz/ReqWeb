@@ -22,6 +22,8 @@ import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.entities.UseCase;
 import pt.altran.altranreq.manager.util.AltranTreeNode;
 import pt.altran.altranreq.manager.util.UpdateCurrentTreeNode;
+import pt.altran.altranreq.services.FunctionalRequirementFilter;
+import pt.altran.altranreq.services.FunctionalRequirementService;
 import pt.altran.altranreq.services.ProjectService;
 import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.RNFService;
@@ -45,6 +47,9 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
 
     @Inject
     private RNFService rnfService;
+    
+    @Inject
+    private FunctionalRequirementService functionalService;
 
     @Inject
     private ProjectServiceBean projectBean;
