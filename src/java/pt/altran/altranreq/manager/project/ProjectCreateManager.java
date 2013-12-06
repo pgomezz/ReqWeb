@@ -66,6 +66,7 @@ public class ProjectCreateManager extends AbstractController<Project> implements
     }
 
     public void setProjectManager(AltranreqUser aru) {
+        getProjectManager().setIdUser(aru.getIdUser());
         user = aru;
     }
 
