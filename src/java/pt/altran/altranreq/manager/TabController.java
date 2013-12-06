@@ -6,42 +6,28 @@
 package pt.altran.altranreq.manager;
 
 import java.io.Serializable;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import org.primefaces.component.tabview.TabView;
 import org.primefaces.event.TabChangeEvent;
 
 /**
  *
  * @author Consultor
  */
-@Named(value = "TabBean")
-@ViewScoped
+@Named
+@SessionScoped
 public class TabController implements Serializable {
 
-    private int activeIndex = 0;
+    private int activeTab = 0;
 
-    public TabController() {
-
-    }
-
-    public int getActiveIndex() {
-        return activeIndex;
-    }
-
-    public void setProjectTab() {
-        this.activeIndex = 0;
-    }
-
-    public void setAdminTab() {
-        this.activeIndex = 1;
+    public int getActiveTab() {
+        return activeTab;
     }
 
     public void onTabChange(TabChangeEvent event) {
-        if(event.getTab().getTitle().equals("Projetos")){
-            this.activeIndex = 1;
-        }else{
-            this.activeIndex = 1;
-        }
-        System.out.println("************Active index:" + this.activeIndex);
+        TabView tabView = (TabView) event.getComponent();
+        this.activeTab = tabView.getChildren().indexOf(event.getTab());
     }
+
 }
