@@ -12,7 +12,7 @@
               
     </ui:define>
     <ui:define name="projectTab" >
-
+        <ui:include src="/project/nonFunctionalRequirement/ConfirmCancel.xhtml"/>
 
         <h:form id="NonFunctionalRequirementEditForm">
 
@@ -114,7 +114,7 @@
 
                 </p:panelGrid>
                 <p:commandButton actionListener="#{nonFunctionalRequirementEditManager.save}" value="#{myBundle.Save}"   ajax="true" update="editGrid"/>
-                <p:commandButton value="#{myBundle.Cancel}" action="/project/nonFunctionalRequirement/index"  immediate="true"/>
+                <p:commandButton value="#{myBundle.Cancel}" oncomplete="ConfirmCancelDialog.show()"  immediate="true"/>
             </h:panelGroup>
 
         </h:form>

@@ -12,7 +12,8 @@
     </ui:define>
     
     <ui:define name="projectTab">
-
+        
+        <ui:include src="/project/nonFunctionalRequirement/ConfirmCancel.xhtml"/>
         
             <h:form id="NonFunctionalRequirementCreateNewForm">
 
@@ -110,7 +111,7 @@
                         
                     </p:panelGrid>
                     <p:commandButton actionListener="#{nonFunctionalRequirementCreateManager.saveNew}"  action="/index"  value="#{myBundle.Save}" update="grid" ajax="true" />
-                    <p:commandButton value="#{myBundle.Cancel}"  action="/project/nonFunctionalRequirement/index" immediate="true" />
+                    <p:commandButton value="#{myBundle.Cancel}"  oncomplete="ConfirmCancelDialog.show()" immediate="true" />
                 </h:panelGroup>
 
             </h:form>
