@@ -14,6 +14,8 @@
     </ui:define>
 
     <ui:define name="projectTab">
+        
+        <ui:include src="/project/functionalRequirement/ConfirmCancel.xhtml"/>
         <h:form id="FunctionalRequirementCreateNewForm">
 
             <h:panelGroup id="display">
@@ -123,7 +125,7 @@
                     
                 </p:panelGrid>
                 <p:commandButton actionListener="#{functionalRequirementCreateManager.saveNew}"  action="/project/functionalRequirement/index"  value="#{myBundle.Save}"  ajax="false" update="grid"/>
-                <p:commandButton value="#{myBundle.Cancel}" action="/project/functionalRequirement/index" immediate="true"/>
+                <p:commandButton value="#{myBundle.Cancel}" oncomplete="ConfirmCancelDialog.show()" immediate="true"/>
             </h:panelGroup>
 
         </h:form>

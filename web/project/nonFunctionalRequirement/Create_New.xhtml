@@ -110,7 +110,7 @@
 
                         
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{nonFunctionalRequirementCreateManager.saveNew}"  action="/index"  value="#{myBundle.Save}" update="grid" ajax="true" />
+                    <p:commandButton actionListener="#{nonFunctionalRequirementCreateManager.saveNew}"  action="/project/nonFunctionalRequirement/index"  value="#{myBundle.Save}" update="grid" ajax="false" />
                     <p:commandButton value="#{myBundle.Cancel}"  oncomplete="ConfirmCancelDialog.show()" immediate="true" />
                 </h:panelGroup>
 

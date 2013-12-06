@@ -118,12 +118,7 @@ public class FunctionalRequirementCreateManager extends AbstractController<Funct
         functionalRequirementService.create(getFRequirement());
         String successMsg = ResourceBundle.getBundle("MyBundle").getString("FunctionalRequirementCreated");
         JsfUtil.addSuccessMessage(successMsg);
-//       ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-//        try {
-//            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/functionalRequirement/index.xhtml");
-//        } catch (IOException ex) {
-//            Logger.getLogger(FunctionalRequirementController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+
         
     }
 

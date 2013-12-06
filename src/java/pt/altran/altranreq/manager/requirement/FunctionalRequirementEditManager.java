@@ -78,12 +78,7 @@ public class FunctionalRequirementEditManager extends AbstractController<Functio
         functionalService.edit(fr);
         String successMsg = ResourceBundle.getBundle("MyBundle").getString("FunctionalRequirementUpdated");
         JsfUtil.addSuccessMessage(successMsg);
-//        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-//        try {
-//            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/functionalRequirement/index.xhtml");
-//        } catch (IOException ex) {
-//            Logger.getLogger(FunctionalRequirementController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+
 
     }
     
