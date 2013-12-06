@@ -17,15 +17,16 @@
             <h:form id="NonFunctionalRequirementCreateNewForm">
 
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2">
+                    <p:panelGrid columns="3" id="grid">
 
                        
                        
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_name}" for="name" />
                         <p:inputText id="name" value="#{nonFunctionalRequirementCreateManager.selected.name}" title="#{myBundle.CreateNonFunctionalRequirementTitle_name}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_name}" size="50" maxlength="50"/>
- 
-                        <h:outputText value="#{bundle_nfrType.Type}" />  
-                        <p:selectOneMenu value="#{nonFunctionalRequirementCreateManager.selected.type}">  
+                        <p:message for="name" display="${myBundle.CreateNonFunctionalRequirementHelpText_name}" /> 
+                        
+                        <h:outputText value="#{bundle_nfrType.Type}" id="idType" />  
+                        <p:selectOneMenu value="#{nonFunctionalRequirementCreateManager.selected.type}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementHelpText_type}">  
                             <f:selectItem itemLabel="#{bundle_nfrType.Type_undefined}" itemValue="" />  
                             <f:selectItem itemLabel="#{bundle_nfrType.Type_usability}" itemValue="0" />  
                             <f:selectItem itemLabel="#{bundle_nfrType.Type_interface}" itemValue="1" />  
@@ -34,35 +35,41 @@
                             <f:selectItem itemLabel="#{bundle_nfrType.Type_security}" itemValue="4" />  
                             <f:selectItem itemLabel="#{bundle_nfrType.Type_politic}" itemValue="5" />  
                     </p:selectOneMenu>
-                        
+                        <p:message for="idType" display="${myBundle.CreateNonFunctionalRequirementHelpText_type}" />   
                         
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_description}" for="description" />
                         <p:inputTextarea rows="4" cols="30" id="description" value="#{nonFunctionalRequirementCreateManager.selected.description}" title="#{myBundle.CreateNonFunctionalRequirementTitle_description}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_description}"/>
-
+                        <p:message for="description" display="${myBundle.CreateFunctionalRequirementHelpText_description}" /> 
+                        
+                        
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_reason}" for="reason" />
                         <p:inputTextarea rows="4" cols="30" id="reason" value="#{nonFunctionalRequirementCreateManager.selected.reason}" title="#{myBundle.CreateNonFunctionalRequirementTitle_reason}" />
-
+                        <p:message for="reason" display="${myBundle.CreateNonFunctionalRequirementHelpText_reason}" /> 
+                        
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_source}" for="source" />
                         <p:inputText id="source" value="#{nonFunctionalRequirementCreateManager.selected.source}" title="#{myBundle.CreateNonFunctionalRequirementTitle_source}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_source}" size="100" maxlength="100"/>
-
+                        <p:message for="source" display="${myBundle.CreateNonFunctionalRequirementHelpText_source}" /> 
+                        
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_avaliationCriteria}" for="avaliationCriteria" />
                         <p:inputTextarea rows="4" cols="30" id="avaliationCriteria" value="#{nonFunctionalRequirementCreateManager.selected.avaliationCriteria}" title="#{myBundle.CreateNonFunctionalRequirementTitle_avaliationCriteria}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_avaliationCriteria}"/>
-
+                        <p:message for="avaliationCriteria" display="${myBundle.CreateNonFunctionalRequirementHelpText_avaliationCriteria}" /> 
+                        
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_clientPriority}" for="clientPriority" />
                         <p:inputText id="clientPriority" value="#{nonFunctionalRequirementCreateManager.selected.clientPriority}" title="#{myBundle.CreateNonFunctionalRequirementTitle_clientPriority}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_clientPriority}">
                             
                             <f:validateDoubleRange minimum="1" maximum="5" /> 
                     
                     </p:inputText>
+                        <p:message for="clientPriority" display="${myBundle.CreateNonFunctionalRequirementHelpText_clientPriority}" />     
 
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_clientInsatisfaction}" for="clientInsatisfaction" />
                         <p:inputText id="clientInsatisfaction" value="#{nonFunctionalRequirementCreateManager.selected.clientInsatisfaction}" title="#{myBundle.CreateNonFunctionalRequirementTitle_clientInsatisfaction}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_clientInsatisfaction}">
                             <f:validateDoubleRange minimum="1" maximum="5" /> 
                     
                     </p:inputText>
-                            
+                        <p:message for="clientInsatisfaction" display="${myBundle.CreateNonFunctionalRequirementHelpText_clientInsatisfaction}" />       
 
-                        <h:outputText value="#{bundle_requirement.State}" />  
+                        <h:outputText value="#{bundle_requirement.State}" id="idState" />  
                     <p:selectOneMenu value="#{nonFunctionalRequirementCreateManager.selected.requirementState}">  
                         <f:selectItem itemLabel="#{bundle_requirement.State_undefined}" itemValue="" />  
                         <f:selectItem itemLabel="#{bundle_requirement.State_active}" itemValue="0" />  
@@ -70,11 +77,14 @@
                         <f:selectItem itemLabel="#{bundle_requirement.State_cancelled}" itemValue="2" />  
                         <f:selectItem itemLabel="#{bundle_requirement.State_done}" itemValue="3" />  
                     </p:selectOneMenu>
+                        <p:message for="idState" display="${myBundle.CreateFunctionalRequirementHelpText_requirementState}" /> 
+                        
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_version}" for="version" />
                         <p:inputText id="version" value="#{nonFunctionalRequirementCreateManager.selected.version}" title="#{myBundle.CreateNonFunctionalRequirementTitle_version}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_version}">
                             <f:validateDoubleRange minimum="0"  /> 
                     
                     </p:inputText>
+                        <p:message for="version" display="${myBundle.CreateFunctionalRequirementHelpText_version}" /> 
 
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_ordernumber}" for="ordernumber" />
                         <p:inputText id="ordernumber" value="#{nonFunctionalRequirementCreateManager.selected.ordernumber}" title="#{myBundle.CreateNonFunctionalRequirementTitle_ordernumber}">
@@ -82,6 +92,7 @@
                             <f:validateDoubleRange minimum="1"  /> 
                     
                     </p:inputText>
+                        <p:message for="ordernumber" display="${myBundle.CreateFunctionalRequirementHelpText_version}" /> 
 
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_nonFunctionalRequirementCollection}" for="nonFunctionalRequirementCollection" />
                         <p:selectManyMenu id="nonFunctionalRequirementCollection" value="#{nonFunctionalRequirementCreateManager.selected.nonFunctionalRequirementCollection}"  converter="nonFunctionalRequirementConverter">
@@ -92,13 +103,13 @@
                                            />
 
                         </p:selectManyMenu>
-
+                        <label>c</label> 
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_idProject}" for="idProject" />
                         <p:inputText id="idProject" value="#{nonFunctionalRequirementCreateManager.nameProject}" title="#{myBundle.CreateNonFunctionalRequirementTitle_idProject}" disabled="true"/>
 
                         
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{nonFunctionalRequirementCreateManager.saveNew}"  action="/index"  value="#{myBundle.Save}"  ajax="true" />
+                    <p:commandButton actionListener="#{nonFunctionalRequirementCreateManager.saveNew}"  action="/index"  value="#{myBundle.Save}" update="grid" ajax="true" />
                     <p:commandButton value="#{myBundle.Cancel}"  action="/project/nonFunctionalRequirement/index" immediate="true" />
                 </h:panelGroup>
 

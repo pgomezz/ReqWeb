@@ -47,9 +47,12 @@
                             <h:outputLabel value="#{project.ProjectManager}*" for="projectManager"/>  
 
                             <p:selectOneMenu id="projectManager" value="#{projectEditManager.projectManager}"  panelStyle="width:300px"  
-                                             converter="#{bigDecimalConverter}"  effect="fade" var="u" style="width:260px"  filter="true" filterMatchMode="startsWith">  
+                                             converter="#{bigDecimalConverter}"  effect="fade" var="u" style="width:260px"  filter="true" filterMatchMode="startsWith"
+                                            
+                                             >  
                                 <f:selectItem itemLabel="#{project.SelecteOneStateProjectManager}" itemValue="" />  
-                                <f:selectItems value="#{projectEditManager.usersList}" var="u" itemValue="#{u}" itemLabel="#{u.name}" />  
+                                <f:selectItems value="#{projectEditManager.usersList}" var="u" itemValue="#{u}" itemLabel="#{u.name}"  />
+                      
                                 <p:column>  
                                     #{u.name}
                                 </p:column>  
