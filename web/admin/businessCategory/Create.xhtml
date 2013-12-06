@@ -6,22 +6,32 @@
                 xmlns:p="http://primefaces.org/ui"
 
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
-                template="/template.xhtml">
+                template="/tabs.xhtml">
 
-    <ui:define name="body">
+    <ui:define name="TreeTab">
+             
+             <ui:include src="/accordionAdmin.xhtml"/>
+    </ui:define>
+    <ui:define name="growl"/>
+   
+    
+        
+    <ui:define name="AdminTab">
             <h:form id="BusinessCategoryCreateForm">
 
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2">
+                    <p:panelGrid columns="3" id="grid">
                         <p:outputLabel value="#{myBundle.CreateBusinessCategoryLabel_name}" for="name" />
                         <p:inputText id="name" value="#{businessCategoryController.selected.name}" title="#{myBundle.CreateBusinessCategoryTitle_name}" required="true" requiredMessage="#{myBundle.CreateBusinessCategoryRequiredMessage_name}" size="40" maxlength="32"/>
-
+                        <p:message for="name" display="${myBundle.CreateBusinessCategoryRequiredMessage_name}" /> 
+                        
                         <p:outputLabel value="#{myBundle.CreateBusinessCategoryLabel_description}" for="description" />
                         <p:inputTextarea rows="5" cols="70" id="description" value="#{businessCategoryController.selected.description}" title="#{myBundle.CreateBusinessCategoryTitle_description}" required="true" requiredMessage="#{myBundle.CreateBusinessCategoryRequiredMessage_description}" maxlength="255" autoResize="false"/>
-                     
+                        <p:message for="description" display="${myBundle.CreateBusinessCategoryRequiredMessage_description}" /> 
+                        
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{businessCategoryController.saveNew}" action="/admin/businessCategory/index" value="#{myBundle.Save}" ajax="false"/>
-                    <p:button value="#{myBundle.Cancel}" outcome="/admin/businessCategory/index"/>
+                    <p:commandButton actionListener="#{businessCategoryController.saveNew}" action="/admin/businessCategory/index" value="#{myBundle.Save}" ajax="false" update="grid"/>
+                    <p:commandButton value="#{myBundle.Cancel}" action="/admin/businessCategory/index" immediate="true"/>
                 </h:panelGroup>
                
             </h:form>

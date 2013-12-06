@@ -52,6 +52,8 @@ public class BusinessCategoryController extends AbstractController<BusinessCateg
     @Override
     public void saveNew(ActionEvent event) {
         try{
+            //requiredMessage="#{myBundle.CreateBusinessCategoryRequiredMessage_name}"
+            //requiredMessage="#{myBundle.CreateBusinessCategoryRequiredMessage_description}"
           setSelected(businessCategory);
           businessCategoryService.create(businessCategory);
           sendMessages(FacesMessage.SEVERITY_INFO,ResourceBundle.getBundle("/MyBundle").getString("BusinessCategoryCreated"), null);
