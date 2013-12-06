@@ -22,7 +22,7 @@
                        
                        
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_name}" for="name" />
-                        <p:inputText id="name" value="#{nonFunctionalRequirementCreateManager.selected.name}" title="#{myBundle.CreateNonFunctionalRequirementTitle_name}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_name}" size="50" maxlength="50"/>
+                        <p:inputText id="name" value="#{nonFunctionalRequirementCreateManager.selected.name}" title="#{myBundle.CreateNonFunctionalRequirementTitle_name}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_name}" size="60" maxlength="60"/>
                         <p:message for="name" display="${myBundle.CreateNonFunctionalRequirementHelpText_name}" /> 
                         
                         <p:outputLabel  value="#{bundle_nfrType.Type}"  for="idType"/> 
@@ -38,20 +38,20 @@
                         <p:message for="idType" display="${myBundle.CreateNonFunctionalRequirementHelpText_type}" />   
                         
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_description}" for="description" />
-                        <p:inputTextarea rows="4" cols="30" id="description" value="#{nonFunctionalRequirementCreateManager.selected.description}" title="#{myBundle.CreateNonFunctionalRequirementTitle_description}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_description}"/>
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{nonFunctionalRequirementCreateManager.selected.description}" title="#{myBundle.CreateNonFunctionalRequirementTitle_description}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_description}" maxlength="1500"/>
                         <p:message for="description" display="${myBundle.CreateFunctionalRequirementHelpText_description}" /> 
                         
                         
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_reason}" for="reason" />
-                        <p:inputTextarea rows="4" cols="30" id="reason" value="#{nonFunctionalRequirementCreateManager.selected.reason}" title="#{myBundle.CreateNonFunctionalRequirementTitle_reason}" />
+                        <p:inputTextarea rows="4" cols="30" id="reason" value="#{nonFunctionalRequirementCreateManager.selected.reason}" title="#{myBundle.CreateNonFunctionalRequirementTitle_reason}" maxlength="60"/>
                         <p:message for="reason" display="${myBundle.CreateNonFunctionalRequirementHelpText_reason}" /> 
                         
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_source}" for="source" />
-                        <p:inputText id="source" value="#{nonFunctionalRequirementCreateManager.selected.source}" title="#{myBundle.CreateNonFunctionalRequirementTitle_source}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_source}" size="100" maxlength="100"/>
+                        <p:inputText id="source" value="#{nonFunctionalRequirementCreateManager.selected.source}" title="#{myBundle.CreateNonFunctionalRequirementTitle_source}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_source}" size="60" maxlength="60"/>
                         <p:message for="source" display="${myBundle.CreateNonFunctionalRequirementHelpText_source}" /> 
                         
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_avaliationCriteria}" for="avaliationCriteria" />
-                        <p:inputTextarea rows="4" cols="30" id="avaliationCriteria" value="#{nonFunctionalRequirementCreateManager.selected.avaliationCriteria}" title="#{myBundle.CreateNonFunctionalRequirementTitle_avaliationCriteria}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_avaliationCriteria}"/>
+                        <p:inputTextarea rows="4" cols="30" id="avaliationCriteria" value="#{nonFunctionalRequirementCreateManager.selected.avaliationCriteria}" title="#{myBundle.CreateNonFunctionalRequirementTitle_avaliationCriteria}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_avaliationCriteria}" maxlength="255"/>
                         <p:message for="avaliationCriteria" display="${myBundle.CreateNonFunctionalRequirementHelpText_avaliationCriteria}" /> 
                         
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_clientPriority}" for="clientPriority" />

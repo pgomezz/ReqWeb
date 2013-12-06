@@ -20,7 +20,7 @@
                 <p:panelGrid  columns="3" rendered="#{nonFunctionalRequirementEditManager.NFRequirementType}" id="editGrid">
 
                     <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_name}" for="name" />
-                    <p:inputText id="name" value="#{nonFunctionalRequirementEditManager.NFRequirement.name}" title="#{myBundle.EditNonFunctionalRequirementTitle_name}" required="true" requiredMessage="#{myBundle.EditNonFunctionalRequirementRequiredMessage_name}" size="50" maxlength="100"/>
+                    <p:inputText id="name" value="#{nonFunctionalRequirementEditManager.NFRequirement.name}" title="#{myBundle.EditNonFunctionalRequirementTitle_name}" required="true" requiredMessage="#{myBundle.EditNonFunctionalRequirementRequiredMessage_name}" size="60" maxlength="60"/>
                     <p:message for="name" display="${myBundle.CreateNonFunctionalRequirementHelpText_name}" /> 
                         
                     
@@ -38,20 +38,20 @@
                         
 
                     <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_description}" for="description" />
-                    <p:inputTextarea rows="4" cols="30" id="description" value="#{nonFunctionalRequirementEditManager.NFRequirement.description}" title="#{myBundle.EditNonFunctionalRequirementTitle_description}" required="true" requiredMessage="#{myBundle.EditNonFunctionalRequirementRequiredMessage_description}" maxlength="255"/>
+                    <p:inputTextarea rows="4" cols="30" id="description" value="#{nonFunctionalRequirementEditManager.NFRequirement.description}" title="#{myBundle.EditNonFunctionalRequirementTitle_description}" required="true" requiredMessage="#{myBundle.EditNonFunctionalRequirementRequiredMessage_description}" maxlength="1500"/>
                     <p:message for="description" display="${myBundle.CreateFunctionalRequirementHelpText_description}" /> 
                         
                     
                     <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_reason}" for="reason" />
-                    <p:inputTextarea rows="4" cols="30" id="reason" value="#{nonFunctionalRequirementEditManager.NFRequirement.reason}" title="#{myBundle.EditNonFunctionalRequirementTitle_reason}" />
+                    <p:inputTextarea rows="4" cols="30" id="reason" value="#{nonFunctionalRequirementEditManager.NFRequirement.reason}" title="#{myBundle.EditNonFunctionalRequirementTitle_reason}" maxlength="60"/>
                     <p:message for="reason" display="${myBundle.CreateNonFunctionalRequirementHelpText_reason}" /> 
                         
                     <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_source}" for="source" />
-                    <p:inputText id="source" value="#{nonFunctionalRequirementEditManager.NFRequirement.source}" title="#{myBundle.EditNonFunctionalRequirementTitle_source}" required="true" requiredMessage="#{myBundle.EditNonFunctionalRequirementRequiredMessage_source}" size="100" maxlength="100"/>
+                    <p:inputText id="source" value="#{nonFunctionalRequirementEditManager.NFRequirement.source}" title="#{myBundle.EditNonFunctionalRequirementTitle_source}" required="true" requiredMessage="#{myBundle.EditNonFunctionalRequirementRequiredMessage_source}" size="60" maxlength="60"/>
                     <p:message for="source" display="${myBundle.CreateNonFunctionalRequirementHelpText_source}" /> 
                         
                     <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_avaliationCriteria}" for="avaliationCriteria" />
-                    <p:inputTextarea rows="4" cols="30" id="avaliationCriteria" value="#{nonFunctionalRequirementEditManager.NFRequirement.avaliationCriteria}" title="#{myBundle.EditNonFunctionalRequirementTitle_avaliationCriteria}" required="true" requiredMessage="#{myBundle.EditNonFunctionalRequirementRequiredMessage_avaliationCriteria}"/>
+                    <p:inputTextarea rows="4" cols="30" id="avaliationCriteria" value="#{nonFunctionalRequirementEditManager.NFRequirement.avaliationCriteria}" title="#{myBundle.EditNonFunctionalRequirementTitle_avaliationCriteria}" required="true" requiredMessage="#{myBundle.EditNonFunctionalRequirementRequiredMessage_avaliationCriteria}" maxlength="255"/>
                     <p:message for="avaliationCriteria" display="${myBundle.CreateNonFunctionalRequirementHelpText_avaliationCriteria}" /> 
                         
                     <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_clientPriority}" for="clientPriority" />
