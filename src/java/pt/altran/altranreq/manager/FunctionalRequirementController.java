@@ -4,11 +4,15 @@ import java.io.IOException;
 import pt.altran.altranreq.entities.FunctionalRequirement;
 import java.io.Serializable;
 import java.util.List;
+import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
 import pt.altran.altranreq.entities.Project;
+import pt.altran.altranreq.manager.util.JsfUtil;
 import pt.altran.altranreq.services.FunctionalRequirementFilter;
 import pt.altran.altranreq.services.FunctionalRequirementService;
 import pt.altran.altranreq.services.FunctionalRequirementServiceBean;
@@ -64,6 +68,27 @@ public class FunctionalRequirementController extends AbstractController<Function
         
 
     }
+    
+    @Override
+    public void delete(ActionEvent event) {
+        try {
+//            FunctionalRequirement pj = (FunctionalRequirement) functionalRequirementBean.getSelected();
+//            setSelected(pj);
+//            functionalRequirementService.remove(pj); //To change body of generated methods, choose Tools | Templates.
+            Project currentProject = (Project)projectBean.getSelected();
+            getFRequirement().setIdProject(currentProject);
+        
+            setSelected(getFRequirement());
+            functionalRequirementService.remove(getFRequirement());
+            String successMsg = ResourceBundle.getBundle("MyBundle").getString("FunctionalRequirementDeleted");
+            JsfUtil.addSuccessMessage(successMsg);
+            
+        } catch (Exception e) {
+            String successMsg = ResourceBundle.getBundle("/project").getString("ErrorMessage");
+            JsfUtil.addErrorMessage(e.getMessage());
+
+        }
+    }
 
     public boolean isFunctionalRequirementType() {
         return treeService.getSelected() instanceof FunctionalRequirement;
@@ -93,7 +118,7 @@ public class FunctionalRequirementController extends AbstractController<Function
     }
 
     public FunctionalRequirement getFRequirement() {
-        return (FunctionalRequirement) functionalRequirementBean.getSelected();
+       return getSelected();
     }
 
     public void setFunctionalRequirement() {

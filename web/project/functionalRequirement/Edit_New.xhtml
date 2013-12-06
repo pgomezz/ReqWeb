@@ -112,7 +112,7 @@
 
                         
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{functionalRequirementEditManager.save}"   value="#{myBundle.Save}"  ajax="true" update="editGrid"/>
+                    <p:commandButton actionListener="#{functionalRequirementEditManager.save}" action="/project/functionalRequirement/index"  value="#{myBundle.Save}"  ajax="false" update="editGrid"/>
                     <p:commandButton value="#{myBundle.Cancel}" action="/project/functionalRequirement/index" immediate="true"/>
                 </h:panelGroup>
 

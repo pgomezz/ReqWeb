@@ -7,6 +7,7 @@ package pt.altran.altranreq.manager.requirement;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -19,6 +20,7 @@ import javax.inject.Named;
 import pt.altran.altranreq.entities.FunctionalRequirement;
 import pt.altran.altranreq.manager.AbstractController;
 import pt.altran.altranreq.manager.FunctionalRequirementController;
+import pt.altran.altranreq.manager.util.JsfUtil;
 import pt.altran.altranreq.services.FunctionalRequirementService;
 import pt.altran.altranreq.services.FunctionalRequirementServiceBean;
 import pt.altran.altranreq.services.ProjectServiceBean;
@@ -74,12 +76,14 @@ public class FunctionalRequirementEditManager extends AbstractController<Functio
         FunctionalRequirement fr = (FunctionalRequirement) functionalRequirementBean.getSelected();
         setSelected(fr);
         functionalService.edit(fr);
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        try {
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/functionalRequirement/index.xhtml");
-        } catch (IOException ex) {
-            Logger.getLogger(FunctionalRequirementController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        String successMsg = ResourceBundle.getBundle("MyBundle").getString("FunctionalRequirementUpdated");
+        JsfUtil.addSuccessMessage(successMsg);
+//        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+//        try {
+//            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/functionalRequirement/index.xhtml");
+//        } catch (IOException ex) {
+//            Logger.getLogger(FunctionalRequirementController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
     }
     
