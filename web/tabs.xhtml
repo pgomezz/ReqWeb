@@ -8,8 +8,8 @@
                 >
 
     <ui:define name="body" >
-        <p:tabView id="TabProfile" activeIndex="#{TabBean.activeIndex}"  >
-            <p:ajax event="tabChange" listener="#{TabBean.onTabChange}" />
+        <p:tabView id="TabProfile" activeIndex="0"  > 
+      <!--  #{TabBean.activeIndex}    <p:ajax event="tabChange" listener="#{TabBean.onTabChange}" /> -->
             <p:tab title="#{myBundle.ProjectsTab}" id="TabProjects" >
 
                 <p:panelGrid columns="2" >
