@@ -38,7 +38,7 @@ public class TabController implements Serializable {
 
     public void onTabChange(TabChangeEvent event) {
         if(event.getTab().getTitle().equals("Projetos")){
-            this.activeIndex = 0;
+            this.activeIndex = 1;
         }else{
             this.activeIndex = 1;
         }
