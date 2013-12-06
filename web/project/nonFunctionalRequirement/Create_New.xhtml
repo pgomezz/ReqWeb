@@ -25,8 +25,8 @@
                         <p:inputText id="name" value="#{nonFunctionalRequirementCreateManager.selected.name}" title="#{myBundle.CreateNonFunctionalRequirementTitle_name}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_name}" size="50" maxlength="50"/>
                         <p:message for="name" display="${myBundle.CreateNonFunctionalRequirementHelpText_name}" /> 
                         
-                        <h:outputText value="#{bundle_nfrType.Type}" id="idType" />  
-                        <p:selectOneMenu value="#{nonFunctionalRequirementCreateManager.selected.type}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementHelpText_type}">  
+                        <p:outputLabel  value="#{bundle_nfrType.Type}"  for="idType"/> 
+                        <p:selectOneMenu value="#{nonFunctionalRequirementCreateManager.selected.type}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementHelpText_type}" id="idType">  
                             <f:selectItem itemLabel="#{bundle_nfrType.Type_undefined}" itemValue="" />  
                             <f:selectItem itemLabel="#{bundle_nfrType.Type_usability}" itemValue="0" />  
                             <f:selectItem itemLabel="#{bundle_nfrType.Type_interface}" itemValue="1" />  
@@ -69,8 +69,8 @@
                     </p:inputText>
                         <p:message for="clientInsatisfaction" display="${myBundle.CreateNonFunctionalRequirementHelpText_clientInsatisfaction}" />       
 
-                        <h:outputText value="#{bundle_requirement.State}" id="idState" />  
-                    <p:selectOneMenu value="#{nonFunctionalRequirementCreateManager.selected.requirementState}">  
+                        <p:outputLabel  value="#{bundle_requirement.State}"  for="idState"/> 
+                    <p:selectOneMenu value="#{nonFunctionalRequirementCreateManager.selected.requirementState}" id="idState" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementHelpText_requirementState}">  
                         <f:selectItem itemLabel="#{bundle_requirement.State_undefined}" itemValue="" />  
                         <f:selectItem itemLabel="#{bundle_requirement.State_active}" itemValue="0" />  
                         <f:selectItem itemLabel="#{bundle_requirement.State_versioned}" itemValue="1" />  
@@ -83,7 +83,7 @@
                         <p:inputText id="version" value="#{nonFunctionalRequirementCreateManager.selected.version}" title="#{myBundle.CreateNonFunctionalRequirementTitle_version}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_version}">
                             <f:validateDoubleRange minimum="0"  /> 
                     
-                    </p:inputText>
+                        </p:inputText>
                         <p:message for="version" display="${myBundle.CreateFunctionalRequirementHelpText_version}" /> 
 
                         <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_ordernumber}" for="ordernumber" />

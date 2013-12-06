@@ -59,8 +59,9 @@
                     <p:message for="clientInsatisfaction" display="${myBundle.CreateFunctionalRequirementHelpText_clientInsatisfaction}" /> 
 
                   
-                    <h:outputText value="#{bundle_requirement.State}" id="idState" />  
-                    <p:selectOneMenu value="#{functionalRequirementCreateManager.selected.requirementState}" required="true" requiredMessage="${myBundle.CreateFunctionalRequirementHelpText_requirementState}">  
+                    
+                     <p:outputLabel  value="#{bundle_requirement.State}"  for="idState"/>
+                    <p:selectOneMenu id="idState" value="#{functionalRequirementCreateManager.selected.requirementState}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementHelpText_requirementState}" >  
                         <f:selectItem itemLabel="#{bundle_requirement.State_undefined}" itemValue="" />  
                         <f:selectItem itemLabel="#{bundle_requirement.State_active}" itemValue="0" />  
                         <f:selectItem itemLabel="#{bundle_requirement.State_versioned}" itemValue="1" />  
@@ -69,6 +70,7 @@
                     </p:selectOneMenu>
                     <p:message for="idState" display="${myBundle.CreateFunctionalRequirementHelpText_requirementState}" /> 
 
+                    
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_version}" for="version" />
                     <p:inputText id="version" value="#{functionalRequirementCreateManager.selected.version}" title="#{myBundle.CreateFunctionalRequirementTitle_version}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_version}">
                     
@@ -107,7 +109,7 @@
                     
 
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_idBusinessCategory}" for="idBusinessCategory" />
-                    <p:selectOneMenu id="idBusinessCategory" value="#{functionalRequirementCreateManager.selected.idBusinessCategory}" required="true" requiredMessage="#{myBundle.EditFunctionalRequirementRequiredMessage_idBusinessCategory}" converter="businessCategoryConverter">
+                    <p:selectOneMenu id="idBusinessCategory" value="#{functionalRequirementCreateManager.selected.idBusinessCategory}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementTitle_idBusinessCategory}" converter="businessCategoryConverter">
                         <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
                         <f:selectItems value="#{businessCategoryController.items}"
                                        var="idBusinessCategoryItem"
@@ -116,7 +118,7 @@
                                        />
 
                     </p:selectOneMenu>
-                 <p:message for="ordernumber" display="${myBundle.CreateFunctionalRequirementHelpText_idBusinessCategory}" /> 
+                 <p:message for="idBusinessCategory" display="${myBundle.CreateFunctionalRequirementTitle_idBusinessCategory}" /> 
 
                     
                 </p:panelGrid>

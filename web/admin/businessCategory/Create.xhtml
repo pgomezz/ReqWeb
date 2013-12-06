@@ -20,7 +20,7 @@
                         <p:inputTextarea rows="5" cols="70" id="description" value="#{businessCategoryController.selected.description}" title="#{myBundle.CreateBusinessCategoryTitle_description}" required="true" requiredMessage="#{myBundle.CreateBusinessCategoryRequiredMessage_description}" maxlength="255" autoResize="false"/>
                      
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{businessCategoryController.saveNew}" action="/admin/businessCategory/index" value="#{myBundle.Save}" ajax="true"/>
+                    <p:commandButton actionListener="#{businessCategoryController.saveNew}" action="/admin/businessCategory/index" value="#{myBundle.Save}" ajax="false"/>
                     <p:button value="#{myBundle.Cancel}" outcome="/admin/businessCategory/index"/>
                 </h:panelGroup>
                
