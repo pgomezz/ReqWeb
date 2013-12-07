@@ -3,6 +3,8 @@ package pt.altran.altranreq.manager;
 import java.io.IOException;
 import pt.altran.altranreq.entities.Project;
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
@@ -13,7 +15,6 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.inject.Inject;
 import pt.altran.altranreq.entities.AltranreqUser;
-import pt.altran.altranreq.services.AuthenticationBean;
 import pt.altran.altranreq.services.AuthorizationService;
 import pt.altran.altranreq.services.ProjectService;
 import pt.altran.altranreq.services.ProjectServiceBean;
@@ -120,7 +121,25 @@ public class ProjectController extends AbstractController<Project> implements Se
         }
         return projectService.getProjectUserName(idProjectManager);
     }
+    
+    public String getStateString() {
+        return projectService.getProjectStateString(getProject().getProjectState().intValue());
+    }
+    public Date getBeginDate() {
+        return project.getBeginDate();
+    }
 
+    public void setBeginDate(Date beginDate) {
+        project.setBeginDate(beginDate);
+    }
+
+    
+    
+    public String getProjectManagerName(){
+        BigInteger idManager = getProject().getIdProjectManager();
+        return getProjectManagerName(idManager==null?null:idManager.intValue());
+    }
+    
     public void setTerminology(String terminology) {
         project.setTerminology(terminology);
     }
@@ -131,6 +150,7 @@ public class ProjectController extends AbstractController<Project> implements Se
 
     public void setProjectManager(AltranreqUser aru) {
         user = aru;
+        getProject().setIdProjectManager(aru.getIdUser().toBigInteger());
     }
 
     public AltranreqUser getProjectManager() {

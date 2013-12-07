@@ -6,6 +6,7 @@
 package pt.altran.altranreq.manager.project;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
@@ -47,6 +48,9 @@ public class ProjectEditManager extends AbstractController<Project> implements S
         return projectService.getProjectStateString(number);
     }
 
+
+
+    
     public Project getProject() {
         return (Project) projectServiceBean.getSelected();
     }
@@ -55,7 +59,7 @@ public class ProjectEditManager extends AbstractController<Project> implements S
     public void save(ActionEvent event) {
    
         projectService.edit(getProject());
-        String successMsg = ResourceBundle.getBundle("/project").getString("Success_on_update");
+        String successMsg = ResourceBundle.getBundle("/project").getString("EditSuccessMessage");
         JsfUtil.addSuccessMessage(successMsg);
     }
 
@@ -67,7 +71,9 @@ public class ProjectEditManager extends AbstractController<Project> implements S
     }
 
     public void setProjectManager(AltranreqUser aru) {
-        getProject().setIdProjectManager(aru.getIdUser().toBigInteger());
+        BigInteger id = aru==null?null:aru.getIdUser().toBigInteger(); 
+
+        getProject().setIdProjectManager(id);
         user = aru;
     }
 

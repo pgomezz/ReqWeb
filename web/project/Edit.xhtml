@@ -24,7 +24,7 @@
                         <p:panelGrid columns="2">
 
                             <p:outputLabel value="#{project.Name}" for="name" />
-                            <p:inputText id="name" value="#{projectEditManager.project.name}" title="#{project.Name}" required="true" requiredMessage="#{myBundle.CreateProjectRequiredMessage_name}" size="100" maxlength="100"/>
+                            <p:inputText id="name" value="#{projectEditManager.project.name}" title="#{project.Name}" required="true" requiredMessage="#{myBundle.CreateProjectRequiredMessage_name}" size="100" maxlength="60"/>
 
                             <p:outputLabel value="#{project.Description}" for="description" />
                             <p:inputTextarea rows="4" cols="30" id="description" value="#{projectEditManager.project.description}" title="#{myBundle.CreateProjectTitle_description}" required="true" requiredMessage="#{myBundle.CreateProjectRequiredMessage_description}"/>

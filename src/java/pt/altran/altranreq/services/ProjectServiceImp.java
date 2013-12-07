@@ -64,6 +64,22 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
         } catch (NullPointerException np){
             return "invalid constrainght in project";
         }
+    }    
+    
+    @Override
+    public String getProjectUserName(BigInteger idUser) {
+        try {
+            if (idUser == null) {
+                return null;
+            }
+            AltranreqUser altranreqUser = getEntityManager().find(AltranreqUser.class, idUser.intValue());
+            String nome = altranreqUser.getName();
+            return nome;
+        } catch (IllegalArgumentException ia) {
+            return "projectuser invalid for this project";
+        } catch (NullPointerException np){
+            return "invalid constrainght in project";
+        }
     }
 
     @Override
