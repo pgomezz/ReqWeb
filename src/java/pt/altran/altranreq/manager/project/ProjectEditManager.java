@@ -72,6 +72,8 @@ public class ProjectEditManager extends AbstractController<Project> implements S
     }
 
     public AltranreqUser getProjectManager() {
+        if(getProject().getIdProjectManager()==null)
+            return null;
         if (user==null) {
             for (AltranreqUser userFound:usersList) {
                 if (getProject().getIdProjectManager().intValue() == userFound.getIdUser().intValue()) {

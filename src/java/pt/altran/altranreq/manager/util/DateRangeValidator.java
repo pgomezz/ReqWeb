@@ -26,7 +26,9 @@ public class DateRangeValidator implements Validator {
         System.out.println("fromdate:"+fromDate.toString());
 
         if (fromDate.after(toDate)) {
-            FacesMessage message = new FacesMessage(ResourceBundle.getBundle("/project").getString("InvalidDatesRange"));
+            FacesMessage message = new FacesMessage(
+                ResourceBundle.getBundle("/project").getString("InvalidDateRange")
+            );
             message.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(message);
         }
