@@ -8,39 +8,37 @@
                 >
 
     <ui:define name="body" >
-        <p:tabView id="TabProfile" activeIndex="0" >
+        <p:tabView id="TabProfile" activeIndex="0"  > 
+      <!--  #{TabBean.activeIndex}    <p:ajax event="tabChange" listener="#{TabBean.onTabChange}" /> -->
             <p:tab title="#{myBundle.ProjectsTab}" id="TabProjects" >
- 
+
                 <p:panelGrid columns="2" >
-                            <p:panel style= "height: 600px">
-                                <ui:insert name="accorTree">
-                                    Caso nao faça um override aparece isto no accor
-                                </ui:insert>
-                            </p:panel>
-                            <p:panel  style=" height: 600px">
-                                <ui:insert name="projectTab">
-                                    estão a fazer o override no template
-                                </ui:insert>
-                            </p:panel>
-                   
+                    <p:panel style="height: 600px">
+                        <ui:insert name="accorTree">
+                            Caso nao faça um override aparece isto no accor
+                        </ui:insert>
+                    </p:panel>
+                    <p:panel  style=" height: 600px">
+                        <ui:insert name="projectTab">
+                            estão a fazer o override no template
+                        </ui:insert>
+                    </p:panel>
+
                 </p:panelGrid>
             </p:tab>
-            <p:tab title="#{myBundle.Administration}" id="TabAdministration" disabled="#{!authenticationController.isAdmin}">
+            <p:tab title="#{myBundle.Administration}" id="TabAdministration" disabled="#{!authenticationController.isAdmin}" >
                 <p:panelGrid columns="2" >
-                    
-                        <p:panel style= "height: 600px">
-                                <ui:insert name="TreeTab">
-                                    Caso nao faça um override aparece isto no tree
-                                </ui:insert>
-                            </p:panel>
-                            <p:panel  style=" height: 600px">
-                                <ui:insert name="AdminTab">
-                                    estão a fazer o override no template
-                                    Falta o conteúdo de administração basta colocar o metodo do ben com acesso 
-                        ao serviço de autorização nesta aba
-                       <!-- <ui:include src="/admin/altranreqUser/List.xhtml"/> -->
-                                </ui:insert>
-                            </p:panel>
+
+                    <p:panel style= "height: 600px">
+                        <ui:insert name="TreeTab">
+                            <ui:include src="/accordionAdmin.xhtml"/>
+                        </ui:insert>
+                    </p:panel>
+                    <p:panel  style=" height: 600px">
+                        <ui:insert name="AdminTab">
+                           <!-- <ui:include src="/admin/altranreqUser/List.xhtml"/>-->
+                        </ui:insert>
+                    </p:panel>
 
                 </p:panelGrid>
             </p:tab>

@@ -53,7 +53,6 @@ public class ProjectCreateManager extends AbstractController<Project> implements
 
     @Override
     public void saveNew(ActionEvent event) {
-        getProject().setIdProjectManager(user.getIdUser().toBigInteger());
         setSelected(getProject());
         projectService.create(getProject());
         String successMsg = ResourceBundle.getBundle("/project").getString("Success_on_create");

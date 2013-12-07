@@ -7,7 +7,7 @@ package pt.altran.altranreq.services;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.core.Context;
@@ -15,7 +15,7 @@ import pt.altran.altranreq.entities.AltranreqRole;
 import pt.altran.altranreq.entities.Privilege;
 
 @Named
-@SessionScoped
+@ViewScoped
 public class PrivilegeCollection implements Serializable {
 
     @Context

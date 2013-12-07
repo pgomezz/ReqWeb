@@ -4,9 +4,11 @@ package pt.altran.altranreq.manager;
 import java.io.IOException;
 import pt.altran.altranreq.entities.BusinessCategory;
 import java.io.Serializable;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -41,27 +43,56 @@ public class BusinessCategoryController extends AbstractController<BusinessCateg
     public BusinessCategoryController() {
         super(BusinessCategory.class);
     }
+    
+    
 
+        
+
+    
     @Override
     public void saveNew(ActionEvent event) {
-        setSelected(businessCategory);
-        businessCategoryService.create(businessCategory);
+        try{
+            //requiredMessage="#{myBundle.CreateBusinessCategoryRequiredMessage_name}"
+            //requiredMessage="#{myBundle.CreateBusinessCategoryRequiredMessage_description}"
+          setSelected(businessCategory);
+          businessCategoryService.create(businessCategory);
+          sendMessages(FacesMessage.SEVERITY_INFO,ResourceBundle.getBundle("/MyBundle").getString("BusinessCategoryCreated"), null);
+        }catch (Exception e){
+          sendMessages(FacesMessage.SEVERITY_ERROR, ResourceBundle.getBundle("/MyBundle").getString("PersistenceErrorOccured"), null);
+        }
     }
+    
+    
+    
+   
 
     @Override
     public void save(ActionEvent event) {
-               
-        BusinessCategory bc = (BusinessCategory) businessCategoryBean.getSelected();
-        setSelected(bc);
-        businessCategoryService.edit(bc);
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+         
+        
+        
         try {
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/admin/businessCategory/index.xhtml");
-        } catch (IOException ex) {
-            Logger.getLogger(BusinessCategoryController.class.getName()).log(Level.SEVERE, null, ex);
+            BusinessCategory bc = (BusinessCategory) businessCategoryBean.getSelected();
+            setSelected(bc);
+            businessCategoryService.edit(bc);
+            
+            sendMessages(FacesMessage.SEVERITY_INFO,ResourceBundle.getBundle("/MyBundle").getString("BusinessCategoryUpdated"), null);
+           
+            
+        
+        } catch (Exception e) {
+            sendMessages(FacesMessage.SEVERITY_ERROR, ResourceBundle.getBundle("/MyBundle").getString("PersistenceErrorOccured"), null);
+            Logger.getLogger(BusinessCategoryController.class.getName()).log(Level.SEVERE, null, e);
+            
         }
         
     }
+     public void sendMessages(FacesMessage.Severity severity, String summary, String details) {
+        FacesMessage message = new FacesMessage(severity, summary, details);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+    
+   
     
     
 

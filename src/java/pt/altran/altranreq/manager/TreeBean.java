@@ -22,6 +22,8 @@ import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.entities.UseCase;
 import pt.altran.altranreq.manager.util.AltranTreeNode;
 import pt.altran.altranreq.manager.util.UpdateCurrentTreeNode;
+import pt.altran.altranreq.services.FunctionalRequirementFilter;
+import pt.altran.altranreq.services.FunctionalRequirementService;
 import pt.altran.altranreq.services.ProjectService;
 import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.RNFService;
@@ -45,6 +47,9 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
 
     @Inject
     private RNFService rnfService;
+    
+    @Inject
+    private FunctionalRequirementService functionalService;
 
     @Inject
     private ProjectServiceBean projectBean;
@@ -88,11 +93,6 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
         //In NonFunctionalRequirement, there are 6 category's: Instalacao, Interface, Operacionais, Politicos, 
         //Seguranca, Usabilidade;
         //In each one, all the nodes are dynamic too.
-        AltranTreeNode rootBean = projectBean.getRoot();
-
-        if (rootBean != null) {
-            root = rootBean;
-        } else {
             root = new AltranTreeNode("root", null);
             root.setTreenode(this);
             functionalRequirementTreeNode = new AltranTreeNode("Functional Requirement", root);
@@ -100,7 +100,10 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
             nonFunctionalRequirementTreeNode = new AltranTreeNode("Non-Functional Requirement", root);
             nonFunctionalRequirementTreeNode.setTreenode(this);
             Project projectSelected = (Project) projectBean.getSelected();
-            functionalRequirements = projectSelected.getFunctionalRequirementCollection();
+            
+            FunctionalRequirementFilter funcfilter = new FunctionalRequirementFilter();
+            funcfilter.setProjecto(Integer.parseInt(projectSelected.getIdProject().toString()));
+            functionalRequirements = functionalService.findFunctionalRequirementByFilter(funcfilter);
 
             for (FunctionalRequirement functionalRequirement : functionalRequirements) {
                 AltranTreeNode aux = new AltranTreeNode(functionalRequirement, functionalRequirementTreeNode);
@@ -169,7 +172,6 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
                 AltranTreeNode NR = new AltranTreeNode(nonFunctionalRequirement, Usabilidade);
                 NR.setTreenode(this);
             }
-        }
     }
 
     public TreeNode getRoot() {

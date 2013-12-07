@@ -4,6 +4,7 @@ import java.io.IOException;
 import pt.altran.altranreq.entities.NonFunctionalRequirement;
 import java.io.Serializable;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -14,6 +15,7 @@ import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
 import pt.altran.altranreq.entities.Project;
+import pt.altran.altranreq.manager.util.JsfUtil;
 import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.RNFService;
 import pt.altran.altranreq.services.RNFtServiceBean;
@@ -37,6 +39,8 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
     private RNFtServiceBean nonFunctionalRequirementBean;
     private NonFunctionalRequirement nonFunctionalRequirement;
 
+    
+    
     public NonFunctionalRequirementController() {
         super(NonFunctionalRequirement.class);
     }
@@ -144,18 +148,38 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
         return (NonFunctionalRequirement)nonFunctionalRequirementBean.getSelected();
     }
     
-    public void setFunctionalRequirement()
+    public void setNonFunctionalRequirement()
     {
         nonFunctionalRequirementBean.setSelected(this.getSelected());
     }
     
     
     public void redirect(int action) throws IOException
-    {
-        if (action == 1) {
+    {if (action == 1) {
             nonFunctionalRequirement = super.prepareCreate(null);
         } else {
             nonFunctionalRequirementBean.setSelected(this.getSelected());
+        }
+        
+    }
+    
+    
+    @Override
+    public void delete(ActionEvent event) {
+        try {
+
+            Project currentProject = (Project)projectBean.getSelected();
+            getNFRequirement().setIdProject(currentProject);
+        
+            setSelected(getNFRequirement());
+            nonFunctionalRequirementService.remove(getNFRequirement());
+            String successMsg = ResourceBundle.getBundle("MyBundle").getString("FunctionalRequirementDeleted");
+            JsfUtil.addSuccessMessage(successMsg);
+            
+        } catch (Exception e) {
+            String successMsg = ResourceBundle.getBundle("/project").getString("ErrorMessage");
+            JsfUtil.addErrorMessage(e.getMessage());
+
         }
     }
     
