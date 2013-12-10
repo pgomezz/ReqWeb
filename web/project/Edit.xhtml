@@ -16,7 +16,10 @@
              
              <ui:include src="/accordion.xhtml"/>
         </ui:define>
+        
+        
         <ui:define name="projectTab">
+            <ui:include src="/project/ConfirmCancel.xhtml"/>
             <p:panel header="#{project.EditTitle}">
                 <h:form id="ProjectCreateForm" >
 
@@ -61,7 +64,7 @@
                             <p:inputText id="terminology" value="#{projectEditManager.project.terminology}" title="#{project.Terminology}" requiredMessage="#{myBundle.CreateProjectRequiredMessage_name}" size="100" maxlength="100"/>
                         </p:panelGrid>
                         <p:commandButton actionListener="#{projectEditManager.save}" action="/index"  value="#{crudLabels.Save}"  ajax="false"  />
-                        <p:button value="#{crudLabels.Cancel}" outcome="/index"/>
+                       <p:commandButton value="#{myBundle.Cancel}" oncomplete="ConfirmCancelDialog.show()" immediate="true"/>
                     </h:panelGroup>
                 </h:form>
             </p:panel>

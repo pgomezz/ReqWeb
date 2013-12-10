@@ -16,23 +16,29 @@
              <ui:include src="/accordion.xhtml"/>
         </ui:define>
         
+        
+        
         <ui:define name="projectTab">
+            <ui:include src="/project/ConfirmCancel.xhtml"/>
             <p:panel header="#{myBundle.CreateProjectTitle}">
                 <h:form id="ProjectCreateForm">
 
                     <h:panelGroup id="display">
-                        <p:panelGrid columns="2">
+                        <p:panelGrid columns="3" id="grid">
 
                             <p:outputLabel value="#{myBundle.CreateProjectLabel_name}" for="name" />
                             <p:inputText id="name" value="#{projectCreateManager.project.name}" title="#{myBundle.CreateProjectTitle_name}" required="true" requiredMessage="#{myBundle.CreateProjectRequiredMessage_name}" size="100" maxlength="100"/>
-
+                            <p:message for="name" display="${myBundle.CreateProjectRequiredMessage_name}" /> 
+                            
                             <p:outputLabel value="#{project.Description}" for="description" />
                             <p:inputTextarea rows="4" cols="30" id="description" value="#{projectCreateManager.project.description}" title="#{myBundle.CreateProjectTitle_description}" required="true" requiredMessage="#{myBundle.CreateProjectRequiredMessage_description}"/>
-
+                            <p:message for="description" display="${myBundle.CreateProjectRequiredMessage_description}" /> 
+                            
                             <p:outputLabel value="#{project.BeginDate}" for="from" />
                             <p:calendar id="from" value="#{projectCreateManager.project.beginDate}" binding="#{from}"  pattern="dd/mm/yy">
                                 <p:ajax process="from to" update=":growl" />
                             </p:calendar>
+                            <p:message for="from"  /> 
                             
                             <p:outputLabel value="#{project.EndDate}" for="to" />
                             <p:calendar id="to" value="#{projectCreateManager.project.endDate}" pattern="dd/mm/yy">
@@ -40,18 +46,19 @@
                                 <f:validator validatorId="validator.dateRangeValidator" />
                                 <p:ajax process="from to" update=":growl" />                               
                             </p:calendar>
-    
+                            <p:message for="to"  /> 
 
-                            <h:outputText value="#{project.State}" />
-                            <p:selectOneMenu value="#{projectCreateManager.project.projectState}" >            
+                            <h:outputLabel value="#{project.State}" for="estado" />
+                            <p:selectOneMenu value="#{projectCreateManager.project.projectState}" id="estado" required="true" requiredMessage="#{myBundle.CreateProjectHelpText_projectState}">            
                                 <f:selectItem itemLabel="#{project.SelecteOneState}" itemValue="" />
                                 <f:selectItem itemLabel="#{project.State_ongoing}" itemValue="0" />
                                 <f:selectItem itemLabel="#{project.State_standby}" itemValue="1" />
                                 <f:selectItem itemLabel="#{project.State_done}" itemValue="2" />
                                 <f:selectItem itemLabel="#{project.State_mantainence}" itemValue="3" />
-                            </p:selectOneMenu>                            
+                            </p:selectOneMenu>    
+                            <p:message for="estado" display="#{myBundle.CreateProjectHelpText_projectState}" /> 
 
-                            <h:outputLabel value="#{project.ProjectManager}*" for="projectManager"/>  
+                            <h:outputLabel value="#{project.ProjectManager}" for="projectManager"/>  
 
                             <p:selectOneMenu id="projectManager" value="#{projectCreateManager.projectManager}"  panelStyle="width:300px"  
                                              converter="#{bigDecimalConverter}"  effect="fade" var="u" style="width:260px"  filter="true" filterMatchMode="startsWith">  
@@ -60,12 +67,18 @@
                                 <p:column>  
                                     #{u.name}
                                 </p:column>  
-                            </p:selectOneMenu>  
+                            </p:selectOneMenu> 
+                            <p:message for="projectManager" display="#{myBundle.CreateProjectHelpText_projectUserCollection}" /> 
                             <p:outputLabel value="#{project.Terminology}" for="terminology" />
                             <p:inputText id="terminology" value="#{projectCreateManager.project.terminology}" title="#{project.Terminology}" requiredMessage="#{myBundle.CreateProjectRequiredMessage_name}" size="100" maxlength="100"/>
+                        
+                            <label></label>
+                        
                         </p:panelGrid>
                         <p:commandButton actionListener="#{projectCreateManager.saveNew}" action="/index"  value="#{project.Save}"  ajax="false"  />
-                        <p:button value="#{project.Cancel}" outcome="/index"/>
+                        
+                        <p:commandButton value="#{myBundle.Cancel}"  oncomplete="ConfirmCancelDialog.show()" immediate="true" />
+                        
                     </h:panelGroup>
                 </h:form>
             </p:panel>
