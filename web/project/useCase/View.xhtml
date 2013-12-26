@@ -5,22 +5,15 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
 
-                xmlns:f="http://xmlns.jcp.org/jsf/core"
-                template="/tabs.xhtml">
-    <ui:define name="title">
-        <h:outputText value="#{project.EditTitle}"></h:outputText>
-    </ui:define>
-    <ui:define name="accorTree">
-        <ui:include src="/tree/tree.xhtml"/>
-    </ui:define>
-    <ui:define name="projectTab">
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
         <p:panel header="#{project.EditTitle}">
             <h:form id="UseCaseViewForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{editUseCaseManager.useCaseTypeByNavigation}">
+                    <p:panelGrid columns="2">
 
                         <h:outputText value="#{myBundle.ViewUseCaseLabel_name}"/>
-                        <h:outputText value="#{useCaseController.useCaseByNavigation.name}" title="#{myBundle.ViewUseCaseTitle_name}"/>
+                        <h:outputText value="#{useCaseController.selected.name}" title="#{myBundle.ViewUseCaseTitle_name}"/>
 
                         <h:outputText value="#{myBundle.ViewUseCaseLabel_description}"/>
                         <h:outputText value="#{useCaseController.useCaseByNavigation.description}" title="#{myBundle.ViewUseCaseTitle_description}"/>
@@ -45,7 +38,7 @@
                             <f:selectItems value="#{useCaseController.useCaseByNavigation.useCaseCollection}"
                                            var="useCaseCollectionItem"
                                            itemValue="#{useCaseCollectionItem}"
-                                           itemLabel="#{useCaseCollectionItem.name.toString()}"
+                                           itemLabel="#{useCaseCollectionItem.name}"
                                            />
 
                         </h:selectManyMenu>
@@ -53,9 +46,8 @@
                         <h:outputText value="#{myBundle.ViewUseCaseLabel_idFunctionalRequirement}"/>
                         <h:outputText value="#{useCaseController.useCaseByNavigation.idFunctionalRequirement.name}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{myBundle.Close}" action="/project/useCase/index"/>
+                    <p:commandButton value="#{myBundle.Close}" actionListener="#{beanPagina.setPaginaProj('/project/functionalRequirement/View_New.xhtml')}" action="/index" ajax="false"/>
                 </h:panelGroup>
             </h:form>
         </p:panel>
-    </ui:define>
 </ui:composition>

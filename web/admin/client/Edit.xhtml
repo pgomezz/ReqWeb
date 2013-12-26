@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="ClientEditForm">
+
+        <h:panelGroup id="display">
+            <p:panelGrid  columns="2" >
+
+                <p:outputLabel value="#{client.Name}" for="name" />
+                <p:inputText id="name" value="#{clientEditController.client.name}" title="#{client.Name}" required="true" requiredMessage="#{myBundle.EditClientRequiredMessage_name}" size="100" maxlength="100"/>
+
+                <p:outputLabel value="#{client.Email}" for="email" />
+                <p:inputText id="email" value="#{clientEditController.client.email}" title="#{client.Email}" size="100" maxlength="100"/>
+
+                <p:outputLabel value="#{client.Mobile}" for="mobile" />
+                <p:inputText id="mobile" value="#{clientEditController.client.mobile}" title="#{client.Mobile}" size="20" maxlength="20"/>
+            </p:panelGrid>
+            <p:commandButton actionListener="#{clientEditController.save}" action="/index" value="#{client.Save}" ajax="false" >
+                <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/client/List.xhtml')}"/>
+            </p:commandButton>
+            <p:commandButton value="#{client.Cancel}" action="/index" ajax="false" actionListener="#{beanPagina.setPaginaAdmin('/admin/client/List.xhtml')}"/>
+        </h:panelGroup>
+
+    </h:form>
+
+</ui:composition>

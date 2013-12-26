@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="AltranreqRoleViewForm">
+
+        <h:panelGroup id="display">
+            <p:panelGrid columns="2">
+
+                <h:outputText value="#{role.IdRole}"/>
+                <h:outputText value="#{altranreqRoleEditController.altranreqRole.idRole}" title="#{myBundle.ViewAltranreqRoleTitle_idRole}"/>
+
+                <h:outputText value="#{role.Type}"/>
+                <h:outputText value="#{altranreqRoleEditController.altranreqRole.type}" title="#{myBundle.ViewAltranreqRoleTitle_type}"/>
+
+                <h:outputText value="#{role.Description}"/>
+                <h:outputText value="#{altranreqRoleEditController.altranreqRole.description}" title="#{myBundle.ViewAltranreqRoleTitle_description}"/>
+
+                <h:outputText value="#{role.PrivilegeCollection}"/>
+                <h:selectManyMenu >
+                    <f:selectItems value="#{altranreqRoleEditController.altranreqRole.privilegeCollection}"
+                                   var="privilegeCollectionItem"
+                                   itemValue="#{privilegeCollectionItem}"
+                                   itemLabel="#{privilegeCollectionItem.idPrivilege.toString()}"
+                                   />
+
+                </h:selectManyMenu>
+            </p:panelGrid>
+            <p:commandButton value="#{role.Close}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqRole/List.xhtml')}" action="/index" ajax="false"/>
+        </h:panelGroup>
+
+    </h:form>
+
+</ui:composition>

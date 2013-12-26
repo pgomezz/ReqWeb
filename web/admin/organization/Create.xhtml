@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="OrganizationCreateForm">
+
+        <h:panelGroup id="display">
+            <p:panelGrid columns="2">
+
+                <p:outputLabel value="#{organization.Name}" for="name" />
+                <p:inputText id="name" value="#{organizationCreateManager.organization.name}" title="#{organization.Name}" required="true" requiredMessage="#{organization.Name}"/>
+
+                <p:outputLabel value="#{organization.Address}" for="address" />
+                <p:inputText id="address" value="#{organizationCreateManager.organization.address}" title="#{organization.Address}"/>
+
+                <p:outputLabel value="#{organization.BusinessArea}" for="businessArea" />
+                <p:inputText id="businessArea" value="#{organizationCreateManager.organization.businessArea}" title="#{organization.BusinessArea}"/>
+
+                <p:outputLabel value="#{organization.Country}" for="country" />
+                <p:inputText id="country" value="#{organizationCreateManager.organization.country}" title="#{organization.Country}"/>
+
+            </p:panelGrid>
+            
+            <p:commandButton id="save" value="#{business.Save}" actionListener="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}" action="/index" ajax="false" >
+                <f:actionListener binding="#{organizationCreateManager.saveNew(event)}"/>
+            </p:commandButton>
+            <p:commandButton id="cancel" value="#{organization.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}" action="/index" ajax="false" immediate="true"/>
+
+        </h:panelGroup>
+
+    </h:form>
+</ui:composition>

@@ -8,19 +8,18 @@
                 >
 
     <ui:define name="body" >
-        <p:tabView id="TabProfile" activeIndex="0"  > 
-      <!--  #{TabBean.activeIndex}    <p:ajax event="tabChange" listener="#{TabBean.onTabChange}" /> -->
+        <p:tabView id="TabProfile" activeIndex="#{tabBean.activeIndex}" >
+            <p:ajax event="tabChange" listener="#{tabBean.onTabChange}" />
             <p:tab title="#{myBundle.ProjectsTab}" id="TabProjects" >
-
                 <p:panelGrid columns="2" >
                     <p:panel style="height: 600px">
                         <ui:insert name="accorTree">
-                            Caso nao faça um override aparece isto no accor
+                            Accordion
                         </ui:insert>
                     </p:panel>
                     <p:panel  style=" height: 600px">
                         <ui:insert name="projectTab">
-                            estão a fazer o override no template
+                            Projects
                         </ui:insert>
                     </p:panel>
 
@@ -28,21 +27,18 @@
             </p:tab>
             <p:tab title="#{myBundle.Administration}" id="TabAdministration" disabled="#{!authenticationController.isAdmin}" >
                 <p:panelGrid columns="2" >
-
                     <p:panel style= "height: 600px">
                         <ui:insert name="TreeTab">
-                            <ui:include src="/accordionAdmin.xhtml"/>
+                            Accordion Administration
                         </ui:insert>
                     </p:panel>
                     <p:panel  style=" height: 600px">
                         <ui:insert name="AdminTab">
-                           <!-- <ui:include src="/admin/altranreqUser/List.xhtml"/>-->
+                            Administration
                         </ui:insert>
                     </p:panel>
-
                 </p:panelGrid>
             </p:tab>
         </p:tabView>
     </ui:define>
-
 </ui:composition>

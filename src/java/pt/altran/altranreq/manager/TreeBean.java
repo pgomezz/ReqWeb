@@ -1,5 +1,8 @@
 package pt.altran.altranreq.manager;
 
+import pt.altran.altranreq.manager.requirement.NonFunctionalRequirementController;
+import pt.altran.altranreq.manager.usecase.UseCaseController;
+import pt.altran.altranreq.manager.requirement.FunctionalRequirementController;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;

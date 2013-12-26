@@ -6,8 +6,7 @@
 package pt.altran.altranreq.manager.project;
 
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
@@ -32,8 +31,10 @@ public class ProjectCreateManager extends AbstractController<Project> implements
 
     @Inject
     private ProjectService projectService;
+    
     @Inject
     private UserService userService;
+    
     private AltranreqUser user;
 
     @PostConstruct
@@ -65,7 +66,8 @@ public class ProjectCreateManager extends AbstractController<Project> implements
     }
 
     public void setProjectManager(AltranreqUser aru) {
-        getProjectManager().setIdUser(aru.getIdUser());
+        BigInteger id = (aru==null) ? null : aru.getIdUser().toBigInteger();
+        getProject().setIdProjectManager(id);
         user = aru;
     }
 

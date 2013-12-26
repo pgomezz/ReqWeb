@@ -3,38 +3,27 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
 
-                xmlns:f="http://xmlns.jcp.org/jsf/core"
-                template="/tabs.xhtml">
+    <h:form id="BusinessCategoryCreateForm">
 
-    <ui:define name="TreeTab">
-             
-             <ui:include src="/accordionAdmin.xhtml"/>
-    </ui:define>
-    <ui:define name="growl"/>
-   
-    
-        
-    <ui:define name="AdminTab">
-            <h:form id="BusinessCategoryCreateForm">
+        <h:panelGroup id="display">
+            <p:panelGrid columns="2">
+                <p:outputLabel value="#{business.Name}" for="name" />
+                <p:inputText id="name" value="#{businessCategoryCreateController.businessCategory.name}" title="#{business.Name}" required="true" size="40" maxlength="32"/>
+              
+                <p:outputLabel value="#{business.Description}" for="description" />
+                <p:inputTextarea rows="5" cols="70" id="description" value="#{businessCategoryCreateController.businessCategory.description}" title="#{business.Description}" required="true" maxlength="255" autoResize="false"/>
+                
+            </p:panelGrid>
+            
+            <p:commandButton id="save" value="#{business.Save}" actionListener="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}" action="/index" ajax="false" >
+                <f:actionListener binding="#{businessCategoryCreateController.saveNew(event)}"/>
+            </p:commandButton>
+            <p:commandButton id="cancel" value="#{user.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}" action="/index" ajax="false" immediate="true"/>
+        </h:panelGroup>
 
-                <h:panelGroup id="display">
-                    <p:panelGrid columns="3" id="grid">
-                        <p:outputLabel value="#{myBundle.CreateBusinessCategoryLabel_name}" for="name" />
-                        <p:inputText id="name" value="#{businessCategoryController.selected.name}" title="#{myBundle.CreateBusinessCategoryTitle_name}" required="true" requiredMessage="#{myBundle.CreateBusinessCategoryRequiredMessage_name}" size="40" maxlength="32"/>
-                        <p:message for="name" display="${myBundle.CreateBusinessCategoryRequiredMessage_name}" /> 
-                        
-                        <p:outputLabel value="#{myBundle.CreateBusinessCategoryLabel_description}" for="description" />
-                        <p:inputTextarea rows="5" cols="70" id="description" value="#{businessCategoryController.selected.description}" title="#{myBundle.CreateBusinessCategoryTitle_description}" required="true" requiredMessage="#{myBundle.CreateBusinessCategoryRequiredMessage_description}" maxlength="255" autoResize="false"/>
-                        <p:message for="description" display="${myBundle.CreateBusinessCategoryRequiredMessage_description}" /> 
-                        
-                    </p:panelGrid>
-                    <p:commandButton actionListener="#{businessCategoryController.saveNew}" action="/admin/businessCategory/index" value="#{myBundle.Save}" ajax="false" update="grid"/>
-                    <p:commandButton value="#{myBundle.Cancel}" action="/admin/businessCategory/index" immediate="true"/>
-                </h:panelGroup>
-               
-            </h:form>
-    </ui:define>
+    </h:form>
 
 </ui:composition>

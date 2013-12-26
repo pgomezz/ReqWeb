@@ -50,7 +50,6 @@ public class AltranreqUser implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "ID_USER")
     private BigDecimal idUser;
     @Basic(optional = false)

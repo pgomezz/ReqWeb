@@ -1,25 +1,27 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:form id="accordion">    
-            <p:accordionPanel style="width: 200px;  margin-top: 11%" activeIndex="-1">                  
-                <!--<p:tab title="Utilizadores" disabled="#{!authorizationService.admin}">  
-                        <h:panelGrid columns="2">  
-                                <h:link value="Contas de Utilizadores" outcome="/admin/altranreqUser/index">
-                                </h:link> <br/>
-                                <h:link value="Perfis de Utilizadores" outcome="/project/altranreqRole/index">
-                              </h:link> <br/>                               
-                        </h:panelGrid>  
-                    </p:tab>  -->
-                    <p:tab title="Projectos">  
-                        <h:panelGrid columns="2">  
-                             <h:link value="Lista de Projectos">
-                             </h:link> <br/>                               
-                        </h:panelGrid>  
-                    </p:tab>  
-              </p:accordionPanel>  
+        <p:accordionPanel style="width: 200px;  margin-top: 11%" activeIndex="-1">                  
+            <!--<p:tab title="Utilizadores" disabled="#{!authorizationService.admin}">  
+                    <h:panelGrid columns="2">  
+                            <h:link value="Contas de Utilizadores" outcome="/admin/altranreqUser/index">
+                            </h:link> <br/>
+                            <h:link value="Perfis de Utilizadores" outcome="/project/altranreqRole/index">
+                          </h:link> <br/>                               
+                    </h:panelGrid>  
+                </p:tab>  -->
+            <p:tab title="Projectos">  
+                <h:panelGrid columns="1">
+                    <h:commandLink value="Lista de projectos" action="/index">
+                        <f:actionListener binding="#{beanPagina.setPaginaProj('/project/List.xhtml')}"/>
+                    </h:commandLink>                             
+                </h:panelGrid>  
+            </p:tab>  
+        </p:accordionPanel>  
     </h:form>
 
 </ui:composition>

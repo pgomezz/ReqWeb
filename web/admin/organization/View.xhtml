@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <p:panel header="#{organization.ViewOrganizationTitle}">
+        <h:form id="OrganizationViewForm">
+
+            <h:panelGroup>
+                <p:panelGrid columns="2">
+
+                    <p:outputLabel value="#{organization.Name}" />
+                    <p:outputLabel value="#{organizationEditManager.organization.name}" title="#{organization.Name}"/>
+
+                    <p:outputLabel value="#{organization.Address}"/>
+                    <p:outputLabel id="address" value="#{organizationEditManager.organization.address}" title="#{organization.Address}"/>
+
+                    <p:outputLabel value="#{organization.BusinessArea}"/>
+                    <p:outputLabel id="businessArea" value="#{organizationEditManager.organization.businessArea}" title="#{organization.BusinessArea}"/>
+
+                    <p:outputLabel value="#{organization.Country}"/>
+                    <p:outputLabel id="country" value="#{organizationEditManager.organization.country}" title="#{organization.Country}"/>
+
+                </p:panelGrid>
+                <p:commandButton value="#{organization.Close}" actionListener="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}" action="/index" ajax="false"/>
+
+            </h:panelGroup>
+
+        </h:form>
+    </p:panel>
+
+</ui:composition>

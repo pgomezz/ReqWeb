@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+            <h:form id="AltranreqRoleEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2">
+
+                        <h:outputLabel value="#{role.IdRole}" for="idRole" />
+                        <h:outputText id="idRole" value="#{altranreqRoleEditController.altranreqRole.idRole}" />
+
+                        <p:outputLabel value="#{role.Type}" for="type" />
+                        <p:inputText id="type" value="#{altranreqRoleEditController.altranreqRole.type}" title="#{myBundle.EditAltranreqRoleTitle_type}" required="true" requiredMessage="#{myBundle.EditAltranreqRoleRequiredMessage_type}" size="20" maxlength="20"/>
+
+                        <p:outputLabel value="#{role.Description}" for="description" />
+                        <p:inputText id="description" value="#{altranreqRoleEditController.altranreqRole.description}" title="#{myBundle.EditAltranreqRoleTitle_description}" size="250" maxlength="250"/>
+
+                        <p:outputLabel value="#{role.PrivilegeCollection}" for="privilegeCollection" />
+                        <p:selectManyMenu id="privilegeCollection" value="#{altranreqRoleEditController.altranreqRole.privilegeCollection}" >
+                            <f:selectItems value="#{privilegeController.items}"
+                                           var="privilegeCollectionItem"
+                                           itemValue="#{privilegeCollectionItem}"
+                                           itemLabel="#{privilegeCollectionItem.idPrivilege.toString()}"
+                                           />
+
+                        </p:selectManyMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{altranreqRoleEditController.save}" value="#{role.Save}" action="/index" ajax="false">
+                        <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/altranreqRole/List.xhtml')}" />
+                    </p:commandButton>
+                    <p:commandButton value="#{role.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqRole/List.xhtml')}" action="/index" ajax="false"/>
+                </h:panelGroup>
+
+            </h:form>
+
+    </ui:composition>

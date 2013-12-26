@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "USE_CASE")
 @XmlRootElement
 @NamedQueries({
+    @NamedQuery(name = "UseCase.findUseCaseByIdReq", query = "SELECT u FROM UseCase u WHERE u.idFunctionalRequirement = :id"),
     @NamedQuery(name = "UseCase.findAll", query = "SELECT u FROM UseCase u"),
     @NamedQuery(name = "UseCase.findByIdUseCase", query = "SELECT u FROM UseCase u WHERE u.idUseCase = :idUseCase"),
     @NamedQuery(name = "UseCase.findByName", query = "SELECT u FROM UseCase u WHERE u.name = :name"),

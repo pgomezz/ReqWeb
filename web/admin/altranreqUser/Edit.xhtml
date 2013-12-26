@@ -1,47 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition>
+    <h:form id="AltranreqUserEditForm">
+        <p:panelGrid  columns="2">
 
-            <h:form id="AltranreqUserEditForm">
+            <p:outputLabel value="#{user.Name}" for="name" />
+            <p:inputText id="name" value="#{altranreqUserEditController.altranreqUser.name}" title="#{myBundle.EditAltranreqUserTitle_name}" required="true" requiredMessage="#{myBundle.EditAltranreqUserRequiredMessage_name}" size="50" maxlength="50"/>
 
-                <h:panelGroup id="display">
-                    <p:panelGrid  columns="2" rendered="#{altranreqUserController.selected != null}">
+            <p:outputLabel value="#{user.Password}" for="password" />
+            <p:inputText id="password" value="#{altranreqUserEditController.altranreqUser.password}" title="#{myBundle.EditAltranreqUserTitle_password}" required="true" requiredMessage="#{myBundle.EditAltranreqUserRequiredMessage_password}" size="88" maxlength="88"/>
 
-                        <h:outputLabel value="#{myBundle.EditAltranreqUserLabel_idUser}" for="idUser" />
-                        <h:outputText id="idUser" value="#{altranreqUserController.selected.idUser}" />
+            <p:outputLabel value="#{user.Username}" for="username" />
+            <p:inputText id="username" value="#{altranreqUserEditController.altranreqUser.username}" title="#{myBundle.EditAltranreqUserTitle_username}" required="true" requiredMessage="#{myBundle.EditAltranreqUserRequiredMessage_username}" size="20" maxlength="20"/>
 
-                        <p:outputLabel value="#{myBundle.EditAltranreqUserLabel_name}" for="name" />
-                        <p:inputText id="name" value="#{altranreqUserController.selected.name}" title="#{myBundle.EditAltranreqUserTitle_name}" required="true" requiredMessage="#{myBundle.EditAltranreqUserRequiredMessage_name}" size="50" maxlength="50"/>
+            <p:outputLabel value="#{user.Email}" for="email" />
+            <p:inputText id="email" value="#{altranreqUserEditController.altranreqUser.email}" title="#{myBundle.EditAltranreqUserTitle_email}" required="true" requiredMessage="#{myBundle.EditAltranreqUserRequiredMessage_email}" size="50" maxlength="50"/>
 
-                        <p:outputLabel value="#{myBundle.EditAltranreqUserLabel_password}" for="password" />
-                        <p:inputText id="password" value="#{altranreqUserController.selected.password}" title="#{myBundle.EditAltranreqUserTitle_password}" required="true" requiredMessage="#{myBundle.EditAltranreqUserRequiredMessage_password}" size="88" maxlength="88"/>
+            <p:outputLabel value="#{user.Mobile}" for="mobile" />
+            <p:inputText id="mobile" value="#{altranreqUserEditController.altranreqUser.mobile}" title="#{myBundle.EditAltranreqUserTitle_mobile}" required="true" requiredMessage="#{myBundle.EditAltranreqUserRequiredMessage_mobile}" size="20" maxlength="20"/>
 
-                        <p:outputLabel value="#{myBundle.EditAltranreqUserLabel_username}" for="username" />
-                        <p:inputText id="username" value="#{altranreqUserController.selected.username}" title="#{myBundle.EditAltranreqUserTitle_username}" required="true" requiredMessage="#{myBundle.EditAltranreqUserRequiredMessage_username}" size="20" maxlength="20"/>
+            <p:outputLabel value="#{user.IsAdmin}" for="isAdmin" />
+            <p:inputText id="isAdmin" value="#{altranreqUserEditController.altranreqUser.isAdmin}" title="#{myBundle.EditAltranreqUserTitle_isAdmin}" required="true" requiredMessage="#{myBundle.EditAltranreqUserRequiredMessage_isAdmin}"/>
+        </p:panelGrid>
 
-                        <p:outputLabel value="#{myBundle.EditAltranreqUserLabel_email}" for="email" />
-                        <p:inputText id="email" value="#{altranreqUserController.selected.email}" title="#{myBundle.EditAltranreqUserTitle_email}" required="true" requiredMessage="#{myBundle.EditAltranreqUserRequiredMessage_email}" size="50" maxlength="50"/>
-
-                        <p:outputLabel value="#{myBundle.EditAltranreqUserLabel_mobile}" for="mobile" />
-                        <p:inputText id="mobile" value="#{altranreqUserController.selected.mobile}" title="#{myBundle.EditAltranreqUserTitle_mobile}" required="true" requiredMessage="#{myBundle.EditAltranreqUserRequiredMessage_mobile}" size="20" maxlength="20"/>
-
-                        <p:outputLabel value="#{myBundle.EditAltranreqUserLabel_isAdmin}" for="isAdmin" />
-                        <p:inputText id="isAdmin" value="#{altranreqUserController.selected.isAdmin}" title="#{myBundle.EditAltranreqUserTitle_isAdmin}" required="true" requiredMessage="#{myBundle.EditAltranreqUserRequiredMessage_isAdmin}"/>
-                    </p:panelGrid>
-                  
-                    <p:commandButton actionListener="#{altranreqUserController.save}" action="/index" value="#{myBundle.Save}" ajax="false" />
-                <p:commandButton value="#{myBundle.Cancel}" />
-                </h:panelGroup>
-
-            </h:form>
-
-
-    </ui:composition>
-
-</html>
+        <p:commandButton action="/index" value="#{user.Save}" ajax="false" >
+            <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/altranreqUser/List.xhtml')}"/>
+            <f:actionListener binding="#{altranreqUserEditController.save(event)}"/>
+        </p:commandButton>
+        <p:commandButton action="/index" value="#{user.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqUser/List.xhtml')}" ajax="false" />
+    </h:form>
+</ui:composition>

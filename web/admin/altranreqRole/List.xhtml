@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="AltranreqRoleListForm">
+
+        <p:panel header="#{myBundle.ListAltranreqRoleTitle}">
+
+            <p:dataTable id="datalist" value="#{altranreqRoleController.items}" var="item"
+                         selectionMode="single" selection="#{altranreqRoleController.selected}"
+                         rowKey="#{item.idRole}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.idRole}" >
+                    <f:facet name="header">
+                        <h:outputText value="#{role.IdRole}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idRole}"/>
+                </p:column>
+                <p:column sortBy="#{item.type}" >
+                    <f:facet name="header">
+                        <h:outputText value="#{role.Type}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.type}"/>
+                </p:column>
+                <p:column sortBy="#{item.description}" >
+                    <f:facet name="header">
+                        <h:outputText value="#{role.Description}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.description}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <div class="footer-section">
+                        <p:commandButton id="createButton"  value="#{role.Create}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqRole/Create.xhtml')}" action="/index" icon="ui-icon-plus" ajax="false" />
+                        <p:commandButton id="viewButton"  value="#{role.View}" action="/index" disabled="#{empty altranreqRoleController.selected}" icon="ui-icon-search" ajax="false">
+                            <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/altranreqRole/View.xhtml')}"/>
+                            <f:actionListener binding="#{altranreqRoleController.keepState()}"/>
+                        </p:commandButton>
+                        <p:commandButton id="editButton"  value="#{role.Edit}" action="/index" disabled="#{empty altranreqRoleController.selected}" icon="ui-icon-pencil" ajax="false">
+                            <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/altranreqRole/Edit.xhtml')}"/>
+                            <f:actionListener binding="#{altranreqRoleController.keepState()}"/>
+                        </p:commandButton>
+                        <p:commandButton id="deleteButton" value="#{user.Delete}" actionListener="#{altranreqRoleController.delete(event)}" update=":TabProfile:AltranreqRoleListForm:datalist" disabled="#{empty altranreqRoleController.selected}" icon="ui-icon-trash">  
+                            <p:confirm header="#{role.Confirmation}" message="#{role.ConfirmDelete}" icon="ui-icon-alert" />
+                        </p:commandButton>
+                    </div>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+        <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">  
+            <p:commandButton value="#{user.Yes}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+            <p:commandButton value="#{user.No}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>       
+        </p:confirmDialog>
+    </h:form>
+
+</ui:composition>

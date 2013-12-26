@@ -21,7 +21,6 @@ import javax.persistence.PersistenceContext;
 
 @WebService
 @Stateless
-//@Stateful
 public class ClientServiceImp extends AbstractServiceImp <Client> implements ClientService{
     @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
@@ -32,8 +31,9 @@ public class ClientServiceImp extends AbstractServiceImp <Client> implements Cli
         setEntityClass(Client.class);
     }
 
-    @Override
+    
     @WebMethod
+    @Override
     protected EntityManager getEntityManager() {
         return em;
     }

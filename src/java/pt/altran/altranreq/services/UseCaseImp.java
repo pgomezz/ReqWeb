@@ -6,6 +6,7 @@ package pt.altran.altranreq.services;
  * and open the template in the editor.
  */
 import java.math.BigDecimal;
+import java.util.Collection;
 import pt.altran.altranreq.entities.FunctionalRequirement;
 import pt.altran.altranreq.entities.UseCase;
 import java.util.List;
@@ -15,6 +16,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 @WebService
 @Stateless
@@ -38,8 +40,18 @@ public class UseCaseImp extends AbstractServiceImp<UseCase> implements UseCaseSe
     @Override
     @WebMethod
     public List<UseCase> findUseCaseByRequirement(int pai) {
-        FunctionalRequirement f = getEntityManager().find(FunctionalRequirement.class, BigDecimal.valueOf(pai));
-        return (List<UseCase>) f.getUseCaseCollection();
+        
+        FunctionalRequirement f = new FunctionalRequirement();
+        
+        f = getEntityManager().find(FunctionalRequirement.class, BigDecimal.valueOf(225));
+
+        Query queryUC = em.createNamedQuery("UseCase.findUseCaseByIdReq");
+        Query queryFR = em.createNamedQuery("FunctionalRequirement.findByIdFunctionalRequirement");
+        queryFR.setParameter("idFunctionalRequirement",pai);
+        FunctionalRequirement FR = (FunctionalRequirement) queryFR.getSingleResult();
+        queryUC.setParameter("id", FR);
+        Collection useCaseCollection = queryUC.getResultList();
+        return (List<UseCase>) useCaseCollection;
     }
 
     @Override

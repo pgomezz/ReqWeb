@@ -24,5 +24,25 @@
             <base-name>/crudLabels</base-name>
             <var>crudLabels</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>/organization</base-name>
+            <var>organization</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/user</base-name>
+            <var>user</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/role</base-name>
+            <var>role</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/business</base-name>
+            <var>business</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/client</base-name>
+            <var>client</var>
+        </resource-bundle>
     </application>
 </faces-config>

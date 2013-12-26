@@ -68,7 +68,7 @@ public class ProjectEditManager extends AbstractController<Project> implements S
     }
 
     public void setProjectManager(AltranreqUser aru) {
-        BigInteger id =aru==null?null: aru.getIdUser().toBigInteger();
+        BigInteger id = (aru==null) ? null : aru.getIdUser().toBigInteger();
         getProject().setIdProjectManager(id);
         user = aru;
     }

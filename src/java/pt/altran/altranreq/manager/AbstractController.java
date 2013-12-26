@@ -33,6 +33,10 @@ public abstract class AbstractController<T> {
     public AbstractController() {
     }
 
+    public void setItems(List<T> items) {
+        this.items = items;
+    }
+
     public AbstractController(Class<T> itemClass) {
         this.itemClass = itemClass;
     }

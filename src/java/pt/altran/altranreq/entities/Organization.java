@@ -43,7 +43,6 @@ public class Organization implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "ID_ORGANIZATION")
     private BigDecimal idOrganization;
     @Basic(optional = false)

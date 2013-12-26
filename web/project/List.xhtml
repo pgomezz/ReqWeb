@@ -7,50 +7,53 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <h:form id="ProjectListForm">
-
-        <p:panel header="#{myBundle.ListProjectTitle}">
-
+        <p:panel header="#{project.ListProjectTitle}">
             <p:dataTable id="datalist" value="#{projectController.items}" var="item"
                          selectionMode="single" selection="#{projectController.selected}"
                          rowKey="#{item.idProject}"
                          paginator="true"
                          rows="10"
-                         rowsPerPageTemplate="10,20,30" 
-                         >
-
-                
+                         rowsPerPageTemplate="10,20,30">
                 <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                 <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
-
-                
                 <p:column sortBy="#{item.name}">
                     <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListProjectTitle_name}"/>
+                        <h:outputText value="#{project.Name}"/>
                     </f:facet>
                     <h:outputText value="#{item.name}"/>
                 </p:column>
                 <p:column>
                     <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListProjectTitle_projectState}"/>
+                        <h:outputText value="#{project.ProjectState}"/>
                     </f:facet>
                     <h:outputText value="#{projectController.getState(item.projectState)}"/>
                 </p:column>
                 <p:column>
                     <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListProjectTitle_ProjectManager}"/>
+                        <h:outputText value="#{project.ProjectManager}"/>
                     </f:facet>
                     <h:outputText value="#{projectController.getProjectManagerName(item.idProjectManager)}"/>
                 </p:column>
                 <f:facet name="footer">
-                         <p:commandButton id="createButton" icon="ui-icon-plus" value="#{myBundle.Create}" actionListener="#{projectController.redirect(1)}" action="/project/Create" />  
-                        <p:commandButton id="viewButton"  icon="ui-icon-search" value="#{myBundle.View}" actionListener="#{projectController.redirect(2)}" action="/project/View" disabled="#{empty projectController.selected}"/>
-                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" actionListener="#{projectController.redirect(3)}" action="/project/Edit" disabled="#{empty projectController.selected}"/>
-                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{projectController.redirect(4)}" oncomplete="ProjectRemoveDialog.show()" update=":TabProfile:ProjectRemoveForm"  disabled="#{empty projectController.selected}"/>
+                    <p:commandButton id="createButton" icon="ui-icon-plus" value="#{project.Create}" actionListener="#{beanPagina.setPaginaProj('/project/Create.xhtml')}" action="/index" ajax="false"/>
+                    <p:commandButton id="viewButton"  icon="ui-icon-search" value="#{project.View}" actionListener="#{projectController.redirect(2)}" action="/index" disabled="#{empty projectController.selected}" ajax="false">
+                        <f:actionListener binding="#{beanPagina.setPaginaProj('/project/View.xhtml')}" />
+                    </p:commandButton>
+                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{project.Edit}" actionListener="#{projectController.redirect(3)}" action="/index" disabled="#{empty projectController.selected}" ajax="false">
+                        <f:actionListener binding="#{beanPagina.setPaginaProj('/project/Edit.xhtml')}" />
+                    </p:commandButton>
+                    <p:commandButton id="deleteButton" value="#{project.Delete}" actionListener="#{projectController.delete(event)}" update=":TabProfile:ProjectListForm:datalist" disabled="#{empty projectController.selected}" icon="ui-icon-trash" >
+                        <p:confirm header="#{project.Confirmation}" message="#{project.ConfirmDelete}" icon="ui-icon-alert" />
+                    </p:commandButton>
                 </f:facet>
 
             </p:dataTable>
 
         </p:panel>
+        <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">  
+            <p:commandButton value="#{project.Yes}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+            <p:commandButton value="#{project.No}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>       
+        </p:confirmDialog>
 
     </h:form>
 

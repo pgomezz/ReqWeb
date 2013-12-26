@@ -4,37 +4,29 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
-                template="/tabs.xhtml">
-    <ui:define name="TreeTab">
-             
-             <ui:include src="/accordion.xhtml"/>
-    </ui:define>
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:define name="growl"/>
-    
-    <ui:define name="AdminTab">
-            <h:form id="BusinessCategoryEditForm">
+    <h:form id="BusinessCategoryEditForm">
 
-                <h:panelGroup id="display">
-                    <p:panelGrid  columns="3" id="grid" >
+        <h:panelGroup id="display">
+            <p:panelGrid  columns="3" id="grid" >
 
-                        <p:outputLabel value="#{myBundle.EditBusinessCategoryLabel_name}" for="name" />
-                        <p:inputText id="name" value="#{businessCategoryController.businessCategory.name}" title="#{myBundle.EditBusinessCategoryTitle_name}" required="true" requiredMessage="#{myBundle.EditBusinessCategoryRequiredMessage_name}" size="40" maxlength="32"/>
-                        <p:message for="name" display="${myBundle.CreateBusinessCategoryRequiredMessage_name}" /> 
-                        
-                        <p:outputLabel value="#{myBundle.EditBusinessCategoryLabel_description}" for="description" />
-                        <p:inputTextarea rows="5" cols="70" id="description" value="#{businessCategoryController.businessCategory.description}" title="#{myBundle.EditBusinessCategoryTitle_description}" required="true" requiredMessage="#{myBundle.EditBusinessCategoryRequiredMessage_description}" maxlength="255" autoResize="false"/>
-                        <p:message for="description" display="${myBundle.CreateBusinessCategoryRequiredMessage_description}" /> 
+                <p:outputLabel value="#{myBundle.EditBusinessCategoryLabel_name}" for="name" />
+                <p:inputText id="name" value="#{businessCategoryEditController.businessCategory.name}" title="#{myBundle.EditBusinessCategoryTitle_name}" required="true" requiredMessage="#{myBundle.EditBusinessCategoryRequiredMessage_name}" size="40" maxlength="32"/>
+                <p:message for="name" display="${myBundle.CreateBusinessCategoryRequiredMessage_name}" /> 
 
-                        
-                    </p:panelGrid>
-                    <p:commandButton actionListener="#{businessCategoryController.save}" value="#{myBundle.Save}" action="/admin/businessCategory/index" ajax="false"/>
-                    <p:commandButton value="#{myBundle.Cancel}" action="/admin/businessCategory/index" immediate="true"/>
-                
-                </h:panelGroup>
+                <p:outputLabel value="#{myBundle.EditBusinessCategoryLabel_description}" for="description" />
+                <p:inputTextarea rows="5" cols="70" id="description" value="#{businessCategoryEditController.businessCategory.description}" title="#{myBundle.EditBusinessCategoryTitle_description}" required="true" requiredMessage="#{myBundle.EditBusinessCategoryRequiredMessage_description}" maxlength="255" autoResize="false"/>
+                <p:message for="description" display="${myBundle.CreateBusinessCategoryRequiredMessage_description}" /> 
 
-            </h:form>
 
-    </ui:define>
+            </p:panelGrid>
+            <p:commandButton actionListener="#{businessCategoryEditController.save}" value="#{myBundle.Save}" action="/index" ajax="false">
+                <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}"/>
+            </p:commandButton>
+            <p:commandButton value="#{myBundle.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}" action="/index" immediate="true" ajax="false"/>
 
+        </h:panelGroup>
+
+    </h:form>
 </ui:composition>

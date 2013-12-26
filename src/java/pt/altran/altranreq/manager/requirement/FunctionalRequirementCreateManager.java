@@ -21,7 +21,6 @@ import javax.inject.Named;
 import pt.altran.altranreq.entities.FunctionalRequirement;
 import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.manager.AbstractController;
-import pt.altran.altranreq.manager.FunctionalRequirementController;
 import pt.altran.altranreq.manager.util.JsfUtil;
 import pt.altran.altranreq.services.FunctionalRequirementFilter;
 import pt.altran.altranreq.services.FunctionalRequirementService;

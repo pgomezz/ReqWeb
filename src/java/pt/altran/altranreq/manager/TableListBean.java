@@ -2,12 +2,13 @@ package pt.altran.altranreq.manager;
 
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 
 @Named(value = "tableListBean")
-@ViewScoped
+@SessionScoped
 public class TableListBean  implements Serializable {
 
     private final static String[] state;  

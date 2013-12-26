@@ -61,7 +61,7 @@ public class Client implements Serializable {
     @Column(name = "MOBILE")
     private String mobile;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Size(min = 1, max = 100)
     @Column(name = "CLIENT_FUNCTION")
     private String clientFunction;
@@ -69,7 +69,7 @@ public class Client implements Serializable {
     @Column(name = "OTHER_CONTACT")
     private String otherContact;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Size(min = 1, max = 20)
     @Column(name = "ID_ORGANIZATION")
     private String idOrganization;

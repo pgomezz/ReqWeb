@@ -4,112 +4,105 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-                xmlns:f="http://xmlns.jcp.org/jsf/core"
-                template="/tabs.xhtml">
+    <h:form id="FunctionalRequirementViewForm" >
 
-       <ui:define name="accorTree">
-                    <ui:include src="/tree/tree.xhtml"/>
-              
-    </ui:define>
-    
-    <ui:define name="projectTab">
+        <h:panelGroup>
+            <p:panelGrid columns="2" >
 
-        <h:form id="FunctionalRequirementViewForm" >
 
-            <h:panelGroup  rendered="#{functionalRequirementController.FRequirementType}">
-                <p:panelGrid columns="2" >
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_name}"/>
+                <h:outputText value="#{functionalRequirementController.FRequirement.name}" title="#{myBundle.ViewFunctionalRequirementTitle_name}"/>
 
-                
-                    <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_name}"/>
-                    <h:outputText value="#{functionalRequirementController.FRequirement.name}" title="#{myBundle.ViewFunctionalRequirementTitle_name}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_description}"/>
+                <h:outputText value="#{functionalRequirementController.FRequirement.description}" title="#{myBundle.ViewFunctionalRequirementTitle_description}"/>
 
-                    <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_description}"/>
-                    <h:outputText value="#{functionalRequirementController.FRequirement.description}" title="#{myBundle.ViewFunctionalRequirementTitle_description}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_reason}"/>
+                <h:outputText value="#{functionalRequirementController.FRequirement.reason}" title="#{myBundle.ViewFunctionalRequirementTitle_reason}"/>
 
-                    <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_reason}"/>
-                    <h:outputText value="#{functionalRequirementController.FRequirement.reason}" title="#{myBundle.ViewFunctionalRequirementTitle_reason}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_source}"/>
+                <h:outputText value="#{functionalRequirementController.FRequirement.source}" title="#{myBundle.ViewFunctionalRequirementTitle_source}"/>
 
-                    <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_source}"/>
-                    <h:outputText value="#{functionalRequirementController.FRequirement.source}" title="#{myBundle.ViewFunctionalRequirementTitle_source}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_avaliationCriteria}"/>
+                <h:outputText value="#{functionalRequirementController.FRequirement.avaliationCriteria}" title="#{myBundle.ViewFunctionalRequirementTitle_avaliationCriteria}"/>
 
-                    <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_avaliationCriteria}"/>
-                    <h:outputText value="#{functionalRequirementController.FRequirement.avaliationCriteria}" title="#{myBundle.ViewFunctionalRequirementTitle_avaliationCriteria}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_clientPriority}"/>
+                <h:outputText value="#{functionalRequirementController.FRequirement.clientPriority}" title="#{myBundle.ViewFunctionalRequirementTitle_clientPriority}"/>
 
-                    <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_clientPriority}"/>
-                    <h:outputText value="#{functionalRequirementController.FRequirement.clientPriority}" title="#{myBundle.ViewFunctionalRequirementTitle_clientPriority}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_requirementState}"/>
+                <h:outputText value="#{functionalRequirementController.getState(functionalRequirementController.FRequirement.requirementState)}" title="#{myBundle.ViewFunctionalRequirementTitle_requirementState}"/>
 
-                    <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_requirementState}"/>
-                    <h:outputText value="#{functionalRequirementController.getState(functionalRequirementController.FRequirement.requirementState)}" title="#{myBundle.ViewFunctionalRequirementTitle_requirementState}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_version}"/>
+                <h:outputText value="#{functionalRequirementController.FRequirement.version}" title="#{myBundle.ViewFunctionalRequirementTitle_version}"/>
 
-                    <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_version}"/>
-                    <h:outputText value="#{functionalRequirementController.FRequirement.version}" title="#{myBundle.ViewFunctionalRequirementTitle_version}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_ordernumber}"/>
+                <h:outputText value="#{functionalRequirementController.FRequirement.ordernumber}" title="#{myBundle.ViewFunctionalRequirementTitle_ordernumber}"/>
 
-                    <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_ordernumber}"/>
-                    <h:outputText value="#{functionalRequirementController.FRequirement.ordernumber}" title="#{myBundle.ViewFunctionalRequirementTitle_ordernumber}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_functionalRequirementCollection}"/>
+                <h:selectManyMenu converter="functionalRequirementConverter">
+                    <f:selectItems value="#{functionalRequirementController.FRequirement.functionalRequirementCollection}"
+                                   var="functionalRequirementCollectionItem"
+                                   itemValue="#{functionalRequirementCollectionItem}"
+                                   itemLabel="#{functionalRequirementCollectionItem.name.toString()}"
+                                   />
 
-                    <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_functionalRequirementCollection}"/>
-                    <h:selectManyMenu converter="functionalRequirementConverter">
-                        <f:selectItems value="#{functionalRequirementController.FRequirement.functionalRequirementCollection}"
-                                       var="functionalRequirementCollectionItem"
-                                       itemValue="#{functionalRequirementCollectionItem}"
-                                       itemLabel="#{functionalRequirementCollectionItem.name.toString()}"
-                                       />
+                </h:selectManyMenu>
 
-                    </h:selectManyMenu>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_idBusinessCategory}"/>
+                <h:outputText value="#{functionalRequirementController.FRequirement.idBusinessCategory.name}"/>
+            </p:panelGrid>
+            <p:commandButton value="#{myBundle.Close}" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" action="/index" immediate="true" ajax="false"/>
+        </h:panelGroup>
 
-                    <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_idBusinessCategory}"/>
-                    <h:outputText value="#{functionalRequirementController.FRequirement.idBusinessCategory.name}"/>
-                </p:panelGrid>
-                <p:commandButton value="#{myBundle.Close}" action="/project/functionalRequirement/index" immediate="true"/>
-            </h:panelGroup>
-            
-            
 
-            
-            
 
-            <p:panel header="#{myBundle.ListUseCaseTitle}">
 
-                <p:dataTable id="datalist" value="#{useCaseController.lista}" var="item"
-                             selectionMode="single" selection="#{useCaseController.selected}"
-                             rowKey="#{item.idUseCase}"
-                             paginator="true"
-                             rows="10"
-                             rowsPerPageTemplate="10,20,30"
-                             >
 
-                    <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                    <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                    <p:column sortBy="#{item.name}" filterBy="#{item.name}">
-                        <f:facet name="header">
-                            <h:outputText value="#{myBundle.ListUseCaseTitle_name}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.name}"/>
-                    </p:column>
-                    <p:column sortBy="#{item.ordernumber}" filterBy="#{item.ordernumber}">
-                        <f:facet name="header">
-                            <h:outputText value="#{myBundle.ListUseCaseTitle_ordernumber}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.ordernumber}"/>
-                    </p:column>
-                    <f:facet name="footer">
-                        <div class="footer-section">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" />
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" disabled="#{empty useCaseController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" disabled="#{empty useCaseController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" disabled="#{empty useCaseController.selected}"/>
-                        </div>
+        <p:panel header="#{myBundle.ListUseCaseTitle}">
+
+            <p:dataTable id="datalist" value="#{useCaseController.lista}" var="item"
+                         selectionMode="single" selection="#{useCaseController.selected}"
+                         rowKey="#{item.idUseCase}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.name}" filterBy="#{item.name}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListUseCaseTitle_name}"/>
                     </f:facet>
+                    <h:outputText value="#{item.name}"/>
+                </p:column>
+                <p:column sortBy="#{item.ordernumber}" filterBy="#{item.ordernumber}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListUseCaseTitle_ordernumber}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.ordernumber}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <div class="footer-section">
+                        <p:commandButton id="createButton" icon="ui-icon-plus" actionListener="#{beanPagina.setPaginaProj('/project/useCase/Create.xhtml')}" action="/index" value="#{myBundle.Create}" ajax="false"/>
+                        <p:commandButton id="viewButton" actionListener="#{useCaseController.redirect(2)}"  icon="ui-icon-search" value="#{myBundle.View}" disabled="#{empty useCaseController.selected}" action="/index" ajax="false" >
+                            <f:actionListener binding="#{beanPagina.setPaginaProj('/project/useCase/View.xhtml')}"/>
+                        </p:commandButton>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" disabled="#{empty useCaseController.selected}" action="/index" ajax="false">
+                            <f:actionListener binding="#{beanPagina.setPaginaProj('/project/useCase/Edit.xhtml')}"/>
+                        </p:commandButton>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" disabled="#{empty useCaseController.selected}"/>
+                    </div>
+                </f:facet>
 
-                </p:dataTable>
+            </p:dataTable>
 
-            </p:panel>
+        </p:panel>
 
-        </h:form>
+    </h:form>
 
-
-    </ui:define>
 </ui:composition>
 

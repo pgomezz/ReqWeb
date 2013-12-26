@@ -3,30 +3,22 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:p="http://primefaces.org/ui"
-                template="/tabs.xhtml">
-    <ui:define name="TreeTab">
-             
-             <ui:include src="/accordion.xhtml"/>
-    </ui:define>
-
-    <ui:define name="AdminTab">
+                xmlns:p="http://primefaces.org/ui">
 
             <h:form id="BusinessCategoryViewForm">
 
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2">
-                        <h:outputText value="#{myBundle.ViewBusinessCategoryLabel_name}"/>
-                        <h:outputText value="#{businessCategoryController.businessCategory.name}" title="#{myBundle.ViewBusinessCategoryTitle_name}"/>
+                        <h:outputText value="#{business.Name}"/>
+                        <h:outputText value="#{businessCategoryEditController.businessCategory.name}" title="#{business.Name}"/>
 
-                        <h:outputText value="#{myBundle.ViewBusinessCategoryLabel_description}"/>
-                        <h:outputText value="#{businessCategoryController.businessCategory.description}" title="#{myBundle.ViewBusinessCategoryTitle_description}"/>
+                        <h:outputText value="#{business.Description}"/>
+                        <h:outputText value="#{businessCategoryEditController.businessCategory.description}" title="#{business.Description}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{myBundle.Close}" action="/admin/businessCategory/index" ajax="true"/>
+                    <p:commandButton value="#{business.Close}" actionListener="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}" action="/index" ajax="false"/>
                 </h:panelGroup>
 
             </h:form>
 
-        </ui:define>
   </ui:composition>
         

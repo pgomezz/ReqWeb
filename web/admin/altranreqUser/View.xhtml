@@ -1,44 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition>
-            <h:form id="AltranreqUserViewForm">
+    <h:form id="AltranreqUserViewForm">
+        <p:panelGrid columns="2">
 
-                <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{altranreqUserController.selected != null}">
+            <h:outputText value="#{user.Name}"/>
+            <h:outputText value="#{altranreqUserEditController.altranreqUser.name}" title="#{myBundle.ViewAltranreqUserTitle_name}"/>
 
-                        <h:outputText value="#{myBundle.ViewAltranreqUserLabel_idUser}"/>
-                        <h:outputText value="#{altranreqUserController.selected.idUser}" title="#{myBundle.ViewAltranreqUserTitle_idUser}"/>
+            <h:outputText value="#{user.Password}"/>
+            <h:outputText value="#{altranreqUserEditController.altranreqUser.password}" title="#{myBundle.ViewAltranreqUserTitle_password}"/>
 
-                        <h:outputText value="#{myBundle.ViewAltranreqUserLabel_name}"/>
-                        <h:outputText value="#{altranreqUserController.selected.name}" title="#{myBundle.ViewAltranreqUserTitle_name}"/>
+            <h:outputText value="#{user.Username}"/>
+            <h:outputText value="#{altranreqUserEditController.altranreqUser.username}" title="#{myBundle.ViewAltranreqUserTitle_username}"/>
 
-                        <h:outputText value="#{myBundle.ViewAltranreqUserLabel_password}"/>
-                        <h:outputText value="#{altranreqUserController.selected.password}" title="#{myBundle.ViewAltranreqUserTitle_password}"/>
+            <h:outputText value="#{user.Email}"/>
+            <h:outputText value="#{altranreqUserEditController.altranreqUser.email}" title="#{myBundle.ViewAltranreqUserTitle_email}"/>
 
-                        <h:outputText value="#{myBundle.ViewAltranreqUserLabel_username}"/>
-                        <h:outputText value="#{altranreqUserController.selected.username}" title="#{myBundle.ViewAltranreqUserTitle_username}"/>
+            <h:outputText value="#{user.Mobile}"/>
+            <h:outputText value="#{altranreqUserEditController.altranreqUser.mobile}" title="#{myBundle.ViewAltranreqUserTitle_mobile}"/>
 
-                        <h:outputText value="#{myBundle.ViewAltranreqUserLabel_email}"/>
-                        <h:outputText value="#{altranreqUserController.selected.email}" title="#{myBundle.ViewAltranreqUserTitle_email}"/>
-
-                        <h:outputText value="#{myBundle.ViewAltranreqUserLabel_mobile}"/>
-                        <h:outputText value="#{altranreqUserController.selected.mobile}" title="#{myBundle.ViewAltranreqUserTitle_mobile}"/>
-
-                        <h:outputText value="#{myBundle.ViewAltranreqUserLabel_isAdmin}"/>
-                        <h:outputText value="#{altranreqUserController.selected.isAdmin}" title="#{myBundle.ViewAltranreqUserTitle_isAdmin}"/>
-                    </p:panelGrid>
-                    <p:commandButton value="#{myBundle.Close}" onclick="AltranreqUserViewDialog.hide()"/>
-                </h:panelGroup>
-
-            </h:form>
-
-
-    </ui:composition>
-
-</html>
+            <h:outputText value="#{user.IsAdmin}"/>
+            <h:outputText value="#{altranreqUserEditController.altranreqUser.isAdmin}" title="#{myBundle.ViewAltranreqUserTitle_isAdmin}"/>
+        </p:panelGrid>
+        <p:commandButton value="#{user.Close}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqUser/List.xhtml')}" action="/index" ajax="false"/>
+    </h:form>
+</ui:composition>
