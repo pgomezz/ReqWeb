@@ -20,11 +20,13 @@ public class BeanPagina implements Serializable {
 
     private String paginaAdmin;
     private String paginaProj;
+    private String accordTree;
 
     @PostConstruct
     public void init() {
         this.paginaAdmin="/admin/altranreqUser/List.xhtml";
         this.paginaProj="/project/List.xhtml";
+        this.accordTree="/accordion.xhtml";
     }
 
     public String getPaginaProj() {
@@ -46,4 +48,13 @@ public class BeanPagina implements Serializable {
         System.out.println("PAGINA Admin GET: "+paginaAdmin);
         return paginaAdmin;
     }
+
+    public String getAccordTree() {
+        return accordTree;
+    }
+
+    public void setAccordTree(String accordTree) {
+        this.accordTree = accordTree;
+    }
+    
 }

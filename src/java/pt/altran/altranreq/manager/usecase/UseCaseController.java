@@ -59,7 +59,9 @@ public class UseCaseController extends AbstractController<UseCase> implements Se
         return (UseCase) treeService.getSelected();
     }
 
-    public UseCase getUseCaseByNavigation() {
+    public Object getUseCaseByNavigation() {
+        //return useCaseBean.getSelected();
+        System.out.println("USECASE--> "+useCaseBean.getSelected().toString());
         return (UseCase) useCaseBean.getSelected();
     }
 

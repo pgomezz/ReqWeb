@@ -4,19 +4,8 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-                xmlns:f="http://xmlns.jcp.org/jsf/core"
-                template="/tabs.xhtml">
-
-    <ui:define name="title">
-        <h:outputText value="#{project.EditTitle}"></h:outputText>
-    </ui:define>
-
-    <ui:define name="accorTree">
-
-        <ui:include src="/tree/tree.xhtml"/>
-    </ui:define>
-    <ui:define name="projectTab">
         <p:panel header="#{project.EditTitle}">
 
             <h:form id="UseCaseEditForm">
@@ -56,11 +45,14 @@
                                            />
                         </p:selectManyMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{editUseCaseManager.save}" action="/index"  value="#{myBundle.Save}"  ajax="true" />
-                    <p:commandButton value="#{myBundle.Cancel}" action="/project/useCase/index"/>
+                    <p:commandButton actionListener="#{editUseCaseManager.save}" action="/index"  value="#{myBundle.Save}"  ajax="true" >
+                        <f:actionListener binding="#{beanPagina.setPaginaProj('/project/functionalRequirement/View_New.xhtml')}"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" action="/index">
+                        <f:actionListener binding="#{beanPagina.setPaginaProj('/project/functionalRequirement/View_New.xhtml')}"/>
+                    </p:commandButton>
                 </h:panelGroup>
 
             </h:form>
         </p:panel>
-    </ui:define>
 </ui:composition>
