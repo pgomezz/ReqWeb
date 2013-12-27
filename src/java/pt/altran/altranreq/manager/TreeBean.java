@@ -64,7 +64,7 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
     private UseCaseController useCaseController;
 
     private AltranTreeNode root, selectedNode, functionalRequirementTreeNode, nonFunctionalRequirementTreeNode;
-    private AltranTreeNode Instalacao, Interface, Operacionais, Politicos, Seguranca, Usabilidade, aux, aux2;
+    private AltranTreeNode aux, aux2;
 
     private Collection<FunctionalRequirement> functionalRequirements;
     private Collection<NonFunctionalRequirement> nonFunctionalRequirements, nonFunctionalRequirementList;
@@ -122,8 +122,7 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
         rnffilter.setProject(Integer.parseInt(projectSelected.getIdProject().toString()));
 
         for (TypeNonFunctionalEnum type : TypeNonFunctionalEnum.values()) {
-            System.out.println("tipos " + type.getDisplayName() + "indice: " + type.ordinal());
-            aux = new AltranTreeNode(type.getDisplayName(), nonFunctionalRequirementTreeNode);
+            aux = new AltranTreeNode(type, nonFunctionalRequirementTreeNode);
             aux.setTreenode(this);
             rnffilter.setType(type.ordinal());
             nonFunctionalRequirementList = rnfService.findRNFByFilter(rnffilter);
@@ -179,31 +178,12 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
         if (strEvent.equals(functionalRequirementTreeNode.toString())) {
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/functionalRequirement/index.xhtml");
         } else if (strEvent.equals(nonFunctionalRequirementTreeNode.toString())) {
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
-        } else if (strEvent.equals(Instalacao.toString())) {
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");        
+        } else if (d instanceof TypeNonFunctionalEnum){
+            TypeNonFunctionalEnum tnfr = (TypeNonFunctionalEnum) d;
             projectBean.setCateg(true);
-            projectBean.setIdCategNRF(0);
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
-        } else if (strEvent.equals(Interface.toString())) {
-            projectBean.setCateg(true);
-            projectBean.setIdCategNRF(1);
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
-        } else if (strEvent.equals(Operacionais.toString())) {
-            projectBean.setCateg(true);
-            projectBean.setIdCategNRF(2);
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
-        } else if (strEvent.equals(Politicos.toString())) {
-            projectBean.setCateg(true);
-            projectBean.setIdCategNRF(3);
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
-        } else if (strEvent.equals(Seguranca.toString())) {
-            projectBean.setCateg(true);
-            projectBean.setIdCategNRF(4);
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
-        } else if (strEvent.equals(Usabilidade.toString())) {
-            projectBean.setCateg(true);
-            projectBean.setIdCategNRF(5);
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");
+            projectBean.setIdCategNRF(tnfr.ordinal());
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");   
         } else if (d instanceof UseCase) {
             UseCase uc = (UseCase) d;
             useCaseController = new UseCaseController();

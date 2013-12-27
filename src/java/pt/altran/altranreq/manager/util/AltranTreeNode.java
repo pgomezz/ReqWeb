@@ -39,6 +39,9 @@ public class AltranTreeNode extends DefaultTreeNode {
         } else if (d instanceof NonFunctionalRequirement) {
             NonFunctionalRequirement nfr = (NonFunctionalRequirement) d;
             return nfr.getName();
+        } else if (d instanceof TypeNonFunctionalEnum){
+            TypeNonFunctionalEnum tnfr = (TypeNonFunctionalEnum) d;
+            return tnfr.getDisplayName();
         } else {
             return super.getData(); //To change body of generated methods, choose Tools | Templates.
         }
@@ -68,6 +71,9 @@ public class AltranTreeNode extends DefaultTreeNode {
         } else if (d instanceof NonFunctionalRequirement) {
             NonFunctionalRequirement nfr = (NonFunctionalRequirement) d;
             return nfr.getName();
+        } else if (d instanceof TypeNonFunctionalEnum){
+            TypeNonFunctionalEnum tnfr = (TypeNonFunctionalEnum) d;
+            return tnfr.getDisplayName();
         } else {
             return super.toString();
         }

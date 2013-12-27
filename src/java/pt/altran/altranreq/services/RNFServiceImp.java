@@ -22,6 +22,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import pt.altran.altranreq.manager.util.TypeNonFunctionalEnum;
 
 @WebService
 @Stateless
@@ -46,7 +47,6 @@ public class RNFServiceImp extends AbstractServiceImp<NonFunctionalRequirement> 
     @WebMethod
     public List<NonFunctionalRequirement> findRNFByFilter(RNFunctionalFilter filter) {
 
-        
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<NonFunctionalRequirement> query = cb.createQuery(NonFunctionalRequirement.class);
         Root<NonFunctionalRequirement> nonFuncReqQuery = query.from(NonFunctionalRequirement.class);
@@ -63,52 +63,41 @@ public class RNFServiceImp extends AbstractServiceImp<NonFunctionalRequirement> 
         if (filter.getProject() != null) {
             Project p = new Project();
             p.setIdProject(BigDecimal.valueOf(filter.getProject()));
-            
+
             Predicate projectPredicate = cb.equal(nonFuncReqQuery.<Project>get("idProject"), p);
             predicateList.add(projectPredicate);
         }
         if (filter.getState() != null) {
-           
+
             Predicate statePredicate = cb.equal(nonFuncReqQuery.<BigInteger>get("requirementState"), filter.getState());
             predicateList.add(statePredicate);
         }
         if (filter.getType() != null) {
-            
+
             Predicate typePredicate = cb.equal(nonFuncReqQuery.<BigInteger>get("type"), filter.getType());
             predicateList.add(typePredicate);
-            
-            
+
         }
-        
-        
-        
+
         Predicate[] predicates = new Predicate[predicateList.size()];
         predicateList.toArray(predicates);
         query.where(predicates);
 
         return getEntityManager().createQuery(query).getResultList();
     }
-    
-    
-    
+
     @Override
     @WebMethod
     public List<NonFunctionalRequirement> findRNFByDependency(int pai) {
-        
-    
-        
-       NonFunctionalRequirement bla = new NonFunctionalRequirement();
-        
-      NonFunctionalRequirement us = getEntityManager().find(NonFunctionalRequirement.class, BigDecimal.valueOf(pai));
-        
-        
-       return (List<NonFunctionalRequirement>)us.getNonFunctionalRequirementCollection();
-    
+        NonFunctionalRequirement us = getEntityManager().find(NonFunctionalRequirement.class, BigDecimal.valueOf(pai));
+
+        return (List<NonFunctionalRequirement>) us.getNonFunctionalRequirementCollection();
+
     }
 
     @Override
     public String getRequirementStateString(int requirementStateIndice) {
-    switch (requirementStateIndice) {
+        switch (requirementStateIndice) {
             case 0:
                 return ResourceBundle.getBundle("/bundle_requirement").getString("State_active");
             case 1:
@@ -119,32 +108,13 @@ public class RNFServiceImp extends AbstractServiceImp<NonFunctionalRequirement> 
                 return ResourceBundle.getBundle("/bundle_requirement").getString("State_done");
             default:
                 return ResourceBundle.getBundle("/bundle_requirement").getString("State_undefined");
-        }  
-    
-    
+        }
+
     }
 
     @Override
     public String getRequirementTypeString(int requirementTypeIndice) {
-    switch (requirementTypeIndice) {
-            case 0:
-                return ResourceBundle.getBundle("/bundle_nfrType").getString("Type_usability");
-            case 1:
-                return ResourceBundle.getBundle("/bundle_nfrType").getString("Type_interface");
-            case 2:
-                return ResourceBundle.getBundle("/bundle_nfrType").getString("Type_operational");
-            case 3:
-                return ResourceBundle.getBundle("/bundle_nfrType").getString("Type_install");
-            case 4:
-                return ResourceBundle.getBundle("/bundle_nfrType").getString("Type_security");
-            case 5:
-                return ResourceBundle.getBundle("/bundle_nfrType").getString("Type_politic");
-            default:
-                return ResourceBundle.getBundle("/bundle_nfrType").getString("State_undefined");
-        }
-    
-    
+        return ResourceBundle.getBundle("/bundle_nfrType").getString(TypeNonFunctionalEnum.getByIndex(requirementTypeIndice).toString());
     }
-
 
 }

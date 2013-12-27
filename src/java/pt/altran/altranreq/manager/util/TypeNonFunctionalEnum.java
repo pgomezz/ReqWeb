@@ -18,5 +18,8 @@ public enum TypeNonFunctionalEnum {
         return displayName;
     }
     
+    public static TypeNonFunctionalEnum getByIndex(int index){
+        return values()[index];
+    }
     
 }
