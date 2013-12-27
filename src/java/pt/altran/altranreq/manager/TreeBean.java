@@ -107,7 +107,7 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
             FunctionalRequirementFilter funcfilter = new FunctionalRequirementFilter();
             funcfilter.setProjecto(Integer.parseInt(projectSelected.getIdProject().toString()));
             functionalRequirements = functionalService.findFunctionalRequirementByFilter(funcfilter);
-
+            //verificar se getUseCaseCollection está a funcionar
             for (FunctionalRequirement functionalRequirement : functionalRequirements) {
                 AltranTreeNode aux = new AltranTreeNode(functionalRequirement, functionalRequirementTreeNode);
                 aux.setTreenode(this);

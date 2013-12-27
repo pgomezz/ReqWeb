@@ -51,6 +51,7 @@ public class UseCaseImp extends AbstractServiceImp<UseCase> implements UseCaseSe
         FunctionalRequirement FR = (FunctionalRequirement) queryFR.getSingleResult();
         queryUC.setParameter("id", FR);
         Collection useCaseCollection = queryUC.getResultList();
+        
         return (List<UseCase>) useCaseCollection;
     }
 

@@ -4,16 +4,15 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
-
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     
-        <p:panel header="#{project.EditTitle}">
+        <p:panel header="Detalhes de Caso de Uso">
             <h:form id="UseCaseViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2">
 
                         <h:outputText value="#{myBundle.ViewUseCaseLabel_name}"/>
-                        <h:outputText value="#{useCaseController.selected.name}" title="#{myBundle.ViewUseCaseTitle_name}"/>
+                        <h:outputText value="#{useCaseController.useCaseByNavigation.name}" title="#{myBundle.ViewUseCaseTitle_name}"/>
 
                         <h:outputText value="#{myBundle.ViewUseCaseLabel_description}"/>
                         <h:outputText value="#{useCaseController.useCaseByNavigation.description}" title="#{myBundle.ViewUseCaseTitle_description}"/>
@@ -43,9 +42,7 @@
 
                         </h:selectManyMenu>
 
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_idFunctionalRequirement}"/>
-                        <h:outputText value="#{useCaseController.useCaseByNavigation.idFunctionalRequirement.name}"/>
-                    </p:panelGrid>
+                         </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" actionListener="#{beanPagina.setPaginaProj('/project/functionalRequirement/View_New.xhtml')}" action="/index" ajax="false"/>
                 </h:panelGroup>
             </h:form>

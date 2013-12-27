@@ -91,7 +91,7 @@
                         <p:commandButton id="viewButton" actionListener="#{useCaseController.redirect(2)}"  icon="ui-icon-search" value="#{myBundle.View}" disabled="#{empty useCaseController.selected}" action="/index" ajax="false" >
                             <f:actionListener binding="#{beanPagina.setPaginaProj('/project/useCase/View.xhtml')}"/>
                         </p:commandButton>
-                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" disabled="#{empty useCaseController.selected}" action="/index" ajax="false">
+                        <p:commandButton id="editButton" icon="ui-icon-pencil" value="#{myBundle.Edit}" disabled="#{empty useCaseController.selected}" action="/index" ajax="false">
                             <f:actionListener binding="#{beanPagina.setPaginaProj('/project/useCase/Edit.xhtml')}"/>
                         </p:commandButton>
                         <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" disabled="#{empty useCaseController.selected}"/>

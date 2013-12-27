@@ -291,6 +291,7 @@ public class FunctionalRequirement implements Serializable {
 
     @XmlTransient
     public Collection<UseCase> getUseCaseCollection() {
+        
         return useCaseCollection;
     }
 
