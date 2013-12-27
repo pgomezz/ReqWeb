@@ -19,7 +19,7 @@
             <p:tab title="Projectos">  
                 <h:panelGrid columns="1">
                     <h:commandLink value="Lista de Projectos" action="/index">
-                        <!--Arranjar maneira de trocar de separador-->
+                        <f:actionListener binding="#{tabBean.setActiveIndex(0)}" />
                         <f:actionListener binding="#{beanPagina.setPaginaProj('/project/List.xhtml')}"/>
                     </h:commandLink>                            
                 </h:panelGrid>  
@@ -33,7 +33,7 @@
             </p:tab>
             <p:tab title="Organizações">  
                 <h:panelGrid columns="1">
-                    <h:commandLink value="Lista de Categorias de Negócio" action="/index">
+                    <h:commandLink value="Lista de Organizações" action="/index">
                         <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}"/>
                     </h:commandLink>
                 </h:panelGrid>  
