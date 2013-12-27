@@ -69,7 +69,7 @@
                             <p:commandButton id="editButtonRFP"   icon="ui-icon-pencil" action="/index" value="#{project.Edit}" actionListener="#{functionalRequirementController.redirect(2)}" disabled="#{empty functionalRequirementController.selected}" ajax="false">
                                 <f:actionListener binding="#{beanPagina.setPaginaProj('/project/functionalRequirement/Edit_New.xhtml')}"/>
                             </p:commandButton>
-                            <p:commandButton id="deleteButtonRFP" value="#{project.Delete}" actionListener="#{functionalRequirementController.delete}" update=":growl,datalistRFP" disabled="#{empty functionalRequirementController.selected}" icon="ui-icon-trash" >
+                            <p:commandButton id="deleteButtonRFP" value="#{project.Delete}" actionListener="#{functionalRequirementController.delete}" update=":growl,datalistRFP,:TabProfile" disabled="#{empty functionalRequirementController.selected}" action="/index" icon="ui-icon-trash" >
                                 <p:confirm header="#{project.Confirmation}" message="#{project.ConfirmDelete}" icon="ui-icon-alert" />
                             </p:commandButton>
                         </div>
@@ -105,7 +105,7 @@
                             <p:commandButton id="createButtonNRFP" icon="ui-icon-plus"   value="#{project.Create}" />
                             <p:commandButton id="viewButtonNRFP"   icon="ui-icon-search" value="#{project.View}" disabled="#{empty nonFunctionalRequirementController.selected}"/>
                             <p:commandButton id="editButtonNRFP"   icon="ui-icon-pencil" value="#{project.Edit}" disabled="#{empty nonFunctionalRequirementController.selected}"/>
-                            <p:commandButton id="deleteButtonNRFP" icon="ui-icon-trash"  value="#{project.Delete}" update=":growl,datalistNRFP" disabled="#{empty nonFunctionalRequirementController.selected}"/>
+                            <p:commandButton id="deleteButtonNRFP" icon="ui-icon-trash"  value="#{project.Delete}" update=":growl,datalistNRFP, :TabProfile" disabled="#{empty nonFunctionalRequirementController.selected}"/>
                         </div>
                     </f:facet>
 
