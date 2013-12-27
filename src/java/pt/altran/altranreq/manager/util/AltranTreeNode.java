@@ -25,6 +25,11 @@ public class AltranTreeNode extends DefaultTreeNode {
         super(data, parent);
     }
 
+    public AltranTreeNode(UpdateCurrentTreeNode treenode, Object data, TreeNode parent) {
+        super(data, parent);
+        this.treenode = treenode;
+    }
+
     @Override
     public Object getData() {
         treenode.update(this);

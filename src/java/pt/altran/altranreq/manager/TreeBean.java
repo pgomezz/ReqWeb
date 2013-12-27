@@ -96,12 +96,9 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
         //In NonFunctionalRequirement, there are 6 category's: Instalacao, Interface, Operacionais, Politicos, 
         //Seguranca, Usabilidade;
         //In each one, all the nodes are dynamic too.
-        root = new AltranTreeNode("root", null);
-        root.setTreenode(this);
-        functionalRequirementTreeNode = new AltranTreeNode("Functional Requirement", root);
-        functionalRequirementTreeNode.setTreenode(this);
-        nonFunctionalRequirementTreeNode = new AltranTreeNode("Non-Functional Requirement", root);
-        nonFunctionalRequirementTreeNode.setTreenode(this);
+        root = new AltranTreeNode(this, "root", null);
+        functionalRequirementTreeNode = new AltranTreeNode(this, "Functional Requirement", root);
+        nonFunctionalRequirementTreeNode = new AltranTreeNode(this, "Non-Functional Requirement", root);
         Project projectSelected = (Project) projectBean.getSelected();
 
         FunctionalRequirementFilter funcfilter = new FunctionalRequirementFilter();
@@ -109,11 +106,9 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
         functionalRequirements = functionalService.findFunctionalRequirementByFilter(funcfilter);
         //verificar se getUseCaseCollection está a funcionar
         for (FunctionalRequirement functionalRequirement : functionalRequirements) {
-            aux = new AltranTreeNode(functionalRequirement, functionalRequirementTreeNode);
-            aux.setTreenode(this);
+            aux = new AltranTreeNode(this, functionalRequirement, functionalRequirementTreeNode);
             for (UseCase useCase : functionalRequirement.getUseCaseCollection()) {
-                aux2 = new AltranTreeNode(useCase, aux);
-                aux2.setTreenode(this);
+                aux2 = new AltranTreeNode(this, useCase, aux);
             }
         }
 
@@ -122,13 +117,11 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
         rnffilter.setProject(Integer.parseInt(projectSelected.getIdProject().toString()));
 
         for (TypeNonFunctionalEnum type : TypeNonFunctionalEnum.values()) {
-            aux = new AltranTreeNode(type, nonFunctionalRequirementTreeNode);
-            aux.setTreenode(this);
+            aux = new AltranTreeNode(this, type, nonFunctionalRequirementTreeNode);
             rnffilter.setType(type.ordinal());
             nonFunctionalRequirementList = rnfService.findRNFByFilter(rnffilter);
             for (NonFunctionalRequirement nonFunctionalRequirement : nonFunctionalRequirementList) {
-                aux2 = new AltranTreeNode(nonFunctionalRequirement, aux);
-                aux2.setTreenode(this);
+                aux2 = new AltranTreeNode(this, nonFunctionalRequirement, aux);
             }
         }
 
