@@ -56,6 +56,9 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
 
     @Inject
     private ProjectServiceBean projectBean;
+    
+    @Inject
+    private BeanPagina beanPagina;
 
     private FunctionalRequirementController functionalRequirementController;
 
@@ -169,6 +172,7 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
         System.out.println(externalContext.getApplicationContextPath());
 
         if (strEvent.equals(functionalRequirementTreeNode.toString())) {
+            beanPagina.setPaginaProj("");
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/functionalRequirement/index.xhtml");
         } else if (strEvent.equals(nonFunctionalRequirementTreeNode.toString())) {
             externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");        

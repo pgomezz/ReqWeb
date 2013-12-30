@@ -118,7 +118,7 @@
                 <p:commandButton actionListener="#{functionalRequirementCreateManager.saveNew}"  action="/index"  value="#{myBundle.Save}"  ajax="false" update="grid">
                     <f:actionListener binding="#{beanPagina.setPaginaProj('/project/View.xhtml')}"/>
                 </p:commandButton>
-                <p:commandButton value="#{myBundle.Cancel}" action="index" immediate="true">
+                <p:commandButton value="#{myBundle.Cancel}" action="index" ajax="false" immediate="true">
                     <f:actionListener binding="#{beanPagina.setPaginaProj('/project/View.xhtml')}" />
                 </p:commandButton>
             </h:panelGroup>
