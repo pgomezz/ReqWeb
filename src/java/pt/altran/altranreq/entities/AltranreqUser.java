@@ -33,6 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "AltranreqUser.findAll", query = "SELECT a FROM AltranreqUser a"),
+    @NamedQuery(name = "AltranreqUser.findUsersByProject", query = "SELECT a FROM AltranreqUser a, IN(a.projectUserCollection) pu WHERE pu.project = :project"),
+    @NamedQuery(name = "AltranreqUser.findUsersNotInProject", query = "SELECT a1 FROM AltranreqUser a1 WHERE a1.idUser NOT IN (SELECT a2.idUser FROM AltranreqUser a2, IN(a2.projectUserCollection) pu WHERE pu.project = :project)"),
     @NamedQuery(name = "AltranreqUser.findByIdUser", query = "SELECT a FROM AltranreqUser a WHERE a.idUser = :idUser"),
     @NamedQuery(name = "AltranreqUser.findByName", query = "SELECT a FROM AltranreqUser a WHERE a.name = :name"),
     @NamedQuery(name = "AltranreqUser.findByPassword", query = "SELECT a FROM AltranreqUser a WHERE a.password = :password"),

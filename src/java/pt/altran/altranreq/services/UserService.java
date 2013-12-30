@@ -7,6 +7,7 @@ package pt.altran.altranreq.services;
  */
 import pt.altran.altranreq.entities.AltranreqUser;
 import java.util.List;
+import pt.altran.altranreq.entities.Project;
 
 /**
  *
@@ -15,8 +16,10 @@ import java.util.List;
  */
 public interface UserService extends AbstractService<AltranreqUser> {
     public List<AltranreqUser> findUsersByName(String name);
-
-    public List<AltranreqUser> findUsersByStatus(Boolean bool);
+    
+    public List<AltranreqUser> findUsersByProject(Project project);
+    
+    public List<AltranreqUser> findUsersNotInProject(Project project);
 
     public List<AltranreqUser> findUsersByUserName(String username);
 
