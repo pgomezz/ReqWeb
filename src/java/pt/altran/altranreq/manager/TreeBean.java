@@ -172,30 +172,35 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
         System.out.println(externalContext.getApplicationContextPath());
 
         if (strEvent.equals(functionalRequirementTreeNode.toString())) {
-            beanPagina.setPaginaProj("");
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/functionalRequirement/index.xhtml");
+            beanPagina.setPaginaProj("/project/functionalRequirement/List.xhtml");//V
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/index.xhtml");
         } else if (strEvent.equals(nonFunctionalRequirementTreeNode.toString())) {
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");        
+            beanPagina.setPaginaProj("/project/nonFunctionalRequirement/List.xhtml");//V
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/index.xhtml");        
         } else if (d instanceof TypeNonFunctionalEnum){
             TypeNonFunctionalEnum tnfr = (TypeNonFunctionalEnum) d;
             projectBean.setCateg(true);
             projectBean.setIdCategNRF(tnfr.ordinal());
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/index.xhtml");   
+            beanPagina.setPaginaProj("/project/nonFunctionalRequirement/List.xhtml");//V
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/index.xhtml");   
         } else if (d instanceof UseCase) {
             UseCase uc = (UseCase) d;
             useCaseController = new UseCaseController();
             useCaseController.setSelected(uc);
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/useCase/indexByTree.xhtml");
+            beanPagina.setPaginaProj("/project/useCase/View.xhtml");//V
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/index.xhtml");
         } else if (d instanceof FunctionalRequirement) {
             FunctionalRequirement fr = (FunctionalRequirement) d;
             functionalRequirementController = new FunctionalRequirementController();
             functionalRequirementController.setSelected(fr);
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/functionalRequirement/indexByTree.xhtml");
+            beanPagina.setPaginaProj("/project/functionalRequirement/ViewByTree.xhtml");//V
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/index.xhtml");
         } else if (d instanceof NonFunctionalRequirement) {
             NonFunctionalRequirement nfr = (NonFunctionalRequirement) d;
             nonFunctionalRequirementController = new NonFunctionalRequirementController();
             nonFunctionalRequirementController.setSelected(nfr);
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/project/nonFunctionalRequirement/indexByTree.xhtml");
+            beanPagina.setPaginaProj("/project/nonFunctionalRequirement/View_New.xhtml");
+            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/index.xhtml");
         } else {
         }
 

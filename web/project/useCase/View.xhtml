@@ -12,38 +12,41 @@
                     <p:panelGrid columns="2">
 
                         <h:outputText value="#{myBundle.ViewUseCaseLabel_name}"/>
-                        <h:outputText value="#{useCaseController.useCaseByNavigation.name}" title="#{myBundle.ViewUseCaseTitle_name}"/>
+                        <h:outputText value="#{useCaseController.useCase.name}" title="#{myBundle.ViewUseCaseTitle_name}"/>
 
                         <h:outputText value="#{myBundle.ViewUseCaseLabel_description}"/>
-                        <h:outputText value="#{useCaseController.useCaseByNavigation.description}" title="#{myBundle.ViewUseCaseTitle_description}"/>
+                        <h:outputText value="#{useCaseController.useCase.description}" title="#{myBundle.ViewUseCaseTitle_description}"/>
 
                         <h:outputText value="#{myBundle.ViewUseCaseLabel_avaliationCriteria}"/>
-                        <h:outputText value="#{useCaseController.useCaseByNavigation.avaliationCriteria}" title="#{myBundle.ViewUseCaseTitle_avaliationCriteria}"/>
+                        <h:outputText value="#{useCaseController.useCase.avaliationCriteria}" title="#{myBundle.ViewUseCaseTitle_avaliationCriteria}"/>
 
                         <h:outputText value="#{myBundle.ViewUseCaseLabel_preCondition}"/>
-                        <h:outputText value="#{useCaseController.useCaseByNavigation.preCondition}" title="#{myBundle.ViewUseCaseTitle_preCondition}"/>
+                        <h:outputText value="#{useCaseController.useCase.preCondition}" title="#{myBundle.ViewUseCaseTitle_preCondition}"/>
 
                         <h:outputText value="#{myBundle.ViewUseCaseLabel_posCondition}"/>
-                        <h:outputText value="#{useCaseController.useCaseByNavigation.posCondition}" title="#{myBundle.ViewUseCaseTitle_posCondition}"/>
+                        <h:outputText value="#{useCaseController.useCase.posCondition}" title="#{myBundle.ViewUseCaseTitle_posCondition}"/>
 
                         <h:outputText value="#{myBundle.ViewUseCaseLabel_mainScenario}"/>
-                        <h:outputText value="#{useCaseController.useCaseByNavigation.mainScenario}" title="#{myBundle.ViewUseCaseTitle_mainScenario}"/>
+                        <h:outputText value="#{useCaseController.useCase.mainScenario}" title="#{myBundle.ViewUseCaseTitle_mainScenario}"/>
 
                         <h:outputText value="#{myBundle.ViewUseCaseLabel_ordernumber}"/>
-                        <h:outputText value="#{useCaseController.useCaseByNavigation.ordernumber}" title="#{myBundle.ViewUseCaseTitle_ordernumber}"/>
+                        <h:outputText value="#{useCaseController.useCase.ordernumber}" title="#{myBundle.ViewUseCaseTitle_ordernumber}"/>
 
                         <h:outputText value="#{myBundle.ViewUseCaseLabel_useCaseCollection}"/>
                         <h:selectManyMenu converter="useCaseConverter">
-                            <f:selectItems value="#{useCaseController.useCaseByNavigation.useCaseCollection}"
+                            <f:selectItems value="#{useCaseController.useCase.useCaseCollection}"
                                            var="useCaseCollectionItem"
                                            itemValue="#{useCaseCollectionItem}"
-                                           itemLabel="#{useCaseCollectionItem.name}"
+                                           itemLabel="#{useCaseCollectionItem.name.toString()}"
                                            />
 
                         </h:selectManyMenu>
+                        
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_idFunctionalRequirement}"/>
+                        <h:outputText value="#{useCaseController.useCase.idFunctionalRequirement.name}"/>
 
                          </p:panelGrid>
-                    <p:commandButton value="#{myBundle.Close}" actionListener="#{beanPagina.setPaginaProj('/project/functionalRequirement/View_New.xhtml')}" action="/index" ajax="false"/>
+                    <p:commandButton value="#{myBundle.Close}" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" action="/index" ajax="false"/>
                 </h:panelGroup>
             </h:form>
         </p:panel>
