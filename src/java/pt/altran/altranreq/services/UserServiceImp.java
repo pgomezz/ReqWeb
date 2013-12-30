@@ -19,6 +19,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.entities.ProjectUser;
 import pt.altran.altranreq.manager.AuthenticationController;
 
@@ -55,28 +56,6 @@ public class UserServiceImp extends AbstractServiceImp<AltranreqUser> implements
         return userList;
     }
 
-    @Override
-    @WebMethod
-    public List<AltranreqUser> findUsersByStatus(Boolean bool) {
-        List<AltranreqUser> userList = em.
-                createNamedQuery("AltranreqUser.findAll").
-                getResultList();
-        List<ProjectUser> projecUserList = em.
-                createNamedQuery("ProjectUser.findAll").
-                getResultList();
-        for (AltranreqUser a : userList) {
-            if (!bool) {
-                if (projecUserList.contains(a)) {
-                    userList.remove(a);
-                }
-            } else {
-                if (!projecUserList.contains(a)) {
-                    userList.remove(a);
-                }
-            }
-        }
-        return userList;
-    }
 
     @Override
     @WebMethod
@@ -89,6 +68,28 @@ public class UserServiceImp extends AbstractServiceImp<AltranreqUser> implements
                 userList.remove(u);
             }
         }
+        return userList;
+    }
+    
+    @Override
+    @WebMethod
+    public List<AltranreqUser> findUsersByProject(Project project) {
+        // only returns the users that aren't project managers
+        List<AltranreqUser> userList = em
+                .createNamedQuery("AltranreqUser.findUsersByProject")
+                .setParameter("project", project)
+                .getResultList();
+        return userList;
+    }
+    
+    @Override
+    @WebMethod
+    public List<AltranreqUser> findUsersNotInProject(Project project) {
+        // only returns the users that aren't project managers
+        List<AltranreqUser> userList = em
+                .createNamedQuery("AltranreqUser.findUsersNotInProject")
+                .setParameter("project", project)
+                .getResultList();
         return userList;
     }
 

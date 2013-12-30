@@ -112,6 +112,29 @@
                 </p:dataTable>
 
             </p:panel>
+
+            <panel>
+                    <p:pickList id="pojoPickList" value="#{altranreqUserController.altranreqUsersDual}" var="u"
+                                itemValue="#{u}" itemLabel="#{u.name}" showCheckbox="true" 
+                                showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains" >  
+
+                        <f:facet name="sourceCaption">Available</f:facet>  
+                        <f:facet name="targetCaption">Starting</f:facet>  
+
+                        <!--<p:ajax event="transfer" listener="{pickListBean.onTransfer}" update="msg" /> --> 
+
+                        <!--
+                        <p:column style="width:25%">  
+                            <p:graphicImage value="/images/barca/{player.photo}" width="30" height="40" />  
+                        </p:column>
+                        -->
+
+                        <p:column style="width:100%">  
+                            #{u.name}  
+                        </p:column>  
+
+                    </p:pickList>  
+            </panel>
             <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">  
                 <p:commandButton value="#{project.Yes}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
                 <p:commandButton value="#{project.No}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>       
