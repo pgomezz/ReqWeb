@@ -2,22 +2,13 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-                xmlns:f="http://xmlns.jcp.org/jsf/core"
-                template="/tabs.xhtml">
-
-    
-           <ui:define name="accorTree">
-                    <ui:include src="/tree/tree.xhtml"/>
-              
-    </ui:define>
-    <ui:define name="projectTab" >
-        <ui:include src="/project/nonFunctionalRequirement/ConfirmCancel.xhtml"/>
 
         <h:form id="NonFunctionalRequirementEditForm">
 
             <h:panelGroup id="display">
-                <p:panelGrid  columns="3" rendered="#{nonFunctionalRequirementEditManager.NFRequirementType}" id="editGrid">
+                <p:panelGrid  columns="3" id="editGrid">
 
                     <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_name}" for="name" />
                     <p:inputText id="name" value="#{nonFunctionalRequirementEditManager.NFRequirement.name}" title="#{myBundle.EditNonFunctionalRequirementTitle_name}" required="true" requiredMessage="#{myBundle.EditNonFunctionalRequirementRequiredMessage_name}" size="60" maxlength="60"/>
@@ -113,13 +104,11 @@
 
 
                 </p:panelGrid>
-                <p:commandButton actionListener="#{nonFunctionalRequirementEditManager.save}" value="#{myBundle.Save}" action="/project/nonFunctionalRequirement/index"  ajax="false" update="editGrid"/>
-                <p:commandButton value="#{myBundle.Cancel}" oncomplete="ConfirmCancelDialog.show()"  immediate="true"/>
+                <p:commandButton actionListener="#{nonFunctionalRequirementEditManager.save}" value="#{myBundle.Save}" action="/index" ajax="false" update="editGrid">
+                    <f:actionListener binding="#{beanPagina.setPaginaProj('/project/View.xhtml')}"/>
+                </p:commandButton>
+                <p:commandButton value="#{myBundle.Cancel}" action="/index" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}"  immediate="true" ajax="false" />
             </h:panelGroup>
 
         </h:form>
-
-
-
-    </ui:define>
 </ui:composition>

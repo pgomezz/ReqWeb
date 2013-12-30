@@ -102,10 +102,16 @@
 
                     <f:facet name="footer">
                         <div class="footer-section">
-                            <p:commandButton id="createButtonNRFP" icon="ui-icon-plus"   value="#{project.Create}" />
-                            <p:commandButton id="viewButtonNRFP"   icon="ui-icon-search" value="#{project.View}" disabled="#{empty nonFunctionalRequirementController.selected}"/>
-                            <p:commandButton id="editButtonNRFP"   icon="ui-icon-pencil" value="#{project.Edit}" disabled="#{empty nonFunctionalRequirementController.selected}"/>
-                            <p:commandButton id="deleteButtonNRFP" icon="ui-icon-trash"  value="#{project.Delete}" update=":growl,datalistNRFP, :TabProfile" disabled="#{empty nonFunctionalRequirementController.selected}"/>
+                            <p:commandButton id="createButtonNRFP" icon="ui-icon-plus"   value="#{project.Create}" action="/index" actionListener="#{beanPagina.setPaginaProj('/project/nonFunctionalRequirement/Create_New.xhtml')}" ajax="false" />
+                            <p:commandButton id="viewButtonNRFP"   icon="ui-icon-search" value="#{project.View}" disabled="#{empty nonFunctionalRequirementController.selected}" actionListener="#{nonFunctionalRequirementController.redirect(2)}" action="/index" ajax="false">
+                                <f:actionListener binding="#{beanPagina.setPaginaProj('/project/nonFunctionalRequirement/View_New.xhtml')}"/>
+                            </p:commandButton>
+                            <p:commandButton id="editButtonNRFP"   icon="ui-icon-pencil" value="#{project.Edit}" disabled="#{empty nonFunctionalRequirementController.selected}" actionListener="#{nonFunctionalRequirementController.redirect(2)}" action="/index" ajax="false">
+                                <f:actionListener binding="#{beanPagina.setPaginaProj('/project/nonFunctionalRequirement/Edit_New.xhtml')}"/>
+                            </p:commandButton>
+                            <p:commandButton id="deleteButtonNRFP" icon="ui-icon-trash"  value="#{project.Delete}" update=":growl,datalistNRFP,:TabProfile" disabled="#{empty nonFunctionalRequirementController.selected}" actionListener="#{nonFunctionalRequirementController.delete}" >
+                                <p:confirm header="#{project.Confirmation}" message="#{project.ConfirmDelete}" icon="ui-icon-alert" />
+                            </p:commandButton>
                         </div>
                     </f:facet>
 
