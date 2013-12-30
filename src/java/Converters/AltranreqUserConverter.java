@@ -10,10 +10,12 @@ import javax.inject.Inject;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
 import javax.inject.Named;
 
-@Named(value = "altranreqUserConverter")
-@RequestScoped
+//@Named(value = "altranreqUserConverter")
+//@RequestScoped
+@FacesConverter(value = "altranreqUserConverter")
 public class AltranreqUserConverter implements Converter {
 
     @Inject
