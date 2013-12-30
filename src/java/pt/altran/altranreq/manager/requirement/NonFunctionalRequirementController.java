@@ -170,11 +170,12 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
     public void delete(ActionEvent event) {
         try {
 
-            Project currentProject = (Project)projectBean.getSelected();
-            getNFRequirement().setIdProject(currentProject);
+            //Project currentProject = (Project)projectBean.getSelected();
+            //getNFRequirement().setIdProject(currentProject);
         
-            setSelected(getNFRequirement());
-            nonFunctionalRequirementService.remove(getNFRequirement());
+            //setSelected(getNFRequirement());
+            //nonFunctionalRequirementService.remove(getNFRequirement());
+            nonFunctionalRequirementService.remove(getSelected());
             String successMsg = ResourceBundle.getBundle("MyBundle").getString("FunctionalRequirementDeleted");
             JsfUtil.addSuccessMessage(successMsg);
             
