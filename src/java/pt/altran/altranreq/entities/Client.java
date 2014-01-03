@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package pt.altran.altranreq.entities;
 
 import java.io.Serializable;
@@ -42,6 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Client.findByOtherContact", query = "SELECT c FROM Client c WHERE c.otherContact = :otherContact"),
     @NamedQuery(name = "Client.findByIdOrganization", query = "SELECT c FROM Client c WHERE c.idOrganization = :idOrganization")})
 public class Client implements Serializable {
+
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
@@ -69,7 +69,7 @@ public class Client implements Serializable {
     @Column(name = "OTHER_CONTACT")
     private String otherContact;
     @Basic(optional = false)
-    //@NotNull
+    @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "ID_ORGANIZATION")
     private String idOrganization;
@@ -192,5 +192,5 @@ public class Client implements Serializable {
     public String toString() {
         return "entities.Client[ idClient=" + idClient + " ]";
     }
-    
+
 }

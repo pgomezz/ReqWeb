@@ -1,7 +1,5 @@
 package Converters;
 
-import pt.altran.altranreq.entities.AltranreqUser;
-import pt.altran.altranreq.services.UserService;
 import pt.altran.altranreq.manager.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,16 +8,16 @@ import javax.inject.Inject;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-//import javax.faces.convert.FacesConverter;
 import javax.inject.Named;
+import pt.altran.altranreq.entities.Organization;
+import pt.altran.altranreq.services.OrganizationService;
 
-@Named(value = "altranreqUserConverter")
+@Named(value = "organizationConverter")
 @RequestScoped
-//@FacesConverter(value = "altranreqUserConverter")
-public class AltranreqUserConverter implements Converter {
+public class OrganizationConverter implements Converter {
 
     @Inject
-    private UserService ejbService;
+    private OrganizationService ejbService;
     
 
     @Override
@@ -27,9 +25,8 @@ public class AltranreqUserConverter implements Converter {
         if (value == null || value.length() == 0 || JsfUtil.isDummySelectItem(component, value)) {           
             return null;
         }
-        
-        AltranreqUser altranreqUser = this.ejbService.find(getKey(value));
-        return altranreqUser;
+        Organization organization = this.ejbService.find(getKey(value));
+        return organization;
     }
 
     java.math.BigDecimal getKey(String value) {
@@ -50,11 +47,11 @@ public class AltranreqUserConverter implements Converter {
                 || (object instanceof String && ((String) object).length() == 0)) {
             return null;
         }
-        if (object instanceof AltranreqUser) {
-            AltranreqUser o = (AltranreqUser) object;
-            return getStringKey(o.getIdUser());
+        if (object instanceof Organization) {
+            Organization o = (Organization) object;
+            return getStringKey(o.getIdOrganization());
         } else {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), AltranreqUser.class.getName()});
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Organization.class.getName()});
             return null;
         }
     }

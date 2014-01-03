@@ -30,22 +30,18 @@ public class BeanPagina implements Serializable {
     }
 
     public String getPaginaProj() {
-        System.out.println("PAGINA Proj GET: "+paginaProj);
         return paginaProj;
     }
 
     public void setPaginaProj(String paginaProj) {
-        System.out.println("PAGINA Proj SET");
         this.paginaProj = paginaProj;
     }
 
     public void setPaginaAdmin(String paginaAdmin) {
-        System.out.println("PAGINA Admin SET");
         this.paginaAdmin = paginaAdmin;
     }
 
     public String getPaginaAdmin() {
-        System.out.println("PAGINA Admin GET: "+paginaAdmin);
         return paginaAdmin;
     }
 

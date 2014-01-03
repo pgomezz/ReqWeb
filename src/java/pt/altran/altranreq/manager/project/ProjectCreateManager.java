@@ -15,9 +15,11 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import pt.altran.altranreq.entities.AltranreqUser;
+import pt.altran.altranreq.entities.Organization;
 import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.manager.AbstractController;
 import pt.altran.altranreq.manager.util.JsfUtil;
+import pt.altran.altranreq.services.OrganizationService;
 import pt.altran.altranreq.services.ProjectService;
 import pt.altran.altranreq.services.UserService;
 
@@ -35,7 +37,12 @@ public class ProjectCreateManager extends AbstractController<Project> implements
     @Inject
     private UserService userService;
     
+    @Inject
+    private OrganizationService organizationService;
+    
     private AltranreqUser user;
+    
+    private Organization organization;
 
     @PostConstruct
     public void init() {
@@ -64,8 +71,23 @@ public class ProjectCreateManager extends AbstractController<Project> implements
         List<AltranreqUser> users = userService.findAll();
         return users;
     }
+    
+    public List<Organization> getOrganizationList(){
+        List<Organization> orgList = organizationService.findAll();
+        return orgList;
+    }
+    
+    public void setOrganization(Organization org){
+        String id = (org==null) ? null : org.getIdOrganization().toString();
+        getProject().setIdOrganization(org);
+    }
+    
+    public Organization getOrganization(){
+        return organization;
+    }
 
     public void setProjectManager(AltranreqUser aru) {
+        System.out.println("Aqui é o setProjetManager");
         BigInteger id = (aru==null) ? null : aru.getIdUser().toBigInteger();
         getProject().setIdProjectManager(id);
         user = aru;

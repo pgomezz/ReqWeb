@@ -1,57 +1,68 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
 
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-            <p:panel header="#{project.EditTitle}">
-                <h:form id="ProjectCreateForm" >
+    <p:panel header="#{project.EditTitle}">
+        <h:form id="ProjectCreateForm" >
 
-                    <h:panelGroup id="display">
-                        <p:panelGrid columns="2">
+            <h:panelGroup id="display">
+                <p:panelGrid columns="2">
 
-                            <p:outputLabel value="#{project.Name}" for="name" />
-                            <p:inputText id="name" value="#{projectEditManager.project.name}" title="#{project.Name}" required="true" requiredMessage="#{project.Name}" size="100" maxlength="100"/>
+                    <p:outputLabel value="#{project.Name}" for="name" />
+                    <p:inputText id="name" value="#{projectEditManager.project.name}" title="#{project.Name}" required="true" requiredMessage="#{project.Name}" size="100" maxlength="100"/>
 
-                            <p:outputLabel value="#{project.Description}" for="description" />
-                            <p:inputTextarea rows="4" cols="30" id="description" value="#{projectEditManager.project.description}" title="#{project.Description}" required="true" requiredMessage="#{project.CreateProjectRequiredMessage_description}"/>
+                    <p:outputLabel value="#{project.Description}" for="description" />
+                    <p:inputTextarea rows="4" cols="30" id="description" value="#{projectEditManager.project.description}" title="#{project.Description}" required="true" requiredMessage="#{project.CreateProjectRequiredMessage_description}"/>
 
-                            <p:outputLabel value="#{project.BeginDate}" for="beginDate" />
-                            <p:calendar id="beginDate" pattern="dd/MM/yyyy" value="#{projectEditManager.project.beginDate}" title="#{project.BeginDate}"  showOn="button"/>
+                    <p:outputLabel value="#{project.BeginDate}" for="beginDate" />
+                    <p:calendar id="beginDate" pattern="dd/MM/yyyy" value="#{projectEditManager.project.beginDate}" title="#{project.BeginDate}"  showOn="button"/>
 
-                            <p:outputLabel value="#{project.EndDate}" for="endDate" />
-                            <p:calendar id="endDate" pattern="dd/MM/yyyy" value="#{projectEditManager.project.endDate}" title="#{project.EndDate}"  showOn="button"/>
+                    <p:outputLabel value="#{project.EndDate}" for="endDate" />
+                    <p:calendar id="endDate" pattern="dd/MM/yyyy" value="#{projectEditManager.project.endDate}" title="#{project.EndDate}"  showOn="button"/>
 
-                            <h:outputText value="#{project.State}" />
-                            <p:selectOneMenu value="#{projectEditManager.project.projectState}" >            
-                                <f:selectItem itemLabel="#{project.SelecteOneState}" itemValue="" />
-                                <f:selectItem itemLabel="#{project.State_ongoing}" itemValue="0" />
-                                <f:selectItem itemLabel="#{project.State_standby}" itemValue="1" />
-                                <f:selectItem itemLabel="#{project.State_done}" itemValue="2" />
-                                <f:selectItem itemLabel="#{project.State_mantainence}" itemValue="3" />
-                            </p:selectOneMenu>                            
+                    <h:outputText value="#{project.State}" />
+                    <p:selectOneMenu value="#{projectEditManager.project.projectState}" >            
+                        <f:selectItem itemLabel="#{project.SelecteOneState}" itemValue="" />
+                        <f:selectItem itemLabel="#{project.State_ongoing}" itemValue="0" />
+                        <f:selectItem itemLabel="#{project.State_standby}" itemValue="1" />
+                        <f:selectItem itemLabel="#{project.State_done}" itemValue="2" />
+                        <f:selectItem itemLabel="#{project.State_mantainence}" itemValue="3" />
+                    </p:selectOneMenu>                            
 
-                            <h:outputLabel value="#{project.ProjectManager}*" for="projectManager"/>  
+                    <h:outputLabel value="#{project.ProjectManager}*" for="projectManager"/>  
 
-                            <p:selectOneMenu id="projectManager" value="#{projectEditManager.projectManager}"  panelStyle="width:300px"  
-                                             converter="#{bigDecimalConverter}"  effect="fade" var="u" style="width:260px"  filter="true" filterMatchMode="startsWith">  
-                                <f:selectItem itemLabel="#{project.SelecteOneStateProjectManager}" itemValue="" />  
-                                <f:selectItems value="#{projectEditManager.usersList}" var="u" itemValue="#{u}" itemLabel="#{u.name}"  />
-                                <p:column>  
-                                    #{u.name}
-                                </p:column>  
-                            </p:selectOneMenu>  
-                            <p:outputLabel value="#{project.Terminology}" for="terminology" />
-                            <p:inputText id="terminology" value="#{projectEditManager.project.terminology}" title="#{project.Terminology}" requiredMessage="#{project.CreateProjectRequiredMessage_name}" size="100" maxlength="100"/>
-                        </p:panelGrid>
-                        <p:commandButton actionListener="#{projectEditManager.save}" action="/index"  value="#{project.Save}"  ajax="false" >
-                            <f:actionListener binding="#{beanPagina.setPaginaProj('/project/List.xhtml')}"/>
-                        </p:commandButton>
-                       <p:commandButton value="#{project.Cancel}" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" action="/index" immediate="true" ajax="false"/>
-                    </h:panelGroup>
-                </h:form>
-            </p:panel>
-    </ui:composition>
+                    <p:selectOneMenu id="projectManager" value="#{projectEditManager.projectManager}"  panelStyle="width:300px"  
+                                     converter="#{bigDecimalConverter}"  effect="fade" var="u" style="width:260px"  filter="true" filterMatchMode="startsWith">  
+                        <f:selectItem itemLabel="#{project.SelecteOneStateProjectManager}" itemValue="" />  
+                        <f:selectItems value="#{projectEditManager.usersList}" var="u" itemValue="#{u}" itemLabel="#{u.name}"  />
+                        <p:column>  
+                            #{u.name}
+                        </p:column>  
+                    </p:selectOneMenu>
+
+                    <h:outputLabel value="#{project.Organization}" for="organization"/>  
+                    <p:selectOneMenu id="organization" value="#{projectEditManager.organization}"  panelStyle="width:300px"  
+                                     converter="#{organizationConverter}" effect="fade" var="o" style="width:260px"  filter="true" filterMatchMode="startsWith">  
+                        <f:selectItem itemLabel="#{project.SelecteOneStateOrganization}" itemValue="" />  
+                        <f:selectItems value="#{projectEditManager.organizationList}" var="o" itemValue="#{o}" itemLabel="#{o.name}" />
+                        <p:column>  
+                            #{o.name}
+                        </p:column>  
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="#{project.Terminology}" for="terminology" />
+                    <p:inputText id="terminology" value="#{projectEditManager.project.terminology}" title="#{project.Terminology}" requiredMessage="#{project.CreateProjectRequiredMessage_name}" size="100" maxlength="100"/>
+                </p:panelGrid>
+                <p:commandButton actionListener="#{projectEditManager.save}" action="/index"  value="#{project.Save}"  ajax="false" >
+                    <f:actionListener binding="#{beanPagina.setPaginaProj('/project/List.xhtml')}"/>
+                </p:commandButton>
+                <p:commandButton value="#{project.Cancel}" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" action="/index" immediate="true" ajax="false"/>
+            </h:panelGroup>
+        </h:form>
+    </p:panel>
+</ui:composition>

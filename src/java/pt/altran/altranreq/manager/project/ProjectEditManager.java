@@ -15,9 +15,11 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import pt.altran.altranreq.entities.AltranreqUser;
+import pt.altran.altranreq.entities.Organization;
 import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.manager.AbstractController;
 import pt.altran.altranreq.manager.util.JsfUtil;
+import pt.altran.altranreq.services.OrganizationService;
 import pt.altran.altranreq.services.ProjectService;
 import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.UserService;
@@ -36,6 +38,9 @@ public class ProjectEditManager extends AbstractController<Project> implements S
     private ProjectServiceBean projectServiceBean;
     @Inject
     private UserService userService;
+    @Inject
+    private OrganizationService organizationService;
+    
     private AltranreqUser user;
     private List<AltranreqUser> usersList;
 
@@ -65,6 +70,29 @@ public class ProjectEditManager extends AbstractController<Project> implements S
             usersList = userService.findAll();
         }
         return usersList;
+    }
+    
+    public List<Organization> getOrganizationList(){
+        List<Organization> orgList = organizationService.findAll();
+        return orgList;
+    }
+    
+    public void setOrganization(Organization org){
+        getProject().setIdOrganization(org);
+    }
+    
+    public Organization getOrganization(){
+        return getProject().getIdOrganization();
+    }
+    
+    public String getOrganizationNameById(){
+        if(getProject().getIdOrganization()!=null){
+        Organization org = getProject().getIdOrganization();
+        return org.getName();
+        }
+        else{
+            return "Sem organização";
+        }
     }
 
     public void setProjectManager(AltranreqUser aru) {

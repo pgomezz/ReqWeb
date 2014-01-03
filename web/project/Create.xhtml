@@ -53,11 +53,21 @@
                             #{u.name}
                         </p:column>  
                     </p:selectOneMenu> 
-                    <p:message for="projectManager" display="#{project.ProjectUserCollection}" /> 
+                    <p:message for="projectManager" display="#{project.ProjectUserCollection}" />
+
+                    <h:outputLabel value="#{project.Organization}" for="organization"/>  
+                    <p:selectOneMenu id="organization" value="#{projectCreateManager.organization}"  panelStyle="width:300px"  
+                                     converter="#{organizationConverter}" effect="fade" var="o" style="width:260px"  filter="true" filterMatchMode="startsWith">  
+                        <f:selectItem itemLabel="#{project.SelecteOneStateOrganization}" itemValue="" />  
+                        <f:selectItems value="#{projectCreateManager.organizationList}" var="o" itemValue="#{o}" itemLabel="#{o.name}" />
+                        <p:column>  
+                            #{o.name}
+                        </p:column>  
+                    </p:selectOneMenu>
+                    <p:message for="organization" display="#{project.Organization}" />
+
                     <p:outputLabel value="#{project.Terminology}" for="terminology" />
                     <p:inputText id="terminology" value="#{projectCreateManager.project.terminology}" title="#{project.Terminology}" requiredMessage="#{project.Name}" size="100" maxlength="100"/>
-
-                    <label></label>
 
                 </p:panelGrid>
                 <p:commandButton actionListener="#{projectCreateManager.saveNew(event)}" action="/index"  value="#{project.Save}"  ajax="false">

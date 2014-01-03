@@ -43,7 +43,7 @@ public class UseCaseImp extends AbstractServiceImp<UseCase> implements UseCaseSe
         
         FunctionalRequirement f = new FunctionalRequirement();
         
-        f = getEntityManager().find(FunctionalRequirement.class, BigDecimal.valueOf(225));
+        //f = getEntityManager().find(FunctionalRequirement.class, BigDecimal.valueOf(225));
 
         Query queryUC = em.createNamedQuery("UseCase.findUseCaseByIdReq");
         Query queryFR = em.createNamedQuery("FunctionalRequirement.findByIdFunctionalRequirement");

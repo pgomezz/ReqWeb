@@ -20,6 +20,10 @@
 
                 <h:outputText value="#{client.Mobile}"/>
                 <h:outputText value="#{clientEditController.client.mobile}" title="#{client.Mobile}"/>
+
+                <h:outputText value="#{client.Organization}"/>
+                <h:outputText value="#{clientEditController.organizationNameById}" title="#{client.Organization}"/>
+
             </p:panelGrid>
             <p:commandButton value="#{client.Close}" action="/index" actionListener="#{beanPagina.setPaginaAdmin('/admin/client/List.xhtml')}" ajax="false"/>
         </h:panelGroup>

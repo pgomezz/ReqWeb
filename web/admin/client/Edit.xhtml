@@ -19,8 +19,19 @@
 
                 <p:outputLabel value="#{client.Mobile}" for="mobile" />
                 <p:inputText id="mobile" value="#{clientEditController.client.mobile}" title="#{client.Mobile}" size="20" maxlength="20"/>
+
+                <h:outputLabel value="#{client.Organization}" for="organization"/>  
+                <p:selectOneMenu id="organization" value="#{clientEditController.organization}"  panelStyle="width:300px"  
+                                 converter="#{organizationConverter}" effect="fade" var="e" style="width:260px"  filter="true" filterMatchMode="startsWith">  
+                    <f:selectItem itemLabel="#{client.SelecteOneStateOrganization}" itemValue="" />  
+                    <f:selectItems value="#{clientEditController.organizationList}" var="e" itemValue="#{e}" itemLabel="#{e.name}" />
+                    <p:column>  
+                        #{e.name}
+                    </p:column>  
+                </p:selectOneMenu>
+
             </p:panelGrid>
-            <p:commandButton actionListener="#{clientEditController.save}" action="/index" value="#{client.Save}" ajax="false" >
+            <p:commandButton actionListener="#{clientEditController.save(event)}" action="/index" value="#{client.Save}" ajax="false" >
                 <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/client/List.xhtml')}"/>
             </p:commandButton>
             <p:commandButton value="#{client.Cancel}" action="/index" ajax="false" actionListener="#{beanPagina.setPaginaAdmin('/admin/client/List.xhtml')}"/>
