@@ -33,15 +33,15 @@ public class ProjectCreateManager extends AbstractController<Project> implements
 
     @Inject
     private ProjectService projectService;
-    
+
     @Inject
     private UserService userService;
-    
+
     @Inject
     private OrganizationService organizationService;
-    
+
     private AltranreqUser user;
-    
+
     private Organization organization;
 
     @PostConstruct
@@ -71,24 +71,28 @@ public class ProjectCreateManager extends AbstractController<Project> implements
         List<AltranreqUser> users = userService.findAll();
         return users;
     }
-    
-    public List<Organization> getOrganizationList(){
+
+    public List<Organization> getOrganizationList() {
         List<Organization> orgList = organizationService.findAll();
         return orgList;
     }
-    
-    public void setOrganization(Organization org){
-        String id = (org==null) ? null : org.getIdOrganization().toString();
-        getProject().setIdOrganization(org);
+
+    public void setOrganization(Organization org) {
+        //String id = (org == null) ? null : org.getIdOrganization().toString();
+        //System.out.println("1111111111111");
+        if (org != null) {
+            getProject().setIdOrganization(org);
+        }
+        //System.out.println("22222222222222");
     }
-    
-    public Organization getOrganization(){
+
+    public Organization getOrganization() {
         return organization;
     }
 
     public void setProjectManager(AltranreqUser aru) {
         System.out.println("Aqui é o setProjetManager");
-        BigInteger id = (aru==null) ? null : aru.getIdUser().toBigInteger();
+        BigInteger id = (aru == null) ? null : aru.getIdUser().toBigInteger();
         getProject().setIdProjectManager(id);
         user = aru;
     }

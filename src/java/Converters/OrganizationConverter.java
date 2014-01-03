@@ -3,6 +3,7 @@ package Converters;
 import pt.altran.altranreq.manager.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJBException;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.faces.component.UIComponent;
@@ -18,11 +19,10 @@ public class OrganizationConverter implements Converter {
 
     @Inject
     private OrganizationService ejbService;
-    
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
-        if (value == null || value.length() == 0 || JsfUtil.isDummySelectItem(component, value)) {           
+        if (value == null || value.length() == 0 || JsfUtil.isDummySelectItem(component, value)) {
             return null;
         }
         Organization organization = this.ejbService.find(getKey(value));
@@ -30,9 +30,14 @@ public class OrganizationConverter implements Converter {
     }
 
     java.math.BigDecimal getKey(String value) {
-        java.math.BigDecimal key;
-        key = new java.math.BigDecimal(value);
-        return key;
+        try {
+            java.math.BigDecimal key;
+            key = new java.math.BigDecimal(value);
+            return key;
+        } catch (Exception e) {
+            return null;
+        }
+
     }
 
     String getStringKey(java.math.BigDecimal value) {

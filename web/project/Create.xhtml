@@ -57,7 +57,7 @@
 
                     <h:outputLabel value="#{project.Organization}" for="organization"/>  
                     <p:selectOneMenu id="organization" value="#{projectCreateManager.organization}"  panelStyle="width:300px"  
-                                     converter="#{organizationConverter}" effect="fade" var="o" style="width:260px"  filter="true" filterMatchMode="startsWith">  
+                                     converter="#{bigDecimalConverterOrg}" effect="fade" var="o" style="width:260px"  filter="true" filterMatchMode="startsWith">  
                         <f:selectItem itemLabel="#{project.SelecteOneStateOrganization}" itemValue="" />  
                         <f:selectItems value="#{projectCreateManager.organizationList}" var="o" itemValue="#{o}" itemLabel="#{o.name}" />
                         <p:column>  
