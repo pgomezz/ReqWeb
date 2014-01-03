@@ -13,7 +13,6 @@ import javax.faces.convert.Converter;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import pt.altran.altranreq.entities.AltranreqUser;
 import pt.altran.altranreq.entities.Organization;
 
 /**
