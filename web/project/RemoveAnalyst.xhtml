@@ -6,7 +6,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <p:panel header="#{project.AddAnalyst}">
+    <p:panel header="#{project.RemoveAnalyst}">
         <h:form id="ProjectCreateForm">
 
             <h:panelGroup id="display">
@@ -17,13 +17,13 @@
                     <p:selectOneMenu id="Analyst" value="#{projectUserController.altranreqUser}"  panelStyle="width:300px"  
                                      converter="#{bigDecimalConverterAnalyst}" effect="fade" var="o" style="width:260px"  filter="true" filterMatchMode="startsWith">  
                         <f:selectItem itemLabel="#{project.SelectOneStateAnalyst}" itemValue="" />  
-                        <f:selectItems value="#{altranreqUserController.altranreqUsersAvailable}" var="o" itemValue="#{o}" itemLabel="#{o.name}" />
+                        <f:selectItems value="#{altranreqUserController.altranreqUsersAnalyst}" var="o" itemValue="#{o}" itemLabel="#{o.name}" />
                         <p:column>  
                             #{o.name}
                         </p:column>  
                     </p:selectOneMenu>
                     <!--Criar o necessário para poder adicionar na tabela Project_User-->
-                    <p:commandButton actionListener="#{projectUserController.saveNew(event)}" action="/index"  value="#{project.Save}"  ajax="false">
+                    <p:commandButton actionListener="#{projectUserController.delete(event)}" action="/index"  value="#{project.Delete}"  ajax="false">
                         <f:actionListener binding="#{beanPagina.setPaginaProj('/project/View.xhtml')}"/>
                     </p:commandButton>
                     

@@ -21,20 +21,19 @@ import pt.altran.altranreq.services.ProjectServiceBean;
 @SessionScoped
 public class ProjectUserController extends AbstractController<ProjectUser> implements Serializable {
 
-
     @Inject
     private ProjectUserService projectUserService;
-    
+
     @Inject
     private ProjectServiceBean projectServiceBean;
-    
+
     @Inject
     private ProjectService projectService;
-    
+
     private ProjectUser projectUser;
-    
+
     private Project project;
-    
+
     private AltranreqUser altranreqUser;
 
     public ProjectUserController() {
@@ -44,56 +43,30 @@ public class ProjectUserController extends AbstractController<ProjectUser> imple
 
     @Override
     public void saveNew(ActionEvent event) {
-        
-       
-        //setSelected(getSelected());
-        //projectUser.getProjectUserPK().setIdUser(projectUser.getAltranreqUser().getIdUser());
-        //System.out.println("GETIDUSERPK: "+projectUser.getProjectUserPK().getIdUser());
-        //projectUser.getProjectUserPK().setIdProject(projectServiceBean.getIdProject());
-        //System.out.println("GETIDPROJECTPK: "+projectUser.getProjectUserPK().getIdProject());
-        //projectUser = new ProjectUser();
-        //projectUser.setProjectUserPK(new ProjectUserPK());
-        //setSelected(projectUser);
-        
+
         ProjectUserPK PK = new ProjectUserPK();
-        System.out.println("PROJECT SERV BEAN ID PROJ: "+projectServiceBean.getProject().getIdProject());
         PK.setIdProject(projectServiceBean.getProject().getIdProject());
-//        System.out.println("IDUSER do GETSELECTED: "+getSelected().getAltranreqUser().getIdUser());
- //       PK.setIdUser(getProjectUser().getAltranreqUser().getIdUser());
-        
-        //System.out.println("PROJECTSERVICE Name"+projectService.find(id).getName());
-        System.out.println("IDUSER: "+this.getAltranreqUser().getUsername());
+        PK.setIdUser(this.altranreqUser.getIdUser());
         getProjectUser().setProjectUserPK(PK);
-        getProjectUser().setAltranreqUser(this.getAltranreqUser());
         projectUserService.create(getSelected());
-        //super.saveNew(event); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public ProjectUser getProjectUser(){
+
+    @Override
+    public void delete(ActionEvent event) {
+        
+        projectUserService.remove(projectUserService.getProjectUser(projectServiceBean.getProject().getIdProject(), this.altranreqUser.getIdUser()));
+    }
+
+    public ProjectUser getProjectUser() {
         ProjectUser sel = getSelected();
         return sel;
     }
-    
+
     public void setAltranreqUser(AltranreqUser user) {
-        
         altranreqUser = user;
     }
-    
+
     public AltranreqUser getAltranreqUser() {
         return altranreqUser;
     }
-
-    /*public String create() {
-        try {
-            projectUser.getProjectUserPK().setIdUser(projectUser.getAltranreqUser().getIdUser());
-            projectUser.getProjectUserPK().setIdProject(projectUser.getProject().getIdProject());
-            //getFacade().create(projectUser);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ProjectUserCreated"));
-            return prepareCreate();
-        } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-            return null;
-        }
-    }*/
-
 }
