@@ -7,9 +7,11 @@
 package pt.altran.altranreq.services;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.ws.rs.core.Context;
+import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.manager.util.AltranTreeNode;
 
 @Named
@@ -64,5 +66,13 @@ public class ProjectServiceBean implements Serializable{
 
     public Object getSelected() {
         return selected;
+    }
+    
+    public BigDecimal getIdProject(){
+        return this.getIdProject();
+    }
+    
+    public Project getProject(){
+        return (Project) this.getSelected();
     }
 }

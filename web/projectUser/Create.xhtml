@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProjectUserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                <!--<h:outputLabel value="#{bundle.CreateProjectUserLabel_project}" for="project" />
+                    <h:selectOneMenu id="project" value="#{projectUserController.selected.project}" title="#{bundle.CreateProjectUserTitle_project}" required="true" requiredMessage="#{bundle.CreateProjectUserRequiredMessage_project}">
+                        <f:selectItems value="#{projectController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateProjectUserLabel_altranreqUser}" for="altranreqUser" />
+                    <h:selectOneMenu id="altranreqUser" value="#{projectUserController.selected.altranreqUser}" title="#{bundle.CreateProjectUserTitle_altranreqUser}" required="true" requiredMessage="#{bundle.CreateProjectUserRequiredMessage_altranreqUser}">
+                        <f:selectItems value="#{altranreqUserController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateProjectUserLabel_idRole}" for="idRole" />
+                    <h:selectOneMenu id="idRole" value="#{projectUserController.selected.idRole}" title="#{bundle.CreateProjectUserTitle_idRole}" required="true" requiredMessage="#{bundle.CreateProjectUserRequiredMessage_idRole}">
+                        <f:selectItems value="#{altranreqRoleController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>-->
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{projectUserController.create}" value="#{bundle.CreateProjectUserSaveLink}" />
+                <br />
+                <br /><!--
+                <h:commandLink action="#{projectUserController.prepareList}" value="#{bundle.CreateProjectUserShowAllLink}" immediate="true"/>
+                <br />-->
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateProjectUserIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

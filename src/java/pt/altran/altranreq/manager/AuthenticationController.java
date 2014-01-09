@@ -75,9 +75,9 @@ public class AuthenticationController implements Serializable {
     public void login(ActionEvent event) {
         FacesMessage msg = null;
         user=authenticationService.login(username, password);
-        
-          if(user!=null)
-      { 
+        authenticationBean.setUsername(username);
+        if(user!=null)
+        { 
               authorizationService.setUserID(user.getIdUser().intValue());
               AuthorizationServiceImp authorizationServiceImp = (AuthorizationServiceImp)authorizationService;
              

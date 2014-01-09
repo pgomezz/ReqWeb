@@ -37,6 +37,7 @@ public class AuthenticationBean implements Serializable{
     private String password; 
 
     public String getUsername() {
+        System.out.println("USERNAME"+username);
         return username;
     }
 

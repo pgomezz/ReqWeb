@@ -7,9 +7,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/tabs.xhtml">
-        
+
         <ui:define name="title">
-            <h:outputText value="#{myBundle.CreateProjectTitle}"></h:outputText>
+            <h:outputText value="AltranReq"></h:outputText>
         </ui:define>
 
         <ui:define name="accorTree">
@@ -25,6 +25,12 @@
         </ui:define>
 
         <ui:define name="AdminTab">
+            <!--
+            #{beanCaminho.gerarCaminho()}
+            <h:form>
+                <p:commandLink value="#{beanCaminho.valueAdmin}" actionListener="#{beanCaminho.caminhoAdmin}" ajax="false"/>  
+            </h:form>
+            -->
             <ui:include src="#{beanPagina.paginaAdmin}" />
         </ui:define>
 

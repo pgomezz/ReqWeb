@@ -20,6 +20,7 @@
                 <h:panelGrid columns="1">
                     <h:commandLink value="Lista de Projectos" action="/index">
                         <f:actionListener binding="#{tabBean.setActiveIndex(0)}" />
+                        <f:actionListener binding="#{beanPagina.setAccordTree('/accordion.xhtml')}"/>
                         <f:actionListener binding="#{beanPagina.setPaginaProj('/project/List.xhtml')}"/>
                     </h:commandLink>                            
                 </h:panelGrid>  

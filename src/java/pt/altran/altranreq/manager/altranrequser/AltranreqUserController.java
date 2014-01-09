@@ -3,7 +3,6 @@ package pt.altran.altranreq.manager.altranrequser;
 import java.io.IOException;
 import pt.altran.altranreq.entities.AltranreqUser;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
@@ -13,6 +12,7 @@ import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import javax.inject.Inject;
 import javax.faces.view.ViewScoped;
+import org.primefaces.event.TransferEvent;
 import org.primefaces.model.DualListModel;
 import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.manager.AbstractController;
@@ -26,15 +26,15 @@ public class AltranreqUserController extends AbstractController<AltranreqUser> i
 
     @Inject
     private UserService ejbService;
-    
+
     @Inject
     private AltranreqUserBean altranreqUserBean;
-    
+
     @Inject
     private ProjectServiceBean projectBean;
-    
+
     private AltranreqUser altranreqUser;
-    
+
     private DualListModel<AltranreqUser> altranreqUsersDual;
 
     public AltranreqUserController() {
@@ -44,24 +44,58 @@ public class AltranreqUserController extends AbstractController<AltranreqUser> i
     @PostConstruct
     public void init() {
         super.setService(ejbService);
+        getAltranreqUsersDual();
     }
 
+    public List<AltranreqUser> getAltranreqUsersAnalyst(){
+        Project projectSelected = (Project) projectBean.getSelected();
+        List<AltranreqUser> users = ejbService.findUsersByProject(projectSelected);
+        return users;
+    }
+    
+    public List<AltranreqUser> getAltranreqUsersAvailable(){
+        Project projectSelected = (Project) projectBean.getSelected();
+        List<AltranreqUser> users = ejbService.findUsersNotInProject(projectSelected);
+        return users;
+    }
+    
     public DualListModel<AltranreqUser> getAltranreqUsersDual() {
-        
-        Project projectSelected = (Project)projectBean.getSelected();
+        System.out.println("Teste GET");
+        Project projectSelected = (Project) projectBean.getSelected();
         List<AltranreqUser> source = ejbService.findUsersNotInProject(projectSelected);
-        List<AltranreqUser> target = ejbService.findUsersByProject(projectSelected); 
-        altranreqUsersDual = new DualListModel<>(source, target); 
+        List<AltranreqUser> target = ejbService.findUsersByProject(projectSelected);
+        altranreqUsersDual = new DualListModel<>(source, target);
         return altranreqUsersDual;
     }
 
-    public void setAltranreqUsersDual(DualListModel<AltranreqUser> altranreqUsersDual) {
-        this.altranreqUsersDual = altranreqUsersDual;
+    public void escreveUmaCena(){
+        System.out.println("EScreve uma cena");
     }
-    
+    public void setAltranreqUserDual() {/*DualListModel<AltranreqUser> altranreqUsersDual*/
+        System.out.println("aquiaquiaquiaqui");
+        /*for(int i=0;i<event.getItems().size();i++){
+        System.out.println("Transferidos: "+event.getItems().get(i).toString());
+        }
+        
+        List<AltranreqUser> sourceVariables = this.altranreqUsersDual.getSource();
+        List<AltranreqUser> targetVariables = this.altranreqUsersDual.getTarget();
+
+        System.out.println(altranreqUsersDual.getSource());
+        System.out.println(altranreqUsersDual.getTarget());
+
+        for (AltranreqUser sourceVariable : sourceVariables) {
+            System.out.println("Source variable: " + sourceVariable.getName());
+        }
+        for (AltranreqUser targetVariable : targetVariables) {
+            System.out.println("Target variable: " + targetVariable.getName());
+        }*/
+        //this.altranreqUsersDual = altranreqUsersDual;
+    }
+
     public void keepState() throws IOException {
-            altranreqUserBean.setSelected(this.getSelected());
+        altranreqUserBean.setSelected(this.getSelected());
     }
+
     @Override
     public void delete(ActionEvent event) {
         try {
@@ -72,9 +106,18 @@ public class AltranreqUserController extends AbstractController<AltranreqUser> i
             sendMessages(FacesMessage.SEVERITY_ERROR, ResourceBundle.getBundle("/user").getString("ErrorMessage"), null);
         }
     }
-    
+
     public void sendMessages(FacesMessage.Severity severity, String summary, String details) {
         FacesMessage message = new FacesMessage(severity, summary, details);
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
+
+    public AltranreqUser getAltranreqUser() {
+        return altranreqUser;
+    }
+
+    public void setAltranreqUser(AltranreqUser altranreqUser) {
+        this.altranreqUser = altranreqUser;
+    }
+    
 }

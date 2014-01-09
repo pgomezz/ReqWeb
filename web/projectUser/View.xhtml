@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProjectUserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProjectUserLabel_project}"/>
+                    <h:outputText value="#{projectUserController.selected.project}" title="#{bundle.ViewProjectUserTitle_project}"/>
+                    <h:outputText value="#{bundle.ViewProjectUserLabel_altranreqUser}"/>
+                    <h:outputText value="#{projectUserController.selected.altranreqUser}" title="#{bundle.ViewProjectUserTitle_altranreqUser}"/>
+                    <h:outputText value="#{bundle.ViewProjectUserLabel_idRole}"/>
+                    <h:outputText value="#{projectUserController.selected.idRole}" title="#{bundle.ViewProjectUserTitle_idRole}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{projectUserController.destroyAndView}" value="#{bundle.ViewProjectUserDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProjectUserEditLink}"/>
+                <br />
+                <h:commandLink action="#{projectUserController.prepareCreate}" value="#{bundle.ViewProjectUserCreateLink}" />
+                <br />
+                <h:commandLink action="#{projectUserController.prepareList}" value="#{bundle.ViewProjectUserShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProjectUserIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

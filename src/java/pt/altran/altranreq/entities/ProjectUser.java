@@ -69,6 +69,7 @@ public class ProjectUser implements Serializable {
     }
 
     public void setProject(Project project) {
+        System.out.println("SETPROJECT Name: "+project.getName());
         this.project = project;
     }
 

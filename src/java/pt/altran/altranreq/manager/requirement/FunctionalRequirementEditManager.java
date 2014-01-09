@@ -5,14 +5,9 @@
  */
 package pt.altran.altranreq.manager.requirement;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
