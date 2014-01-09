@@ -22,7 +22,6 @@
                             #{o.name}
                         </p:column>  
                     </p:selectOneMenu>
-                    <!--Criar o necessário para poder adicionar na tabela Project_User-->
                     <p:commandButton actionListener="#{projectUserController.saveNew(event)}" action="/index"  value="#{project.Save}"  ajax="false">
                         <f:actionListener binding="#{beanPagina.setPaginaProj('/project/View.xhtml')}"/>
                     </p:commandButton>
