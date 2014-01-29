@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Login</title>
         <link href="login/login.css" type="text/css" rel="stylesheet"/>
-    </h:head>
+    </h:head> 
     <h:body>
         #{beanPagina.init()}
         <div class="container">
@@ -23,10 +22,7 @@
                         <h:outputLabel for="password" value="Password:" />  
                         <h:inputSecret   
                             id="password" required="true" label="password" value="#{authenticationController.password}" />  
-
-                      
-                            <p:commandButton id="loginButton" value="Login" update="growl" actionListener="#{authenticationController.login}" />  
-                        
+                            <p:commandButton id="loginButton" value="Login" update="growl" actionListener="#{authenticationController.login}" />                          
                     </h:panelGrid>  
                 </p:panel>
             </h:form>  

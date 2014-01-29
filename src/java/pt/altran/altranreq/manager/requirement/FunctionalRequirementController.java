@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import javax.inject.Inject;
