@@ -14,7 +14,6 @@ import javax.inject.Named;
 import javax.inject.Inject;
 import pt.altran.altranreq.entities.AltranreqUser;
 import pt.altran.altranreq.manager.AbstractController;
-import pt.altran.altranreq.services.AuthenticationBean;
 import pt.altran.altranreq.services.AuthorizationService;
 import pt.altran.altranreq.services.ProjectService;
 import pt.altran.altranreq.services.ProjectServiceBean;
