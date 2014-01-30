@@ -7,8 +7,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
-        <title><ui:insert name="title">AltranReq</ui:insert></title>
-<h:outputStylesheet name="css/jsfcrud.css"/>
+        <title><ui:insert name="title"></ui:insert></title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
         <h:outputStylesheet library="css" name="pfcrud.css"/>
         <h:outputScript library="scripts" name="pfcrud.js"/>
         <meta charset="UTF-8"/>
@@ -19,7 +19,7 @@
             <p:growl id="growl" life="5000"/>
         </ui:insert>
         <p:layout fullPage="true">
-            <p:layoutUnit position="north" size="100" >
+            <p:layoutUnit position="north" size="80" >
                 <h:form>
                     <p:graphicImage id="tab1Img" value="/resources/images/altran/LogoAltran.jpg"  width="100" />
                     <div align="right">

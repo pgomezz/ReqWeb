@@ -6,14 +6,14 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui">
 
-    <h:form id="ProjectListForm">
+    <h:form id="ProjectListForm" style="width: 1000px" >
         <p:panel header="#{project.ListProjectTitle}">
             <p:dataTable id="datalist" value="#{projectController.items}" var="item"
                          selectionMode="single" selection="#{projectController.selected}"
                          rowKey="#{item.idProject}"
                          paginator="true"
                          rows="10"
-                         rowsPerPageTemplate="10,20,30">
+                         rowsPerPageTemplate="10,20,30" style="width: 100%; height: 100%">
                 <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                 <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
                 <p:column sortBy="#{item.name}">

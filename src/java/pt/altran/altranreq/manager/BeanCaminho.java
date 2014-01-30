@@ -7,7 +7,6 @@ package pt.altran.altranreq.manager;
 
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -36,7 +35,7 @@ public class BeanCaminho implements Serializable {
     public void gerarCaminho(){
         switch (beanPagina.getPaginaAdmin()) {
             case "/admin/altranreqUser/List.xhtml":
-                System.out.println("INDEX");
+                //System.out.println("INDEX");
                 setValueAdmin("Index");
                 setCaminhoAdmin("<p:commandLink value=\"Index>\" actionListener=\"/admin/altranreqUser/List.xhtml\"/>");
                 break;

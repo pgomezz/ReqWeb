@@ -12,9 +12,6 @@
             <h:outputText value="#{user.Name}"/>
             <h:outputText value="#{altranreqUserEditController.altranreqUser.name}" title="#{myBundle.ViewAltranreqUserTitle_name}"/>
 
-            <h:outputText value="#{user.Password}"/>
-            <h:outputText value="#{altranreqUserEditController.altranreqUser.password}" title="#{myBundle.ViewAltranreqUserTitle_password}"/>
-
             <h:outputText value="#{user.Username}"/>
             <h:outputText value="#{altranreqUserEditController.altranreqUser.username}" title="#{myBundle.ViewAltranreqUserTitle_username}"/>
 
@@ -25,7 +22,7 @@
             <h:outputText value="#{altranreqUserEditController.altranreqUser.mobile}" title="#{myBundle.ViewAltranreqUserTitle_mobile}"/>
 
             <h:outputText value="#{user.IsAdmin}"/>
-            <h:outputText value="#{altranreqUserEditController.altranreqUser.isAdmin}" title="#{myBundle.ViewAltranreqUserTitle_isAdmin}"/>
+            <h:outputText value="#{altranreqUserEditController.altranreqUser.stringIsAdmin}" title="#{myBundle.ViewAltranreqUserTitle_isAdmin}"/>
         </p:panelGrid>
         <p:commandButton value="#{user.Close}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqUser/List.xhtml')}" action="/index" ajax="false"/>
     </h:form>

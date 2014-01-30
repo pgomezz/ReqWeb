@@ -14,6 +14,8 @@
 }
 .ui-datatable .ui-datatable-footer .footer-section {
     text-align: left;
+    width: 1000px;
+    height: 600px;
 }
 
 .ui-tabs .ui-tabs-nav li{
@@ -28,9 +30,4 @@
 .ui-inputtext
 {
     width: 366px !important;
-}
-
-.ui-TodaBoa
-{
-    
 }

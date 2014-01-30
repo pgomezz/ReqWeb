@@ -169,7 +169,13 @@ public class AltranreqUser implements Serializable {
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
-
+    public String getStringIsAdmin(){
+        if (getIsAdmin()==0){
+            return "Não";
+        }else
+        return "Sim";
+    
+    }
     public char getIsAdmin() {
         return isAdmin;
     }
