@@ -8,11 +8,11 @@
 
     <ui:define name="body" >
         <p:tabView id="TabProfile" activeIndex="#{tabBean.activeIndex}" 
-                   style="height:98%;">
+                   style="height:100%; width: 100%">
             <p:ajax event="tabChange" listener="#{tabBean.onTabChange}" />
             <p:tab title="#{myBundle.ProjectsTab}" id="TabProjects" >
                 <p:layout style="width:100%;height:100%;" >
-                    <p:layoutUnit position="west" size="207">
+                    <p:layoutUnit position="west" size="207" style="height: 100%">
                         <ui:insert name="accorTree">
                             Accordion
                         </ui:insert>

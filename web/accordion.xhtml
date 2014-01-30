@@ -4,8 +4,8 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:form id="accordion">    
-        <p:accordionPanel style="width: 200px;  margin-top: 11%" activeIndex="-1">                  
+    <h:form id="accordion" style="height: 100%">    
+        <p:accordionPanel style="width: 200px;  margin-top: 11%" activeIndex="-1" >                  
             <!--<p:tab title="Utilizadores" disabled="#{!authorizationService.admin}">  
                     <h:panelGrid columns="2">  
                             <h:link value="Contas de Utilizadores" outcome="/admin/altranreqUser/index">
@@ -15,7 +15,7 @@
                     </h:panelGrid>  
                 </p:tab>  -->
             <p:tab title="Projectos">  
-                <h:panelGrid columns="1">
+                <h:panelGrid columns="1" style=" height: 150%">
                     <h:commandLink value="Lista de projectos" action="/index">
                         <f:actionListener binding="#{beanPagina.setPaginaProj('/project/List.xhtml')}"/>
                     </h:commandLink>                             

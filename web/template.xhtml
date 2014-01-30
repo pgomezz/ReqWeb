@@ -23,10 +23,12 @@
                 <h:form>
                     <p:graphicImage id="tab1Img" value="/resources/images/altran/LogoAltran.jpg"  width="100" />
                     <div align="right">
-                        <p:commandButton id="logout" value="Logout" action="/login" />
+                        <p:commandButton id="logout" value="Logout" action="/login" icon="ui-icon-close" />
+                      
                     </div>
                     <div align="right">
-                        <p:commandLink id="user" value="#{authenticationBean.username}" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" ajax="false" >
+                        <h:outputLabel for="username" value="Username: " style=" color: blue; font-weight:  bold" /> 
+                        <p:commandLink id="user" value=" #{authenticationBean.username}" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" ajax="false" style=" width: 150px" >
                             <f:actionListener binding="#{beanPagina.setAccordTree('/accordion.xhtml')}" />
                         </p:commandLink>
                     </div>
