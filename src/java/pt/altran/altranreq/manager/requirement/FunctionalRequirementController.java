@@ -27,24 +27,18 @@ public class FunctionalRequirementController extends AbstractController<Function
     private FunctionalRequirementService functionalRequirementService;
 
     @Inject
-    private TreeService treeService;
-
-    @Inject
     private ProjectServiceBean projectBean;
+    
+    @Inject 
+    private TreeService treeService;
 
     @Inject
     private FunctionalRequirementServiceBean functionalRequirementBean;
     
     private FunctionalRequirement functionalRequirement;
-   
-    
-    
-    
+  
     public String getNameProject (){
-    
-    
         return ((Project)projectBean.getSelected()).getName();
-        
     }
     
     private int id;
@@ -59,35 +53,27 @@ public class FunctionalRequirementController extends AbstractController<Function
 
     public FunctionalRequirementController() {
         super(FunctionalRequirement.class);
+        
     }
 
     @PostConstruct
     public void init() {
         super.setService(functionalRequirementService);
-        
-        
-
     }
     
     @Override
     public void delete(ActionEvent event) {
         try {
-//            FunctionalRequirement pj = (FunctionalRequirement) functionalRequirementBean.getSelected();
-//            setSelected(pj);
-//            functionalRequirementService.remove(pj); //To change body of generated methods, choose Tools | Templates.
             Project currentProject = (Project)projectBean.getSelected();
             getFRequirement().setIdProject(currentProject);
         
             setSelected(getFRequirement());
             functionalRequirementService.remove(getFRequirement());
-            String successMsg = ResourceBundle.getBundle("MyBundle").getString("FunctionalRequirementDeleted");
-            JsfUtil.addSuccessMessage(successMsg);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("MyBundle").getString("FunctionalRequirementDeleted"));
             
         } catch (Exception e) {
-            String successMsg = ResourceBundle.getBundle("/project").getString("ErrorMessage");
-            JsfUtil.addErrorMessage(e.getMessage());
-
-        }
+            JsfUtil.addErrorMessage(ResourceBundle.getBundle("/project").getString("ErrorMessage"));
+       }
     }
 
     public boolean isFunctionalRequirementType() {
@@ -118,7 +104,7 @@ public class FunctionalRequirementController extends AbstractController<Function
     }
 
     public FunctionalRequirement getFRequirement() {
-       return getSelected();
+       return (FunctionalRequirement)functionalRequirementBean.getSelected();
     }
 
     public void setFunctionalRequirement() {
