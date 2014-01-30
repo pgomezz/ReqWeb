@@ -48,7 +48,7 @@ public class UseCaseController extends AbstractController<UseCase> implements Se
     }
 
     public boolean isUseCaseType() {
-        return treeService.getSelected() instanceof UseCase;
+        return useCaseBean.getSelected() instanceof UseCase;
     }
 
     public boolean isUseCaseTypeByNavigation() {
@@ -56,21 +56,18 @@ public class UseCaseController extends AbstractController<UseCase> implements Se
     }
 
     public UseCase getUseCase() {
-        return (UseCase) treeService.getSelected();
+        return (UseCase) useCaseBean.getSelected();
     }
 
     public Object getUseCaseByNavigation() {
-        //return useCaseBean.getSelected();
-        System.out.println("USECASE--> "+useCaseBean.getSelected().toString());
-        return (UseCase) useCaseBean.getSelected();
+          return (UseCase) useCaseBean.getSelected();
     }
 
     public List<UseCase> getLista() {
         FunctionalRequirement funcReqSelected = (FunctionalRequirement) funcReqBean.getSelected();
         
         int idfuncReq = Integer.parseInt(funcReqSelected.getIdFunctionalRequirement().toString());
-        //System.out.println("Lista = "+ Integer.parseInt(funcReqSelected.getIdFunctionalRequirement().toString()));
-        return ejbService.findUseCaseByRequirement(idfuncReq);
+         return ejbService.findUseCaseByRequirement(idfuncReq);
     }
 
     @Override
