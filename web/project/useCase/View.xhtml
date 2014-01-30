@@ -6,33 +6,33 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     
-        <p:panel header="Detalhes de Caso de Uso">
+        <p:panel header="#{project.DetailsUseCases}" style="width:100%;max-width:100%;">
             <h:form id="UseCaseViewForm">
-                <h:panelGroup id="display">
+                <h:panelGroup id="display" rendered="#{useCaseController.useCaseType}">
                     <p:panelGrid columns="2">
 
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_name}"/>
-                        <h:outputText value="#{useCaseController.useCase.name}" title="#{myBundle.ViewUseCaseTitle_name}"/>
+                        <h:outputText value="#{project.ViewUseCaseLabel_name}"/>
+                        <h:outputText value="#{useCaseController.useCase.name}" title="#{project.ViewUseCaseTitle_name}"/>
 
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_description}"/>
-                        <h:outputText value="#{useCaseController.useCase.description}" title="#{myBundle.ViewUseCaseTitle_description}"/>
+                        <h:outputText value="#{project.ViewUseCaseLabel_description}"/>
+                        <h:outputText value="#{useCaseController.useCase.description}" title="#{project.ViewUseCaseTitle_description}"/>
 
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_avaliationCriteria}"/>
-                        <h:outputText value="#{useCaseController.useCase.avaliationCriteria}" title="#{myBundle.ViewUseCaseTitle_avaliationCriteria}"/>
+                        <h:outputText value="#{project.ViewUseCaseLabel_avaliationCriteria}"/>
+                        <h:outputText value="#{useCaseController.useCase.avaliationCriteria}" title="#{project.ViewUseCaseTitle_avaliationCriteria}"/>
 
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_preCondition}"/>
-                        <h:outputText value="#{useCaseController.useCase.preCondition}" title="#{myBundle.ViewUseCaseTitle_preCondition}"/>
+                        <h:outputText value="#{project.ViewUseCaseLabel_preCondition}"/>
+                        <h:outputText value="#{useCaseController.useCase.preCondition}" title="#{project.ViewUseCaseTitle_preCondition}"/>
 
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_posCondition}"/>
-                        <h:outputText value="#{useCaseController.useCase.posCondition}" title="#{myBundle.ViewUseCaseTitle_posCondition}"/>
+                        <h:outputText value="#{project.ViewUseCaseLabel_posCondition}"/>
+                        <h:outputText value="#{useCaseController.useCase.posCondition}" title="#{project.ViewUseCaseTitle_posCondition}"/>
 
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_mainScenario}"/>
-                        <h:outputText value="#{useCaseController.useCase.mainScenario}" title="#{myBundle.ViewUseCaseTitle_mainScenario}"/>
+                        <h:outputText value="#{project.ViewUseCaseLabel_mainScenario}"/>
+                        <h:outputText value="#{useCaseController.useCase.mainScenario}" title="#{project.ViewUseCaseTitle_mainScenario}"/>
 
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_ordernumber}"/>
-                        <h:outputText value="#{useCaseController.useCase.ordernumber}" title="#{myBundle.ViewUseCaseTitle_ordernumber}"/>
+                        <h:outputText value="#{project.ViewUseCaseLabel_ordernumber}"/>
+                        <h:outputText value="#{useCaseController.useCase.ordernumber}" title="#{project.ViewUseCaseTitle_ordernumber}"/>
 
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_useCaseCollection}"/>
+                        <h:outputText value="#{project.ViewUseCaseLabel_useCaseCollection}"/>
                         <h:selectManyMenu converter="useCaseConverter">
                             <f:selectItems value="#{useCaseController.useCase.useCaseCollection}"
                                            var="useCaseCollectionItem"
@@ -42,7 +42,7 @@
 
                         </h:selectManyMenu>
                         
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_idFunctionalRequirement}"/>
+                        <h:outputText value="#{project.ViewUseCaseLabel_idFunctionalRequirement}"/>
                         <h:outputText value="#{useCaseController.useCase.idFunctionalRequirement.name}"/>
 
                          </p:panelGrid>
