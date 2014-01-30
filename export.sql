@@ -230,12 +230,11 @@ DROP SEQUENCE "SEQ_USE_CASE";
 --  DDL for Table USE_CASE_DEPENDENCE
 --------------------------------------------------------
 
-  CREATE TABLE "USE_CASE_DEPENDENCE" ("ID_USE_CASE_1" NUMBER, "ID_USE_CASE_2" NUMBER) 
-
-   COMMENT ON COLUMN "USE_CASE_DEPENDENCE"."ID_USE_CASE_1" IS 'Pai'
-   COMMENT ON COLUMN "USE_CASE_DEPENDENCE"."ID_USE_CASE_2" IS 'Use case 2 a depender do use case 1'
-/
-REM INSERTING into ACTOR
+  CREATE TABLE "USE_CASE_DEPENDENCE" ("ID_USE_CASE_1" NUMBER, "ID_USE_CASE_2" NUMBER) ;
+--   COMMENT ON COLUMN "USE_CASE_DEPENDENCE"."ID_USE_CASE_1" IS 'Pai'
+--   COMMENT ON COLUMN "USE_CASE_DEPENDENCE"."ID_USE_CASE_2" IS 'Use case 2 a depender do use case 1'
+--/
+--REM INSERTING into ACTOR
 SET DEFINE OFF;
 Insert into ACTOR (ID_ACTOR,NAME) values (11,'vamos ver como isto corre');
 Insert into ACTOR (ID_ACTOR,NAME) values (234567,'antenas noob');
@@ -257,14 +256,14 @@ Insert into ALTRANREQ_USER (ID_USER,NAME,PASSWORD,USERNAME,EMAIL,MOBILE,IS_ADMIN
 Insert into ALTRANREQ_USER (ID_USER,NAME,PASSWORD,USERNAME,EMAIL,MOBILE,IS_ADMIN,AGE,ADDRESS,CITY,ZIP_CODE) values (3,'qqew','a','a','a','32','0',null,null,null,null);
 Insert into ALTRANREQ_USER (ID_USER,NAME,PASSWORD,USERNAME,EMAIL,MOBILE,IS_ADMIN,AGE,ADDRESS,CITY,ZIP_CODE) values (4,'myuser','[B@2ac8e633','myuser','myuser','1','0',null,null,null,null);
 Insert into ALTRANREQ_USER (ID_USER,NAME,PASSWORD,USERNAME,EMAIL,MOBILE,IS_ADMIN,AGE,ADDRESS,CITY,ZIP_CODE) values (5,'teste3','teste3','teste3','teste3@mail.com','933333333','0',null,null,null,null);
-Insert into ALTRANREQ_USER (ID_USER,NAME,PASSWORD,USERNAME,EMAIL,MOBILE,IS_ADMIN,AGE,ADDRESS,CITY,ZIP_CODE) values (6,'x','���f$�9�1��ѫ� ���','x','x','1','0',null,null,null,null);
+Insert into ALTRANREQ_USER (ID_USER,NAME,PASSWORD,USERNAME,EMAIL,MOBILE,IS_ADMIN,AGE,ADDRESS,CITY,ZIP_CODE) values (6,'x','¡Ëìf$Œ9ù1„³Ñ«º Ö®‹','x','x','1','0',null,null,null,null);
 Insert into ALTRANREQ_USER (ID_USER,NAME,PASSWORD,USERNAME,EMAIL,MOBILE,IS_ADMIN,AGE,ADDRESS,CITY,ZIP_CODE) values (7,'as','as','as','as','1231413123123','0',null,null,null,null);
-Insert into ALTRANREQ_USER (ID_USER,NAME,PASSWORD,USERNAME,EMAIL,MOBILE,IS_ADMIN,AGE,ADDRESS,CITY,ZIP_CODE) values (9,'admin','���f$�9�1��ѫ� ���','admin','admin','1','1',1,'1','1','1');
+Insert into ALTRANREQ_USER (ID_USER,NAME,PASSWORD,USERNAME,EMAIL,MOBILE,IS_ADMIN,AGE,ADDRESS,CITY,ZIP_CODE) values (9,'admin','¡Ëìf$Œ9ù1„³Ñ«º Ö®‹','admin','admin','1','1',1,'1','1','1');
 Insert into ALTRANREQ_USER (ID_USER,NAME,PASSWORD,USERNAME,EMAIL,MOBILE,IS_ADMIN,AGE,ADDRESS,CITY,ZIP_CODE) values (8,'teste e coiso','coiso','coiso','coiso@coisa.coisa','900000000','1',null,null,null,null);
 REM INSERTING into BUSINESS_CATEGORY
 SET DEFINE OFF;
-Insert into BUSINESS_CATEGORY (ID_BUSINESS_CATEGORY,NAME) values (97,'Engenharia Mec�nica');
-Insert into BUSINESS_CATEGORY (ID_BUSINESS_CATEGORY,NAME) values (71,'Ind�stria');
+Insert into BUSINESS_CATEGORY (ID_BUSINESS_CATEGORY,NAME) values (97,'Engenharia Mecânica');
+Insert into BUSINESS_CATEGORY (ID_BUSINESS_CATEGORY,NAME) values (71,'Indústria');
 Insert into BUSINESS_CATEGORY (ID_BUSINESS_CATEGORY,NAME) values (101,'teste');
 REM INSERTING into CLIENT
 SET DEFINE OFF;
@@ -274,7 +273,7 @@ Insert into DOCUMENT (ID_DOCUMENT,ID_PROJECT,FILEPATH,TITLE) values (1,1,'...','
 Insert into DOCUMENT (ID_DOCUMENT,ID_PROJECT,FILEPATH,TITLE) values (2,1,'doc','doc');
 REM INSERTING into FUNCTIONAL_REQUIREMENT
 SET DEFINE OFF;
-Insert into FUNCTIONAL_REQUIREMENT (ID_FUNCTIONAL_REQUIREMENT,ID_PROJECT,NAME,SOURCE,CLIENT_PRIORITY,CLIENT_INSATISFACTION,ID_BUSINESS_CATEGORY,REQUIREMENT_STATE,VERSION,ORDERNUMBER) values (225,2,'asdfghjkl','asdfghjkl�',1,1,97,0,1,null);
+Insert into FUNCTIONAL_REQUIREMENT (ID_FUNCTIONAL_REQUIREMENT,ID_PROJECT,NAME,SOURCE,CLIENT_PRIORITY,CLIENT_INSATISFACTION,ID_BUSINESS_CATEGORY,REQUIREMENT_STATE,VERSION,ORDERNUMBER) values (225,2,'asdfghjkl','asdfghjklç',1,1,97,0,1,null);
 Insert into FUNCTIONAL_REQUIREMENT (ID_FUNCTIONAL_REQUIREMENT,ID_PROJECT,NAME,SOURCE,CLIENT_PRIORITY,CLIENT_INSATISFACTION,ID_BUSINESS_CATEGORY,REQUIREMENT_STATE,VERSION,ORDERNUMBER) values (221,1,'PGteste2','Fonte',1,1,97,0,1,1);
 Insert into FUNCTIONAL_REQUIREMENT (ID_FUNCTIONAL_REQUIREMENT,ID_PROJECT,NAME,SOURCE,CLIENT_PRIORITY,CLIENT_INSATISFACTION,ID_BUSINESS_CATEGORY,REQUIREMENT_STATE,VERSION,ORDERNUMBER) values (224,1,'PGteste2','123teste',2,2,71,2,2,null);
 Insert into FUNCTIONAL_REQUIREMENT (ID_FUNCTIONAL_REQUIREMENT,ID_PROJECT,NAME,SOURCE,CLIENT_PRIORITY,CLIENT_INSATISFACTION,ID_BUSINESS_CATEGORY,REQUIREMENT_STATE,VERSION,ORDERNUMBER) values (190,129,'rgege','erwgegw',1,1,71,0,1,null);
@@ -285,7 +284,7 @@ Insert into FUNCTIONAL_REQ_DEPENDENCE (ID_FUNC_REQUIREMENT_1,ID_FUNC_REQUIREMENT
 Insert into FUNCTIONAL_REQ_DEPENDENCE (ID_FUNC_REQUIREMENT_1,ID_FUNC_REQUIREMENT_2) values (221,224);
 REM INSERTING into NON_FUNCTIONAL_REQUIREMENT
 SET DEFINE OFF;
-Insert into NON_FUNCTIONAL_REQUIREMENT (ID_NON_FUNC_REQUIREMENT,TYPE,NAME,SOURCE,CLIENT_PRIORITY,CLIENT_INSATISFACTION,REQUIREMENT_STATE,VERSION,ID_PROJECT,ORDERNUMBER) values (1,1,'lka','kasl�',1,1,1,1,3,1);
+Insert into NON_FUNCTIONAL_REQUIREMENT (ID_NON_FUNC_REQUIREMENT,TYPE,NAME,SOURCE,CLIENT_PRIORITY,CLIENT_INSATISFACTION,REQUIREMENT_STATE,VERSION,ID_PROJECT,ORDERNUMBER) values (1,1,'lka','kaslç',1,1,1,1,3,1);
 Insert into NON_FUNCTIONAL_REQUIREMENT (ID_NON_FUNC_REQUIREMENT,TYPE,NAME,SOURCE,CLIENT_PRIORITY,CLIENT_INSATISFACTION,REQUIREMENT_STATE,VERSION,ID_PROJECT,ORDERNUMBER) values (2,2,'ewrds','fdsxc',3,3,3,3,2,3);
 Insert into NON_FUNCTIONAL_REQUIREMENT (ID_NON_FUNC_REQUIREMENT,TYPE,NAME,SOURCE,CLIENT_PRIORITY,CLIENT_INSATISFACTION,REQUIREMENT_STATE,VERSION,ID_PROJECT,ORDERNUMBER) values (3,3,'fqe','fqw',1,2,3,4,3,4);
 Insert into NON_FUNCTIONAL_REQUIREMENT (ID_NON_FUNC_REQUIREMENT,TYPE,NAME,SOURCE,CLIENT_PRIORITY,CLIENT_INSATISFACTION,REQUIREMENT_STATE,VERSION,ID_PROJECT,ORDERNUMBER) values (4,2,'Cenas','Cenas',3,3,2,1,1,2);
@@ -305,21 +304,21 @@ SET DEFINE OFF;
 Insert into ORGANIZATION (ID_ORGANIZATION,NAME,BUSINESS_AREA,ADDRESS,COUNTRY) values (1,'Altran','A','A','France');
 REM INSERTING into PRIVILEGE
 SET DEFINE OFF;
-Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (1,'Acesso �rea Administra��o e gest�o de utilizadores');
-Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (2,'Acesso �rea de Gest�o de Organiza��es');
-Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (3,'Acesso �rea Gest�o do Projecto');
-Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (4,'Acessos �rea Gest�o requisitos funcionais');
-Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (5,'Acessos �rea Gest�o requisitos n�o funcionais');
-Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (6,'Acessos �rea Gest�o casos de uso');
-Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (7,'Acessos �rea Gest�o requisitos t�cnicos');
+Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (1,'Acesso área Administração e gestão de utilizadores');
+Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (2,'Acesso área de Gestão de Organizações');
+Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (3,'Acesso área Gestão do Projecto');
+Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (4,'Acessos área Gestão requisitos funcionais');
+Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (5,'Acessos área Gestão requisitos não funcionais');
+Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (6,'Acessos área Gestão casos de uso');
+Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (7,'Acessos área Gestão requisitos técnicos');
 Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (8,'Criar, alterar e remover utilizadores');
-Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (9,'Atribui��o do perfil de gestor de projecto');
-Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (10,'Atribui��o do perfil de analista funcional');
+Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (9,'Atribuição do perfil de gestor de projecto');
+Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (10,'Atribuição do perfil de analista funcional');
 Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (11,'Criar projectos');
 Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (12,'Alterar projectos');
 Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (13,'Remover projectos');
 Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (14,'Criar, alterar e remover requisitos funcionais');
-Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (15,'Criar, alterar e remover requisitos t�cnicos');
+Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (15,'Criar, alterar e remover requisitos técnicos');
 Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (16,'Exportar dados para documento');
 Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (17,'Criar, alterar e remover cliente');
 Insert into PRIVILEGE (ID_PRIVILEGE,ACTION_NAME) values (18,'Consultar cliente');
@@ -342,7 +341,7 @@ Insert into PROJECT (ID_PROJECT,NAME,BEGIN_DATE,END_DATE,PROJECT_STATE,ID_PROJEC
 Insert into PROJECT (ID_PROJECT,NAME,BEGIN_DATE,END_DATE,PROJECT_STATE,ID_PROJECT_MANAGER,TERMINOLOGY,ID_ORGANIZATION) values (120,'Sandrina Fernandes',to_date('15-NOV-13','DD-MON-RR'),to_date('29-NOV-13','DD-MON-RR'),0,2,null,null);
 Insert into PROJECT (ID_PROJECT,NAME,BEGIN_DATE,END_DATE,PROJECT_STATE,ID_PROJECT_MANAGER,TERMINOLOGY,ID_ORGANIZATION) values (132,'xcvbn',null,null,0,3,null,null);
 Insert into PROJECT (ID_PROJECT,NAME,BEGIN_DATE,END_DATE,PROJECT_STATE,ID_PROJECT_MANAGER,TERMINOLOGY,ID_ORGANIZATION) values (128,'teslkuylgkuyglu',null,null,0,1,null,null);
-Insert into PROJECT (ID_PROJECT,NAME,BEGIN_DATE,END_DATE,PROJECT_STATE,ID_PROJECT_MANAGER,TERMINOLOGY,ID_ORGANIZATION) values (129,'teste remoção ninguém mexe',to_date('04-NOV-13','DD-MON-RR'),to_date('14-NOV-13','DD-MON-RR'),0,4,'ewdew',null);
+Insert into PROJECT (ID_PROJECT,NAME,BEGIN_DATE,END_DATE,PROJECT_STATE,ID_PROJECT_MANAGER,TERMINOLOGY,ID_ORGANIZATION) values (129,'teste remoÃ§Ã£o ninguÃ©m mexe',to_date('04-NOV-13','DD-MON-RR'),to_date('14-NOV-13','DD-MON-RR'),0,4,'ewdew',null);
 Insert into PROJECT (ID_PROJECT,NAME,BEGIN_DATE,END_DATE,PROJECT_STATE,ID_PROJECT_MANAGER,TERMINOLOGY,ID_ORGANIZATION) values (133,'trew',null,null,1,5,null,null);
 Insert into PROJECT (ID_PROJECT,NAME,BEGIN_DATE,END_DATE,PROJECT_STATE,ID_PROJECT_MANAGER,TERMINOLOGY,ID_ORGANIZATION) values (134,'werty',to_date('12-NOV-13','DD-MON-RR'),to_date('14-NOV-13','DD-MON-RR'),1,2,'tr',null);
 Insert into PROJECT (ID_PROJECT,NAME,BEGIN_DATE,END_DATE,PROJECT_STATE,ID_PROJECT_MANAGER,TERMINOLOGY,ID_ORGANIZATION) values (162,'asddddddd',to_date('30-DEC-13','DD-MON-RR'),to_date('02-DEC-13','DD-MON-RR'),1,1,'as',null);
@@ -777,7 +776,6 @@ begin
       end if; 
    end if; 
 end;
-ALTER TRIGGER "TRIGGER_ACTOR_PK" ENABLE
 /
 --------------------------------------------------------
 --  DDL for Trigger TRIGGER_ALTERNATIVE_FLOWS_PK
@@ -793,7 +791,6 @@ begin
       end if; 
    end if; 
 end;
-ALTER TRIGGER "TRIGGER_ALTERNATIVE_FLOWS_PK" ENABLE
 /
 --------------------------------------------------------
 --  DDL for Trigger TRIGGER_BUSINESS_CATEGORY_PK
@@ -809,7 +806,6 @@ begin
       end if; 
    end if; 
 end;
-ALTER TRIGGER "TRIGGER_BUSINESS_CATEGORY_PK" ENABLE
 /
 --------------------------------------------------------
 --  DDL for Trigger TRIGGER_CLIENT_PK
@@ -825,7 +821,6 @@ begin
       end if; 
    end if; 
 end;
-ALTER TRIGGER "TRIGGER_CLIENT_PK" ENABLE
 /
 --------------------------------------------------------
 --  DDL for Trigger TRIGGER_DOCUMENT_PK
@@ -841,7 +836,6 @@ begin
       end if; 
    end if; 
 end;
-ALTER TRIGGER "TRIGGER_DOCUMENT_PK" ENABLE
 /
 --------------------------------------------------------
 --  DDL for Trigger TRIGGER_FUNC_REQ_DEPENDENCE
@@ -857,7 +851,6 @@ begin
       end if; 
    end if; 
 end;
-ALTER TRIGGER "TRIGGER_FUNC_REQ_DEPENDENCE" ENABLE
 /
 --------------------------------------------------------
 --  DDL for Trigger TRIGGER_FUNC_REQ_PK
@@ -873,7 +866,6 @@ begin
       end if; 
    end if; 
 end;
-ALTER TRIGGER "TRIGGER_FUNC_REQ_PK" ENABLE
 /
 --------------------------------------------------------
 --  DDL for Trigger TRIGGER_NON_FUNC_REQ_DEP
@@ -889,7 +881,6 @@ begin
       end if; 
    end if; 
 end;
-ALTER TRIGGER "TRIGGER_NON_FUNC_REQ_DEP" ENABLE
 /
 --------------------------------------------------------
 --  DDL for Trigger TRIGGER_NON_FUNC_REQ_PK
@@ -905,7 +896,6 @@ begin
       end if; 
    end if; 
 end;
-ALTER TRIGGER "TRIGGER_NON_FUNC_REQ_PK" ENABLE
 /
 --------------------------------------------------------
 --  DDL for Trigger TRIGGER_PRIVILEGE_PK
@@ -921,7 +911,6 @@ begin
       end if; 
    end if; 
 end;
-ALTER TRIGGER "TRIGGER_PRIVILEGE_PK" ENABLE
 /
 --------------------------------------------------------
 --  DDL for Trigger TRIGGER_PROJECT_PK
@@ -937,7 +926,6 @@ begin
       end if; 
    end if; 
 end;
-ALTER TRIGGER "TRIGGER_PROJECT_PK" ENABLE
 /
 --------------------------------------------------------
 --  DDL for Trigger TRIGGER_ROLE_PK
@@ -953,7 +941,6 @@ begin
       end if; 
    end if; 
 end;
-ALTER TRIGGER "TRIGGER_ROLE_PK" ENABLE
 /
 --------------------------------------------------------
 --  DDL for Trigger TRIGGER_SDI_PK
@@ -969,7 +956,6 @@ begin
       end if; 
    end if; 
 end;
-ALTER TRIGGER "TRIGGER_SDI_PK" ENABLE
 /
 --------------------------------------------------------
 --  DDL for Trigger TRIGGER_USER_PK
@@ -985,7 +971,6 @@ begin
       end if; 
    end if; 
 end;
-ALTER TRIGGER "TRIGGER_USER_PK" ENABLE
 /
 --------------------------------------------------------
 --  DDL for Trigger TRIGGER_USE_CASE_DEPENDENCE
@@ -1001,7 +986,6 @@ begin
       end if; 
    end if; 
 end;
-ALTER TRIGGER "TRIGGER_USE_CASE_DEPENDENCE" ENABLE
 /
 --------------------------------------------------------
 --  DDL for Trigger TRIGGER_USE_CASE_PK
@@ -1017,5 +1001,4 @@ begin
       end if; 
    end if; 
 end;
-ALTER TRIGGER "TRIGGER_USE_CASE_PK" ENABLE
 /
