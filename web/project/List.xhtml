@@ -6,7 +6,7 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui">
 
-    <h:form id="ProjectListForm" style="width: 1000px" >
+    <h:form id="ProjectListForm" >
         <p:panel header="#{project.ListProjectTitle}">
             <p:dataTable id="datalist" value="#{projectController.items}" var="item"
                          selectionMode="single" selection="#{projectController.selected}"
