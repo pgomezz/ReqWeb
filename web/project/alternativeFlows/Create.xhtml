@@ -14,13 +14,13 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2">
 
-                        <p:outputLabel value="#{myBundle.CreateAlternativeFlowsLabel_idAlternativeFlows}" for="idAlternativeFlows" />
+                        <p:outputLabel value="#{myBundle.CreateAlternativeFlowsLabel_idAlternativeFlows}" for="idAlternativeFlows" style="font-weight: bold" />
                         <p:inputText id="idAlternativeFlows" value="#{alternativeFlowsController.selected.idAlternativeFlows}" title="#{myBundle.CreateAlternativeFlowsTitle_idAlternativeFlows}" required="true" requiredMessage="#{myBundle.CreateAlternativeFlowsRequiredMessage_idAlternativeFlows}"/>
 
-                        <p:outputLabel value="#{myBundle.CreateAlternativeFlowsLabel_description}" for="description" />
+                        <p:outputLabel value="#{myBundle.CreateAlternativeFlowsLabel_description}" for="description" style="font-weight: bold" />
                         <p:inputTextarea rows="4" cols="30" id="description" value="#{alternativeFlowsController.selected.description}" title="#{myBundle.CreateAlternativeFlowsTitle_description}" required="true" requiredMessage="#{myBundle.CreateAlternativeFlowsRequiredMessage_description}"/>
 
-                        <p:outputLabel value="#{myBundle.CreateAlternativeFlowsLabel_idUseCase}" for="idUseCase" />
+                        <p:outputLabel value="#{myBundle.CreateAlternativeFlowsLabel_idUseCase}" for="idUseCase" style="font-weight: bold" />
                         <p:selectOneMenu id="idUseCase" value="#{alternativeFlowsController.selected.idUseCase}" required="true" requiredMessage="#{myBundle.EditAlternativeFlowsRequiredMessage_idUseCase}" converter="useCaseConverter">
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{useCaseController.items}"

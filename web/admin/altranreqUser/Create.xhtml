@@ -9,23 +9,23 @@
     <h:form id="AltranreqUserCreateForm">
         <p:panelGrid columns="2">
 
-            <p:outputLabel value="#{user.Name}" for="name" />
+            <p:outputLabel value="#{user.Name}" for="name" style=" font-weight: bold" />
             <p:inputText id="name" value="#{altranreqUserCreateController.altranreqUser.name}" title="#{myBundle.CreateAltranreqUserTitle_name}" required="true" requiredMessage="#{myBundle.CreateAltranreqUserRequiredMessage_name}" size="50" maxlength="50"/>
 
-            <p:outputLabel value="#{user.Username}" for="username" />
+            <p:outputLabel value="#{user.Username}" for="username" style=" font-weight: bold" />
             <p:inputText id="username" value="#{altranreqUserCreateController.altranreqUser.username}" title="#{myBundle.CreateAltranreqUserTitle_username}" required="true" requiredMessage="#{myBundle.CreateAltranreqUserRequiredMessage_username}" size="20" maxlength="20"/>
 
-            <p:outputLabel value="#{user.Password}" for="password" />
+            <p:outputLabel value="#{user.Password}" for="password" style=" font-weight: bold" />
             <p:inputText id="password" value="#{altranreqUserCreateController.altranreqUser.password}" title="#{myBundle.CreateAltranreqUserTitle_password}" required="true" requiredMessage="#{myBundle.CreateAltranreqUserRequiredMessage_password}" size="88" maxlength="88"/>
 
             
-            <p:outputLabel value="#{user.Email}" for="email" />
+            <p:outputLabel value="#{user.Email}" for="email" style=" font-weight: bold" />
             <p:inputText id="email" value="#{altranreqUserCreateController.altranreqUser.email}" title="#{myBundle.CreateAltranreqUserTitle_email}" required="true" requiredMessage="#{myBundle.CreateAltranreqUserRequiredMessage_email}" size="50" maxlength="50"/>
 
-            <p:outputLabel value="#{user.Mobile}" for="mobile" />
+            <p:outputLabel value="#{user.Mobile}" for="mobile" style=" font-weight: bold" />
             <p:inputText id="mobile" value="#{altranreqUserCreateController.altranreqUser.mobile}" title="#{myBundle.CreateAltranreqUserTitle_mobile}" required="true" requiredMessage="#{myBundle.CreateAltranreqUserRequiredMessage_mobile}" size="20" maxlength="20"/>
 
-            <p:outputLabel value="#{user.IsAdmin}" for="isAdmin" />
+            <p:outputLabel value="#{user.IsAdmin}" for="isAdmin" style=" font-weight: bold" />
             <p:selectOneMenu value="#{altranreqUserCreateController.altranreqUser.isAdmin}" id="isAdmin" required="true" requiredMessage="#{myBundle.CreateAltranreqUserRequiredMessage_isAdmin}">  
                 <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/>  
                     <f:selectItem itemLabel="Sim" itemValue="1" />  

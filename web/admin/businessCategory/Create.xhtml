@@ -10,10 +10,10 @@
 
         <h:panelGroup id="display">
             <p:panelGrid columns="2">
-                <p:outputLabel value="#{business.Name}" for="name" />
+                <p:outputLabel value="#{business.Name}" for="name" style=" font-weight: bold" />
                 <p:inputText id="name" value="#{businessCategoryCreateController.businessCategory.name}" title="#{business.Name}" required="true" size="40" maxlength="32"/>
               
-                <p:outputLabel value="#{business.Description}" for="description" />
+                <p:outputLabel value="#{business.Description}" for="description" style=" font-weight: bold" />
                 <p:inputTextarea rows="5" cols="70" id="description" value="#{businessCategoryCreateController.businessCategory.description}" title="#{business.Description}" required="true" maxlength="255" autoResize="false"/>
                 
             </p:panelGrid>

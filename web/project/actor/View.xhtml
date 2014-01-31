@@ -14,16 +14,16 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{actorController.selected != null}">
 
-                        <h:outputText value="#{myBundle.ViewActorLabel_idActor}"/>
+                        <h:outputText value="#{myBundle.ViewActorLabel_idActor}" style="font-weight: bold"/>
                         <h:outputText value="#{actorController.selected.idActor}" title="#{myBundle.ViewActorTitle_idActor}"/>
 
-                        <h:outputText value="#{myBundle.ViewActorLabel_name}"/>
+                        <h:outputText value="#{myBundle.ViewActorLabel_name}" style="font-weight: bold"/>
                         <h:outputText value="#{actorController.selected.name}" title="#{myBundle.ViewActorTitle_name}"/>
 
-                        <h:outputText value="#{myBundle.ViewActorLabel_description}"/>
+                        <h:outputText value="#{myBundle.ViewActorLabel_description}" style="font-weight: bold"/>
                         <h:outputText value="#{actorController.selected.description}" title="#{myBundle.ViewActorTitle_description}"/>
 
-                        <h:outputText value="#{myBundle.ViewActorLabel_useCaseCollection}"/>
+                        <h:outputText value="#{myBundle.ViewActorLabel_useCaseCollection}" style="font-weight: bold"/>
                         <h:selectManyMenu converter="useCaseConverter">
                             <f:selectItems value="#{actorController.selected.useCaseCollection}"
                                            var="useCaseCollectionItem"

@@ -11,11 +11,11 @@
         <h:panelGroup id="display">
             <p:panelGrid  columns="3" id="grid" >
 
-                <p:outputLabel value="#{myBundle.EditBusinessCategoryLabel_name}" for="name" />
+                <p:outputLabel value="#{myBundle.EditBusinessCategoryLabel_name}" for="name" style="font-weight: bold" />
                 <p:inputText id="name" value="#{businessCategoryEditController.businessCategory.name}" title="#{myBundle.EditBusinessCategoryTitle_name}" required="true" requiredMessage="#{myBundle.EditBusinessCategoryRequiredMessage_name}" size="40" maxlength="32"/>
                 <p:message for="name" display="${myBundle.CreateBusinessCategoryRequiredMessage_name}" /> 
 
-                <p:outputLabel value="#{myBundle.EditBusinessCategoryLabel_description}" for="description" />
+                <p:outputLabel value="#{myBundle.EditBusinessCategoryLabel_description}" for="description" style="font-weight: bold" />
                 <p:inputTextarea rows="5" cols="70" id="description" value="#{businessCategoryEditController.businessCategory.description}" title="#{myBundle.EditBusinessCategoryTitle_description}" required="true" requiredMessage="#{myBundle.EditBusinessCategoryRequiredMessage_description}" maxlength="255" autoResize="false"/>
                 <p:message for="description" display="${myBundle.CreateBusinessCategoryRequiredMessage_description}" /> 
 

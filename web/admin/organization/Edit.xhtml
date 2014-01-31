@@ -12,16 +12,16 @@
             <h:panelGroup id="display">
                 <p:panelGrid columns="2">
 
-                    <p:outputLabel value="#{organization.Name}" for="name" />
+                    <p:outputLabel value="#{organization.Name}" for="name" style=" font-weight: bold" />
                     <p:inputText id="name" value="#{organizationEditManager.organization.name}" title="#{organization.Name}" required="true" requiredMessage="#{organization.Name}"/>
 
-                    <p:outputLabel value="#{organization.Address}" for="address" />
+                    <p:outputLabel value="#{organization.Address}" for="address" style=" font-weight: bold" />
                     <p:inputText id="address" value="#{organizationEditManager.organization.address}" title="#{organization.Address}"/>
 
-                    <p:outputLabel value="#{organization.BusinessArea}" for="businessArea" />
+                    <p:outputLabel value="#{organization.BusinessArea}" for="businessArea" style=" font-weight: bold" />
                     <p:inputText id="businessArea" value="#{organizationEditManager.organization.businessArea}" title="#{organization.BusinessArea}"/>
 
-                    <p:outputLabel value="#{organization.Country}" for="country" />
+                    <p:outputLabel value="#{organization.Country}" for="country" style=" font-weight: bold" />
                     <p:inputText id="country" value="#{organizationEditManager.organization.country}" title="#{organization.Country}"/>
 
                 </p:panelGrid>
