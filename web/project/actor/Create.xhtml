@@ -14,16 +14,16 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2">
 
-                        <p:outputLabel value="#{myBundle.CreateActorLabel_idActor}" for="idActor" />
+                        <p:outputLabel value="#{myBundle.CreateActorLabel_idActor}" for="idActor" style="font-weight: bold" />
                         <p:inputText id="idActor" value="#{actorController.selected.idActor}" title="#{myBundle.CreateActorTitle_idActor}" required="true" requiredMessage="#{myBundle.CreateActorRequiredMessage_idActor}"/>
 
-                        <p:outputLabel value="#{myBundle.CreateActorLabel_name}" for="name" />
+                        <p:outputLabel value="#{myBundle.CreateActorLabel_name}" for="name" style="font-weight: bold" />
                         <p:inputText id="name" value="#{actorController.selected.name}" title="#{myBundle.CreateActorTitle_name}" required="true" requiredMessage="#{myBundle.CreateActorRequiredMessage_name}" size="50" maxlength="50"/>
 
-                        <p:outputLabel value="#{myBundle.CreateActorLabel_description}" for="description" />
+                        <p:outputLabel value="#{myBundle.CreateActorLabel_description}" for="description" style="font-weight: bold" />
                         <p:inputTextarea rows="4" cols="30" id="description" value="#{actorController.selected.description}" title="#{myBundle.CreateActorTitle_description}" required="true" requiredMessage="#{myBundle.CreateActorRequiredMessage_description}"/>
 
-                        <p:outputLabel value="#{myBundle.CreateActorLabel_useCaseCollection}" for="useCaseCollection" />
+                        <p:outputLabel value="#{myBundle.CreateActorLabel_useCaseCollection}" for="useCaseCollection" style="font-weight: bold" />
                         <p:selectManyMenu id="useCaseCollection" value="#{actorController.selected.useCaseCollection}"  converter="useCaseConverter">
                             <f:selectItems value="#{useCaseController.items}"
                                            var="useCaseCollectionItem"

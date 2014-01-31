@@ -40,7 +40,7 @@
                 <h:outputText value="#{functionalRequirementController.FRequirement.ordernumber}" title="#{myBundle.ViewFunctionalRequirementTitle_ordernumber}"/>
 
                 <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_functionalRequirementCollection}"/>
-                <h:selectManyMenu converter="functionalRequirementConverter">
+                <h:selectManyMenu converter="functionalRequirementConverter" style="width: 100%">
                     <f:selectItems value="#{functionalRequirementController.FRequirement.functionalRequirementCollection}"
                                    var="functionalRequirementCollectionItem"
                                    itemValue="#{functionalRequirementCollectionItem}"

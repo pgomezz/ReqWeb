@@ -11,16 +11,16 @@
                 <h:panelGroup id="display">
                     <p:panelGrid  columns="2">
 
-                        <h:outputLabel value="#{role.IdRole}" for="idRole" />
+                        <h:outputLabel value="#{role.IdRole}" for="idRole" style=" font-weight: bold" />
                         <h:outputText id="idRole" value="#{altranreqRoleEditController.altranreqRole.idRole}" />
 
-                        <p:outputLabel value="#{role.Type}" for="type" />
+                        <p:outputLabel value="#{role.Type}" for="type" style=" font-weight: bold" />
                         <p:inputText id="type" value="#{altranreqRoleEditController.altranreqRole.type}" title="#{myBundle.EditAltranreqRoleTitle_type}" required="true" requiredMessage="#{myBundle.EditAltranreqRoleRequiredMessage_type}" size="20" maxlength="20"/>
 
-                        <p:outputLabel value="#{role.Description}" for="description" />
+                        <p:outputLabel value="#{role.Description}" for="description" style=" font-weight: bold" />
                         <p:inputText id="description" value="#{altranreqRoleEditController.altranreqRole.description}" title="#{myBundle.EditAltranreqRoleTitle_description}" size="250" maxlength="250"/>
 
-                        <p:outputLabel value="#{role.PrivilegeCollection}" for="privilegeCollection" />
+                        <p:outputLabel value="#{role.PrivilegeCollection}" for="privilegeCollection" style=" font-weight: bold" />
                         <p:selectManyMenu id="privilegeCollection" value="#{altranreqRoleEditController.altranreqRole.privilegeCollection}" >
                             <f:selectItems value="#{privilegeController.items}"
                                            var="privilegeCollectionItem"

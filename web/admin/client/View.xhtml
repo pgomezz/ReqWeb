@@ -10,18 +10,18 @@
     <h:form id="ClientViewForm">
 
         <h:panelGroup id="display">
-            <p:panelGrid columns="2" >
+           <p:panelGrid columns="2" style=" border-style:  solid; width: 100%" >
 
-                <h:outputText value="#{client.Name}"/>
+                <h:outputText value="#{client.Name}" style="font-weight: bold"/>
                 <h:outputText value="#{clientEditController.client.name}" title="#{client.Name}"/>
 
-                <h:outputText value="#{client.Email}"/>
+                <h:outputText value="#{client.Email}" style="font-weight: bold"/>
                 <h:outputText value="#{clientEditController.client.email}" title="#{client.Email}"/>
 
-                <h:outputText value="#{client.Mobile}"/>
+                <h:outputText value="#{client.Mobile}" style="font-weight: bold"/>
                 <h:outputText value="#{clientEditController.client.mobile}" title="#{client.Mobile}"/>
 
-                <h:outputText value="#{client.Organization}"/>
+                <h:outputText value="#{client.Organization}" style="font-weight: bold"/>
                 <h:outputText value="#{clientEditController.organizationNameById}" title="#{client.Organization}"/>
 
             </p:panelGrid>

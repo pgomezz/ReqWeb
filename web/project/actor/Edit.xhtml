@@ -13,16 +13,16 @@
                 <h:panelGroup id="display">
                     <p:panelGrid  columns="2" rendered="#{actorController.selected != null}">
 
-                        <h:outputLabel value="#{myBundle.EditActorLabel_idActor}" for="idActor" />
+                        <h:outputLabel value="#{myBundle.EditActorLabel_idActor}" for="idActor" style="font-weight: bold" />
                         <h:outputText id="idActor" value="#{actorController.selected.idActor}" />
 
-                        <p:outputLabel value="#{myBundle.EditActorLabel_name}" for="name" />
+                        <p:outputLabel value="#{myBundle.EditActorLabel_name}" for="name" style="font-weight: bold" />
                         <p:inputText id="name" value="#{actorController.selected.name}" title="#{myBundle.EditActorTitle_name}" required="true" requiredMessage="#{myBundle.EditActorRequiredMessage_name}" size="50" maxlength="50"/>
 
-                        <p:outputLabel value="#{myBundle.EditActorLabel_description}" for="description" />
+                        <p:outputLabel value="#{myBundle.EditActorLabel_description}" for="description" style="font-weight: bold" />
                         <p:inputTextarea rows="4" cols="30" id="description" value="#{actorController.selected.description}" title="#{myBundle.EditActorTitle_description}" required="true" requiredMessage="#{myBundle.EditActorRequiredMessage_description}"/>
 
-                        <p:outputLabel value="#{myBundle.EditActorLabel_useCaseCollection}" for="useCaseCollection" />
+                        <p:outputLabel value="#{myBundle.EditActorLabel_useCaseCollection}" for="useCaseCollection" style="font-weight: bold" />
                         <p:selectManyMenu id="useCaseCollection" value="#{actorController.selected.useCaseCollection}"  converter="useCaseConverter">
                             <f:selectItems value="#{useCaseController.items}"
                                            var="useCaseCollectionItem"

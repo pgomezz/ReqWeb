@@ -11,18 +11,18 @@
         <h:form id="OrganizationViewForm">
 
             <h:panelGroup>
-                <p:panelGrid columns="2">
+               <p:panelGrid columns="2" style=" border-style:  solid; width: 100%" >
 
-                    <p:outputLabel value="#{organization.Name}" />
+                   <p:outputLabel value="#{organization.Name}" style="font-weight: bold" />
                     <p:outputLabel value="#{organizationEditManager.organization.name}" title="#{organization.Name}"/>
 
-                    <p:outputLabel value="#{organization.Address}"/>
+                    <p:outputLabel value="#{organization.Address}" style="font-weight: bold"/>
                     <p:outputLabel id="address" value="#{organizationEditManager.organization.address}" title="#{organization.Address}"/>
 
-                    <p:outputLabel value="#{organization.BusinessArea}"/>
+                    <p:outputLabel value="#{organization.BusinessArea}" style="font-weight: bold"/>
                     <p:outputLabel id="businessArea" value="#{organizationEditManager.organization.businessArea}" title="#{organization.BusinessArea}"/>
 
-                    <p:outputLabel value="#{organization.Country}"/>
+                    <p:outputLabel value="#{organization.Country}" style="font-weight: bold"/>
                     <p:outputLabel id="country" value="#{organizationEditManager.organization.country}" title="#{organization.Country}"/>
 
                 </p:panelGrid>

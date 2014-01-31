@@ -9,18 +9,18 @@
     <h:form id="AltranreqRoleViewForm">
 
         <h:panelGroup id="display">
-            <p:panelGrid columns="2">
+           <p:panelGrid columns="2" style=" border-style:  solid; width: 100%" >
 
-                <h:outputText value="#{role.IdRole}"/>
+                <h:outputText value="#{role.IdRole}" style="font-weight: bold"/>
                 <h:outputText value="#{altranreqRoleEditController.altranreqRole.idRole}" title="#{myBundle.ViewAltranreqRoleTitle_idRole}"/>
 
-                <h:outputText value="#{role.Type}"/>
+                <h:outputText value="#{role.Type}" style="font-weight: bold"/>
                 <h:outputText value="#{altranreqRoleEditController.altranreqRole.type}" title="#{myBundle.ViewAltranreqRoleTitle_type}"/>
 
-                <h:outputText value="#{role.Description}"/>
+                <h:outputText value="#{role.Description}" style="font-weight: bold"/>
                 <h:outputText value="#{altranreqRoleEditController.altranreqRole.description}" title="#{myBundle.ViewAltranreqRoleTitle_description}"/>
 
-                <h:outputText value="#{role.PrivilegeCollection}"/>
+                <h:outputText value="#{role.PrivilegeCollection}" style="font-weight: bold"/>
                 <h:selectManyMenu >
                     <f:selectItems value="#{altranreqRoleEditController.altranreqRole.privilegeCollection}"
                                    var="privilegeCollectionItem"
