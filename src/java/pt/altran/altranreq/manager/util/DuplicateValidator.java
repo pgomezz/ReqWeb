@@ -26,7 +26,6 @@ public class DuplicateValidator implements Validator {
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
        if (value == null){ 
-           System.out.println("Sai :(");
            return;}
        
        String possibleProjectName = (String)value;
