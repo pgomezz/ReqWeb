@@ -13,7 +13,9 @@
                 <p:panelGrid columns="3" id="grid">
 
                     <p:outputLabel value="#{project.Name}" for="name" style="font-weight: bold" />
-                    <p:inputText id="name" value="#{projectCreateManager.project.name}" title="#{project.Name}" required="true" requiredMessage="#{project.CreateProjectRequiredMessage_name}" size="100" maxlength="100"/>
+                    <p:inputText id="name" value="#{projectCreateManager.project.name}" title="#{project.Name}" required="true" requiredMessage="#{project.CreateProjectRequiredMessage_name}" size="100" maxlength="100">
+                        <f:validator validatorId="validator.duplicateValidator" />
+                    </p:inputText>
                     <p:message for="name" display="${project.Name}" /> 
 
                     <p:outputLabel value="#{project.Description}" for="description" style="font-weight: bold" />

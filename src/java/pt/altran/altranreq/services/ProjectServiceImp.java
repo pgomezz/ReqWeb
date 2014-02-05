@@ -130,4 +130,17 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
         }
         return listaProj;
     }
+
+    @Override
+    public boolean existProjectByName(String name) {
+        ProjectFilter projectName = new ProjectFilter();
+        projectName.setName(name);
+        
+        for (Project p : findProjectByFilter(projectName)) {
+            if (p.getName().equalsIgnoreCase(name))
+                return true;
+        }
+        
+        return false;
+    }
 }
