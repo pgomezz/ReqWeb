@@ -25,15 +25,14 @@ public class DuplicateValidator implements Validator {
 
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-       if (value == null){ 
-           return;}
+       if (value == null) return;
        
        String possibleProjectName = (String)value;
        
        if(projectService.existProjectByName(possibleProjectName)){
            FacesMessage msg = new FacesMessage(ResourceBundle.getBundle("/project").getString("DuplicateName_Project"));
            msg.setSeverity(SEVERITY_ERROR);
-            throw new ValidatorException( msg);
+           throw new ValidatorException( msg);
        }
        
     }

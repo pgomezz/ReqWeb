@@ -17,13 +17,8 @@ public class DateRangeValidator implements Validator {
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
         if (value == null || component.getAttributes().get("fromDate") == null) return;
 
-        System.out.println("estou aki!");
-        
         Date toDate   = (Date) value; 
         Date fromDate = (Date) component.getAttributes().get("fromDate");
-        
-        System.out.println("todate:"+toDate.toString());
-        System.out.println("fromdate:"+fromDate.toString());
 
         if (fromDate.after(toDate)) {
             FacesMessage message = new FacesMessage(

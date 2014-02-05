@@ -78,12 +78,9 @@ public class ProjectCreateManager extends AbstractController<Project> implements
     }
 
     public void setOrganization(Organization org) {
-        //String id = (org == null) ? null : org.getIdOrganization().toString();
-        //System.out.println("1111111111111");
         if (org != null) {
             getProject().setIdOrganization(org);
         }
-        //System.out.println("22222222222222");
     }
 
     public Organization getOrganization() {
@@ -91,7 +88,6 @@ public class ProjectCreateManager extends AbstractController<Project> implements
     }
 
     public void setProjectManager(AltranreqUser aru) {
-        System.out.println("Aqui é o setProjetManager");
         BigInteger id = (aru == null) ? null : aru.getIdUser().toBigInteger();
         getProject().setIdProjectManager(id);
         user = aru;

@@ -80,7 +80,6 @@ public class ProjectServiceImp extends AbstractServiceImp<Project> implements Pr
             default:
                 return ResourceBundle.getBundle("/project").getString("State_undefined");
         }
-       // if(projectStateIndice==1) return "AA";
     
     }
 
