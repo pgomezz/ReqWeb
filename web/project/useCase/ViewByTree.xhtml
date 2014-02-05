@@ -10,31 +10,31 @@
         <p:panel header="Detalhes de Caso de Uso">
             <h:form id="UseCaseViewByTreeForm">
                 <h:panelGroup rendered="#{useCaseController.useCaseType}">
-                    <p:panelGrid columns="2">
+                    <p:panelGrid columns="2" style="border-style:  solid; width: 100%">
                         
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_name}"/>
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_name}" style="font-weight: bold"/>
                         <h:outputText value="#{useCaseController.useCase.name}" title="#{myBundle.ViewUseCaseTitle_name}"/>
 
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_description}"/>
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_description}" style="font-weight: bold"/>
                         <h:outputText value="#{useCaseController.useCase.description}" title="#{myBundle.ViewUseCaseTitle_description}"/>
 
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_avaliationCriteria}"/>
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_avaliationCriteria}" style="font-weight: bold"/>
                         <h:outputText value="#{useCaseController.useCase.avaliationCriteria}" title="#{myBundle.ViewUseCaseTitle_avaliationCriteria}"/>
 
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_preCondition}"/>
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_preCondition}" style="font-weight: bold"/>
                         <h:outputText value="#{useCaseController.useCase.preCondition}" title="#{myBundle.ViewUseCaseTitle_preCondition}"/>
 
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_posCondition}"/>
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_posCondition}" style="font-weight: bold"/>
                         <h:outputText value="#{useCaseController.useCase.posCondition}" title="#{myBundle.ViewUseCaseTitle_posCondition}"/>
 
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_mainScenario}"/>
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_mainScenario}" style="font-weight: bold"/>
                         <h:outputText value="#{useCaseController.useCase.mainScenario}" title="#{myBundle.ViewUseCaseTitle_mainScenario}"/>
 
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_ordernumber}"/>
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_ordernumber}" style="font-weight: bold"/>
                         <h:outputText value="#{useCaseController.useCase.ordernumber}" title="#{myBundle.ViewUseCaseTitle_ordernumber}"/>
 
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_useCaseCollection}"/>
-                        <h:selectManyMenu converter="useCaseConverter">
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_useCaseCollection}" style="font-weight: bold"/>
+                        <h:selectManyMenu converter="useCaseConverter" style=" width: 100%">
                             <f:selectItems value="#{useCaseController.useCase.useCaseCollection}"
                                            var="useCaseCollectionItem"
                                            itemValue="#{useCaseCollectionItem}"
@@ -43,7 +43,7 @@
 
                         </h:selectManyMenu>
                         
-                        <h:outputText value="#{myBundle.ViewUseCaseLabel_idFunctionalRequirement}"/>
+                        <h:outputText value="#{myBundle.ViewUseCaseLabel_idFunctionalRequirement}" style="font-weight: bold"/>
                         <h:outputText value="#{useCaseController.useCase.idFunctionalRequirement.name}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" action="/project/useCase/index"/>

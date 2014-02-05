@@ -13,6 +13,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.inject.Inject;
 import pt.altran.altranreq.entities.AltranreqUser;
+import pt.altran.altranreq.entities.FunctionalRequirement;
 import pt.altran.altranreq.manager.AbstractController;
 import pt.altran.altranreq.services.AuthorizationService;
 import pt.altran.altranreq.services.ProjectService;
@@ -116,6 +117,23 @@ public class ProjectController extends AbstractController<Project> implements Se
         return projectService.getProjectStateString(number);
     }
 
+    
+
+
+    
+
+   /* public FunctionalRequirement getFRequirement() {
+       return (projectService)projectService.getSelected();
+    }
+
+    public void setFunctionalRequirement() {
+        projectService.setSelected(this.getSelected());
+    }*/
+    
+   /* public String getStateString(String state) {
+        return projectService.getProjectStateStringValue(state);
+    }*/
+    
     public String getProjectManagerName(Integer idProjectManager) {
         if (idProjectManager == null) {
             return ResourceBundle.getBundle("/project").getString("WithoutProjecManager");

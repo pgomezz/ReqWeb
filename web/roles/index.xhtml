@@ -6,7 +6,6 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-
     <ui:composition>
         <p:dialog id="AltranreqRoleEditDlg1" widgetVar="AltranreqRoleEditDialog1" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditAltranreqRoleTitle}" closeOnEscape="true">
 
@@ -14,17 +13,17 @@
                 <h:panelGroup id="display">
                     <p:panelGrid  columns="2" rendered="#{altranreqRoleController.selected != null}">
 
-                        <h:outputLabel value="#{myBundle.EditAltranreqRoleLabel_idRole}" for="idRole" />
+                        <h:outputLabel value="#{myBundle.EditAltranreqRoleLabel_idRole}" for="idRole" style="font-weight: bold"   />
                         <h:outputText id="idRole" value="#{altranreqRoleController.selected.idRole}" />
 
-                        <p:outputLabel value="#{myBundle.EditAltranreqRoleLabel_type}" for="type" />
+                        <p:outputLabel value="#{myBundle.EditAltranreqRoleLabel_type}" for="type" style="font-weight: bold" />
                         <p:inputText id="type" value="#{altranreqRoleController.selected.type}" title="#{myBundle.EditAltranreqRoleTitle_type}" required="true" requiredMessage="#{myBundle.EditAltranreqRoleRequiredMessage_type}" size="20" maxlength="20"/>
 
-                        <p:outputLabel value="#{myBundle.EditAltranreqRoleLabel_description}" for="description" />
+                        <p:outputLabel value="#{myBundle.EditAltranreqRoleLabel_description}" for="description" style="font-weight: bold" />
                         <p:inputText id="description" value="#{altranreqRoleController.selected.description}" title="#{myBundle.EditAltranreqRoleTitle_description}" size="250" maxlength="250"/>
 
-                        <p:outputLabel value="#{myBundle.EditAltranreqRoleLabel_privilegeCollection}" for="privilegeCollection" />
-                        <p:selectManyMenu id="privilegeCollection" value="#{altranreqRoleController.selected.privilegeCollection}" >
+                        <p:outputLabel value="#{myBundle.EditAltranreqRoleLabel_privilegeCollection}" for="privilegeCollection" style="font-weight: bold" />
+                        <p:selectManyMenu id="privilegeCollection" value="#{altranreqRoleController.selected.privilegeCollection}" style=" width: 100%" >
                             <f:selectItems value="#{privilegeController.items}"
                                            var="privilegeCollectionItem"
                                            itemValue="#{privilegeCollectionItem}"

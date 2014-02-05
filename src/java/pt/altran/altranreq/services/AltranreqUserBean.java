@@ -20,13 +20,23 @@ import pt.altran.altranreq.entities.AltranreqUser;
 public class AltranreqUserBean implements Serializable {
 
     @Context
-    private AltranreqUser selected;
+  //  private AltranreqUser selected;
+    
+    private Object selected;
 
-    public void setSelected(AltranreqUser selected) {
+   /* public void setSelected(AltranreqUser selected) {
         this.selected = selected;
     }
 
     public AltranreqUser getSelected() {
         return selected;
+    }*/
+    public void setSelected(Object selected) {
+        this.selected = selected;
     }
+
+    public Object getSelected() {
+        return selected;
+    }
+    
 }

@@ -14,13 +14,13 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{projectUserController.selected != null}">
 
-                        <h:outputText value="#{myBundle.ViewProjectUserLabel_project}"/>
+                        <h:outputText value="#{myBundle.ViewProjectUserLabel_project}" style="font-weight: bold"/>
                         <h:outputText value="#{projectUserController.selected.project.name}"/>
 
-                        <h:outputText value="#{myBundle.ViewProjectUserLabel_altranreqUser}"/>
+                        <h:outputText value="#{myBundle.ViewProjectUserLabel_altranreqUser}" style="font-weight: bold"/>
                         <h:outputText value="#{projectUserController.selected.altranreqUser.name}"/>
 
-                        <h:outputText value="#{myBundle.ViewProjectUserLabel_idRole}"/>
+                        <h:outputText value="#{myBundle.ViewProjectUserLabel_idRole}" style="font-weight: bold"/>
                         <h:outputText value="#{projectUserController.selected.idRole.description}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="ProjectUserViewDialog.hide()"/>

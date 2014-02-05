@@ -16,6 +16,7 @@ import org.primefaces.event.TransferEvent;
 import org.primefaces.model.DualListModel;
 import pt.altran.altranreq.entities.Project;
 import pt.altran.altranreq.manager.AbstractController;
+import pt.altran.altranreq.manager.util.JsfUtil;
 import pt.altran.altranreq.services.AltranreqUserBean;
 import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.UserService;
@@ -107,6 +108,15 @@ public class AltranreqUserController extends AbstractController<AltranreqUser> i
         }
     }
 
+    @Override
+    public void save(ActionEvent event) {
+        setSelected(getAltranreqUser());
+        ejbService.edit(this.getAltranreqUser());
+      //   String successMsg = ResourceBundle.getBundle("/admin/altranreqUser").getString("Success_on_update");
+        String successMsg = "Success_on_update";
+        JsfUtil.addSuccessMessage(successMsg);
+    }
+    
     public void sendMessages(FacesMessage.Severity severity, String summary, String details) {
         FacesMessage message = new FacesMessage(severity, summary, details);
         FacesContext.getCurrentInstance().addMessage(null, message);

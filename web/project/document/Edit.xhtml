@@ -14,19 +14,19 @@
                 <h:panelGroup id="display">
                     <p:panelGrid  columns="2" rendered="#{documentController.selected != null}">
 
-                        <h:outputLabel value="#{myBundle.EditDocumentLabel_idDocument}" for="idDocument" />
+                        <h:outputLabel value="#{myBundle.EditDocumentLabel_idDocument}" for="idDocument" style="font-weight: bold" />
                         <h:outputText id="idDocument" value="#{documentController.selected.idDocument}" />
 
-                        <p:outputLabel value="#{myBundle.EditDocumentLabel_filepath}" for="filepath" />
+                        <p:outputLabel value="#{myBundle.EditDocumentLabel_filepath}" for="filepath" style="font-weight: bold" />
                         <p:inputText id="filepath" value="#{documentController.selected.filepath}" title="#{myBundle.EditDocumentTitle_filepath}" required="true" requiredMessage="#{myBundle.EditDocumentRequiredMessage_filepath}" size="300" maxlength="300"/>
 
-                        <p:outputLabel value="#{myBundle.EditDocumentLabel_title}" for="title" />
+                        <p:outputLabel value="#{myBundle.EditDocumentLabel_title}" for="title" style="font-weight: bold" />
                         <p:inputText id="title" value="#{documentController.selected.title}" title="#{myBundle.EditDocumentTitle_title}" required="true" requiredMessage="#{myBundle.EditDocumentRequiredMessage_title}" size="100" maxlength="100"/>
 
-                        <p:outputLabel value="#{myBundle.EditDocumentLabel_description}" for="description" />
+                        <p:outputLabel value="#{myBundle.EditDocumentLabel_description}" for="description" style="font-weight: bold" />
                         <p:inputTextarea rows="4" cols="30" id="description" value="#{documentController.selected.description}" title="#{myBundle.EditDocumentTitle_description}" />
 
-                        <p:outputLabel value="#{myBundle.EditDocumentLabel_idProject}" for="idProject" />
+                        <p:outputLabel value="#{myBundle.EditDocumentLabel_idProject}" for="idProject" style="font-weight: bold" />
                         <p:selectOneMenu id="idProject" value="#{documentController.selected.idProject}" required="true" requiredMessage="#{myBundle.EditDocumentRequiredMessage_idProject}" converter="projectConverter">
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{projectController.items}"

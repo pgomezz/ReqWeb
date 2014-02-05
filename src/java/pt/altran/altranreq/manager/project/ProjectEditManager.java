@@ -58,8 +58,7 @@ public class ProjectEditManager extends AbstractController<Project> implements S
     }
 
     @Override
-    public void save(ActionEvent event) {
-   
+    public void save(ActionEvent event) { 
         projectService.edit(getProject());
         String successMsg = ResourceBundle.getBundle("/project").getString("Success_on_update");
         JsfUtil.addSuccessMessage(successMsg);
