@@ -28,6 +28,12 @@
                     </f:facet>
                     <h:outputText value="#{item.username}"/>
                 </p:column>
+                 <p:column sortBy="#{item.isAdmin}">
+                    <f:facet name="header">
+                        <h:outputText value="#{user.IsAdmin}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.isAdmin}"/>
+                </p:column>
                 <p:column sortBy="#{item.email}">
                     <f:facet name="header">
                         <h:outputText value="#{user.Email}"/>

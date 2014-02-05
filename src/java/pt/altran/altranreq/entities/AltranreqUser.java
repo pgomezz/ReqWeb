@@ -23,6 +23,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import pt.altran.altranreq.services.builder.ProjectState;
 
 /**
  *
@@ -169,13 +170,41 @@ public class AltranreqUser implements Serializable {
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
+    
     public String getStringIsAdmin(){
-        if (getIsAdmin()==0){
-            return "Não";
-        }else
-        return "Sim";
+        if (getIsAdmin()=='1'){
+            return "Sim";
+        }else 
+        return "Não";
     
     }
+    
+    
+    public char getStringIsNotAdmin(){
+        if (AltranreqUser.this.getStringIsAdmin()=="Sim"){
+            return 1;
+        }else 
+        return 0;
+    
+    }
+    
+    
+     /* public static BigInteger convertProjectStateEnum(ProjectState projectState) {
+
+        switch (projectState) {
+
+            case SIM:
+
+               return Char. BigInteger.valueOf(1);
+                
+            case NÃO:
+
+                return BigInteger.valueOf(0);             
+        }
+        
+        throw new IllegalArgumentException("Is not supported project state");
+    }*/
+
     public char getIsAdmin() {
         return isAdmin;
     }

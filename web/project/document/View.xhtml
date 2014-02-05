@@ -15,18 +15,18 @@
                     <p:panelGrid columns="2" rendered="#{documentController.selected != null}">
 
                         <h:outputText value="#{myBundle.ViewDocumentLabel_idDocument}"/>
-                        <h:outputText value="#{documentController.selected.idDocument}" title="#{myBundle.ViewDocumentTitle_idDocument}"/>
+                        <h:outputText value="#{documentController.selected.idDocument}" title="#{myBundle.ViewDocumentTitle_idDocument}" style="font-weight: bold"/>
 
                         <h:outputText value="#{myBundle.ViewDocumentLabel_filepath}"/>
-                        <h:outputText value="#{documentController.selected.filepath}" title="#{myBundle.ViewDocumentTitle_filepath}"/>
+                        <h:outputText value="#{documentController.selected.filepath}" title="#{myBundle.ViewDocumentTitle_filepath}" style="font-weight: bold"/>
 
                         <h:outputText value="#{myBundle.ViewDocumentLabel_title}"/>
-                        <h:outputText value="#{documentController.selected.title}" title="#{myBundle.ViewDocumentTitle_title}"/>
+                        <h:outputText value="#{documentController.selected.title}" title="#{myBundle.ViewDocumentTitle_title}" style="font-weight: bold"/>
 
                         <h:outputText value="#{myBundle.ViewDocumentLabel_description}"/>
                         <h:outputText value="#{documentController.selected.description}" title="#{myBundle.ViewDocumentTitle_description}"/>
 
-                        <h:outputText value="#{myBundle.ViewDocumentLabel_idProject}"/>
+                        <h:outputText value="#{myBundle.ViewDocumentLabel_idProject}" style="font-weight: bold"/>
                         <h:outputText value="#{documentController.selected.idProject.name}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="DocumentViewDialog.hide()"/>

@@ -47,7 +47,7 @@
                 <h:outputText value="#{nonFunctionalRequirementController.NFR.ordernumber}" title="#{myBundle.ViewNonFunctionalRequirementTitle_ordernumber}"/>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_nonFunctionalRequirementCollection}"/>
-                <h:selectManyMenu converter="nonFunctionalRequirementConverter">
+                <h:selectManyMenu converter="nonFunctionalRequirementConverter" style=" width: 100%">
                     <f:selectItems value="#{nonFunctionalRequirementController.NFR.nonFunctionalRequirementCollection}"
                                    var="nonFunctionalRequirementCollectionItem"
                                    itemValue="#{nonFunctionalRequirementCollectionItem}"

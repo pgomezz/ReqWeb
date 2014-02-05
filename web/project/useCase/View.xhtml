@@ -9,31 +9,31 @@
         <p:panel header="#{project.DetailsUseCases}" style="width:100%;max-width:100%;">
             <h:form id="UseCaseViewForm">
                 <h:panelGroup id="display" rendered="#{useCaseController.useCaseType}">
-                    <p:panelGrid columns="2">
+                    <p:panelGrid columns="2" style="border-style:  solid; width: 100%" >
 
-                        <h:outputText value="#{project.ViewUseCaseLabel_name}"/>
+                        <h:outputText value="#{project.ViewUseCaseLabel_name}" style="font-weight: bold"/>
                         <h:outputText value="#{useCaseController.useCase.name}" title="#{project.ViewUseCaseTitle_name}"/>
 
-                        <h:outputText value="#{project.ViewUseCaseLabel_description}"/>
+                        <h:outputText value="#{project.ViewUseCaseLabel_description}" style="font-weight: bold"/>
                         <h:outputText value="#{useCaseController.useCase.description}" title="#{project.ViewUseCaseTitle_description}"/>
 
-                        <h:outputText value="#{project.ViewUseCaseLabel_avaliationCriteria}"/>
+                        <h:outputText value="#{project.ViewUseCaseLabel_avaliationCriteria}" style="font-weight: bold"/>
                         <h:outputText value="#{useCaseController.useCase.avaliationCriteria}" title="#{project.ViewUseCaseTitle_avaliationCriteria}"/>
 
-                        <h:outputText value="#{project.ViewUseCaseLabel_preCondition}"/>
+                        <h:outputText value="#{project.ViewUseCaseLabel_preCondition}" style="font-weight: bold"/>
                         <h:outputText value="#{useCaseController.useCase.preCondition}" title="#{project.ViewUseCaseTitle_preCondition}"/>
 
-                        <h:outputText value="#{project.ViewUseCaseLabel_posCondition}"/>
+                        <h:outputText value="#{project.ViewUseCaseLabel_posCondition}" style="font-weight: bold"/>
                         <h:outputText value="#{useCaseController.useCase.posCondition}" title="#{project.ViewUseCaseTitle_posCondition}"/>
 
-                        <h:outputText value="#{project.ViewUseCaseLabel_mainScenario}"/>
+                        <h:outputText value="#{project.ViewUseCaseLabel_mainScenario}" style="font-weight: bold"/>
                         <h:outputText value="#{useCaseController.useCase.mainScenario}" title="#{project.ViewUseCaseTitle_mainScenario}"/>
 
-                        <h:outputText value="#{project.ViewUseCaseLabel_ordernumber}"/>
+                        <h:outputText value="#{project.ViewUseCaseLabel_ordernumber}" style="font-weight: bold"/>
                         <h:outputText value="#{useCaseController.useCase.ordernumber}" title="#{project.ViewUseCaseTitle_ordernumber}"/>
 
-                        <h:outputText value="#{project.ViewUseCaseLabel_useCaseCollection}"/>
-                        <h:selectManyMenu converter="useCaseConverter">
+                        <h:outputText value="#{project.ViewUseCaseLabel_useCaseCollection}" style="font-weight: bold"/>
+                        <h:selectManyMenu converter="useCaseConverter" style=" width: 100%">
                             <f:selectItems value="#{useCaseController.useCase.useCaseCollection}"
                                            var="useCaseCollectionItem"
                                            itemValue="#{useCaseCollectionItem}"
@@ -42,7 +42,7 @@
 
                         </h:selectManyMenu>
                         
-                        <h:outputText value="#{project.ViewUseCaseLabel_idFunctionalRequirement}"/>
+                        <h:outputText value="#{project.ViewUseCaseLabel_idFunctionalRequirement}" style="font-weight: bold"/>
                         <h:outputText value="#{useCaseController.useCase.idFunctionalRequirement.name}"/>
 
                          </p:panelGrid>

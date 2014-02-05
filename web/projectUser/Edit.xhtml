@@ -15,15 +15,15 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditProjectUserLabel_project}" for="project" />
+                    <h:outputLabel value="#{bundle.EditProjectUserLabel_project}" for="project" style="font-weight: bold" />
                     <h:selectOneMenu id="project" value="#{projectUserController.selected.project}" title="#{bundle.EditProjectUserTitle_project}" required="true" requiredMessage="#{bundle.EditProjectUserRequiredMessage_project}">
                         <f:selectItems value="#{projectController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.EditProjectUserLabel_altranreqUser}" for="altranreqUser" />
+                    <h:outputLabel value="#{bundle.EditProjectUserLabel_altranreqUser}" for="altranreqUser" style="font-weight: bold" />
                     <h:selectOneMenu id="altranreqUser" value="#{projectUserController.selected.altranreqUser}" title="#{bundle.EditProjectUserTitle_altranreqUser}" required="true" requiredMessage="#{bundle.EditProjectUserRequiredMessage_altranreqUser}">
                         <f:selectItems value="#{altranreqUserController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.EditProjectUserLabel_idRole}" for="idRole" />
+                    <h:outputLabel value="#{bundle.EditProjectUserLabel_idRole}" for="idRole" style="font-weight: bold" />
                     <h:selectOneMenu id="idRole" value="#{projectUserController.selected.idRole}" title="#{bundle.EditProjectUserTitle_idRole}" required="true" requiredMessage="#{bundle.EditProjectUserRequiredMessage_idRole}">
                         <f:selectItems value="#{altranreqRoleController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>

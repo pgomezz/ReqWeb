@@ -11,41 +11,41 @@
 
         <h:panelGroup rendered="#{functionalRequirementController.functionalRequirementType}">
             <p:panelGrid columns="2" style=" border-style:  solid; width: 100%" >
-                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_idFunctionalRequirement}"/>
-                <h:outputText value="#{functionalRequirementController.functionalRequirement.idFunctionalRequirement}" title="#{myBundle.ViewFunctionalRequirementTitle_idFunctionalRequirement}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_idFunctionalRequirement}" style="font-weight: bold"/>
+                <h:outputText value="#{functionalRequirementController.functionalRequirement.idFunctionalRequirement}" title="#{myBundle.ViewFunctionalRequirementTitle_idFunctionalRequirement}" />
 
-                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_name}"/>
-                <h:outputText value="#{functionalRequirementController.functionalRequirement.name}" title="#{myBundle.ViewFunctionalRequirementTitle_name}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_name}" style="font-weight: bold"/>
+                <h:outputText value="#{functionalRequirementController.functionalRequirement.name}" title="#{myBundle.ViewFunctionalRequirementTitle_name}" />
 
-                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_description}"/>
-                <h:outputText value="#{functionalRequirementController.functionalRequirement.description}" title="#{myBundle.ViewFunctionalRequirementTitle_description}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_description}" style="font-weight: bold"/>
+                <h:outputText value="#{functionalRequirementController.functionalRequirement.description}" title="#{myBundle.ViewFunctionalRequirementTitle_description}" />
 
-                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_reason}"/>
-                <h:outputText value="#{functionalRequirementController.functionalRequirement.reason}" title="#{myBundle.ViewFunctionalRequirementTitle_reason}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_reason}" style="font-weight: bold"/>
+                <h:outputText value="#{functionalRequirementController.functionalRequirement.reason}" title="#{myBundle.ViewFunctionalRequirementTitle_reason}" />
 
-                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_source}"/>
-                <h:outputText value="#{functionalRequirementController.functionalRequirement.source}" title="#{myBundle.ViewFunctionalRequirementTitle_source}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_source}" style="font-weight: bold"/>
+                <h:outputText value="#{functionalRequirementController.functionalRequirement.source}" title="#{myBundle.ViewFunctionalRequirementTitle_source}" />
 
-                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_avaliationCriteria}"/>
-                <h:outputText value="#{functionalRequirementController.functionalRequirement.avaliationCriteria}" title="#{myBundle.ViewFunctionalRequirementTitle_avaliationCriteria}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_avaliationCriteria}" style="font-weight: bold"/>
+                <h:outputText value="#{functionalRequirementController.functionalRequirement.avaliationCriteria}" title="#{myBundle.ViewFunctionalRequirementTitle_avaliationCriteria}" />
 
-                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_clientPriority}"/>
-                <h:outputText value="#{functionalRequirementController.functionalRequirement.clientPriority}" title="#{myBundle.ViewFunctionalRequirementTitle_clientPriority}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_clientPriority}" style="font-weight: bold"/>
+                <h:outputText value="#{functionalRequirementController.functionalRequirement.clientPriority}" title="#{myBundle.ViewFunctionalRequirementTitle_clientPriority}" />
 
-                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_clientInsatisfaction}"/>
-                <h:outputText value="#{functionalRequirementController.functionalRequirement.clientInsatisfaction}" title="#{myBundle.ViewFunctionalRequirementTitle_clientInsatisfaction}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_clientInsatisfaction}" style="font-weight: bold"/>
+                <h:outputText value="#{functionalRequirementController.functionalRequirement.clientInsatisfaction}" title="#{myBundle.ViewFunctionalRequirementTitle_clientInsatisfaction}" />
 
-                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_requirementState}"/>
-                <h:outputText value="#{functionalRequirementController.functionalRequirement.requirementState}" title="#{myBundle.ViewFunctionalRequirementTitle_requirementState}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_requirementState}" style="font-weight: bold"/>
+                <h:outputText value="#{functionalRequirementController.functionalRequirement.requirementState}" title="#{myBundle.ViewFunctionalRequirementTitle_requirementState}" />
 
-                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_version}"/>
-                <h:outputText value="#{functionalRequirementController.functionalRequirement.version}" title="#{myBundle.ViewFunctionalRequirementTitle_version}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_version}" style="font-weight: bold"/>
+                <h:outputText value="#{functionalRequirementController.functionalRequirement.version}" title="#{myBundle.ViewFunctionalRequirementTitle_version}" />
 
-                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_ordernumber}"/>
-                <h:outputText value="#{functionalRequirementController.functionalRequirement.ordernumber}" title="#{myBundle.ViewFunctionalRequirementTitle_ordernumber}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_ordernumber}" style="font-weight: bold"/>
+                <h:outputText value="#{functionalRequirementController.functionalRequirement.ordernumber}" title="#{myBundle.ViewFunctionalRequirementTitle_ordernumber}" />
 
-                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_functionalRequirementCollection}"/>
-                <h:selectManyMenu converter="functionalRequirementConverter">
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_functionalRequirementCollection}" style="font-weight: bold"/>
+                <h:selectManyMenu converter="functionalRequirementConverter" style=" width: 100%">
                     <f:selectItems value="#{functionalRequirementController.functionalRequirement.functionalRequirementCollection}"
                                    var="functionalRequirementCollectionItem"
                                    itemValue="#{functionalRequirementCollectionItem}"
@@ -54,10 +54,10 @@
 
                 </h:selectManyMenu>
 
-                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_idProject}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_idProject}" style="font-weight: bold"/>
                 <h:outputText value="#{functionalRequirementController.functionalRequirement.idProject.name}"/>
 
-                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_idBusinessCategory}"/>
+                <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_idBusinessCategory}" style="font-weight: bold"/>
                 <h:outputText value="#{functionalRequirementController.functionalRequirement.idBusinessCategory.name}"/>
             </p:panelGrid>
 

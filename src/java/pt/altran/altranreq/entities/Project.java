@@ -29,6 +29,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import pt.altran.altranreq.services.builder.ProjectState;
 
 /**
  *
@@ -147,6 +148,30 @@ public class Project implements Serializable {
         this.endDate = endDate;
     }
 
+   public static ProjectState convertProjectState(int arg) {
+        switch (arg) {
+
+            case 0:
+
+                return ProjectState.EM_CURSO;
+
+            case 1:
+
+                return ProjectState.SUSPENSO;
+
+            case 2:
+
+                return ProjectState.CONCLUIDO;
+
+            case 3:
+
+                return ProjectState.EM_MANUTENCAO;
+        }
+
+        throw new IllegalArgumentException("Is not a supported project state");
+
+    }
+    
     public BigInteger getProjectState() {
         return projectState;
     }
@@ -155,6 +180,42 @@ public class Project implements Serializable {
         this.projectState = projectState;
     }
 
+      public static BigInteger convertProjectStateEnum(ProjectState projectState) {
+
+        switch (projectState) {
+
+            case EM_CURSO:
+
+               return BigInteger.valueOf(0);
+                
+            case SUSPENSO:
+
+                return BigInteger.valueOf(1);
+                
+            case CONCLUIDO:
+
+               return BigInteger.valueOf(2);
+
+            case EM_MANUTENCAO:
+
+                return BigInteger.valueOf(3);
+
+        }
+        
+        throw new IllegalArgumentException("Is not supported project state");
+    }
+
+
+   
+    
+    /*public String getStringProjectState(){
+        if (projectState = 1){
+            return "Sim";
+        }else 
+        return "Não";
+    
+    }*/
+    
     
     public BigInteger getIdProjectManager() {
         return idProjectManager;

@@ -14,13 +14,13 @@
                 <h:panelGroup id="display">
                     <p:panelGrid  columns="2" rendered="#{projectUserController.selected != null}">
 
-                        <h:outputLabel value="#{myBundle.EditProjectUserLabel_project}" for="project" />
+                        <h:outputLabel value="#{myBundle.EditProjectUserLabel_project}" for="project" style="font-weight: bold" />
                         <h:outputText id="project" value="#{projectUserController.selected.project}" />
 
-                        <h:outputLabel value="#{myBundle.EditProjectUserLabel_altranreqUser}" for="altranreqUser" />
+                        <h:outputLabel value="#{myBundle.EditProjectUserLabel_altranreqUser}" for="altranreqUser"  style="font-weight: bold"/>
                         <h:outputText id="altranreqUser" value="#{projectUserController.selected.altranreqUser}" />
 
-                        <p:outputLabel value="#{myBundle.EditProjectUserLabel_idRole}" for="idRole" />
+                        <p:outputLabel value="#{myBundle.EditProjectUserLabel_idRole}" for="idRole" style="font-weight: bold" />
                         <p:selectOneMenu id="idRole" value="#{projectUserController.selected.idRole}" required="true" requiredMessage="#{myBundle.EditProjectUserRequiredMessage_idRole}" converter="altranreqRoleConverter">
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{altranreqRoleController.items}"

@@ -12,13 +12,13 @@
         <h:panelGroup rendered="#{nonFunctionalRequirementController.NFRType}">
            <p:panelGrid columns="2" style=" border-style:  solid; width: 100%" >
 
-                <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_idNonFuncRequirement}"/>
-                <h:outputText value="#{nonFunctionalRequirementController.NFR.idNonFuncRequirement}" title="#{myBundle.ViewNonFunctionalRequirementTitle_idNonFuncRequirement}"/>
+                <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_idNonFuncRequirement}" style="font-weight: bold"/>
+                <h:outputText value="#{nonFunctionalRequirementController.NFR.idNonFuncRequirement}" title="#{myBundle.ViewNonFunctionalRequirementTitle_idNonFuncRequirement}" style="font-weight: bold"/>
 
-                <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_type}"/>
+                <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_type}" style="font-weight: bold"/>
                 <h:outputText value="#{nonFunctionalRequirementController.NFR.type}" title="#{myBundle.ViewNonFunctionalRequirementTitle_type}"/>
 
-                <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_name}"/>
+                <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_name}" style="font-weight: bold"/>
                 <h:outputText value="#{nonFunctionalRequirementController.NFR.name}" title="#{myBundle.ViewNonFunctionalRequirementTitle_name}"/>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_description}"/>
@@ -49,7 +49,7 @@
                 <h:outputText value="#{nonFunctionalRequirementController.NFR.ordernumber}" title="#{myBundle.ViewNonFunctionalRequirementTitle_ordernumber}"/>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_nonFunctionalRequirementCollection}"/>
-                <h:selectManyMenu converter="nonFunctionalRequirementConverter">
+                <h:selectManyMenu converter="nonFunctionalRequirementConverter" style=" width: 100%">
                     <f:selectItems value="#{nonFunctionalRequirementController.NFR.nonFunctionalRequirementCollection}"
                                    var="nonFunctionalRequirementCollectionItem"
                                    itemValue="#{nonFunctionalRequirementCollectionItem}"
