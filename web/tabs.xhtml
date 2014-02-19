@@ -2,41 +2,42 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
                 template="/template.xhtml"
                 >
 
     <ui:define name="body" >
-        <p:tabView id="TabProfile" activeIndex="#{tabBean.activeIndex}" 
-                   style="height:100%; width: 100%">
+        <p:tabView id="TabProfile" activeIndex="#{tabBean.activeIndex}" >
             <p:ajax event="tabChange" listener="#{tabBean.onTabChange}" />
             <p:tab title="#{myBundle.ProjectsTab}" id="TabProjects" >
-                <p:layout style="width:100%;height:100%;" >
-                    <p:layoutUnit position="west" size="207" style="height: 100%">
+                <p:panelGrid columns="2" >
+                    <p:panel style="height: 600px">
                         <ui:insert name="accorTree">
                             Accordion
                         </ui:insert>
-                    </p:layoutUnit>
-                    <p:layoutUnit position="center">
+                    </p:panel>
+                    <p:panel  style=" height: 600px">
                         <ui:insert name="projectTab">
                             Projects
                         </ui:insert>
-                    </p:layoutUnit>
-                </p:layout>
+                    </p:panel>
+
+                </p:panelGrid>
             </p:tab>
             <p:tab title="#{myBundle.Administration}" id="TabAdministration" disabled="#{!authenticationController.isAdmin}" >
-                <p:layout style="width:100%;height:100%;" >
-                    <p:layoutUnit position="west" size="207">
+                <p:panelGrid columns="2" >
+                    <p:panel style= "height: 600px">
                         <ui:insert name="TreeTab">
                             Accordion Administration
                         </ui:insert>
-                    </p:layoutUnit>
-                    <p:layoutUnit position="center" >
+                    </p:panel>
+                    <p:panel  style=" height: 600px">
                         <ui:insert name="AdminTab">
                             Administration
                         </ui:insert>
-                    </p:layoutUnit>
-                 </p:layout>   
+                    </p:panel>
+                </p:panelGrid>
             </p:tab>
         </p:tabView>
     </ui:define>
