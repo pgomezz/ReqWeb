@@ -18,10 +18,10 @@
                 
             </p:panelGrid>
             
-            <p:commandButton id="save" value="#{business.Save}" actionListener="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}" action="/index" ajax="false" >
+            <p:commandButton id="save" value="#{business.Save}" actionListener="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}" action="/indexAdmin" ajax="false" >
                 <f:actionListener binding="#{businessCategoryCreateController.saveNew(event)}"/>
             </p:commandButton>
-            <p:commandButton id="cancel" value="#{user.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}" action="/index" ajax="false" immediate="true"/>
+            <p:commandButton id="cancel" value="#{user.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}" action="/indexAdmin" ajax="false" immediate="true"/>
         </h:panelGroup>
 
     </h:form>

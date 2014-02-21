@@ -14,7 +14,7 @@
 
                 <h:panelGroup id="display">
 
-                    <p:commandButton actionListener="#{projectController.delete}" value="#{myBundle.Delete}" ajax="true"  action="/index" update="display,:ProjectListForm:datalist,:growl" oncomplete="handleSubmit(:ProjectListForm:ProjectRemoveDialog);"/>
+                    <p:commandButton actionListener="#{projectController.delete}" value="#{myBundle.Delete}" ajax="true"  action="/indexProj" update="display,:ProjectListForm:datalist,:growl" oncomplete="handleSubmit(:ProjectListForm:ProjectRemoveDialog);"/>
                     
                     <p:commandButton value="#{myBundle.Cancel}" onclick="ProjectRemoveDialog.hide()"/>
                 </h:panelGroup>

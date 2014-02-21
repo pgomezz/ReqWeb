@@ -104,10 +104,10 @@
 
 
                 </p:panelGrid>
-                <p:commandButton actionListener="#{nonFunctionalRequirementEditManager.save}" value="#{myBundle.Save}" action="/index" ajax="false" update="editGrid">
+                <p:commandButton actionListener="#{nonFunctionalRequirementEditManager.save}" value="#{myBundle.Save}" action="/indexProj" ajax="false" update="editGrid">
                     <f:actionListener binding="#{beanPagina.setPaginaProj('/project/View.xhtml')}"/>
                 </p:commandButton>
-                <p:commandButton value="#{myBundle.Cancel}" action="/index" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}"  immediate="true" ajax="false" />
+                <p:commandButton value="#{myBundle.Cancel}" action="/indexProj" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}"  immediate="true" ajax="false" />
             </h:panelGroup>
 
         </h:form>

@@ -68,16 +68,16 @@
 
                     <f:facet name="footer">
                         <div class="footer-section">
-                            <p:commandButton id="createButtonRFP" icon="ui-icon-plus" action="/index"  value="#{project.Create}" actionListener="#{functionalRequirementController.prepareCreate}" ajax="false">
+                            <p:commandButton id="createButtonRFP" icon="ui-icon-plus" action="/indexProj"  value="#{project.Create}" actionListener="#{functionalRequirementController.prepareCreate}" ajax="false">
                                 <f:actionListener binding="#{beanPagina.setPaginaProj('/project/functionalRequirement/CreateNew.xhtml')}"/>
                             </p:commandButton>
-                            <p:commandButton id="viewButtonRFP"   icon="ui-icon-search" action="/index" value="#{project.View}" actionListener="#{functionalRequirementController.redirect(2)}" disabled="#{empty functionalRequirementController.selected}" ajax="false">
+                            <p:commandButton id="viewButtonRFP"   icon="ui-icon-search" action="/indexProj" value="#{project.View}" actionListener="#{functionalRequirementController.redirect(2)}" disabled="#{empty functionalRequirementController.selected}" ajax="false">
                                 <f:actionListener binding="#{beanPagina.setPaginaProj('/project/functionalRequirement/View_New.xhtml')}"/>
                             </p:commandButton>
-                            <p:commandButton id="editButtonRFP"   icon="ui-icon-pencil" action="/index" value="#{project.Edit}" actionListener="#{functionalRequirementController.redirect(2)}" disabled="#{empty functionalRequirementController.selected}" ajax="false">
+                            <p:commandButton id="editButtonRFP"   icon="ui-icon-pencil" action="/indexProj" value="#{project.Edit}" actionListener="#{functionalRequirementController.redirect(2)}" disabled="#{empty functionalRequirementController.selected}" ajax="false">
                                 <f:actionListener binding="#{beanPagina.setPaginaProj('/project/functionalRequirement/Edit_New.xhtml')}"/>
                             </p:commandButton>
-                            <p:commandButton id="deleteButtonRFP" value="#{project.Delete}" actionListener="#{functionalRequirementController.delete}" update=":growl,datalistRFP" disabled="#{empty functionalRequirementController.selected}" action="/index" icon="ui-icon-trash" >
+                            <p:commandButton id="deleteButtonRFP" value="#{project.Delete}" actionListener="#{functionalRequirementController.delete}" update=":growl,datalistRFP" disabled="#{empty functionalRequirementController.selected}" action="/indexProj" icon="ui-icon-trash" >
                                 <p:confirm header="#{project.Confirmation}" message="#{project.ConfirmDelete}" icon="ui-icon-alert" />
                             </p:commandButton>
                         </div>
@@ -111,11 +111,11 @@
 
                     <f:facet name="footer">
                         <div class="footer-section">
-                            <p:commandButton id="createButtonNRFP" icon="ui-icon-plus"   value="#{project.Create}" action="/index" actionListener="#{beanPagina.setPaginaProj('/project/nonFunctionalRequirement/Create_New.xhtml')}" ajax="false" />
-                            <p:commandButton id="viewButtonNRFP"   icon="ui-icon-search" value="#{project.View}" disabled="#{empty nonFunctionalRequirementController.selected}" actionListener="#{nonFunctionalRequirementController.redirect(2)}" action="/index" ajax="false">
+                            <p:commandButton id="createButtonNRFP" icon="ui-icon-plus"   value="#{project.Create}" action="/indexProj" actionListener="#{beanPagina.setPaginaProj('/project/nonFunctionalRequirement/Create_New.xhtml')}" ajax="false" />
+                            <p:commandButton id="viewButtonNRFP"   icon="ui-icon-search" value="#{project.View}" disabled="#{empty nonFunctionalRequirementController.selected}" actionListener="#{nonFunctionalRequirementController.redirect(2)}" action="/indexProj" ajax="false">
                                 <f:actionListener binding="#{beanPagina.setPaginaProj('/project/nonFunctionalRequirement/View_New.xhtml')}"/>
                             </p:commandButton>
-                            <p:commandButton id="editButtonNRFP"   icon="ui-icon-pencil" value="#{project.Edit}" disabled="#{empty nonFunctionalRequirementController.selected}" actionListener="#{nonFunctionalRequirementController.redirect(2)}" action="/index" ajax="false">
+                            <p:commandButton id="editButtonNRFP"   icon="ui-icon-pencil" value="#{project.Edit}" disabled="#{empty nonFunctionalRequirementController.selected}" actionListener="#{nonFunctionalRequirementController.redirect(2)}" action="/indexProj" ajax="false">
                                 <f:actionListener binding="#{beanPagina.setPaginaProj('/project/nonFunctionalRequirement/Edit_New.xhtml')}"/>
                             </p:commandButton>
                             <p:commandButton id="deleteButtonNRFP" icon="ui-icon-trash"  value="#{project.Delete}" update=":growl,datalistNRFP" disabled="#{empty nonFunctionalRequirementController.selected}" actionListener="#{nonFunctionalRequirementController.delete}" >

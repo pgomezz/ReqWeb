@@ -43,10 +43,10 @@
                                            />
                         </p:selectManyMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{createUseCaseManager.saveNew}" value="#{myBundle.Save}" action="/index" ajax="false">
+                    <p:commandButton actionListener="#{createUseCaseManager.saveNew}" value="#{myBundle.Save}" action="/indexProj" ajax="false">
                         <f:actionListener binding="#{beanPagina.setPaginaProj('/project/functionalRequirement/View_New.xhtml')}"/>
                     </p:commandButton>
-                    <p:commandButton value="#{myBundle.Cancel}" actionListener="#{beanPagina.setPaginaProj('/project/functionalRequirement/View_New.xhtml')}" action="/index" immediate="true" ajax="false"/>
+                    <p:commandButton value="#{myBundle.Cancel}" actionListener="#{beanPagina.setPaginaProj('/project/functionalRequirement/View_New.xhtml')}" action="/indexProj" immediate="true" ajax="false"/>
                 </h:panelGroup>
 
             </h:form>

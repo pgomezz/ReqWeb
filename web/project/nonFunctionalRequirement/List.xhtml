@@ -39,12 +39,12 @@
 
                 <f:facet name="footer">
                     <div class="footer-section">
-                        <p:commandButton id="createButton" icon="ui-icon-plus" value="#{myBundle.Create}" actionListener="#{beanPagina.setPaginaProj('/project/nonFunctionalRequirement/CreateNew')}" action="/index" ajax="false" />
+                        <p:commandButton id="createButton" icon="ui-icon-plus" value="#{myBundle.Create}" actionListener="#{beanPagina.setPaginaProj('/project/nonFunctionalRequirement/CreateNew')}" action="/indexProj" ajax="false" />
 
-                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}"  actionListener="#{nonFunctionalRequirementController.redirect(2)}" action="/index" disabled="#{empty nonFunctionalRequirementController.selected}" ajax="false" >
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}"  actionListener="#{nonFunctionalRequirementController.redirect(2)}" action="/indexProj" disabled="#{empty nonFunctionalRequirementController.selected}" ajax="false" >
                             <f:actionListener binding="#{beanPagina.setPaginaProj('/project/nonFunctionalRequirement/View_New.xhtml')}" />
                         </p:commandButton>
-                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}"  actionListener="#{nonFunctionalRequirementController.redirect(2)}" action="/index" disabled="#{empty nonFunctionalRequirementController.selected}" ajax="false" >
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}"  actionListener="#{nonFunctionalRequirementController.redirect(2)}" action="/indexProj" disabled="#{empty nonFunctionalRequirementController.selected}" ajax="false" >
                             <f:actionListener binding="#{beanPagina.setPaginaProj('/project/nonFunctionalRequirement/Edit_New.xhtml')}" />
                         </p:commandButton>
                         <p:commandButton id="deleteButton" value="#{myBundle.Delete}" actionListener="#{functionalRequirementController.delete(event)}" update=":NonFunctionalRequirementListForm:datalist" disabled="#{empty functionalRequirementController.selected}" icon="ui-icon-trash">

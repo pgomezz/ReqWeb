@@ -51,7 +51,7 @@
                 <h:outputText value="#{myBundle.ViewFunctionalRequirementLabel_idBusinessCategory}" style="font-weight: bold"/>
                 <h:outputText value="#{functionalRequirementController.FRequirement.idBusinessCategory.name}"/>
             </p:panelGrid>
-            <p:commandButton value="#{myBundle.Close}" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" action="/index" immediate="true" ajax="false"/>
+            <p:commandButton value="#{myBundle.Close}" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" action="/indexProj" immediate="true" ajax="false"/>
         <br/>
         <br/>
         </h:panelGroup>
@@ -84,11 +84,11 @@
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">
-                        <p:commandButton id="createButton" icon="ui-icon-plus" actionListener="#{beanPagina.setPaginaProj('/project/useCase/Create.xhtml')}" action="/index" value="#{myBundle.Create}" ajax="false"/>
-                        <p:commandButton id="viewButton" actionListener="#{useCaseController.redirect(2)}"  icon="ui-icon-search" value="#{myBundle.View}" disabled="#{empty useCaseController.selected}" action="/index" ajax="false" >
+                        <p:commandButton id="createButton" icon="ui-icon-plus" actionListener="#{beanPagina.setPaginaProj('/project/useCase/Create.xhtml')}" action="/indexProj" value="#{myBundle.Create}" ajax="false"/>
+                        <p:commandButton id="viewButton" actionListener="#{useCaseController.redirect(2)}"  icon="ui-icon-search" value="#{myBundle.View}" disabled="#{empty useCaseController.selected}" action="/indexProj" ajax="false" >
                             <f:actionListener binding="#{beanPagina.setPaginaProj('/project/useCase/View.xhtml')}"/>
                         </p:commandButton>
-                        <p:commandButton id="editButton" icon="ui-icon-pencil" value="#{myBundle.Edit}" disabled="#{empty useCaseController.selected}" action="/index" ajax="false">
+                        <p:commandButton id="editButton" icon="ui-icon-pencil" value="#{myBundle.Edit}" disabled="#{empty useCaseController.selected}" action="/indexProj" ajax="false">
                             <f:actionListener binding="#{beanPagina.setPaginaProj('/project/useCase/Edit.xhtml')}"/>
                         </p:commandButton>
                         <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" disabled="#{empty useCaseController.selected}"/>

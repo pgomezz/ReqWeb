@@ -72,10 +72,10 @@
                     <p:inputText id="terminology" value="#{projectCreateManager.project.terminology}" title="#{project.Terminology}" requiredMessage="#{project.Name}" size="100" maxlength="100"/>
 
                 </p:panelGrid>
-                <p:commandButton actionListener="#{projectCreateManager.saveNew(event)}" action="/index"  value="#{project.Save}"  ajax="false">
+                <p:commandButton actionListener="#{projectCreateManager.saveNew(event)}" action="/indexProj"  value="#{project.Save}"  ajax="false">
                     <f:actionListener binding="#{beanPagina.setPaginaProj('/project/List.xhtml')}"/>
                 </p:commandButton>
-                <p:commandButton value="#{project.Cancel}"  action="/index" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" ajax="false"/>
+                <p:commandButton value="#{project.Cancel}"  action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" ajax="false"/>
 
             </h:panelGroup>
         </h:form>

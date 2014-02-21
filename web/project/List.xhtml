@@ -35,12 +35,12 @@
                     <h:outputText value="#{projectController.getProjectManagerName(item.idProjectManager)}"/>
                 </p:column>
                 <f:facet name="footer">
-                    <p:commandButton id="createButton" icon="ui-icon-plus" value="#{project.Create}" actionListener="#{beanPagina.setPaginaProj('/project/Create.xhtml')}" action="/index" ajax="false"/>
-                    <p:commandButton id="viewButton"  icon="ui-icon-search" value="#{project.View}" actionListener="#{projectController.redirect(2)}" action="/index" disabled="#{empty projectController.selected}" ajax="false">
+                    <p:commandButton id="createButton" icon="ui-icon-plus" value="#{project.Create}" actionListener="#{beanPagina.setPaginaProj('/project/Create.xhtml')}" action="/indexProj" ajax="false"/>
+                    <p:commandButton id="viewButton"  icon="ui-icon-search" value="#{project.View}" actionListener="#{projectController.redirect(2)}" action="/indexProj" disabled="#{empty projectController.selected}" ajax="false">
                         <f:actionListener binding="#{beanPagina.setPaginaProj('/project/View.xhtml')}" />
                         <f:actionListener binding="#{beanPagina.setAccordTree('/tree/tree.xhtml')}"/>
                     </p:commandButton>
-                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{project.Edit}" actionListener="#{projectController.redirect(3)}" action="/index" disabled="#{empty projectController.selected}" ajax="false">
+                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{project.Edit}" actionListener="#{projectController.redirect(3)}" action="/indexProj" disabled="#{empty projectController.selected}" ajax="false">
                         <f:actionListener binding="#{beanPagina.setPaginaProj('/project/Edit.xhtml')}" />
                     </p:commandButton>
                     <p:commandButton id="deleteButton" value="#{project.Delete}" actionListener="#{projectController.delete(event)}" update=":ProjectListForm:datalist" disabled="#{empty projectController.selected}" icon="ui-icon-trash" >

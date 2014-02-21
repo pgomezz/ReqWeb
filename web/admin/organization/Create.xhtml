@@ -25,10 +25,10 @@
 
             </p:panelGrid>
             
-            <p:commandButton id="save" value="#{business.Save}" actionListener="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}" action="/index" ajax="false" >
+            <p:commandButton id="save" value="#{business.Save}" actionListener="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}" action="/indexAdmin" ajax="false" >
                 <f:actionListener binding="#{organizationCreateManager.saveNew(event)}"/>
             </p:commandButton>
-            <p:commandButton id="cancel" value="#{organization.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}" action="/index" ajax="false" immediate="true"/>
+            <p:commandButton id="cancel" value="#{organization.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}" action="/indexAdmin" ajax="false" immediate="true"/>
 
         </h:panelGroup>
 

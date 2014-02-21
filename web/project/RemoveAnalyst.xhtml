@@ -22,11 +22,11 @@
                             #{o.name}
                         </p:column>  
                     </p:selectOneMenu>
-                    <p:commandButton actionListener="#{projectUserController.delete(event)}" action="/index"  value="#{project.Delete}"  ajax="false">
+                    <p:commandButton actionListener="#{projectUserController.delete(event)}" action="/indexProj"  value="#{project.Delete}"  ajax="false">
                         <f:actionListener binding="#{beanPagina.setPaginaProj('/project/View.xhtml')}"/>
                     </p:commandButton>
                     
-                    <p:commandButton value="#{project.Cancel}"  action="/index" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" ajax="false"/>
+                    <p:commandButton value="#{project.Cancel}"  action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" ajax="false"/>
 
 
                 </p:panelGrid>

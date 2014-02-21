@@ -21,10 +21,10 @@
 
 
             </p:panelGrid>
-            <p:commandButton actionListener="#{businessCategoryEditController.save}" value="#{myBundle.Save}" action="/index" ajax="false">
+            <p:commandButton actionListener="#{businessCategoryEditController.save}" value="#{myBundle.Save}" action="/indexAdmin" ajax="false">
                 <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}"/>
             </p:commandButton>
-            <p:commandButton value="#{myBundle.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}" action="/index" immediate="true" ajax="false"/>
+            <p:commandButton value="#{myBundle.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}" action="/indexAdmin" immediate="true" ajax="false"/>
 
         </h:panelGroup>
 

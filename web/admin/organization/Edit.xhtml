@@ -26,10 +26,10 @@
 
                 </p:panelGrid>
 
-                <p:commandButton actionListener="#{organizationEditManager.save}" action="/index" value="#{organization.Save}" ajax="false">
+                <p:commandButton actionListener="#{organizationEditManager.save}" action="/indexAdmin" value="#{organization.Save}" ajax="false">
                     <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}"/>
                 </p:commandButton>
-                <p:commandButton value="#{organization.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}" action="/index"/>
+                <p:commandButton value="#{organization.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}" action="/indexAdmin"/>
             </h:panelGroup>
 
         </h:form>

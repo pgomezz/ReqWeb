@@ -60,10 +60,10 @@
                     <p:outputLabel value="#{project.Terminology}" for="terminology" style="font-weight: bold" />
                     <p:inputText id="terminology" value="#{projectEditManager.project.terminology}" title="#{project.Terminology}" requiredMessage="#{project.CreateProjectRequiredMessage_name}" size="100" maxlength="100"/>
                 </p:panelGrid>
-                <p:commandButton actionListener="#{projectEditManager.save}" action="/index"  value="#{project.Save}"  ajax="false" >
+                <p:commandButton actionListener="#{projectEditManager.save}" action="/indexProj"  value="#{project.Save}"  ajax="false" >
                     <f:actionListener binding="#{beanPagina.setPaginaProj('/project/List.xhtml')}"/>
                 </p:commandButton>
-                <p:commandButton value="#{project.Cancel}" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" action="/index" immediate="true" ajax="false"/>
+                <p:commandButton value="#{project.Cancel}" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" action="/indexProj" immediate="true" ajax="false"/>
             </h:panelGroup>
         </h:form>
     </p:panel>

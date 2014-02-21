@@ -100,10 +100,10 @@
 
 
             </p:panelGrid>
-            <p:commandButton actionListener="#{nonFunctionalRequirementCreateManager.saveNew}"  action="/index"  value="#{myBundle.Save}" update="grid" ajax="false" >
+            <p:commandButton actionListener="#{nonFunctionalRequirementCreateManager.saveNew}"  action="/indexProj"  value="#{myBundle.Save}" update="grid" ajax="false" >
                 <f:actionListener binding="#{beanPagina.setPaginaProj('/project/View.xhtml')}"/>
             </p:commandButton>
-            <p:commandButton value="#{myBundle.Cancel}"  oncomplete="ConfirmCancelDialog.show()" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" action="/index" ajax="false"/>
+            <p:commandButton value="#{myBundle.Cancel}"  oncomplete="ConfirmCancelDialog.show()" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" action="/indexProj" ajax="false"/>
         </h:panelGroup>
 
     </h:form>

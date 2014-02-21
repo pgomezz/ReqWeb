@@ -36,12 +36,12 @@
                 
                 <f:facet name="footer">
                     <div class="footer-section">
-                        <p:commandButton id="createButton"  value="#{client.Create}" actionListener="#{beanPagina.setPaginaAdmin('/admin/client/Create.xhtml')}" action="/index" icon="ui-icon-plus" ajax="false" />
-                        <p:commandButton id="viewButton"  value="#{client.View}" action="/index" disabled="#{empty clientController.selected}" icon="ui-icon-search" ajax="false">
+                        <p:commandButton id="createButton"  value="#{client.Create}" actionListener="#{beanPagina.setPaginaAdmin('/admin/client/Create.xhtml')}" action="/indexAdmin" icon="ui-icon-plus" ajax="false" />
+                        <p:commandButton id="viewButton"  value="#{client.View}" action="/indexAdmin" disabled="#{empty clientController.selected}" icon="ui-icon-search" ajax="false">
                             <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/client/View.xhtml')}"/>
                             <f:actionListener binding="#{clientController.keepState()}"/>
                         </p:commandButton>
-                        <p:commandButton id="editButton"  value="#{client.Edit}" action="/index" disabled="#{empty clientController.selected}" icon="ui-icon-pencil" ajax="false">
+                        <p:commandButton id="editButton"  value="#{client.Edit}" action="/indexAdmin" disabled="#{empty clientController.selected}" icon="ui-icon-pencil" ajax="false">
                             <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/client/Edit.xhtml')}"/>
                             <f:actionListener binding="#{clientController.keepState()}"/>
                         </p:commandButton>

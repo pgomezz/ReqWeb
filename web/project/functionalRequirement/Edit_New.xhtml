@@ -105,10 +105,10 @@
 
 
             </p:panelGrid>
-            <p:commandButton actionListener="#{functionalRequirementEditManager.save}" action="/index"  value="#{myBundle.Save}"  ajax="false" update="editGrid">
+            <p:commandButton actionListener="#{functionalRequirementEditManager.save}" action="/indexProj"  value="#{myBundle.Save}"  ajax="false" update="editGrid">
                 <f:actionListener binding="#{beanPagina.setPaginaProj('/project/View.xhtml')}"/>
             </p:commandButton>
-            <p:commandButton value="#{myBundle.Cancel}" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" action="/index" immediate="true" ajax="false"/>
+            <p:commandButton value="#{myBundle.Cancel}" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" action="/indexProj" immediate="true" ajax="false"/>
 
         </h:panelGroup>
 

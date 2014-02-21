@@ -15,7 +15,7 @@
                         <h:outputText value="#{business.Description}" style=" font-weight: bold"/>
                         <h:outputText value="#{businessCategoryEditController.businessCategory.description}" title="#{business.Description}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{business.Close}" actionListener="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}" action="/index" ajax="false"/>
+                    <p:commandButton value="#{business.Close}" actionListener="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}" action="/indexAdmin" ajax="false"/>
                 </h:panelGroup>
 
             </h:form>

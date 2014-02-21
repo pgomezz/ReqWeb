@@ -45,10 +45,10 @@
                                            />
                         </p:selectManyMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{editUseCaseManager.save}" action="/index"  value="#{myBundle.Save}"  ajax="true" >
+                    <p:commandButton actionListener="#{editUseCaseManager.save}" action="/indexProj"  value="#{myBundle.Save}"  ajax="true" >
                         <f:actionListener binding="#{beanPagina.setPaginaProj('/project/functionalRequirement/View_New.xhtml')}"/>
                     </p:commandButton>
-                    <p:commandButton value="#{myBundle.Cancel}" action="/index">
+                    <p:commandButton value="#{myBundle.Cancel}" action="/indexProj">
                         <f:actionListener binding="#{beanPagina.setPaginaProj('/project/functionalRequirement/View_New.xhtml')}"/>
                     </p:commandButton>
                 </h:panelGroup>

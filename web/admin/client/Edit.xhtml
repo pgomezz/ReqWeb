@@ -31,10 +31,10 @@
                 </p:selectOneMenu>
 
             </p:panelGrid>
-            <p:commandButton actionListener="#{clientEditController.save(event)}" action="/index" value="#{client.Save}" ajax="false" >
+            <p:commandButton actionListener="#{clientEditController.save(event)}" action="/indexAdmin" value="#{client.Save}" ajax="false" >
                 <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/client/List.xhtml')}"/>
             </p:commandButton>
-            <p:commandButton value="#{client.Cancel}" action="/index" ajax="false" actionListener="#{beanPagina.setPaginaAdmin('/admin/client/List.xhtml')}"/>
+            <p:commandButton value="#{client.Cancel}" action="/indexAdmin" ajax="false" actionListener="#{beanPagina.setPaginaAdmin('/admin/client/List.xhtml')}"/>
         </h:panelGroup>
 
     </h:form>
