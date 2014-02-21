@@ -31,10 +31,10 @@
          
             </p:panelGrid>
 
-        <p:commandButton action="/index" value="#{user.Save}" ajax="false" >
+        <p:commandButton action="/indexAdmin" value="#{user.Save}" ajax="false" >
             <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/altranreqUser/List.xhtml')}"/>
             <f:actionListener binding="#{altranreqUserEditController.save(event)}"/>
         </p:commandButton>
-        <p:commandButton action="/index" value="#{user.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqUser/List.xhtml')}" ajax="false" />
+        <p:commandButton action="/indexAdmin" value="#{user.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqUser/List.xhtml')}" ajax="false" />
     </h:form>
 </ui:composition>

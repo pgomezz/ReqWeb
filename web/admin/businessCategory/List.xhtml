@@ -48,7 +48,7 @@
                             <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/businessCategory/Edit.xhtml')}"/>
                             <f:actionListener binding="#{businessCategoryController.keepState()}"/>
                         </p:commandButton>
-                        <p:commandButton id="deleteButton" value="#{user.Delete}" actionListener="#{businessCategoryController.delete(event)}" update=":TabProfile:BusinessCategoryListForm:datalist" disabled="#{empty businessCategoryController.selected}" icon="ui-icon-trash">
+                        <p:commandButton id="deleteButton" value="#{user.Delete}" actionListener="#{businessCategoryController.delete(event)}" update=":BusinessCategoryListForm:datalist" disabled="#{empty businessCategoryController.selected}" icon="ui-icon-trash">
                             <p:confirm header="#{user.Confirmation}" message="#{user.ConfirmDelete}" icon="ui-icon-alert" />
                         </p:commandButton>
 

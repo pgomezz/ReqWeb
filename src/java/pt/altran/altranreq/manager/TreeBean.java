@@ -156,6 +156,7 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
     }
 
     public void onNodeSelect(NodeSelectEvent event) throws IOException {
+        String url="/faces/indexProj.xhtml";
         //Every node has a link;
         //FR and NFR go to the list filtered by Project;
         //In FR nodes and UC nodes, every node go to their own description;
@@ -173,34 +174,34 @@ public class TreeBean implements Serializable, UpdateCurrentTreeNode {
 
         if (strEvent.equals(functionalRequirementTreeNode.toString())) {
             beanPagina.setPaginaProj("/project/functionalRequirement/List.xhtml");//V
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/index.xhtml");
+            externalContext.redirect(externalContext.getApplicationContextPath() + url);
         } else if (strEvent.equals(nonFunctionalRequirementTreeNode.toString())) {
             beanPagina.setPaginaProj("/project/nonFunctionalRequirement/List.xhtml");//V
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/index.xhtml");        
+            externalContext.redirect(externalContext.getApplicationContextPath() + url);        
         } else if (d instanceof TypeNonFunctionalEnum){
             TypeNonFunctionalEnum tnfr = (TypeNonFunctionalEnum) d;
             projectBean.setCateg(true);
             projectBean.setIdCategNRF(tnfr.ordinal());
             beanPagina.setPaginaProj("/project/nonFunctionalRequirement/List.xhtml");//V
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/index.xhtml");   
+            externalContext.redirect(externalContext.getApplicationContextPath() + url);   
         } else if (d instanceof UseCase) {
             UseCase uc = (UseCase) d;
             useCaseController = new UseCaseController();
             useCaseController.setSelected(uc);
             beanPagina.setPaginaProj("/project/useCase/View.xhtml");//V
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/index.xhtml");
+            externalContext.redirect(externalContext.getApplicationContextPath() + url);
         } else if (d instanceof FunctionalRequirement) {
             FunctionalRequirement fr = (FunctionalRequirement) d;
             functionalRequirementController = new FunctionalRequirementController();
             functionalRequirementController.setSelected(fr);
             beanPagina.setPaginaProj("/project/functionalRequirement/ViewByTree.xhtml");//V
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/index.xhtml");
+            externalContext.redirect(externalContext.getApplicationContextPath() + url);
         } else if (d instanceof NonFunctionalRequirement) {
             NonFunctionalRequirement nfr = (NonFunctionalRequirement) d;
             nonFunctionalRequirementController = new NonFunctionalRequirementController();
             nonFunctionalRequirementController.setSelected(nfr);
             beanPagina.setPaginaProj("/project/nonFunctionalRequirement/View_New.xhtml");
-            externalContext.redirect(externalContext.getApplicationContextPath() + "/faces/index.xhtml");
+            externalContext.redirect(externalContext.getApplicationContextPath() + url);
         } else {
         }
 

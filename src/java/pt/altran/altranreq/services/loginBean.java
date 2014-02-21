@@ -32,7 +32,7 @@ public class loginBean implements Serializable {
     private AltranreqRole role;
     RequestContext context;
     HttpSession session;
-    String originalURL = "faces/index.xhtml";
+    String originalURL = "faces/indexProj.xhtml";
     String original = "faces/login.xhtml";
 
     @PersistenceContext(unitName = "AltranReqPU")

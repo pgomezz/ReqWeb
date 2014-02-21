@@ -14,7 +14,7 @@
 
                 <h:panelGroup id="display">
 
-                    <p:commandButton actionListener="#{functionalRequirementController.delete}" value="#{myBundle.Delete}" ajax="false"  update="display,:TabProfile:FunctionalRequirementListForm:datalist"  oncomplete="handleSubmit(:TabProfile:FunctionalRequirementListForm:FRRemoveDialog);"/>                   
+                    <p:commandButton actionListener="#{functionalRequirementController.delete}" value="#{myBundle.Delete}" ajax="false"  update="display,:FunctionalRequirementListForm:datalist"  oncomplete="handleSubmit(:FunctionalRequirementListForm:FRRemoveDialog);"/>                   
                     <p:commandButton value="#{myBundle.Cancel}" onclick="FRRemoveDialog.hide()"/>
                 </h:panelGroup>
 

@@ -43,7 +43,7 @@
                         <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}"  actionListener="#{functionalRequirementController.redirect(2)}" action="/index" disabled="#{empty functionalRequirementController.selected}" ajax="false" >
                             <f:actionListener binding="#{beanPagina.setPaginaProj('/project/functionalRequirement/Edit_New.xhtml')}" />
                         </p:commandButton>
-                        <p:commandButton id="deleteButton" value="#{myBundle.Delete}" actionListener="#{functionalRequirementController.delete(event)}" update=":TabProfile:FunctionalRequirementListForm:datalist" disabled="#{empty functionalRequirementController.selected}" icon="ui-icon-trash">
+                        <p:commandButton id="deleteButton" value="#{myBundle.Delete}" actionListener="#{functionalRequirementController.delete(event)}" update=":FunctionalRequirementListForm:datalist" disabled="#{empty functionalRequirementController.selected}" icon="ui-icon-trash">
                             <p:confirm header="#{myBundle.Confirmation}" message="#{myBundle.ConfirmDelete}" icon="ui-icon-alert" />
                         </p:commandButton>
                     </div>

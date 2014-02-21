@@ -20,14 +20,10 @@ import org.primefaces.event.TabChangeEvent;
 @SessionScoped
 public class TabController implements Serializable {
 
-    private int activeIndex;
-
-    @PostConstruct
-    public void init() {
-        //this.activeIndex.setActiveIndex(0);
-    }
+    private int activeIndex;// = 1;
 
     public int getActiveIndex() {
+        System.out.println("Index "+ activeIndex);
         return activeIndex;
     }
 
@@ -36,18 +32,22 @@ public class TabController implements Serializable {
     }
 
     public void setProjectTab() {
-        this.activeIndex=0;
+        System.out.println("ProjectTab**Active index:" + this.activeIndex);
+        this.activeIndex=1;
+        System.out.println("ProjectTab**Active index:" + this.activeIndex);
     }
 
     public void setAdminTab() {
-        this.activeIndex=1;
+        System.out.println("AdminTab***Active index:" + this.activeIndex);
+        this.activeIndex=0;
+        System.out.println("AdminTab***Active index:" + this.activeIndex);
     }
 
     public void onTabChange(TabChangeEvent event) {
         if(event.getTab().getTitle().equals("Projetos")){
-            this.activeIndex=0;
-        }else{
             this.activeIndex=1;
+        }else{
+            this.activeIndex=0;
         }
         System.out.println("************Active index:" + this.activeIndex);
     }

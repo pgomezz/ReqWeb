@@ -5,7 +5,7 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:form id="accordion" style="height: 100%">    
-        <p:accordionPanel style="width: 200px;  margin-top: 11%" activeIndex="-1" >                  
+        <p:accordionPanel style="width: 100%;  margin-top: 11%" activeIndex="-1" >                  
             <!--<p:tab title="Utilizadores" disabled="#{!authorizationService.admin}">  
                     <h:panelGrid columns="2">  
                             <h:link value="Contas de Utilizadores" outcome="/admin/altranreqUser/index">
@@ -16,7 +16,7 @@
                 </p:tab>  -->
             <p:tab title="Projectos">  
                 <h:panelGrid columns="1" style=" height: 100%">
-                    <h:commandLink value="Lista de projectos" action="/index">
+                    <h:commandLink value="Lista de projectos" action="/indexProj">
                         <f:actionListener binding="#{beanPagina.setPaginaProj('/project/List.xhtml')}"/>
                     </h:commandLink>                             
                 </h:panelGrid>  

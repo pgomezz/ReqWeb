@@ -90,7 +90,7 @@ public class AuthenticationController implements Serializable {
                 
                 authenticationBean.setUser(user);
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("faces/index.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("faces/indexProj.xhtml");
             } catch (IOException ex) {
                 Logger.getLogger(AuthenticationController.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -8,17 +8,17 @@
         <p:accordionPanel style="width: 200px;  margin-top: 11%" activeIndex="-1">                  
             <p:tab title="Utilizadores" disabled="#{!authorizationService.admin}">  
                 <h:panelGrid columns="1">  
-                    <h:commandLink value="Contas de Utilizadores" action="/index">
+                    <h:commandLink value="Contas de Utilizadores" action="/indexAdmin">
                         <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/altranreqUser/List.xhtml')}"/>
                     </h:commandLink> 
-                    <h:commandLink value="Perfis de Utilizadores" action="/index">
+                    <h:commandLink value="Perfis de Utilizadores" action="/indexAdmin">
                         <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/altranreqRole/List.xhtml')}"/>
                     </h:commandLink>                              
                 </h:panelGrid>  
             </p:tab>  
             <p:tab title="Projectos">  
                 <h:panelGrid columns="1">
-                    <h:commandLink value="Lista de Projectos" action="/index">
+                    <h:commandLink value="Lista de Projectos" action="/indexProj">
                         <f:actionListener binding="#{tabBean.setActiveIndex(0)}" />
                         <f:actionListener binding="#{beanPagina.setAccordTree('/accordion.xhtml')}"/>
                         <f:actionListener binding="#{beanPagina.setPaginaProj('/project/List.xhtml')}"/>
@@ -27,21 +27,21 @@
             </p:tab>  
             <p:tab title="Categoria de Negócio">  
                 <h:panelGrid columns="1">
-                    <h:commandLink value="Lista de Categorias de Negócio" action="/index">
+                    <h:commandLink value="Lista de Categorias de Negócio" action="/indexAdmin">
                         <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}"/>
                     </h:commandLink>
                 </h:panelGrid>  
             </p:tab>
             <p:tab title="Organizações">  
                 <h:panelGrid columns="1">
-                    <h:commandLink value="Lista de Organizações" action="/index">
+                    <h:commandLink value="Lista de Organizações" action="/indexAdmin">
                         <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}"/>
                     </h:commandLink>
                 </h:panelGrid>  
             </p:tab>
             <p:tab title="Clientes">  
                 <h:panelGrid columns="1">
-                    <h:commandLink value="Lista de Clientes" action="/index">
+                    <h:commandLink value="Lista de Clientes" action="/indexAdmin">
                         <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/client/List.xhtml')}"/>
                     </h:commandLink>
                 </h:panelGrid>  

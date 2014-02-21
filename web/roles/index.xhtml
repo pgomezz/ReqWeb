@@ -31,7 +31,7 @@
                                            />
                         </p:selectManyMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{altranreqRoleController.save}" value="#{myBundle.Save}" update="display,:TabProfile:AltranreqRoleListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AltranreqRoleEditDialog);"/>
+                    <p:commandButton actionListener="#{altranreqRoleController.save}" value="#{myBundle.Save}" update="display,:AltranreqRoleListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AltranreqRoleEditDialog);"/>
                     <h:dataTable id="datalist" value="#{privilegeCollection.allPrivileges}" var="item" >                       <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Permissões"/>
@@ -46,7 +46,7 @@
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
-                <p:commandButton actionListener="#{altranreqRoleController.save}" value="#{myBundle.Save}" update="display,:TabProfile:AltranreqRoleListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AltranreqRoleEditDialog);"/>
+                <p:commandButton actionListener="#{altranreqRoleController.save}" value="#{myBundle.Save}" update="display,:AltranreqRoleListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AltranreqRoleEditDialog);"/>
                 <p:commandButton value="#{myBundle.Cancel}" onclick="AltranreqRoleEditDialog1.hide()"/>
             </h:form>
         </p:dialog>

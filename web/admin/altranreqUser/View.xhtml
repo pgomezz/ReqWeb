@@ -24,6 +24,6 @@
             <h:outputText value="#{user.IsAdmin}" style="font-weight: bold"/>
             <h:outputText value="#{altranreqUserEditController.altranreqUser.stringIsAdmin}" title="#{myBundle.ViewAltranreqUserTitle_isAdmin}"/>
         </p:panelGrid>
-        <p:commandButton value="#{user.Close}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqUser/List.xhtml')}" action="/index" ajax="false"/>
+        <p:commandButton value="#{user.Close}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqUser/List.xhtml')}" action="/indexAdmin" ajax="false"/>
     </h:form>
 </ui:composition>

@@ -14,7 +14,7 @@
 
                 <h:panelGroup id="display">
 
-                    <p:commandButton actionListener="#{useCaseController.delete}" value="#{myBundle.Delete}" ajax="true"  update="display,:TabProfile:UseCaseListForm:datalist,:growl" oncomplete="handleSubmit(:TabProfile:UseCaseListForm:UCRemoveDialog);"/>
+                    <p:commandButton actionListener="#{useCaseController.delete}" value="#{myBundle.Delete}" ajax="true"  update="display,:UseCaseListForm:datalist,:growl" oncomplete="handleSubmit(:UseCaseListForm:UCRemoveDialog);"/>
                     
                     <p:commandButton value="#{myBundle.Cancel}" onclick="UCRemoveDialog.hide()"/>
                 </h:panelGroup>

@@ -41,16 +41,16 @@
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">
-                        <p:commandButton id="createButton"  value="#{role.Create}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqRole/Create.xhtml')}" action="/index" icon="ui-icon-plus" ajax="false" />
-                        <p:commandButton id="viewButton"  value="#{role.View}" action="/index" disabled="#{empty altranreqRoleController.selected}" icon="ui-icon-search" ajax="false">
+                        <p:commandButton id="createButton"  value="#{role.Create}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqRole/Create.xhtml')}" action="/indexAdmin" icon="ui-icon-plus" ajax="false" />
+                        <p:commandButton id="viewButton"  value="#{role.View}" action="/indexAdmin" disabled="#{empty altranreqRoleController.selected}" icon="ui-icon-search" ajax="false">
                             <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/altranreqRole/View.xhtml')}"/>
                             <f:actionListener binding="#{altranreqRoleController.keepState()}"/>
                         </p:commandButton>
-                        <p:commandButton id="editButton"  value="#{role.Edit}" action="/index" disabled="#{empty altranreqRoleController.selected}" icon="ui-icon-pencil" ajax="false">
+                        <p:commandButton id="editButton"  value="#{role.Edit}" action="/indexAdmin" disabled="#{empty altranreqRoleController.selected}" icon="ui-icon-pencil" ajax="false">
                             <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/altranreqRole/Edit.xhtml')}"/>
                             <f:actionListener binding="#{altranreqRoleController.keepState()}"/>
                         </p:commandButton>
-                        <p:commandButton id="deleteButton" value="#{user.Delete}" actionListener="#{altranreqRoleController.delete(event)}" update=":TabProfile:AltranreqRoleListForm:datalist" disabled="#{empty altranreqRoleController.selected}" icon="ui-icon-trash">  
+                        <p:commandButton id="deleteButton" value="#{user.Delete}" actionListener="#{altranreqRoleController.delete(event)}" update=":AltranreqRoleListForm:datalist" disabled="#{empty altranreqRoleController.selected}" icon="ui-icon-trash">  
                             <p:confirm header="#{role.Confirmation}" message="#{role.ConfirmDelete}" icon="ui-icon-alert" />
                         </p:commandButton>
                     </div>

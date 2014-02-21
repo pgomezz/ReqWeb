@@ -43,7 +43,7 @@
                     <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{project.Edit}" actionListener="#{projectController.redirect(3)}" action="/index" disabled="#{empty projectController.selected}" ajax="false">
                         <f:actionListener binding="#{beanPagina.setPaginaProj('/project/Edit.xhtml')}" />
                     </p:commandButton>
-                    <p:commandButton id="deleteButton" value="#{project.Delete}" actionListener="#{projectController.delete(event)}" update=":TabProfile:ProjectListForm:datalist" disabled="#{empty projectController.selected}" icon="ui-icon-trash" >
+                    <p:commandButton id="deleteButton" value="#{project.Delete}" actionListener="#{projectController.delete(event)}" update=":ProjectListForm:datalist" disabled="#{empty projectController.selected}" icon="ui-icon-trash" >
                         <p:confirm header="#{project.Confirmation}" message="#{project.ConfirmDelete}" icon="ui-icon-alert" />
                     </p:commandButton>
                 </f:facet>

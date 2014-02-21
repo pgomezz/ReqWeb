@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template_1.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="northPanel">
+        <c:if test="#{authenticationController.isAdmin}" >
+            <p:tabMenu activeIndex="1" >
+                <p:menuitem value="#{myBundle.ProjectsTab}" url="/faces/indexProj.xhtml"/>
+                <p:menuitem value="#{myBundle.Administration}" url="/faces/indexAdmin.xhtml" />
+            </p:tabMenu>
+        </c:if>
+    </ui:define>
+    <ui:define name="body" >
+        <!-- <p:tab title="#{myBundle.Administration}" id="TabAdministration" disabled="#{!authenticationController.isAdmin}" > -->
+        <p:layout style="width:100%;height:100%;" >
+            <p:layoutUnit position="west" size="207">
+                <ui:insert name="TreeTab">
+                    Accordion Administration
+                </ui:insert>
+            </p:layoutUnit>
+            <p:layoutUnit position="center" >
+                <ui:insert name="AdminTab">
+                    Administration
+                </ui:insert>
+            </p:layoutUnit>
+        </p:layout>   
+        <!--</p:tab>
+    </p:tabView>-->
+    </ui:define>
+</ui:composition>

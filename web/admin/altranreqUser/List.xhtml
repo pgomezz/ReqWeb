@@ -36,16 +36,16 @@
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">
-                        <p:commandButton id="createButton"  value="#{user.Create}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqUser/Create.xhtml')}" action="/index" icon="ui-icon-plus" ajax="false" />
-                        <p:commandButton id="viewButton"  value="#{user.View}" action="/index" disabled="#{empty altranreqUserController.selected}" icon="ui-icon-search" ajax="false">
+                        <p:commandButton id="createButton"  value="#{user.Create}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqUser/Create.xhtml')}" action="/indexAdmin" icon="ui-icon-plus" ajax="false" />
+                        <p:commandButton id="viewButton"  value="#{user.View}" action="/indexAdmin" disabled="#{empty altranreqUserController.selected}" icon="ui-icon-search" ajax="false">
                             <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/altranreqUser/View.xhtml')}"/>
                             <f:actionListener binding="#{altranreqUserController.keepState()}"/>
                         </p:commandButton>
-                        <p:commandButton id="editButton"  value="#{user.Edit}" action="/index" disabled="#{empty altranreqUserController.selected}" icon="ui-icon-pencil" ajax="false">
+                        <p:commandButton id="editButton"  value="#{user.Edit}" action="/indexAdmin" disabled="#{empty altranreqUserController.selected}" icon="ui-icon-pencil" ajax="false">
                             <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/altranreqUser/Edit.xhtml')}"/>
                             <f:actionListener binding="#{altranreqUserController.keepState()}"/>
                         </p:commandButton>
-                        <p:commandButton id="deleteButton" value="#{user.Delete}" actionListener="#{altranreqUserController.delete(event)}" update=":TabProfile:AltranreqUserListForm:datalist" disabled="#{empty altranreqUserController.selected}" icon="ui-icon-trash">
+                        <p:commandButton id="deleteButton" value="#{user.Delete}" actionListener="#{altranreqUserController.delete(event)}" update=":AltranreqUserListForm:datalist" disabled="#{empty altranreqUserController.selected}" icon="ui-icon-trash">
                             <p:confirm header="#{user.Confirmation}" message="#{user.ConfirmDelete}" icon="ui-icon-alert" />
                         </p:commandButton>
                     </div>

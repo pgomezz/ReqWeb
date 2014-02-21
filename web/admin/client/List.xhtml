@@ -45,7 +45,7 @@
                             <f:actionListener binding="#{beanPagina.setPaginaAdmin('/admin/client/Edit.xhtml')}"/>
                             <f:actionListener binding="#{clientController.keepState()}"/>
                         </p:commandButton>
-                        <p:commandButton id="deleteButton" value="#{client.Delete}" actionListener="#{clientController.delete(event)}" update=":TabProfile:ClientListForm:datalist" disabled="#{empty clientController.selected}" icon="ui-icon-trash">
+                        <p:commandButton id="deleteButton" value="#{client.Delete}" actionListener="#{clientController.delete(event)}" update=":ClientListForm:datalist" disabled="#{empty clientController.selected}" icon="ui-icon-trash">
                             <p:confirm header="#{client.Confirmation}" message="#{client.ConfirmDelete}" icon="ui-icon-alert" />
                         </p:commandButton>
                         

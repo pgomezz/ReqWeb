@@ -28,10 +28,10 @@
                 </p:selectManyMenu>
             </p:panelGrid>
             
-            <p:commandButton id="save" value="#{role.Save}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqRole/List.xhtml')}" action="/index" ajax="false" >
+            <p:commandButton id="save" value="#{role.Save}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqRole/List.xhtml')}" action="/indexAdmin" ajax="false" >
                 <f:actionListener binding="#{altranreqRoleCreateController.saveNew(event)}"/>
             </p:commandButton>
-            <p:commandButton id="cancel" value="#{role.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqRole/List.xhtml')}" action="/index" ajax="false" immediate="true"/>
+            <p:commandButton id="cancel" value="#{role.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqRole/List.xhtml')}" action="/indexAdmin" ajax="false" immediate="true"/>
 
         </h:panelGroup>
 

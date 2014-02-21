@@ -14,7 +14,7 @@
 
                 <h:panelGroup id="display">
 
-                    <p:commandButton actionListener="#{nonFunctionalRequirementController.delete}" value="#{myBundle.Delete}" ajax="false"  update="display,:TabProfile:NonFunctionalRequirementListForm:datalist" oncomplete="handleSubmit(:NonFunctionalRequirementListForm:NFRRemoveDialog);"/>
+                    <p:commandButton actionListener="#{nonFunctionalRequirementController.delete}" value="#{myBundle.Delete}" ajax="false"  update="display,:NonFunctionalRequirementListForm:datalist" oncomplete="handleSubmit(:NonFunctionalRequirementListForm:NFRRemoveDialog);"/>
                     
                     <p:commandButton value="#{myBundle.Cancel}" onclick="NFRRemoveDialog.hide()"/>
                 </h:panelGroup>

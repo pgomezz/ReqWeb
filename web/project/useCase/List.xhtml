@@ -38,7 +38,7 @@
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{useCaseController.redirect(1)}" action="/project/useCase/Create"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" actionListener="#{useCaseController.redirect(2)}" action="/project/useCase/View" disabled="#{empty useCaseController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" actionListener="#{useCaseController.redirect(3)}" action="/project/useCase/Edit" disabled="#{empty useCaseController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{useCaseController.redirect(4)}" update=":TabProfile:UCRemoveForm" oncomplete="UCRemoveDialog.show()" disabled="#{empty useCaseController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{useCaseController.redirect(4)}" update=":UCRemoveForm" oncomplete="UCRemoveDialog.show()" disabled="#{empty useCaseController.selected}"/>
                         </div>
                     </f:facet>
 
