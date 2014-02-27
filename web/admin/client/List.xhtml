@@ -7,7 +7,9 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <h:form id="ClientListForm">
-
+              <p:breadCrumb>  
+            <p:menuitem value="Lista de Clientes"  immediate="true" actionListener="#{beanPagina.setPaginaAdmin('/admin/client/List.xhtml')}" ajax="false" />  
+         </p:breadCrumb> 
         <p:panel header="#{myBundle.ListClientTitle}">
 
             <p:dataTable id="datalist" value="#{clientController.items}" var="item"

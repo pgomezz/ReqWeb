@@ -7,6 +7,10 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <h:form id="AltranreqUserListForm">
+        
+                   <p:breadCrumb>  
+            <p:menuitem value="Lista de Utilizadores"  immediate="true" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqUser/List.xhtml')}" ajax="false" />  
+         </p:breadCrumb> 
         <p:panel header="#{user.ListAltranreqUserTitle}">
             <p:dataTable id="datalist" value="#{altranreqUserController.items}" var="item"
                          selectionMode="single" selection="#{altranreqUserController.selected}"

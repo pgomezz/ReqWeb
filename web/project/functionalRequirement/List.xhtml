@@ -8,6 +8,11 @@
 
     <h:form id="FunctionalRequirementListForm">
 
+                           <p:breadCrumb>  
+            <p:menuitem value="Lista de Projetos" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Detalhe do Projeto" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" ajax="false"  ></p:menuitem> 
+            <p:menuitem value="Lista de Requisitos Funcionais" disabled="true"></p:menuitem>
+         </p:breadCrumb> 
         <p:panel header="#{myBundle.ListFunctionalRequirementTitle}">
 
             <p:dataTable id="datalist" value="#{functionalRequirementController.lista}" var="item"

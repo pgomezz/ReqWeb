@@ -8,9 +8,17 @@
                 >
 
     
-        <p:panel header="Criar Use Case">
+       
             <h:form id="UseCaseCreateForm">
-
+                
+                                     <p:breadCrumb>  
+            <p:menuitem value="Lista de Projetos"  immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Detalhe do Projeto"  immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" ajax="false"  ></p:menuitem> 
+            <p:menuitem value="Lista de Requisitos Funcionais"  immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/functionalRequirement/List.xhtml')}" ajax="false" ></p:menuitem>
+            <p:menuitem value="Detalhes do Requisito Funcional" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/functionalRequirement/View_New.xhtml')}" ajax="false"></p:menuitem>
+            <p:menuitem value="Criar Caso de Uso" disabled="true"></p:menuitem>
+         </p:breadCrumb> 
+ <p:panel header="Criar Use Case">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2">
                         <p:outputLabel value="#{myBundle.CreateUseCaseLabel_name}" for="name" style="font-weight: bold" />
@@ -48,7 +56,7 @@
                     </p:commandButton>
                     <p:commandButton value="#{myBundle.Cancel}" actionListener="#{beanPagina.setPaginaProj('/project/functionalRequirement/View_New.xhtml')}" action="/indexProj" immediate="true" ajax="false"/>
                 </h:panelGroup>
-
+</p:panel>
             </h:form>
-        </p:panel>
+        
 </ui:composition>

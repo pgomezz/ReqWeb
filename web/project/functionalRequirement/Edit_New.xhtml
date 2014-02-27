@@ -8,6 +8,14 @@
 
     <h:form id="FunctionalRequirementEditNewForm" >
 
+                                               <p:breadCrumb>  
+            <p:menuitem value="Lista de Projetos" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Detalhe do Projeto" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" ajax="false"  ></p:menuitem> 
+            <p:menuitem value="Lista de Requisitos Funcionais" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/functionalRequirement/List.xhtml')}" ajax="false" ></p:menuitem>
+            <p:menuitem value="Editar Requisito Funcional" disabled="true"></p:menuitem>
+         </p:breadCrumb> 
+
+        <p:panel header="#{myBundle.EditFunctionalRequirementTitle}">
         <h:panelGroup id="display">
             <p:panelGrid  columns="3" rendered="#{functionalRequirementEditManager.FRequirementType}" id="editGrid">
 
@@ -111,7 +119,7 @@
             <p:commandButton value="#{myBundle.Cancel}" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" action="/indexProj" immediate="true" ajax="false"/>
 
         </h:panelGroup>
-
+</p:panel>
     </h:form>
 
 

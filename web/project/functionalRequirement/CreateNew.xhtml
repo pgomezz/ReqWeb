@@ -7,7 +7,13 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     
         <h:form id="FunctionalRequirementCreateNewForm">
-
+                                       <p:breadCrumb>  
+            <p:menuitem value="Lista de Projetos" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Detalhe do Projeto" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" ajax="false"  ></p:menuitem> 
+            <p:menuitem value="Lista de Requisitos Funcionais" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/functionalRequirement/List.xhtml')}" ajax="false" ></p:menuitem>
+            <p:menuitem value="Criar Requisito Funcional" disabled="true"></p:menuitem>
+         </p:breadCrumb> 
+            <p:panel header="#{myBundle.CreateFunctionalRequirementTitle}">
             <h:panelGroup id="display">
                 <p:panelGrid columns="3" id="grid">
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_name}" for="name" style="font-weight: bold" />
@@ -120,7 +126,7 @@
                     <f:actionListener binding="#{beanPagina.setPaginaProj('/project/View.xhtml')}" />
                 </p:commandButton>
             </h:panelGroup>
-
+</p:panel>
         </h:form>
 
 

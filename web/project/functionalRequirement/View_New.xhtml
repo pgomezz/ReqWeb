@@ -8,6 +8,13 @@
 
     <h:form id="FunctionalRequirementViewForm" >
 
+                                                       <p:breadCrumb>  
+            <p:menuitem value="Lista de Projetos" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Detalhe do Projeto" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" ajax="false"  ></p:menuitem> 
+            <p:menuitem value="Lista de Requisitos Funcionais" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/functionalRequirement/List.xhtml')}" ajax="false" ></p:menuitem>
+            <p:menuitem value="Detalhes do Requisito Funcional" disabled="true"></p:menuitem>
+         </p:breadCrumb> 
+        <p:panel header="#{myBundle.ViewFunctionalRequirementTitle}">
         <h:panelGroup>
             <p:panelGrid columns="2" style=" border-style:  solid; width: 100%" >
 
@@ -98,7 +105,7 @@
             </p:dataTable>
 
         </p:panel>
-
+         </p:panel>
     </h:form>
 
 </ui:composition>

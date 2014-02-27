@@ -7,9 +7,14 @@
 
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <p:panel header="#{project.EditTitle}">
+    
         <h:form id="ProjectCreateForm" >
 
+                     <p:breadCrumb>  
+            <p:menuitem value="Lista de Projetos" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Editar Projeto" disabled="true" ></p:menuitem>  
+         </p:breadCrumb> 
+            <p:panel header="#{project.EditTitle}">
             <h:panelGroup id="display">
                 <p:panelGrid columns="2" style="width: 100%">
 
@@ -65,6 +70,7 @@
                 </p:commandButton>
                 <p:commandButton value="#{project.Cancel}" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" action="/indexProj" immediate="true" ajax="false"/>
             </h:panelGroup>
+        </p:panel>
         </h:form>
-    </p:panel>
+    
 </ui:composition>

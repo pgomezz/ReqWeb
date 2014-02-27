@@ -7,6 +7,10 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <h:form id="AltranreqUserViewForm">
+                   <p:breadCrumb>  
+            <p:menuitem value="Lista de Utilizadores"  immediate="true" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqUser/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Detalhes do Utilizador"  disabled="true"/>  
+         </p:breadCrumb> 
         <p:panelGrid columns="2" style=" border-style:  solid; width: 100%" >
 
             <h:outputText value="#{user.Name}" style="font-weight: bold"/>

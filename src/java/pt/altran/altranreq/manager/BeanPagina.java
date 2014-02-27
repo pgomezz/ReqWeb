@@ -30,6 +30,7 @@ public class BeanPagina implements Serializable {
     }
 
     public String getPaginaProj() {
+        System.out.println(paginaProj);
         return paginaProj;
     }
 

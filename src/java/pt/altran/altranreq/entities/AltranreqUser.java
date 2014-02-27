@@ -23,7 +23,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-import pt.altran.altranreq.services.builder.ProjectState;
 
 /**
  *
@@ -181,7 +180,7 @@ public class AltranreqUser implements Serializable {
     
     
     public char getStringIsNotAdmin(){
-        if (AltranreqUser.this.getStringIsAdmin()=="Sim"){
+        if (AltranreqUser.this.getStringIsAdmin().contains("Sim")){
             return 1;
         }else 
         return 0;
@@ -269,9 +268,9 @@ public class AltranreqUser implements Serializable {
             return false;
         }
         AltranreqUser other = (AltranreqUser) object;
-        if ((this.idUser == null && other.idUser != null) || (this.idUser != null && !this.idUser.equals(other.idUser))) {
+        if ((this.idUser == null && other.idUser != null) || (this.idUser != null && !this.idUser.equals(other.idUser)))
             return false;
-        }
+       
         return true;
     }
 

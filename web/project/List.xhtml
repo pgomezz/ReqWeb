@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui">
+    
+    
 
     <h:form id="ProjectListForm" >
+        <p:breadCrumb>  
+        <p:menuitem value="Lista de Projetos" url="/faces/indexProj.xhtml" />  
+    </p:breadCrumb>  
         <p:panel header="#{project.ListProjectTitle}">
             <p:dataTable id="datalist" value="#{projectController.items}" var="item"
                          selectionMode="single" selection="#{projectController.selected}"

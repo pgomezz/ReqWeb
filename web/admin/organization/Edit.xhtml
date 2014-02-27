@@ -6,9 +6,13 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui">
 
-    <p:panel header="#{organization.EditOrganizationTitle}">
+   
         <h:form id="OrganizationEditForm">
-
+        <p:breadCrumb>  
+            <p:menuitem value="Lista de Organizações"  immediate="true" actionListener="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Editar Organização"  disabled="true"/>  
+         </p:breadCrumb> 
+             <p:panel header="#{organization.EditOrganizationTitle}">
             <h:panelGroup id="display">
                 <p:panelGrid columns="2">
 
@@ -31,8 +35,8 @@
                 </p:commandButton>
                 <p:commandButton value="#{organization.Cancel}" actionListener="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}" action="/indexAdmin"/>
             </h:panelGroup>
-
+ </p:panel>
         </h:form>
-    </p:panel>
+   
 </ui:composition>
 

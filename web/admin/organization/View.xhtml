@@ -7,9 +7,13 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 
-    <p:panel header="#{organization.ViewOrganizationTitle}">
+    
         <h:form id="OrganizationViewForm">
-
+        <p:breadCrumb>  
+            <p:menuitem value="Lista de Organizações"  immediate="true" actionListener="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Detalhes da Organização"  disabled="true"/>  
+         </p:breadCrumb>
+            <p:panel header="#{organization.ViewOrganizationTitle}">
             <h:panelGroup>
                <p:panelGrid columns="2" style=" border-style:  solid; width: 100%" >
 
@@ -29,8 +33,8 @@
                 <p:commandButton value="#{organization.Close}" actionListener="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}" action="/indexAdmin" ajax="false"/>
 
             </h:panelGroup>
-
-        </h:form>
     </p:panel>
+        </h:form>
+
 
 </ui:composition>

@@ -8,6 +8,12 @@
 
     <h:form id="NonFunctionalRequirementListForm">
 
+                                   <p:breadCrumb>  
+            <p:menuitem value="Lista de Projetos" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Detalhe do Projeto" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" ajax="false"  ></p:menuitem> 
+            <p:menuitem value="Lista de Requisitos Não Funcionais" disabled="true"></p:menuitem>
+         </p:breadCrumb> 
+        
         <p:panel header="#{myBundle.ListNonFunctionalRequirementTitle}">
 
             <p:dataTable id="datalist" value="#{nonFunctionalRequirementController.lista}" var="item"
@@ -39,7 +45,7 @@
 
                 <f:facet name="footer">
                     <div class="footer-section">
-                        <p:commandButton id="createButton" icon="ui-icon-plus" value="#{myBundle.Create}" actionListener="#{beanPagina.setPaginaProj('/project/nonFunctionalRequirement/CreateNew')}" action="/indexProj" ajax="false" />
+                        <p:commandButton id="createButton" icon="ui-icon-plus" value="#{myBundle.Create}" actionListener="#{beanPagina.setPaginaProj('/project/nonFunctionalRequirement/Create_New.xhtml')}" action="/indexProj" ajax="false" />
 
                         <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}"  actionListener="#{nonFunctionalRequirementController.redirect(2)}" action="/indexProj" disabled="#{empty nonFunctionalRequirementController.selected}" ajax="false" >
                             <f:actionListener binding="#{beanPagina.setPaginaProj('/project/nonFunctionalRequirement/View_New.xhtml')}" />

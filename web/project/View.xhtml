@@ -8,9 +8,15 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <p:panel header="#{project.DetailsProject}" style="width:100%;max-width:100%; height: 100%">
+   
         <h:form id="ProjectViewDetails" style="height: 100%; width: 100%"  >
 
+                                 <p:breadCrumb>  
+            <p:menuitem value="Lista de Projetos" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Detalhes do Projeto" disabled="true" ></p:menuitem>  
+         </p:breadCrumb>
+            
+             <p:panel header="#{project.DetailsProject}" style="width:100%;max-width:100%; height: 100%">
             <h:panelGroup rendered="#{projectController.projectType}">
                <p:panelGrid columns="2" style=" border-style:  solid; width: 100%" >
 
@@ -142,11 +148,12 @@
                 <p:commandButton value="#{project.Yes}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
                 <p:commandButton value="#{project.No}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>       
             </p:confirmDialog>
+       </p:panel>
         </h:form>
         
         
         
-    </p:panel>
+    
 
     
 

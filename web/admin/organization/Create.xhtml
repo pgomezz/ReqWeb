@@ -7,7 +7,10 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <h:form id="OrganizationCreateForm">
-
+              <p:breadCrumb>  
+            <p:menuitem value="Lista de Organizações"  immediate="true" actionListener="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Criar Organização"  disabled="true"/>  
+         </p:breadCrumb> 
         <h:panelGroup id="display">
             <p:panelGrid columns="2">
 

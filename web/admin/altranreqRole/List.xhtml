@@ -8,6 +8,11 @@
 
     <h:form id="AltranreqRoleListForm">
 
+                                            <p:breadCrumb>  
+            <p:menuitem value="Lista de Roles"  immediate="true" actionListener="#{beanPagina.setPaginaProj('/admin/altranreqRole/List.xhtml')}" ajax="false" />  
+
+         </p:breadCrumb> 
+        
         <p:panel header="#{myBundle.ListAltranreqRoleTitle}">
 
             <p:dataTable id="datalist" value="#{altranreqRoleController.items}" var="item"

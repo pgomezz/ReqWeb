@@ -7,6 +7,10 @@
 
             <h:form id="BusinessCategoryViewForm">
 
+                   <p:breadCrumb>  
+            <p:menuitem value="Lista de Categorias de Negócio"  immediate="true" actionListener="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Detalhes da Categoria de Negócio"  disabled="true"/>  
+         </p:breadCrumb> 
                 <h:panelGroup id="display">
                    <p:panelGrid columns="2" style=" border-style:  solid; width: 100%" >
                         <h:outputText value="#{business.Name}" style=" font-weight: bold"/>

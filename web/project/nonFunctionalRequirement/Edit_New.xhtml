@@ -7,6 +7,13 @@
 
         <h:form id="NonFunctionalRequirementEditForm">
 
+                                                   <p:breadCrumb>  
+            <p:menuitem value="Lista de Projetos" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Detalhe do Projeto" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" ajax="false"  ></p:menuitem> 
+            <p:menuitem value="Lista de Requisitos Não Funcionais" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/nonFunctionalRequirement/List.xhtml')}" ajax="false" ></p:menuitem>
+            <p:menuitem value="Editar Requisito Não Funcional" disabled="true"></p:menuitem>
+         </p:breadCrumb> 
+            <p:panel header="#{myBundle.EditNonFunctionalRequirementTitle}">
             <h:panelGroup id="display">
                 <p:panelGrid  columns="3" id="editGrid">
 
@@ -109,6 +116,6 @@
                 </p:commandButton>
                 <p:commandButton value="#{myBundle.Cancel}" action="/indexProj" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}"  immediate="true" ajax="false" />
             </h:panelGroup>
-
+            </p:panel>
         </h:form>
 </ui:composition>

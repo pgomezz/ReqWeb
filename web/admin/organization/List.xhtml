@@ -7,6 +7,10 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <h:form id="OrganizationListForm">
+                <p:breadCrumb>  
+            <p:menuitem value="Lista de Organizações"  immediate="true" actionListener="#{beanPagina.setPaginaAdmin('/admin/organization/List.xhtml')}" ajax="false" />  
+           
+         </p:breadCrumb>
         <p:panel header="#{organization.ListOrganizationTitle}">
 
             <p:dataTable id="datalist" value="#{organizationController.items}" var="item"

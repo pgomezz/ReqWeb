@@ -6,10 +6,18 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-        <p:panel header="#{project.EditTitle}">
+    <p:panel header="#{myBundle.EditUseCaseTitle}">
 
             <h:form id="UseCaseEditForm">
 
+                                     <p:breadCrumb>  
+            <p:menuitem value="Lista de Projetos"  immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Detalhe do Projeto"  immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" ajax="false"  ></p:menuitem> 
+            <p:menuitem value="Lista de Requisitos Funcionais"  immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/functionalRequirement/List.xhtml')}" ajax="false" ></p:menuitem>
+            <p:menuitem value="Detalhes do Requisito Funcional" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/functionalRequirement/View_New.xhtml')}" ajax="false"></p:menuitem>
+            <p:menuitem value="Editar Caso de Uso" disabled="true"></p:menuitem>
+         </p:breadCrumb> 
+                
                 <h:panelGroup id="display">
                     <p:panelGrid  columns="2" rendered="#{editUseCaseManager.useCaseTypeByNavigation}">
 

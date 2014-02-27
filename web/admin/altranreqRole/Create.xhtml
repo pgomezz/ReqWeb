@@ -8,6 +8,11 @@
 
     <h:form id="AltranreqRoleCreateForm">
 
+          <p:breadCrumb>  
+              <p:menuitem value="Lista de Roles"  immediate="true" action="/indexAdmin" actionListener="#{beanPagina.setPaginaAdmin('/admin/altranreqRole/List.xhtml')}" ajax="false" />  
+              <p:menuitem value="Criar Role"  disabled="true" />  
+         </p:breadCrumb> 
+        
         <h:panelGroup id="display">
             <p:panelGrid columns="2">
                 

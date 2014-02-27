@@ -6,8 +6,20 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     
-        <p:panel header="#{project.DetailsUseCases}" style="width:100%;max-width:100%;">
+       
+            
+
+            
             <h:form id="UseCaseViewForm">
+                
+                         <p:breadCrumb>  
+            <p:menuitem value="Lista de Projetos"  immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Detalhe do Projeto"  immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" ajax="false"  ></p:menuitem> 
+            <p:menuitem value="Lista de Requisitos Funcionais"  immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/functionalRequirement/List.xhtml')}" ajax="false" ></p:menuitem>
+            <p:menuitem value="Detalhes do Requisito Funcional" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/functionalRequirement/View_New.xhtml')}" ajax="false"></p:menuitem>
+            <p:menuitem value="Detalhes do Caso de Uso" disabled="true"></p:menuitem>
+         </p:breadCrumb> 
+                 <p:panel header="#{project.DetailsUseCases}" style="width:100%;max-width:100%;">
                 <h:panelGroup id="display" rendered="#{useCaseController.useCaseType}">
                     <p:panelGrid columns="2" style="border-style:  solid; width: 100%" >
 
@@ -48,6 +60,7 @@
                          </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" action="/indexProj" ajax="false"/>
                 </h:panelGroup>
+                     </p:panel>
             </h:form>
-        </p:panel>
+        
 </ui:composition>

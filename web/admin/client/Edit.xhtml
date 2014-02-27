@@ -7,7 +7,10 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <h:form id="ClientEditForm">
-
+              <p:breadCrumb>  
+            <p:menuitem value="Lista de Clientes"  immediate="true" actionListener="#{beanPagina.setPaginaAdmin('/admin/client/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Editar Cliente"  disabled="true"/>  
+         </p:breadCrumb> 
         <h:panelGroup id="display">
             <p:panelGrid  columns="2" >
 

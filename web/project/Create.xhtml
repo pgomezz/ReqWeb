@@ -6,9 +6,14 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <p:panel header="#{project.CreateProjectTitle}">
-        <h:form id="ProjectCreateForm">
 
+   
+        <h:form id="ProjectCreateForm">
+         <p:breadCrumb>  
+            <p:menuitem value="Lista de Projetos" action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Criar Projeto" disabled="true" ></p:menuitem>  
+         </p:breadCrumb> 
+ <p:panel header="#{project.CreateProjectTitle}">
             <h:panelGroup id="display">
                 <p:panelGrid columns="3" id="grid">
 
@@ -78,6 +83,7 @@
                 <p:commandButton value="#{project.Cancel}"  action="/indexProj" immediate="true" actionListener="#{beanPagina.setPaginaProj('/project/List.xhtml')}" ajax="false"/>
 
             </h:panelGroup>
+            </p:panel>
         </h:form>
-    </p:panel>
+    
 </ui:composition>

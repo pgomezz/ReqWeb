@@ -8,6 +8,11 @@
 
     <h:form id="BusinessCategoryEditForm">
 
+        
+                   <p:breadCrumb>  
+            <p:menuitem value="Lista de Categorias de Negócio"  immediate="true" actionListener="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}" ajax="false" />  
+            <p:menuitem value="Editar Categoria de Negócio"  disabled="true"/>  
+         </p:breadCrumb> 
         <h:panelGroup id="display">
             <p:panelGrid  columns="3" id="grid" >
 

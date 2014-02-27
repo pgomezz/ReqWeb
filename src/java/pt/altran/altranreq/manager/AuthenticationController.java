@@ -76,11 +76,12 @@ public class AuthenticationController implements Serializable {
         FacesMessage msg = null;
         user=authenticationService.login(username, password);
         authenticationBean.setUsername(username);
+        System.out.println(username+" aa " + password);
         if(user!=null)
         { 
               authorizationService.setUserID(user.getIdUser().intValue());
               AuthorizationServiceImp authorizationServiceImp = (AuthorizationServiceImp)authorizationService;
-             
+             System.out.println("passei aqui 2");
               authorizationServiceImp.setIsAdmin(user.getIsAdmin()=='1');
               
             

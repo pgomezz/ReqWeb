@@ -9,6 +9,10 @@
 
     <h:form id="BusinessCategoryListForm">
 
+        
+                   <p:breadCrumb>  
+            <p:menuitem value="Lista de Categorias de Negócio"  immediate="true" actionListener="#{beanPagina.setPaginaAdmin('/admin/businessCategory/List.xhtml')}" ajax="false" />  
+         </p:breadCrumb> 
         <p:panel header="#{myBundle.ListBusinessCategoryTitle}">
 
             <p:dataTable id="datalist" value="#{businessCategoryController.items}" var="item"
