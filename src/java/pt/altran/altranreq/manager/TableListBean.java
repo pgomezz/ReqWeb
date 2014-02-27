@@ -17,7 +17,25 @@ public class TableListBean  implements Serializable {
     private final static String[] type;
     private final static String[] typeDescription;
     
+    private final static String[] projectState;
+    private final static String[] projectStateDescription;
+    
+    
    static {  
+       
+        projectState = new String[4];  
+        projectState[0] = "0";  
+        projectState[1] = "1";  
+        projectState[2] = "2";  
+        projectState[3] = "3";  
+         
+        
+        projectStateDescription = new String[4];  
+        projectStateDescription[0] = "Em curso";  
+        projectStateDescription[1] = "Suspenso";  
+        projectStateDescription[2] = "Concluído";  
+        projectStateDescription[3] = "Em manutenção";  
+       
         state = new String[4];  
         state[0] = "0";  
         state[1] = "1";  
@@ -55,9 +73,14 @@ public class TableListBean  implements Serializable {
   
     private SelectItem[] stateOptions; 
     private SelectItem[] typeOptions; 
+    private SelectItem[] projectOptions; 
 
     public static String[] getState() {
         return state;
+    }
+    
+        public static String[] getProjectState() {
+        return projectState;
     }
 
     public static String[] getType() {
@@ -71,13 +94,15 @@ public class TableListBean  implements Serializable {
     public SelectItem[] getTypeOptions() {
         return typeOptions;
     }
-    
+        public SelectItem[] getProjectOptions() {
+        return projectOptions;
+    }
     
     
  private SelectItem[] createFilterOptions(String[] value, String[] description)  {  
         SelectItem[] options = new SelectItem[value.length + 1];  
   
-        options[0] = new SelectItem("", "Select");  
+        options[0] = new SelectItem("", "Selecionar");  
           
         for(int i = 0; i < value.length; i++) {  
             options[i + 1] = new SelectItem(value[i], description[i]);  
@@ -92,7 +117,7 @@ public class TableListBean  implements Serializable {
         
         stateOptions = createFilterOptions(state,stateDescription);
         typeOptions = createFilterOptions(type,typeDescription);
-     
+        projectOptions = createFilterOptions(projectState, projectStateDescription);
     }
     
     

@@ -59,6 +59,7 @@ public class ProjectEditManager extends AbstractController<Project> implements S
 
     @Override
     public void save(ActionEvent event) { 
+       
         projectService.edit(getProject());
         String successMsg = ResourceBundle.getBundle("/project").getString("Success_on_update");
         JsfUtil.addSuccessMessage(successMsg);
@@ -72,19 +73,25 @@ public class ProjectEditManager extends AbstractController<Project> implements S
     }
     
     public List<Organization> getOrganizationList(){
+       
         List<Organization> orgList = organizationService.findAll();
         return orgList;
     }
     
     public void setOrganization(Organization org){
+        
         getProject().setIdOrganization(org);
     }
     
     public Organization getOrganization(){
+       
+
         return getProject().getIdOrganization();
+
     }
     
     public String getOrganizationNameById(){
+       
         if(getProject().getIdOrganization()!=null){
         Organization org = getProject().getIdOrganization();
         return org.getName();

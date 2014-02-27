@@ -56,6 +56,7 @@ public class ProjectCreateManager extends AbstractController<Project> implements
 
     public Project getProject() {
         Project sel = getSelected();
+        sel.setProjectState(BigInteger.ZERO);
         return sel;
     }
 

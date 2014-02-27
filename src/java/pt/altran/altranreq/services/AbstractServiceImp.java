@@ -37,7 +37,10 @@ public abstract class AbstractServiceImp<T> implements AbstractService<T>{
 
     @Override
     public T find(Object id) {
+        try{
         return getEntityManager().find(entityClass, id);
+        }catch(Exception e){
+            return null;}
     }
 
 

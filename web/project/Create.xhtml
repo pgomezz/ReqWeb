@@ -42,8 +42,7 @@
                     <p:message for="to"  /> 
 
                     <h:outputLabel value="#{project.State}" for="estado" style="font-weight: bold" />
-                    <p:selectOneMenu value="#{projectCreateManager.project.projectState}" id="estado" required="true" requiredMessage="#{project.CreateProjectHelpText_projectState}">            
-                        <f:selectItem itemLabel="#{project.SelecteOneState}" itemValue="" />
+                    <p:selectOneMenu disabled="true" value="#{projectCreateManager.project.projectState}" id="estado">            
                         <f:selectItem itemLabel="#{project.State_ongoing}" itemValue="0" />
                         <f:selectItem itemLabel="#{project.State_standby}" itemValue="1" />
                         <f:selectItem itemLabel="#{project.State_done}" itemValue="2" />

@@ -34,10 +34,14 @@ public class OrganizationImp extends AbstractServiceImp<Organization> implements
     @Override
     @WebMethod
     public Organization getOrganizationById(String id) {
+        try{
         Query queryOrg = em.createNamedQuery("Organization.findByIdOrganization");
         BigDecimal idBD = new BigDecimal(id);
         queryOrg.setParameter("idOrganization", idBD);
         Organization organization = (Organization)queryOrg.getSingleResult();
         return organization;
+        }catch(Exception e){
+            return null;
+        }
     }
 }
