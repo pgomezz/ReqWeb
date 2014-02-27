@@ -21,6 +21,7 @@ import pt.altran.altranreq.manager.AbstractController;
 import pt.altran.altranreq.manager.util.JsfUtil;
 import pt.altran.altranreq.services.OrganizationService;
 import pt.altran.altranreq.services.ProjectService;
+import pt.altran.altranreq.services.ProjectServiceBean;
 import pt.altran.altranreq.services.UserService;
 
 /**
@@ -39,6 +40,9 @@ public class ProjectCreateManager extends AbstractController<Project> implements
 
     @Inject
     private OrganizationService organizationService;
+    
+    @Inject
+    private ProjectServiceBean projectServiceBean;
 
     private AltranreqUser user;
 
@@ -48,6 +52,8 @@ public class ProjectCreateManager extends AbstractController<Project> implements
     public void init() {
         super.setService(projectService);
         super.setSelected(new Project());
+        System.out.println("Entrei no init do project Create Manager controller");
+        projectServiceBean.setSelected(null);
     }
 
     public String getState(int number) {

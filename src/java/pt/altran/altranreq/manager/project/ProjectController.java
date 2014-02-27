@@ -110,6 +110,7 @@ public class ProjectController extends AbstractController<Project> implements Se
     @PostConstruct
     public void init() {
         super.setService(projectService);
+
         
     }
 

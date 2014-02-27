@@ -31,13 +31,19 @@ public class DuplicateValidator implements Validator {
         }
 
         String possibleProjectName = (String) value;
-        if (!((Project) projectServiceBean.getSelected()).getName().equals(possibleProjectName)) {
-            if (projectService.existProjectByName(possibleProjectName)) {
+        if (projectServiceBean.getSelected() == null){
+            isDuplicatedProject(possibleProjectName);
+        } else if (!((Project) projectServiceBean.getSelected()).getName().equals(possibleProjectName)) {
+            isDuplicatedProject(possibleProjectName);
+        }
+    }
+
+    private void isDuplicatedProject(String possibleProjectName) {
+        if (projectService.existProjectByName(possibleProjectName)) {
                 FacesMessage msg = new FacesMessage(ResourceBundle.getBundle("/project").getString("DuplicateName_Project"));
                 msg.setSeverity(SEVERITY_ERROR);
                 throw new ValidatorException(msg);
             }
-        }
     }
 
 }

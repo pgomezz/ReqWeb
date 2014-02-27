@@ -34,15 +34,13 @@
                           filterMatchMode="exact">
                     <h:outputText value="#{projectController.getState(item.projectState)}"/>
                 </p:column>
-                
-
-                
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value="#{project.ProjectManager}"/>
                     </f:facet>
                     <h:outputText value="#{projectController.getProjectManagerName(item.idProjectManager)}"/>
                 </p:column>
+                
                 <f:facet name="footer">
                     <p:commandButton id="createButton" icon="ui-icon-plus" value="#{project.Create}" actionListener="#{beanPagina.setPaginaProj('/project/Create.xhtml')}" action="/indexProj" ajax="false"/>
                     <p:commandButton id="viewButton"  icon="ui-icon-search" value="#{project.View}" actionListener="#{projectController.redirect(2)}" action="/indexProj" disabled="#{empty projectController.selected}" ajax="false">
