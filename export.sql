@@ -260,6 +260,9 @@ Insert into ALTRANREQ_USER (ID_USER,NAME,PASSWORD,USERNAME,EMAIL,MOBILE,IS_ADMIN
 Insert into ALTRANREQ_USER (ID_USER,NAME,PASSWORD,USERNAME,EMAIL,MOBILE,IS_ADMIN,AGE,ADDRESS,CITY,ZIP_CODE) values (7,'as','as','as','as','1231413123123','0',null,null,null,null);
 Insert into ALTRANREQ_USER (ID_USER,NAME,PASSWORD,USERNAME,EMAIL,MOBILE,IS_ADMIN,AGE,ADDRESS,CITY,ZIP_CODE) values (9,'admin','¡Ëìf$Œ9ù1„³Ñ«º Ö®‹','admin','admin','1','1',1,'1','1','1');
 Insert into ALTRANREQ_USER (ID_USER,NAME,PASSWORD,USERNAME,EMAIL,MOBILE,IS_ADMIN,AGE,ADDRESS,CITY,ZIP_CODE) values (8,'teste e coiso','coiso','coiso','coiso@coisa.coisa','900000000','1',null,null,null,null);
+Insert into ALTRANREQ_USER (ID_USER,NAME,PASSWORD,USERNAME,EMAIL,MOBILE,IS_ADMIN,AGE,ADDRESS,CITY,ZIP_CODE) values (21,'José Administrador','ãóß$¯x}èÜ@*Cxø+¡','admin','admin@mail.pt','123456789','1',null,null,null,null);
+Insert into ALTRANREQ_USER (ID_USER,NAME,PASSWORD,USERNAME,EMAIL,MOBILE,IS_ADMIN,AGE,ADDRESS,CITY,ZIP_CODE) values (22,'José User','CÑÙoP€Ï”Ñ¿oTª±`','user','user@mail.com','123456789','0',null,null,null,null);
+
 REM INSERTING into BUSINESS_CATEGORY
 SET DEFINE OFF;
 Insert into BUSINESS_CATEGORY (ID_BUSINESS_CATEGORY,NAME) values (97,'Engenharia Mecânica');
