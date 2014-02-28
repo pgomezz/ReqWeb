@@ -18,44 +18,44 @@
             <p:panelGrid columns="2" style=" border-style:  solid; width: 100%" >
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_idNonFuncRequirement}"/>
-                <h:outputText value="#{nonFunctionalRequirementController.NFR.idNonFuncRequirement}" title="#{myBundle.ViewNonFunctionalRequirementTitle_idNonFuncRequirement}"/>
+                <h:outputText value="#{nonFunctionalRequirementController.NFRequirement.idNonFuncRequirement}" title="#{myBundle.ViewNonFunctionalRequirementTitle_idNonFuncRequirement}"/>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_type}"/>
-                <h:outputText value="#{nonFunctionalRequirementController.NFR.type}" title="#{myBundle.ViewNonFunctionalRequirementTitle_type}"/>
+                <h:outputText value="#{nonFunctionalRequirementController.NFRequirement.type}" title="#{myBundle.ViewNonFunctionalRequirementTitle_type}"/>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_name}"/>
-                <h:outputText value="#{nonFunctionalRequirementController.NFR.name}" title="#{myBundle.ViewNonFunctionalRequirementTitle_name}"/>
+                <h:outputText value="#{nonFunctionalRequirementController.NFRequirement.name}" title="#{myBundle.ViewNonFunctionalRequirementTitle_name}"/>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_description}"/>
-                <h:outputText value="#{nonFunctionalRequirementController.NFR.description}" title="#{myBundle.ViewNonFunctionalRequirementTitle_description}"/>
+                <h:outputText value="#{nonFunctionalRequirementController.NFRequirement.description}" title="#{myBundle.ViewNonFunctionalRequirementTitle_description}"/>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_reason}"/>
-                <h:outputText value="#{nonFunctionalRequirementController.NFR.reason}" title="#{myBundle.ViewNonFunctionalRequirementTitle_reason}"/>
+                <h:outputText value="#{nonFunctionalRequirementController.NFRequirement.reason}" title="#{myBundle.ViewNonFunctionalRequirementTitle_reason}"/>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_source}"/>
-                <h:outputText value="#{nonFunctionalRequirementController.NFR.source}" title="#{myBundle.ViewNonFunctionalRequirementTitle_source}"/>
+                <h:outputText value="#{nonFunctionalRequirementController.NFRequirement.source}" title="#{myBundle.ViewNonFunctionalRequirementTitle_source}"/>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_avaliationCriteria}"/>
-                <h:outputText value="#{nonFunctionalRequirementController.NFR.avaliationCriteria}" title="#{myBundle.ViewNonFunctionalRequirementTitle_avaliationCriteria}"/>
+                <h:outputText value="#{nonFunctionalRequirementController.NFRequirement.avaliationCriteria}" title="#{myBundle.ViewNonFunctionalRequirementTitle_avaliationCriteria}"/>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_clientPriority}"/>
-                <h:outputText value="#{nonFunctionalRequirementController.NFR.clientPriority}" title="#{myBundle.ViewNonFunctionalRequirementTitle_clientPriority}"/>
+                <h:outputText value="#{nonFunctionalRequirementController.NFRequirement.clientPriority}" title="#{myBundle.ViewNonFunctionalRequirementTitle_clientPriority}"/>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_clientInsatisfaction}"/>
-                <h:outputText value="#{nonFunctionalRequirementController.NFR.clientInsatisfaction}" title="#{myBundle.ViewNonFunctionalRequirementTitle_clientInsatisfaction}"/>
+                <h:outputText value="#{nonFunctionalRequirementController.NFRequirement.clientInsatisfaction}" title="#{myBundle.ViewNonFunctionalRequirementTitle_clientInsatisfaction}"/>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_requirementState}"/>
-                <h:outputText value="#{nonFunctionalRequirementController.NFR.requirementState}" title="#{myBundle.ViewNonFunctionalRequirementTitle_requirementState}"/>
+                <h:outputText value="#{nonFunctionalRequirementController.NFRequirement.requirementState}" title="#{myBundle.ViewNonFunctionalRequirementTitle_requirementState}"/>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_version}"/>
-                <h:outputText value="#{nonFunctionalRequirementController.NFR.version}" title="#{myBundle.ViewNonFunctionalRequirementTitle_version}"/>
+                <h:outputText value="#{nonFunctionalRequirementController.NFRequirement.version}" title="#{myBundle.ViewNonFunctionalRequirementTitle_version}"/>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_ordernumber}"/>
-                <h:outputText value="#{nonFunctionalRequirementController.NFR.ordernumber}" title="#{myBundle.ViewNonFunctionalRequirementTitle_ordernumber}"/>
+                <h:outputText value="#{nonFunctionalRequirementController.NFRequirement.ordernumber}" title="#{myBundle.ViewNonFunctionalRequirementTitle_ordernumber}"/>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_nonFunctionalRequirementCollection}"/>
                 <h:selectManyMenu converter="nonFunctionalRequirementConverter" style=" width: 100%">
-                    <f:selectItems value="#{nonFunctionalRequirementController.NFR.nonFunctionalRequirementCollection}"
+                    <f:selectItems value="#{nonFunctionalRequirementController.NFRequirement.nonFunctionalRequirementCollection}"
                                    var="nonFunctionalRequirementCollectionItem"
                                    itemValue="#{nonFunctionalRequirementCollectionItem}"
                                    itemLabel="#{nonFunctionalRequirementCollectionItem.name.toString()}"
@@ -64,7 +64,7 @@
                 </h:selectManyMenu>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_idProject}"/>
-                <h:outputText value="#{nonFunctionalRequirementController.NFR.idProject.name}"/>
+                <h:outputText value="#{nonFunctionalRequirementController.NFRequirement.idProject.name}"/>
             </p:panelGrid>
             <p:commandButton value="#{myBundle.Close}" actionListener="#{beanPagina.setPaginaProj('/project/View.xhtml')}" action="/indexProj" immediate="true" ajax="false"/>
         </h:panelGroup>
