@@ -21,7 +21,7 @@
                 <h:outputText value="#{nonFunctionalRequirementController.NFRequirement.idNonFuncRequirement}" title="#{myBundle.ViewNonFunctionalRequirementTitle_idNonFuncRequirement}"/>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_type}"/>
-                <h:outputText value="#{nonFunctionalRequirementController.NFRequirement.type}" title="#{myBundle.ViewNonFunctionalRequirementTitle_type}"/>
+                <h:outputText value="#{nonFunctionalRequirementController.getStringType(nonFunctionalRequirementController.NFRequirement.type)}" title="#{myBundle.ViewNonFunctionalRequirementTitle_type}"/>
 
                 <h:outputText value="#{myBundle.ViewNonFunctionalRequirementLabel_name}"/>
                 <h:outputText value="#{nonFunctionalRequirementController.NFRequirement.name}" title="#{myBundle.ViewNonFunctionalRequirementTitle_name}"/>

@@ -4,6 +4,7 @@ import pt.altran.altranreq.manager.requirement.FunctionalRequirementController;
 import java.io.IOException;
 import pt.altran.altranreq.entities.NonFunctionalRequirement;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -139,6 +140,29 @@ public class NonFunctionalRequirementController extends AbstractController<NonFu
         
     }
           
+        public String getStringType(BigDecimal type){
+        
+           int integer = type.intValue();
+        String typeString = "";
+
+        switch(integer)
+        {
+            case 0: typeString = ResourceBundle.getBundle("/bundle_nfrType").getString("USABILIDADE");;
+            break;
+            case 1: typeString = ResourceBundle.getBundle("/bundle_nfrType").getString("INTERFACE_E_IMAGEM");;
+            break;
+            case 2: typeString = ResourceBundle.getBundle("/bundle_nfrType").getString("OPERACIONAIS");;
+            break;
+            case 3: typeString = ResourceBundle.getBundle("/bundle_nfrType").getString("INSTALACAO");;
+            break;
+            case 4: typeString = ResourceBundle.getBundle("/bundle_nfrType").getString("SEGURANCA");;
+            break;
+            case 5: typeString = ResourceBundle.getBundle("/bundle_nfrType").getString("POLITICOS");;
+            break;                                                                
+        }
+        return typeString;
+    }
+    
     public boolean isNFRequirementType()
     {
         return nonFunctionalRequirementBean.getSelected() instanceof NonFunctionalRequirement;

@@ -90,6 +90,8 @@ public class NonFunctionalRequirementEditManager extends AbstractController<NonF
     public boolean isNFRequirementType() {
         return nonFunctionalRequirementBean.getSelected() instanceof NonFunctionalRequirement;
     }
+    
+
 
     public NonFunctionalRequirement getNFRequirement() {
         return (NonFunctionalRequirement) nonFunctionalRequirementBean.getSelected();
