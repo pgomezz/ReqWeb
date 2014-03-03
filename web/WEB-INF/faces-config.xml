@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <faces-config version="2.2"
-    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <application>
         <resource-bundle>
             <base-name>/MyBundle</base-name>
@@ -50,5 +50,17 @@
         </resource-bundle>
         
     </application>
-    
+    <navigation-rule>
+        <from-view-id>/login_New.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{authBean.loginUser}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/indexProj.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{authBean.loginUser}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/login_New.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

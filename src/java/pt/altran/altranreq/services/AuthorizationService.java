@@ -18,10 +18,10 @@ public interface AuthorizationService {
     public List<AltranreqUser> getUsersByProject();
 
     public boolean hasPrivilege(String privilege);
-    
+
     public void setProject(int project);
-    
+
     public boolean isAdmin();
-    
+
     public void setUserID(int userID);
 }

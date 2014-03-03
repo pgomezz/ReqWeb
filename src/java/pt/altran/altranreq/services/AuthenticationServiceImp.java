@@ -19,7 +19,7 @@ public class AuthenticationServiceImp implements AuthenticationService {
 
     @PersistenceContext(unitName = "AltranReqPU")
     private EntityManager em;
-    
+
     @Inject
     private PasswordEncryptionService passwordService;
 
@@ -30,30 +30,24 @@ public class AuthenticationServiceImp implements AuthenticationService {
     @WebMethod
     @Override
     public AltranreqUser login(String username, String password) {
-        System.out.println("Cenas " + username);
-       AltranreqUser u = null;
-       byte[] newPassword = null;
+        AltranreqUser u = null;
+        byte[] newPassword = null;
         try {
             newPassword = passwordService.getEncryptedPassword(password, "AltranREQ".getBytes());
         } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
             Logger.getLogger(AuthenticationController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        try{
-            System.out.println("Cenas 1" + username);
-                 u = (AltranreqUser) em.
-                createNamedQuery("AltranreqUser.findByUsernameAndPassword").
-                setParameter("username", username).
-                setParameter("password", new String(newPassword)). //new String(newPassword)
-                getSingleResult();
-                System.out.println("Cenas 2" + username);
-        }catch(Exception e)
-        {
+        try {
+            u = (AltranreqUser) em.
+                    createNamedQuery("AltranreqUser.findByUsernameAndPassword").
+                    setParameter("username", username).
+                    setParameter("password", new String(newPassword)).
+                    getSingleResult();
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
+
         return u;
     }
-
-
 
 }
