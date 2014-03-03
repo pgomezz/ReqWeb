@@ -116,5 +116,19 @@ public class FunctionalRequirementServiceImp extends AbstractServiceImp<Function
     
     
     }
+    
+    @Override
+    public boolean existRFByName(String name, int idProj) {
+        FunctionalRequirementFilter frName = new FunctionalRequirementFilter();
+        frName.setName(name);
+        frName.setProjecto(idProj);
+        
+        for (FunctionalRequirement fr : findFunctionalRequirementByFilter(frName)) {
+            if (fr.getName().equalsIgnoreCase(name))
+                return true;
+        }
+        
+        return false;
+    }
 
 }

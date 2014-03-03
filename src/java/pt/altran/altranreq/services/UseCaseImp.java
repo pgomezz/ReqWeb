@@ -62,4 +62,19 @@ public class UseCaseImp extends AbstractServiceImp<UseCase> implements UseCaseSe
 
         return (List<UseCase>) us.getUseCaseCollection1();
     }
+    
+    @Override
+    public boolean existUseCaseByName(String name, int idRF) {
+//        UseCaseFilter frName = new RNFunctionalFilter();
+//        frName.setName(name);
+//        frName.setProject(idRF);
+        
+        for (UseCase fr : findUseCaseByRequirement(idRF)){
+            if (fr.getName().equalsIgnoreCase(name))
+                return true;
+        }
+        
+        return false;
+    }
+    
 }

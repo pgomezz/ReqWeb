@@ -24,4 +24,5 @@ public interface RNFService extends AbstractService<NonFunctionalRequirement> {
     
     String getRequirementStateString(int requirementStateIndice);
     String getRequirementTypeString(int requirementTypeIndice);
+    boolean existNRFByName(String name, int idProj);
 }

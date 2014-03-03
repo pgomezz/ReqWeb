@@ -17,4 +17,5 @@ public interface UseCaseService extends AbstractService<UseCase> {
     public List<UseCase> findUseCaseByDependency(int pai);
 
     public List<UseCase> findUseCaseByRequirement(int pai);
+    boolean existUseCaseByName(String name, int idProj);
 }

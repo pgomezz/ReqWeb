@@ -22,7 +22,9 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2">
                         <p:outputLabel value="#{myBundle.CreateUseCaseLabel_name}" for="name" style="font-weight: bold" />
-                        <p:inputText id="name" value="#{createUseCaseManager.useCase.name}" title="#{myBundle.CreateUseCaseTitle_name}" required="true" requiredMessage="#{myBundle.CreateUseCaseRequiredMessage_name}" size="100" maxlength="100"/>
+                        <p:inputText id="name" value="#{createUseCaseManager.useCase.name}" title="#{myBundle.CreateUseCaseTitle_name}" required="true" requiredMessage="#{myBundle.CreateUseCaseRequiredMessage_name}" size="100" maxlength="100">
+                        <f:validator validatorId="validator.duplicateValidatorUC" />
+                        </p:inputText>
 
                         <p:outputLabel value="#{myBundle.CreateUseCaseLabel_description}" for="description" style="font-weight: bold" />
                         <p:inputTextarea rows="4" cols="30" id="description" value="#{createUseCaseManager.useCase.description}" title="#{myBundle.CreateUseCaseTitle_description}" required="true" requiredMessage="#{myBundle.CreateUseCaseRequiredMessage_description}"/>

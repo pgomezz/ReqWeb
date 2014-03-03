@@ -17,7 +17,9 @@
             <h:panelGroup id="display">
                 <p:panelGrid columns="3" id="grid">
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_name}" for="name" style="font-weight: bold" />
-                    <p:inputText id="name" value="#{functionalRequirementCreateManager.selected.name}" title="#{myBundle.CreateFunctionalRequirementTitle_name}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_name}" size="60" maxlength="60"/>
+                    <p:inputText id="name" value="#{functionalRequirementCreateManager.selected.name}" title="#{myBundle.CreateFunctionalRequirementTitle_name}" required="true" requiredMessage="#{myBundle.CreateFunctionalRequirementRequiredMessage_name}" size="60" maxlength="60">
+                        <f:validator validatorId="validator.duplicateValidatorRF" />
+                    </p:inputText>
                     <p:message for="name" display="${myBundle.CreateFunctionalRequirementHelpText_name}" /> 
                     
                     <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_description}" for="description" style="font-weight: bold" />

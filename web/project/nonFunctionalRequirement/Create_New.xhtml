@@ -20,7 +20,9 @@
 
 
                 <p:outputLabel value="#{myBundle.CreateNonFunctionalRequirementLabel_name}" for="name" style="font-weight: bold" />
-                <p:inputText id="name" value="#{nonFunctionalRequirementCreateManager.selected.name}" title="#{myBundle.CreateNonFunctionalRequirementTitle_name}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_name}" size="60" maxlength="60"/>
+                <p:inputText id="name" value="#{nonFunctionalRequirementCreateManager.selected.name}" title="#{myBundle.CreateNonFunctionalRequirementTitle_name}" required="true" requiredMessage="#{myBundle.CreateNonFunctionalRequirementRequiredMessage_name}" size="60" maxlength="60">
+                <f:validator validatorId="validator.duplicateValidatorRNF" />
+                </p:inputText>
                 <p:message for="name" display="${myBundle.CreateNonFunctionalRequirementHelpText_name}" /> 
 
                 <p:outputLabel  value="#{bundle_nfrType.Type}"  for="idType" style="font-weight: bold"/> 

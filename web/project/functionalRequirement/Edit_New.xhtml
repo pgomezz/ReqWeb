@@ -21,7 +21,10 @@
 
 
                 <p:outputLabel value="#{myBundle.CreateFunctionalRequirementLabel_name}" for="name" style="font-weight: bold" />
-                <p:inputText id="name" value="#{functionalRequirementEditManager.FRequirement.name}" title="#{myBundle.EditFunctionalRequirementTitle_name}" required="true" requiredMessage="#{myBundle.EditFunctionalRequirementRequiredMessage_name}" size="60" maxlength="60"/>
+                <p:inputText id="name" value="#{functionalRequirementEditManager.FRequirement.name}" title="#{myBundle.EditFunctionalRequirementTitle_name}" required="true" requiredMessage="#{myBundle.EditFunctionalRequirementRequiredMessage_name}" size="60" maxlength="60">
+                
+                <f:validator validatorId="validator.duplicateValidatorRF" />
+                </p:inputText>
                 <p:message for="name" display="${myBundle.CreateFunctionalRequirementHelpText_name}" /> 
 
 

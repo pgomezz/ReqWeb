@@ -117,4 +117,18 @@ public class RNFServiceImp extends AbstractServiceImp<NonFunctionalRequirement> 
         return ResourceBundle.getBundle("/bundle_nfrType").getString(TypeNonFunctionalEnum.getByIndex(requirementTypeIndice).toString());
     }
 
+    @Override
+    public boolean existNRFByName(String name, int idProj) {
+        RNFunctionalFilter frName = new RNFunctionalFilter();
+        frName.setName(name);
+        frName.setProject(idProj);
+        
+        for (NonFunctionalRequirement fr : findRNFByFilter(frName)){
+            if (fr.getName().equalsIgnoreCase(name))
+                return true;
+        }
+        
+        return false;
+    }
+
 }
