@@ -19,18 +19,9 @@ import pt.altran.altranreq.entities.AltranreqUser;
 @SessionScoped
 public class AltranreqUserBean implements Serializable {
 
-    @Context
-  //  private AltranreqUser selected;
-    
+    @Context    
     private Object selected;
 
-   /* public void setSelected(AltranreqUser selected) {
-        this.selected = selected;
-    }
-
-    public AltranreqUser getSelected() {
-        return selected;
-    }*/
     public void setSelected(Object selected) {
         this.selected = selected;
     }

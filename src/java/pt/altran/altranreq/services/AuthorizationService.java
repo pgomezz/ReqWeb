@@ -24,4 +24,6 @@ public interface AuthorizationService {
     public boolean isAdmin();
 
     public void setUserID(int userID);
+    
+    public void setIsAdmin(boolean isAdmin);
 }

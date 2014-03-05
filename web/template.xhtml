@@ -24,7 +24,7 @@
                     <p:graphicImage id="tab1Img" value="/resources/images/altran/LogoAltran.jpg"  width="100" />
 
                     <h:panelGroup layout="block" style="text-align: right;">
-                        <p:commandButton id="logout" value="Logout" action="/login.xhtml?faces-redirect=true" icon="ui-icon-close" />
+                        <p:commandButton id="logout" value="Logout" action="#{authenticationBean.logoutUser()}" icon="ui-icon-close" />
                     </h:panelGroup>
                     <h:panelGroup layout="block" style="text-align: right;">
                         <h:outputLabel for="username" value="Username: " style=" color: blue; font-weight:  bold" /> 

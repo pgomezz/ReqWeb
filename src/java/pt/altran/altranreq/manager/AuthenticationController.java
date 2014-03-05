@@ -12,7 +12,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import pt.altran.altranreq.entities.AltranreqUser;
-import pt.altran.altranreq.services.AuthenticationBean;
+import pt.altran.altranreq.services.authentication.AuthenticationBean;
 import pt.altran.altranreq.services.AuthenticationService;
 import pt.altran.altranreq.services.AuthorizationService;
 import pt.altran.altranreq.services.AuthorizationServiceImp;
@@ -91,7 +91,7 @@ public class AuthenticationController implements Serializable {
                 
                 authenticationBean.setUser(user);
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("faces/indexProj.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("defaultPages/indexProj.xhtml");
             } catch (IOException ex) {
                 Logger.getLogger(AuthenticationController.class.getName()).log(Level.SEVERE, null, ex);
             }

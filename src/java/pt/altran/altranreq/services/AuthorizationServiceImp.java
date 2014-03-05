@@ -72,8 +72,7 @@ public class AuthorizationServiceImp implements AuthorizationService, Serializab
                 setParameter("idProject", projectID).
                 getSingleResult();
         int idRole = p_user.getIdRole().getIdRole().intValueExact();
-        AltranreqRole role = null;
-        role = (AltranreqRole) em.
+        AltranreqRole role = (AltranreqRole) em.
                 createNamedQuery("AltranreqRole.findByIdRole").
                 setParameter("idRole", idRole).
                 getSingleResult();
@@ -132,6 +131,7 @@ public class AuthorizationServiceImp implements AuthorizationService, Serializab
         this.projectID = projectID;
     }
     
+    @Override
     public void setIsAdmin(boolean isAdmin){
         this.isAdmin = isAdmin;
     }
